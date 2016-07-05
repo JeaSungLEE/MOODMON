@@ -59,7 +59,7 @@ UIFont *boldQuicksand;
     count=0;
     [super viewDidLoad];
     _mddm = [MDDataManager sharedDataManager];
-    //[mddm createDB];
+   
     
     toolbarIsOpen = YES;
     toolbarIsAnimating = NO;
@@ -714,7 +714,7 @@ UIFont *boldQuicksand;
 }
 - (IBAction) exitFromSecondViewController:(UIStoryboardSegue *)segue
 {
-    NSLog(@"back from : %@", [segue.sourceViewController class]);
+    //NSLog(@"back from : %@", [segue.sourceViewController class]);
 }
 
 - (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier
