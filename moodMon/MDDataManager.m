@@ -19,7 +19,6 @@
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[self alloc] init];
     });
-    
     return _sharedInstance;
 }
 
@@ -30,8 +29,6 @@
         self.moodCollection = [[NSMutableArray alloc] init];
         [self.moodCollection insertObject:[[MDMoodmon alloc] init] atIndex:0];
         
-        
-        //NSLog(@"init : %@", _moodCollection);
         self.isChecked = [@[ @NO, @NO,@NO,@NO,@NO ] mutableCopy];
         self.chosenMoodCount = 0;
         NSString *docsDir;
@@ -39,31 +36,24 @@
         
         dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         docsDir = dirPath[0];
-        _dataBasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:@"moodmon.sqlite"]];
+        self.dataBasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:@"moodmon.sqlite"]];
         
         hasICloud = NO;
         NSString *documentFile = [docsDir stringByAppendingPathComponent:@"moodmonDoc.doc"];
-        _documentURL = [NSURL fileURLWithPath:documentFile];
+        self.documentURL = [NSURL fileURLWithPath:documentFile];
         self.document = [[MDDocument alloc]initWithFileURL:_documentURL];
-        
     }
     return self;
 }
 
 - (void)createDB{
-    
     //sqlite3_stmt *statement;
-    
     NSFileManager *filemgr = [NSFileManager defaultManager];
-    
     if( [filemgr fileExistsAtPath:_dataBasePath] == NO){
         NSLog(@"no db");
-    
         const char *dbpath = [_dataBasePath UTF8String];
-        
         if(sqlite3_open(dbpath, &_moodmonDB) == SQLITE_OK){
             char *errMsg;
-            
             NSLog(@"no1 : open DB" );
             const char *sql_stmt = "CREATE TABLE IF NOT EXISTS moodmon(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, moodComment VARCHAR(150) NULL, moodDate Datetime NOT NULL, moodChosen1 INTEGER NOT NULL DEFAULT 0, moodChosen2 INTEGER NOT NULL DEFAULT 0, moodChosen3 INTEGER NOT NULL DEFAULT 0, isDeleted BOOL DEFAULT false);";
             
@@ -72,8 +62,6 @@
                 CHECK (moodChosen1 >=0 AND moodChosen1 <56 AND moodChosen2 >=0 AND
                         moodChosen2 <56 AND moodChosen3 >=0 AND moodChosen3 <56)
              */ //이거슨 validate
-            
-            
             if( sqlite3_exec(_moodmonDB, sql_stmt, NULL, NULL,&errMsg) != SQLITE_OK){
                             NSLog(@"ERRor : not created" );
             }
@@ -86,15 +74,10 @@
         }
         
 //        NSLog(@"yes1 : SQL created");
-
-        
     } else {
-       
         [self readAllFromDBAndSetCollection];
         NSLog(@"yes1 : read data from SQL ");
-        
     }
-    
 }
 
 - (void)readAllFromDBAndSetCollection{
