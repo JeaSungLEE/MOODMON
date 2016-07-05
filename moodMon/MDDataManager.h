@@ -14,8 +14,8 @@
 
 @interface MDDataManager : NSObject{
     BOOL hasICloud;
-    NSString *dataBasePath;
-    sqlite3 *moodmonDB;
+//    NSString *dataBasePath;
+//    sqlite3 *moodmonDB;
 }
 
 @property(strong, nonatomic) NSString *dataBasePath;
