@@ -106,7 +106,7 @@
                 NSUInteger moodChosen1 = sqlite3_column_int(statement, 3);
                 NSUInteger moodChosen2 = sqlite3_column_int(statement, 4);
                 NSUInteger moodChosen3 = sqlite3_column_int(statement, 5);
-                BOOL isDeleted = sqlite3_column_value(statement, 6);
+                BOOL isDeleted = (BOOL)sqlite3_column_value(statement, 6);
                 
                 NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
                 [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -116,7 +116,7 @@
                 NSCalendar *myCal = [[NSCalendar alloc]
                                      initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
                 NSDateComponents *comp = [myCal components:units fromDate:myDate];
-                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], [comp minute], [comp second]];
+                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], (long)[comp minute], (long)[comp second]];
                 
                 MDMoodmon *moodmon = [MDMoodmon alloc];
                 if(comment){
@@ -180,7 +180,7 @@
     NSInteger minute = [comp minute];
     NSInteger secondTime = [comp second];
     
-    NSString *timeString = [NSString stringWithFormat:@"%ld:%ld:%ld", hour, minute, secondTime];
+    NSString *timeString = [NSString stringWithFormat:@"%ld:%ld:%ld", (long)hour, (long)minute, (long)secondTime];
    
    //NSLog(@"month : %ld, day : %ld, year : %ld , %ld: %ld: %ld", (long)month,  day, (long)year, hour, minute, (long)secondTime);
     MDMoodmon *newMD = [[MDMoodmon alloc] init];
@@ -224,7 +224,7 @@
          6 - isDeleted / bool
          */
         
-        NSString *dateString = [NSString stringWithFormat:@"%ld-%ld-%ld %@", moodmon.moodYear, moodmon.moodMonth, moodmon.moodDay, moodmon.moodTime] ;
+        NSString *dateString = [NSString stringWithFormat:@"%ld-%ld-%ld %@", (long)moodmon.moodYear, (long)moodmon.moodMonth, (long)moodmon.moodDay, moodmon.moodTime] ;
         
         NSLog(@"now : %@",dateString);
         NSString *insertSQL =  [NSString stringWithFormat:@"INSERT INTO moodmon(moodComment, moodDate, moodChosen1, moodChosen2, moodChosen3) VALUES(\"%@\",\"%@\", %d,%d,%d);", moodmon.moodComment,  dateString ,(int)moodmon.moodChosen1,(int)moodmon.moodChosen2,(int)moodmon.moodChosen3];
@@ -284,7 +284,7 @@
                 NSUInteger moodChosen1 = sqlite3_column_int(statement, 3);
                 NSUInteger moodChosen2 = sqlite3_column_int(statement, 4);
                 NSUInteger moodChosen3 = sqlite3_column_int(statement, 5);
-                BOOL isDeleted = sqlite3_column_value(statement, 6);
+                BOOL isDeleted = (BOOL)sqlite3_column_value(statement, 6);
                 
                 NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
                 [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -296,7 +296,7 @@
                 NSDateComponents *comp = [myCal components:units fromDate:myDate];
                 //                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 //                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];
-                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], [comp minute], [comp second]];
+                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], (long)[comp minute], (long)[comp second]];
                 // NSLog(@"timestring %@ , %ld , %ld, %ld", timeString, (long)[comp hour], [comp minute], [comp second]);
                 
                 
