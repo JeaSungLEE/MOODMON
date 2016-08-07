@@ -20,7 +20,6 @@
 #import "MDSmallMoodFaceView.h"
 
 @interface MDNewMoodViewController : UIViewController <MDWheelGestureRecognizerDelegate, UITextFieldDelegate>
-@property (strong, nonatomic) IBOutlet MDSmallMoodFaceView *smallView;
 
 /* Model */
 @property MDMoodmon *mood;

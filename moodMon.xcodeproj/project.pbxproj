@@ -204,6 +204,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E92D2F061D3BBFB100E44264 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		657578891CB4BE7100D75D5E /* MDYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDYearViewController.h; sourceTree = "<group>"; };
 		6575788A1CB4BE7100D75D5E /* MDYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDYearViewController.m; sourceTree = "<group>"; };
@@ -275,6 +288,7 @@
 		CEDD93901CC3C07F00028F80 /* MDMoodFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodFilterTableViewCell.m; sourceTree = "<group>"; };
 		E90B86B11CBA9B64007AEFF4 /* MDWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWheelGestureRecognizer.h; sourceTree = "<group>"; };
 		E90B86B21CBA9B64007AEFF4 /* MDWheelGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDWheelGestureRecognizer.m; sourceTree = "<group>"; };
+		E92D2EF61D3BBFB100E44264 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9514B751CF353B6008B99CA /* MDSmallMoodFaceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDSmallMoodFaceView.xib; sourceTree = "<group>"; };
 		E95DE3BE1CE999110094EDCF /* MDTouchUpGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTouchUpGestureRecognizer.h; sourceTree = "<group>"; };
 		E95DE3BF1CE999110094EDCF /* MDTouchUpGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTouchUpGestureRecognizer.m; sourceTree = "<group>"; };
@@ -481,6 +495,7 @@
 				CE4A8A351CABCCB1006B73B7 /* moodMon */,
 				CE4A8A4F1CABCCB1006B73B7 /* moodMonTests */,
 				CE4A8A5A1CABCCB1006B73B7 /* moodMonUITests */,
+				E92D2EF51D3BBFB100E44264 /* Frameworks */,
 				CE4A8A341CABCCB1006B73B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -593,6 +608,14 @@
 				6575788A1CB4BE7100D75D5E /* MDYearViewController.m */,
 			);
 			name = "year scene";
+			sourceTree = "<group>";
+		};
+		E92D2EF51D3BBFB100E44264 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E92D2EF61D3BBFB100E44264 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
@@ -910,6 +933,7 @@
 				CE4A8A2F1CABCCB1006B73B7 /* Sources */,
 				CE4A8A301CABCCB1006B73B7 /* Frameworks */,
 				CE4A8A311CABCCB1006B73B7 /* Resources */,
+				E92D2F061D3BBFB100E44264 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -970,6 +994,9 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 39WT95YDMW;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
