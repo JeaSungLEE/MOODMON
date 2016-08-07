@@ -2070,12 +2070,18 @@
                                                     <exclude reference="kra-tU-hBo"/>
                                                 </mask>
                                             </variation>
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="76" y="14" width="67" height="17"/>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25R-mL-I0L">
                                             <rect key="frame" x="373" y="14" width="25" height="15"/>
                                             <fontDescription key="fontDescription" name="NanumGothicOTFLight" family="NanumGothicOTF" pointSize="10"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="377" y="17" width="21" height="11"/>
+                                            </variation>
                                         </label>
                                     </subviews>
                                     <constraints>
@@ -2350,6 +2356,9 @@
                                                                 <mask key="constraints">
                                                                     <include reference="I5C-Mk-P9q"/>
                                                                 </mask>
+                                                            </variation>
+                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                <rect key="frame" x="65" y="14" width="164" height="17"/>
                                                             </variation>
                                                         </label>
                                                     </subviews>

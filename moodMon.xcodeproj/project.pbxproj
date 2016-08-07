@@ -204,6 +204,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E92D2F061D3BBFB100E44264 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		657578891CB4BE7100D75D5E /* MDYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDYearViewController.h; sourceTree = "<group>"; };
 		6575788A1CB4BE7100D75D5E /* MDYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDYearViewController.m; sourceTree = "<group>"; };
@@ -275,6 +288,7 @@
 		CEDD93901CC3C07F00028F80 /* MDMoodFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodFilterTableViewCell.m; sourceTree = "<group>"; };
 		E90B86B11CBA9B64007AEFF4 /* MDWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWheelGestureRecognizer.h; sourceTree = "<group>"; };
 		E90B86B21CBA9B64007AEFF4 /* MDWheelGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDWheelGestureRecognizer.m; sourceTree = "<group>"; };
+		E92D2EF61D3BBFB100E44264 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		E9514B751CF353B6008B99CA /* MDSmallMoodFaceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDSmallMoodFaceView.xib; sourceTree = "<group>"; };
 		E95DE3BE1CE999110094EDCF /* MDTouchUpGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTouchUpGestureRecognizer.h; sourceTree = "<group>"; };
 		E95DE3BF1CE999110094EDCF /* MDTouchUpGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTouchUpGestureRecognizer.m; sourceTree = "<group>"; };
@@ -448,17 +462,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6575788C1CB4BE7600D75D5E /* year */ = {
+		6575788C1CB4BE7600D75D5E /* month scene */ = {
 			isa = PBXGroup;
 			children = (
 				65980E291CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.h */,
 				65980E2A1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m */,
 				65980E2B1CC0D1DF0092EA18 /* MDMonthViewController.h */,
 				65980E2C1CC0D1DF0092EA18 /* MDMonthViewController.m */,
-				657578891CB4BE7100D75D5E /* MDYearViewController.h */,
-				6575788A1CB4BE7100D75D5E /* MDYearViewController.m */,
 			);
-			name = year;
+			name = "month scene";
 			sourceTree = "<group>";
 		};
 		CE0C92CD1CAE56A60037E749 /* data */ = {
@@ -483,6 +495,7 @@
 				CE4A8A351CABCCB1006B73B7 /* moodMon */,
 				CE4A8A4F1CABCCB1006B73B7 /* moodMonTests */,
 				CE4A8A5A1CABCCB1006B73B7 /* moodMonUITests */,
+				E92D2EF51D3BBFB100E44264 /* Frameworks */,
 				CE4A8A341CABCCB1006B73B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -508,10 +521,11 @@
 				6575CAE61CE20AA7005E390F /* MDCustomStoryboardUnwindSegue.h */,
 				CEDACCBD1CEC373900FBD201 /* MDCustomStoryboardUnwindSegue.m */,
 				CE4A8A3A1CABCCB1006B73B7 /* AppDelegate.m */,
-				E986EDB91CDFBE9400792C55 /* new moodmon */,
-				6575788C1CB4BE7600D75D5E /* year */,
+				E986EDB91CDFBE9400792C55 /* new mood scene */,
+				E927D31A1D27F69F00CFB924 /* year scene */,
+				6575788C1CB4BE7600D75D5E /* month scene */,
 				CE0C92CD1CAE56A60037E749 /* data */,
-				CE87EC4F1CCE109900329E16 /* otherFunction */,
+				CE87EC4F1CCE109900329E16 /* other function */,
 				CE4A8A421CABCCB1006B73B7 /* Assets.xcassets */,
 				658BE7121CB4CE98006EB718 /* Main.storyboard */,
 				CE4A8A441CABCCB1006B73B7 /* LaunchScreen.storyboard */,
@@ -566,7 +580,7 @@
 			name = filter;
 			sourceTree = "<group>";
 		};
-		CE87EC4F1CCE109900329E16 /* otherFunction */ = {
+		CE87EC4F1CCE109900329E16 /* other function */ = {
 			isa = PBXGroup;
 			children = (
 				CEDD938C1CC3BA4300028F80 /* MDMoodFilterTableViewController.h */,
@@ -584,7 +598,24 @@
 				CE3AC3B91CF183420037BC71 /* MDDataSettingTableViewController.h */,
 				CE3AC3BA1CF183420037BC71 /* MDDataSettingTableViewController.m */,
 			);
-			name = otherFunction;
+			name = "other function";
+			sourceTree = "<group>";
+		};
+		E927D31A1D27F69F00CFB924 /* year scene */ = {
+			isa = PBXGroup;
+			children = (
+				657578891CB4BE7100D75D5E /* MDYearViewController.h */,
+				6575788A1CB4BE7100D75D5E /* MDYearViewController.m */,
+			);
+			name = "year scene";
+			sourceTree = "<group>";
+		};
+		E92D2EF51D3BBFB100E44264 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E92D2EF61D3BBFB100E44264 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
@@ -806,7 +837,7 @@
 			path = wrinkle;
 			sourceTree = "<group>";
 		};
-		E986EDB91CDFBE9400792C55 /* new moodmon */ = {
+		E986EDB91CDFBE9400792C55 /* new mood scene */ = {
 			isa = PBXGroup;
 			children = (
 				658BE7171CB4CE98006EB718 /* MDNewMoodViewController.h */,
@@ -814,7 +845,7 @@
 				E9CD99661CE883B000C9DBB7 /* gesture recognizer */,
 				E9CD99671CE883C200C9DBB7 /* view */,
 			);
-			name = "new moodmon";
+			name = "new mood scene";
 			sourceTree = "<group>";
 		};
 		E9A93B8C1CFB181800421076 /* launch screen */ = {
@@ -902,6 +933,7 @@
 				CE4A8A2F1CABCCB1006B73B7 /* Sources */,
 				CE4A8A301CABCCB1006B73B7 /* Frameworks */,
 				CE4A8A311CABCCB1006B73B7 /* Resources */,
+				E92D2F061D3BBFB100E44264 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -962,6 +994,9 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 39WT95YDMW;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
