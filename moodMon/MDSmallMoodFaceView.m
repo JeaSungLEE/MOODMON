@@ -13,7 +13,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if(self=[super initWithCoder:aDecoder]) {
-        [self setup];
+//        [self setup];
     }
     return self;
 }
@@ -30,7 +30,7 @@
     [self setup];
     _chosenMoods = [[NSMutableArray alloc] initWithArray:@[@0]];
     _moodName = @[@"", @"angry", @"joy", @"sad", @"excited", @"tired"];
-    _animationDuration = 0.4;
+    _animationDuration = 0.0;
     self.layer.cornerRadius = self.frame.size.width/2;
     self.backgroundColor = [UIColor clearColor];
 }

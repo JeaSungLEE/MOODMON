@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MDMoodColorView.h"
+#import "MDSmallMoodFaceView.h"
 //#import "MDMonthViewController.h"
 
 @protocol SwipeableCellDelegate <NSObject>
@@ -25,7 +26,8 @@
 //@property (nonatomic, weak)IBOutlet UIButton *editBtn;
 @property (nonatomic, weak)IBOutlet UIButton *saveMoodmonBtn;
 @property (nonatomic, weak)IBOutlet UIView *myContentView;
-
+@property (strong, nonatomic) IBOutlet MDMoodColorView *moodColorView;
+@property (strong, nonatomic) IBOutlet MDSmallMoodFaceView *moodFaceView;
 @property (strong, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 

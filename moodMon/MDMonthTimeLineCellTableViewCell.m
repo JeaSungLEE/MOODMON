@@ -6,6 +6,8 @@
 //  Copyright © 2016년 Lee Kyu-Won. All rights reserved.
 //
 
+
+
 #import "MDMonthTimeLineCellTableViewCell.h"
 
 static CGFloat const kBounceValue = 40.0f;
@@ -201,8 +203,8 @@ static CGFloat const kBounceValue = 40.0f;
 //        saveMCView.chosenMoods = [self.MCView.chosenMoods copy];
 //        [saveMCView setNeedsDisplay];
 //        [self.delegate buttonTwoActionForItemText:saveMCView];
-        MDMoodColorView *colorView = (MDMoodColorView *)[self viewWithTag:100].subviews[0];
-        [self.delegate buttonTwoActionForItemText:colorView];
+//        MDMoodColorView *colorView = (MDMoodColorView *)[self viewWithTag:100].subviews[0];
+        [self.delegate buttonTwoActionForItemText:self.moodColorView];
     } else {
         NSLog(@"Clicked unknown button!");
     }

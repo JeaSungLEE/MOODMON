@@ -573,63 +573,50 @@ UIFont *boldQuicksand;
     MDMonthTimeLineCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDMonthTimeLineCellTableViewCell" forIndexPath:indexPath];
     cell.commentLabel.text = [NSString stringWithFormat:@"%@",[moodmonConf[indexPath.row]valueForKey:@"_moodComment" ]];
     NSString *timeText = [NSString stringWithFormat:@"%@", [moodmonConf[indexPath.row] valueForKey:kTime]];
-//    timeText = [timeText stringByReplacingOccurrencesOfString:@"시 " withString:@" : "];
-//    timeText = [timeText stringByReplacingOccurrencesOfString:@"분 " withString:@" : "];
-//    timeText = [timeText stringByReplacingOccurrencesOfString:@"초" withString:@"   "];
     cell.timeLabel.text = timeText;
     cell.itemText = [moodmonConf[indexPath.row] valueForKey:@"_moodComment"];
     cell.delegate = self;
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    UIView *viewForFrame =  [cell viewWithTag:100];
-    viewForFrame.layer.cornerRadius = viewForFrame.frame.size.width/2;
-    viewForFrame.layer.masksToBounds = YES;
-    
-    MDMoodColorView *colorView = [[MDMoodColorView alloc] init];
-    MDSmallMoodFaceView *faceView = [[MDSmallMoodFaceView alloc] init];
+    cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
+    cell.moodColorView.layer.masksToBounds = YES;
 
-    CGRect frame = CGRectMake(0, 0, viewForFrame.frame.size.width, viewForFrame.frame.size.height);
-    [colorView setFrame:frame];
-    [faceView setFrame:frame];
-    
-    [viewForFrame addSubview:colorView];
-    [viewForFrame addSubview:faceView];
-    
-    
-    for(int i = 1 ;i <colorView.chosenMoods.count ; i++){
-        [colorView.chosenMoods removeObjectAtIndex:i];
-        [faceView.chosenMoods removeObjectAtIndex:i];
+    for(int i = 1 ; i < cell.moodColorView.chosenMoods.count ; i++){
+        [cell.moodColorView.chosenMoods replaceObjectAtIndex:i withObject:@0];
+        [cell.moodFaceView.chosenMoods replaceObjectAtIndex:i withObject:@0];
     }
     
-    [faceView awakeFromNib];
-    
+    NSMutableArray *chosenMoods = [[NSMutableArray alloc] initWithObjects:@0, nil];
     NSNumber *moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen1];
     if(moodChosen.intValue != 0){
-        [colorView.chosenMoods insertObject: moodChosen atIndex:1 ];
-        [faceView.chosenMoods insertObject: moodChosen atIndex:1 ];
+        [chosenMoods insertObject:moodChosen atIndex:1];
+//        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:1 ];
+//        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:1 ];
     }
     moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen2];
     if(moodChosen.intValue != 0){
-        [colorView.chosenMoods insertObject: moodChosen atIndex:2 ];
-        [faceView.chosenMoods insertObject: moodChosen atIndex:2 ];
+        [chosenMoods insertObject:moodChosen atIndex:2];
+//        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:2 ];
+//        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:2 ];
     }
     moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen3];
     if(moodChosen.intValue != 0){
-        [colorView.chosenMoods insertObject: moodChosen atIndex:3 ];
-        [faceView.chosenMoods insertObject: moodChosen atIndex:3 ];
+        [chosenMoods insertObject:moodChosen atIndex:3];
+//        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:3 ];
+//        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:3 ];
     }
+    cell.moodColorView.chosenMoods = chosenMoods;
+    cell.moodFaceView.chosenMoods = chosenMoods;
     
-    BOOL isVisible = [self checkVisibility:colorView.chosenMoods];
+    BOOL isVisible = [self checkVisibility:cell.moodColorView.chosenMoods] && [self checkVisibility:cell.moodFaceView.chosenMoods];
     
     if(isVisible == NO) {
         cell.isFiltered = YES;
         [indexPathsToDelete addObject:indexPath];
     }
-    
-    colorView.layer.cornerRadius = (int)colorView.frame.size.width/2;
-    colorView.layer.masksToBounds = YES;
-    [colorView setNeedsDisplay];
-    [faceView setNeedsDisplay];
+
+    [cell.moodFaceView setNeedsDisplay];
+    [cell.moodColorView setNeedsDisplay];
     
     return cell;
 }

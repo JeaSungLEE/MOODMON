@@ -381,7 +381,13 @@
 
 - (BOOL)isChosen:(MDMoodButtonView *)moodButtonView {
     NSMutableDictionary *mood = [@{@"moodClass" : moodButtonView.num, @"moodIntensity" : @0} mutableCopy];
-    return [self.chosenMoods containsObject:mood];
+    
+    for (NSDictionary *chosenMood in self.chosenMoods) {
+        if (chosenMood[@"moodClass"] == mood[@"moodClass"]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 

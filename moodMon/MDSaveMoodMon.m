@@ -41,7 +41,7 @@
     
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(300, 300), bigView.opaque, 0.0);
     [bigView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     NSData *data = UIImagePNGRepresentation(image);
