@@ -2317,8 +2317,8 @@
                                                         <action selector="buttonClicked:" destination="v2g-lF-DOc" eventType="touchUpInside" id="0XN-BU-wXb"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odc-hj-2hU">
-                                                    <rect key="frame" x="8" y="0.0" width="415" height="43"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odc-hj-2hU">
+                                                    <rect key="frame" x="8" y="0.0" width="414" height="43"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHk-0F-gNl">
                                                             <rect key="frame" x="380" y="14" width="25" height="15"/>
@@ -2336,6 +2336,10 @@
                                                                 <constraint firstAttribute="width" constant="44" id="31X-ct-kje"/>
                                                                 <constraint firstAttribute="height" constant="44" id="OFy-i6-eTu"/>
                                                             </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpj-5t-y3L" customClass="MDSmallMoodFaceView">
+                                                            <rect key="frame" x="10" y="-1" width="44" height="45"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="봄봄봄 봄이 왔어요~" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyP-2L-cNV">
                                                             <rect key="frame" x="64" y="11" width="73" height="21"/>
@@ -2365,7 +2369,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="YHk-0F-gNl" firstAttribute="centerY" secondItem="odc-hj-2hU" secondAttribute="centerY" id="DpN-T5-bLb"/>
+                                                        <constraint firstItem="xpj-5t-y3L" firstAttribute="height" secondItem="wve-XH-Ut5" secondAttribute="height" id="QqM-21-eZ0"/>
                                                         <constraint firstItem="hyP-2L-cNV" firstAttribute="centerY" secondItem="odc-hj-2hU" secondAttribute="centerY" id="SYy-Qk-3j4"/>
+                                                        <constraint firstItem="xpj-5t-y3L" firstAttribute="width" secondItem="wve-XH-Ut5" secondAttribute="width" id="hQO-7w-hs5"/>
                                                         <constraint firstItem="hyP-2L-cNV" firstAttribute="leading" secondItem="wve-XH-Ut5" secondAttribute="trailing" constant="20" id="hlS-Zd-k1w">
                                                             <variation key="widthClass=compact" constant="11"/>
                                                         </constraint>
@@ -2373,6 +2379,8 @@
                                                             <variation key="widthClass=compact" constant="18"/>
                                                         </constraint>
                                                         <constraint firstItem="wve-XH-Ut5" firstAttribute="centerY" secondItem="odc-hj-2hU" secondAttribute="centerY" id="m6X-r3-2i0"/>
+                                                        <constraint firstItem="xpj-5t-y3L" firstAttribute="centerY" secondItem="wve-XH-Ut5" secondAttribute="centerY" id="qRd-4E-tqa"/>
+                                                        <constraint firstItem="xpj-5t-y3L" firstAttribute="centerX" secondItem="wve-XH-Ut5" secondAttribute="centerX" id="qrd-GB-8aj"/>
                                                         <constraint firstItem="wve-XH-Ut5" firstAttribute="leading" secondItem="odc-hj-2hU" secondAttribute="leading" constant="10" id="sjp-mM-5a5"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hyP-2L-cNV" secondAttribute="trailing" constant="70" id="tfp-Sa-FA8"/>
                                                         <constraint firstItem="YHk-0F-gNl" firstAttribute="leading" secondItem="odc-hj-2hU" secondAttribute="leading" constant="200" id="yTA-7c-8Sr"/>
@@ -2410,6 +2418,8 @@
                                             <outlet property="commentLabel" destination="hyP-2L-cNV" id="f0H-cy-aIh"/>
                                             <outlet property="contentViewLeftConstraint" destination="bcy-nI-Ne4" id="aZ7-ei-G5l"/>
                                             <outlet property="contentViewRightConstraint" destination="sQt-ML-rxr" id="yHh-OK-YvH"/>
+                                            <outlet property="moodColorView" destination="wve-XH-Ut5" id="XEY-JD-cjp"/>
+                                            <outlet property="moodFaceView" destination="xpj-5t-y3L" id="Wfz-kp-Ek0"/>
                                             <outlet property="myContentView" destination="odc-hj-2hU" id="eJr-lC-Sg0"/>
                                             <outlet property="saveMoodmonBtn" destination="HBN-2p-oc1" id="bdI-04-Jmc"/>
                                             <outlet property="timeLabel" destination="YHk-0F-gNl" id="Edu-fv-glR"/>
