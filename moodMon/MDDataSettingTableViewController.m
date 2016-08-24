@@ -145,7 +145,7 @@
     
     NSLog(@"I will be dismissed");
     
-    [self dismissViewControllerAnimated:self.presentedViewController completion:^{
+    [self dismissViewControllerAnimated:YES completion:^{
         [self.tableView reloadData];
     }];
     

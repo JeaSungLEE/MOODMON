@@ -21,14 +21,12 @@ static CGFloat const kBounceValue = 40.0f;
     self.panRecognizer.delegate = self;
     [self.myContentView addGestureRecognizer:self.panRecognizer];
 //    self.commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    self.commentLabel.numberOfLines = 0;
+//    self.commentLabel.numberOfLines = 0; - 텍스트가 길면 break
 
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)endEditing
@@ -129,7 +127,6 @@ static CGFloat const kBounceValue = 40.0f;
             }
             
             self.contentViewLeftConstraint.constant = -self.contentViewRightConstraint.constant; //8
-            
         }
             break;
             
@@ -166,8 +163,6 @@ static CGFloat const kBounceValue = 40.0f;
                 [self setConstraintsToShowAllButtons:YES notifyDelegateDidOpen:YES];
             }
             break;
-
-            
         default:
             break;
     }
@@ -175,7 +170,6 @@ static CGFloat const kBounceValue = 40.0f;
 }
 
 - (CGFloat)buttonTotalWidth {
-    
     return CGRectGetWidth(self.frame) -CGRectGetMinX(self.saveMoodmonBtn.frame) + 10;
 }
 

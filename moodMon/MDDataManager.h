@@ -14,8 +14,6 @@
 
 @interface MDDataManager : NSObject{
     BOOL hasICloud;
-//    NSString *dataBasePath;
-//    sqlite3 *moodmonDB;
 }
 
 @property(strong, nonatomic) NSString *dataBasePath;
@@ -36,24 +34,24 @@
 -(void)makeICloud;
 - (void)startICloudSync;
 - (void)metadataQueryDidFinishGathering:(NSNotification*)notification;
-/**********************************/
+/**********************************end*/
 
 
 /******** for filter ***************/
 @property NSMutableArray *isChecked; //chosen in filter
 @property int chosenMoodCount;
 -(NSArray<MDMoodmon*>*)getFilteredMoodmons;
-/**********************************/
+/*********************************end*/
 
 +(MDDataManager*)sharedDataManager; //DataManager is a singleton.
 
 - (void)createDB;
 - (void)readAllFromDBAndSetCollection;
-- (void)saveNewMoodMonOfComment:(NSString*)comment asFirstChosen:(int)first SecondChosen:(int)second andThirdChosen:(int)third;
 
--(void)saveDocument:(MDMoodmon*)moodmon;
--(void)saveIntoDBNewMoodmon:(MDMoodmon*)moodmon;
--(void)readJustSavedMoodMon;
+- (void)saveNewMoodMonOfComment:(NSString*)comment asFirstChosen:(int)first SecondChosen:(int)second andThirdChosen:(int)third;
+-(void)saveDocument:(MDMoodmon*)moodmon; // for iCloud
+-(void)saveIntoDBNewMoodmon:(MDMoodmon*)moodmon; // for sqlite
+-(void)readJustSavedMoodMon; //for sync with sqlite and local
 
 -(void)deleteAllData;
 

@@ -10,7 +10,9 @@
 #import "MDMoodmon.h"
 
 
-@implementation MDDataManager
+@implementation MDDataManager{
+    unsigned units;
+}
 
 
 +(MDDataManager*)sharedDataManager{
@@ -42,41 +44,34 @@
         NSString *documentFile = [docsDir stringByAppendingPathComponent:@"moodmonDoc.doc"];
         self.documentURL = [NSURL fileURLWithPath:documentFile];
         self.document = [[MDDocument alloc]initWithFileURL:_documentURL];
+        units = NSCalendarUnitMonth | NSCalendarUnitDay| NSCalendarUnitYear| NSCalendarUnitHour| NSCalendarUnitMinute | NSCalendarUnitSecond;
     }
     return self;
 }
 
 - (void)createDB{
-    //sqlite3_stmt *statement;
     NSFileManager *filemgr = [NSFileManager defaultManager];
-    if( [filemgr fileExistsAtPath:_dataBasePath] == NO){
+    if( [filemgr fileExistsAtPath:_dataBasePath] == NO){ //A.앱 처음 켰을 때
         NSLog(@"no db");
         const char *dbpath = [_dataBasePath UTF8String];
         if(sqlite3_open(dbpath, &_moodmonDB) == SQLITE_OK){
             char *errMsg;
-            NSLog(@"no1 : open DB" );
+            NSLog(@"no.1 : open DB" );
             const char *sql_stmt = "CREATE TABLE IF NOT EXISTS moodmon(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, moodComment VARCHAR(150) NULL, moodDate Datetime NOT NULL, moodChosen1 INTEGER NOT NULL DEFAULT 0, moodChosen2 INTEGER NOT NULL DEFAULT 0, moodChosen3 INTEGER NOT NULL DEFAULT 0, isDeleted BOOL DEFAULT false);";
             
-            /* 
-             moodChosen CHECK은 만들었지만 조건이 나중에 바뀔수도 있으니, 앱내에서 확인하는 게 나을 것 같아 생략
-                CHECK (moodChosen1 >=0 AND moodChosen1 <56 AND moodChosen2 >=0 AND
-                        moodChosen2 <56 AND moodChosen3 >=0 AND moodChosen3 <56)
-             */ //이거슨 validate
-            if( sqlite3_exec(_moodmonDB, sql_stmt, NULL, NULL,&errMsg) != SQLITE_OK){
-                            NSLog(@"ERRor : not created" );
+            if( sqlite3_exec(_moodmonDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
+                NSLog(@"ERRor : failed to create table" );
             }
             
-            //@"Table is created";
             sqlite3_close(_moodmonDB);
             
         } else {
-            //@"Failed to open/create datebase";
+            NSLog(@"Failed to open datebase");
         }
         
-//        NSLog(@"yes1 : SQL created");
-    } else {
+    } else { //B.앱 방문이 처음이 아닐 때
         [self readAllFromDBAndSetCollection];
-        NSLog(@"yes1 : read data from SQL ");
+        NSLog(@"not first visit, read data");
     }
 }
 
@@ -93,7 +88,6 @@
         
         if(sqlite3_prepare_v2(_moodmonDB, query_stmt, -1, &statement, NULL) == SQLITE_OK){
             
-//            NSLog(@"yes3 : sql function in progress");
             /* COLUME_NUM & property
                 0 - id / int
                 1 - moodComment / varchar(150)
@@ -103,53 +97,39 @@
                 5 - moodChosen3 / int
                 6 - isDeleted / bool
              */
-            
             while(sqlite3_step(statement) <= SQLITE_ROW){
                 
                 int idint = sqlite3_column_int(statement, 0);
                 if(idint == 0) continue;
                 
-                //NSLog(@"INDEX %d is saving", idint);
                 NSString *comment = [[NSString alloc]initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
                 NSUInteger moodChosen1 = sqlite3_column_int(statement, 3);
                 NSUInteger moodChosen2 = sqlite3_column_int(statement, 4);
                 NSUInteger moodChosen3 = sqlite3_column_int(statement, 5);
-                BOOL isDeleted = sqlite3_column_value(statement, 6);
+                BOOL isDeleted = (BOOL)sqlite3_column_value(statement, 6);
                 
                 NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
                 [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                 NSDate *myDate =[dateFormat dateFromString:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)]];
                 
                 
-                unsigned units = NSCalendarUnitMonth | NSCalendarUnitDay| NSCalendarUnitYear| NSCalendarUnitHour| NSCalendarUnitMinute | NSCalendarUnitSecond;
                 NSCalendar *myCal = [[NSCalendar alloc]
                                      initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
                 NSDateComponents *comp = [myCal components:units fromDate:myDate];
-//                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];
-                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], [comp minute], [comp second]];
-               // NSLog(@"timestring %@ , %ld , %ld, %ld", timeString, (long)[comp hour], [comp minute], [comp second]);
-                
+                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], (long)[comp minute], (long)[comp second]];
                 
                 MDMoodmon *moodmon = [MDMoodmon alloc];
-                
                 if(comment){
                     [moodmon setValue:comment forKey:kComment];
                 }
-                
                 [moodmon setValue:[NSNumber numberWithInteger:[comp year]] forKey:kYear];
                 [moodmon setValue:[NSNumber numberWithInteger:[comp month]] forKey:kMonth];
                 [moodmon setValue:[NSNumber numberWithInteger:[comp day]] forKey:kDay];
                 [moodmon setValue: timeString forKey:kTime];
-                
-                
-               // NSLog(@"read year %@ / month %@ / day %@ / time %@", [moodmon valueForKey:kYear], [moodmon valueForKey: kMonth], [moodmon valueForKey: kDay], [moodmon valueForKey:kTime]);
-
                 [moodmon setValue: [NSNumber numberWithInteger:moodChosen1] forKey:kChosen1];
                 [moodmon setValue: [NSNumber numberWithInteger:moodChosen2] forKey:kChosen2];
                 [moodmon setValue: [NSNumber numberWithInteger:moodChosen3] forKey:kChosen3];
-                
-                
+            
                 if(isDeleted){
                     [moodmon setValue: @YES forKey:kIsDeleted];
                 } else{
@@ -157,28 +137,22 @@
                 }
                 
                 [self.moodCollection insertObject:moodmon atIndex:idint];
-               // NSLog(@"%@",self.moodCollection);
-                //@"SUCCESS";
             }
-            
-            
-            
             sqlite3_finalize(statement);
+        } else {
+            NSLog(@"SQL doesn't work");
         }
-        
-        //_status.text = @"SQL doesn't work";
-        
         sqlite3_close(_moodmonDB);
-        //NSLog(@"finished!");
+    } else {
+         NSLog(@"Failed to open datebase");
     }
 
 }
 
 
-
 - (void)saveNewMoodMonOfComment:(NSString*)comment asFirstChosen:(int)first SecondChosen:(int)second andThirdChosen:(int)third{
     
-//    NSLog(@"yes4 : Start to save new !!!");
+    //NSLog(@"yes4 : Start to save new !!!");
     
     if(!first){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"moodNotChosen" object:self userInfo:@{@"message" : @"please choose a moodmon"}];
@@ -195,8 +169,6 @@
      newMoodmon view에서 mood int가 어떻게 정해지는 지, 어디에 그 데이터가 남는지 아직 모르겠지만, 해당 코드 완성되면, 이 부분 한번 정하면 좋을 것 같아요.
     */
     
-    
-    unsigned units = NSCalendarUnitMonth | NSCalendarUnitDay| NSCalendarUnitYear| NSCalendarUnitHour| NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDate *now = [NSDate date];
     NSCalendar *myCal = [[NSCalendar alloc]
                          initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -208,8 +180,7 @@
     NSInteger minute = [comp minute];
     NSInteger secondTime = [comp second];
     
-
-    NSString *timeString = [NSString stringWithFormat:@"%ld:%ld:%ld", hour, minute, secondTime];
+    NSString *timeString = [NSString stringWithFormat:@"%ld:%ld:%ld", (long)hour, (long)minute, (long)secondTime];
    
    //NSLog(@"month : %ld, day : %ld, year : %ld , %ld: %ld: %ld", (long)month,  day, (long)year, hour, minute, (long)secondTime);
     MDMoodmon *newMD = [[MDMoodmon alloc] init];
@@ -226,11 +197,9 @@
     [newMD setValue: [NSNumber numberWithInt: second] forKey:kChosen2];
     [newMD setValue: [NSNumber numberWithInt: third] forKey:kChosen3];
     
-    
     //[newMD setValue:[[NSString alloc] initWithFormat:@"hello"] forKey:kComment]; - test
-    
-   // [self.moodCollection insertObject:newMD atIndex:[self.moodCollection count]];
-    [self saveIntoDBNewMoodmon: newMD];
+    // [self.moodCollection insertObject:newMD atIndex:[self.moodCollection count]];
+    [self saveIntoDBNewMoodmon: newMD]; 
     [self saveDocument: newMD];
 }
 
@@ -243,7 +212,7 @@
     const char *dbpath = [_dataBasePath UTF8String];
     
     if(sqlite3_open( dbpath, &_moodmonDB) == SQLITE_OK ){
-//        NSLog(@"yes5 : Start to save new into SQL");
+        //        NSLog(@"yes5 : Start to save new into SQL");
         
         /* COLUME_NUM & property
          0 - id / int
@@ -255,36 +224,30 @@
          6 - isDeleted / bool
          */
         
-        NSString *dateString = [NSString stringWithFormat:@"%ld-%ld-%ld %@", moodmon.moodYear, moodmon.moodMonth, moodmon.moodDay, moodmon.moodTime] ;
+        NSString *dateString = [NSString stringWithFormat:@"%ld-%ld-%ld %@", (long)moodmon.moodYear, (long)moodmon.moodMonth, (long)moodmon.moodDay, moodmon.moodTime] ;
         
         NSLog(@"now : %@",dateString);
         NSString *insertSQL =  [NSString stringWithFormat:@"INSERT INTO moodmon(moodComment, moodDate, moodChosen1, moodChosen2, moodChosen3) VALUES(\"%@\",\"%@\", %d,%d,%d);", moodmon.moodComment,  dateString ,(int)moodmon.moodChosen1,(int)moodmon.moodChosen2,(int)moodmon.moodChosen3];
-        // 흠.... insert문 4,5,6(>=0 && <56)은 확인하고 넣어야 해.
         
-//        NSLog(@"demand : %@", insertSQL);
         const char* insert_stmt = [insertSQL UTF8String];
         sqlite3_prepare_v2(_moodmonDB, insert_stmt, -1, &statement, NULL);
         
         
         if(sqlite3_step(statement) == SQLITE_DONE){
-//            NSLog(@"NEW  moodmon added, the time of %@", moodmon.moodTime);
-          
-            
+            // insert 성공
         } else {
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"failTosaveIntoSql" object:self userInfo:@{@"message" : @"Fail to save into Sqlite"}];
-            printf("??? %d   zzz\n", sqlite3_step(statement) );
+            printf("ErrorCode :  %d   \n", sqlite3_step(statement) );
             NSLog(@"ERRor : %s", sqlite3_errmsg(_moodmonDB));
         }
     
         
-        //_status.text = @"SQL doesn't work";
         sqlite3_finalize(statement);
         sqlite3_close(_moodmonDB);
+    } else {
+        NSLog(@"Failed to open datebase");
     }
-    
     [self readJustSavedMoodMon];
-    
 }
 
 -(void)readJustSavedMoodMon{
@@ -321,20 +284,19 @@
                 NSUInteger moodChosen1 = sqlite3_column_int(statement, 3);
                 NSUInteger moodChosen2 = sqlite3_column_int(statement, 4);
                 NSUInteger moodChosen3 = sqlite3_column_int(statement, 5);
-                BOOL isDeleted = sqlite3_column_value(statement, 6);
+                BOOL isDeleted = (BOOL)sqlite3_column_value(statement, 6);
                 
                 NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
                 [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                 NSDate *myDate =[dateFormat dateFromString:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)]];
                 
                 
-                unsigned units = NSCalendarUnitMonth | NSCalendarUnitDay| NSCalendarUnitYear| NSCalendarUnitHour| NSCalendarUnitMinute | NSCalendarUnitSecond;
                 NSCalendar *myCal = [[NSCalendar alloc]
                                      initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
                 NSDateComponents *comp = [myCal components:units fromDate:myDate];
                 //                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 //                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];
-                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], [comp minute], [comp second]];
+                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], (long)[comp minute], (long)[comp second]];
                 // NSLog(@"timestring %@ , %ld , %ld, %ld", timeString, (long)[comp hour], [comp minute], [comp second]);
                 
                 
@@ -504,7 +466,10 @@
 
 }
 
-///////////////////////////////////////////
+
+
+
+////////////////아래부터 감정계산 메소드///////////////////////////
 -(NSUInteger)recentMood{
     
     /* 감정별 숫자 매칭
@@ -659,7 +624,7 @@
     
     if(numOfSamebigCount <=3){
        
-        int resultCount = [result count];
+        int resultCount = (int)[result count];
         for(int i = resultCount; i < 3; i++){
             [result insertObject:@0 atIndex:i];
         }
@@ -688,7 +653,7 @@
         }
     }
     
-    int resultCount = [result count];
+    int resultCount = (int)[result count];
     for(int i = resultCount; i < 3; i++){
         [result insertObject:@0 atIndex:i];
     }

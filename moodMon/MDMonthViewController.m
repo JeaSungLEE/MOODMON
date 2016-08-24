@@ -59,7 +59,7 @@ UIFont *boldQuicksand;
     count=0;
     [super viewDidLoad];
     _mddm = [MDDataManager sharedDataManager];
-    //[mddm createDB];
+   
     
     toolbarIsOpen = YES;
     toolbarIsAnimating = NO;
@@ -247,6 +247,7 @@ UIFont *boldQuicksand;
     [self removeTags];
     [self moreDateInfo];
     [indexPathsToDelete removeAllObjects];
+    [self resetTableCellConstants];
     [self.tableViews reloadData];
 }
 
@@ -305,6 +306,7 @@ UIFont *boldQuicksand;
 -(void)resetTimeTable{
     moodmonConf = NULL;
     myDay = 0;
+    [self resetTableCellConstants];
     [_tableViews reloadData];
     
 }
@@ -543,6 +545,9 @@ UIFont *boldQuicksand;
     }
 }
 
+
+#pragma tableviewDelegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -649,10 +654,20 @@ UIFont *boldQuicksand;
         }
     }
     moodmonConf=moodmonConfig;
+    [self resetTableCellConstants];
     [_tableViews reloadData];
     
 }
 
+-(void)resetTableCellConstants{
+    int cellCount = [_tableViews numberOfRowsInSection:0];
+    for(int i = 0; i < cellCount; i++){
+        MDMonthTimeLineCellTableViewCell *tempCell = [_tableViews cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        tempCell.startingRightLayoutConstraintConstant = 0;
+        tempCell.contentViewRightConstraint.constant = 0;
+    }
+    [_tableViews setNeedsLayout];
+}
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -701,7 +716,7 @@ UIFont *boldQuicksand;
 }
 - (IBAction) exitFromSecondViewController:(UIStoryboardSegue *)segue
 {
-    NSLog(@"back from : %@", [segue.sourceViewController class]);
+    //NSLog(@"back from : %@", [segue.sourceViewController class]);
 }
 
 - (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier
