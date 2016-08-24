@@ -15,9 +15,9 @@
     UIViewController *destinationViewController = (UIViewController *) self.destinationViewController;
     [sourceViewController.view addSubview:destinationViewController.view];
     [destinationViewController.view setFrame:sourceViewController.view.window.frame];
-    [destinationViewController.view setTransform:CGAffineTransformMakeScale(0.5,0.5)];
+    [destinationViewController.view setTransform:CGAffineTransformMakeScale(0.05,0.05)];
     [destinationViewController.view setAlpha:1.0];
-    
+    [sourceViewController.navigationController setNavigationBarHidden:YES];
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -28,6 +28,5 @@
                      completion:^(BOOL finished){
                          [sourceViewController presentViewController:destinationViewController animated:NO completion:nil];
                      }];
-    
 }
 @end

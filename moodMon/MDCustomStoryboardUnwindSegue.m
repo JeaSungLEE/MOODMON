@@ -26,7 +26,9 @@
 //                         [sourceViewController dismissViewControllerAnimated:NO completion:^{}]; // dismiss VC
 //                         [sourceViewController dismissViewControllerAnimated:NO completion:nil];
                          [[self destinationViewController] dismissViewControllerAnimated:NO completion:nil];
-                         [sourceViewController.view removeFromSuperview]; // remove from temp super view
+                         [sourceViewController.view removeFromSuperview];
+                         [destinationViewController.navigationController setNavigationBarHidden:NO];
+                         // remove from temp super view
 //                         [presentViewController:destinationViewController animated:NO completion:^{}];
                      }];
     

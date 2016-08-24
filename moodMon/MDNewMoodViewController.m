@@ -34,11 +34,6 @@
     [self drawRecentMoodView];
     [self textLabelInit];
     [self menuControllerInit];
-    
-    [_smallView.chosenMoods addObject:@12];
-    [_smallView.chosenMoods addObject:@34];
-    [_smallView.chosenMoods addObject:@24];
-    [_smallView setNeedsDisplay];
 }
 
 
@@ -235,7 +230,9 @@
         [self showWheelView:moodButton];
         [self addNewChosenMood:moodButton.num];
         self.textField.hidden = YES;
-    } else {      // 감정선택을 해제하기 위해 버튼을 누른 경우, 해당 감정을 chosenMoods 배열에서 제거함.
+        return;
+    }
+    if(moodButton.isSelected==NO && [self isChosen:moodButton]) {      // 감정선택을 해제하기 위해 버튼을 누른 경우, 해당 감정을 chosenMoods 배열에서 제거함.
         [self deleteFromChosenMoods:moodButton.num];
     }
 }
@@ -379,6 +376,12 @@
     
     [self.chosenMoods addObject:chosenMood];
 //    NSLog(@"%@", self.chosenMoods);
+}
+
+
+- (BOOL)isChosen:(MDMoodButtonView *)moodButtonView {
+    NSMutableDictionary *mood = [@{@"moodClass" : moodButtonView.num, @"moodIntensity" : @0} mutableCopy];
+    return [self.chosenMoods containsObject:mood];
 }
 
 
