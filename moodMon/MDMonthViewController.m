@@ -8,10 +8,16 @@
 
 #import "MDMonthViewController.h"
 
+
 @interface MDMonthViewController (){
     BOOL toolbarIsOpen;
     BOOL toolbarIsAnimating;
     int myDay;
+    int lastClickedDay;
+    int dayBtnBoundsSize;
+    
+    NSDate *now;
+    NSDateComponents *nowComponents;
 }
 
 @end
@@ -60,7 +66,7 @@ UIFont *boldQuicksand;
     [super viewDidLoad];
     _mddm = [MDDataManager sharedDataManager];
    
-    
+    now = [NSDate date];
     toolbarIsOpen = YES;
     toolbarIsAnimating = NO;
     self.toolbarContainer.translatesAutoresizingMaskIntoConstraints = YES;
@@ -365,11 +371,12 @@ UIFont *boldQuicksand;
     NSDate * newDate = [calendar dateFromComponents:components];
     NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:newDate];
     weekday=[comps weekday];
-    
     numDays=[self getCurrDateInfo:newDate];
-    
     NSInteger newWeekDay=weekday-1;
     // NSLog(@"Day week %d",newWeekDay);
+    
+    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    nowComponents = [calendar components:units fromDate:now];
     
     NSInteger yCount=1;
     NSInteger xCoord=0;
@@ -424,11 +431,23 @@ UIFont *boldQuicksand;
             yCount++;
         }
         [dayButton setFont:[UIFont fontWithName:@"Quicksand" size:14]];
+        dayBtnBoundsSize = xVal;
+        dayButton.bounds = CGRectMake(xCoord, yCoord, xVal, yVal);
         dayButton.frame = CGRectMake(xCoord, yCoord, xVal, yVal);
         [dayButton setTitle:[NSString stringWithFormat:@"%d",startDay]forState:UIControlStateNormal];
         [dayButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [dayButton addTarget:self action:@selector(buttonTouch:) forControlEvents:UIControlEventTouchUpInside];
         dayButton.tag=startDay;
+        
+        if( ([nowComponents year] == thisYear) && ([nowComponents month] == thisMonth) && ([nowComponents day] == startDay)){
+            dayButton.layer.bounds = CGRectMake(dayButton.bounds.origin.x, dayButton.bounds.origin.y , dayBtnBoundsSize - 5, dayBtnBoundsSize -5 );
+            dayButton.layer.borderColor =[UIColor redColor].CGColor;
+            dayButton.layer.borderWidth = 1.3;
+            dayButton.layer.cornerRadius = dayButton.frame.size.width / 2;
+            dayButton.layer.masksToBounds = YES;
+        }
+        
+        
         int checkFalg =0;
         for(int parseNum=0; parseNum<createdAt.count; parseNum++){
             NSDictionary *parseDate = createdAt[parseNum];
@@ -489,8 +508,10 @@ UIFont *boldQuicksand;
                     mcv.layer.cornerRadius = mcv.frame.size.width/2;
                     [mcv setNeedsDisplay];
                     [mfv setNeedsDisplay];
+                   
                     [mcv addSubview:mfv];
                     mcv.layer.masksToBounds=YES;
+                    mcv.center = dayButton.center;
                     [self.view addSubview:mcv];
                 }
             }
@@ -631,10 +652,40 @@ UIFont *boldQuicksand;
 
 -(void)buttonTouch:(id)sender{
     UIButton* btn = (UIButton *)sender;
-    [self showClickedDateMoodmonAtDay:btn.currentTitle.intValue];
-    
+    [self setBtnsBorderWithClickedBtn:btn];
+    [self showClickedDateMoodmonAtDay:btn.tag];
 }
 
+/*************************/ // 버튼 클릭시 버튼 보더를 바꿔주는 매소드들
+-(void)setBtnsBorderWithClickedBtn:(UIButton*)btn{
+    [self removeLastClickedBtnBorder];
+    if( ([nowComponents year] == thisYear) && ([nowComponents month] == thisMonth) && ([nowComponents day] == btn.tag)){
+        btn.layer.borderWidth = 3;
+        lastClickedDay = 0; //today
+        return;
+    }
+    btn.layer.bounds = CGRectMake(btn.bounds.origin.x, btn.bounds.origin.y , dayBtnBoundsSize - 10, dayBtnBoundsSize - 10);
+    btn.layer.borderColor =[UIColor blackColor].CGColor;
+    btn.layer.borderWidth = 3;
+    btn.layer.cornerRadius = btn.frame.size.width / 2;
+    btn.layer.masksToBounds = YES;
+    [btn layoutIfNeeded];
+    lastClickedDay = btn.tag;
+}
+-(void)removeLastClickedBtnBorder{
+    if(lastClickedDay == 0){ //today
+        UIButton *todayBtn = [self.view viewWithTag:[nowComponents day]];
+        todayBtn.layer.borderWidth = 1.3;
+        [todayBtn layoutIfNeeded];
+        return;
+    }
+    
+    UIButton *lastClickedBtn = [self.view viewWithTag:lastClickedDay];
+    lastClickedBtn.layer.borderWidth = 0;
+    lastClickedBtn.layer.opaque = YES;
+    [lastClickedBtn layoutIfNeeded];
+}
+/***********************************/
 
 -(void)showClickedDateMoodmonAtDay:(int)day{
     NSMutableArray* moodmonConfig = [[NSMutableArray alloc]init];
