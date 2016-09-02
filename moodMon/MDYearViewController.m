@@ -13,8 +13,11 @@
 #import "MDDataManager.h"
 #import "MDNavController.h"
 #import "MDMonthViewController.h"
-@interface MDYearViewController ()
+@interface MDYearViewController (){
+    MDDataManager *mddm;
+}
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
 @end
 
 
@@ -31,7 +34,7 @@ int thisMonth=0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    MDDataManager *mddm = [MDDataManager sharedDataManager];
+    mddm = [MDDataManager sharedDataManager];
     createdAt=[mddm moodCollection];
     
     thisYear =[[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
@@ -230,15 +233,17 @@ int thisMonth=0;
                 
                 [mfv awakeFromNib];
                 //                mcv.backgroundColor = [UIColor clearColor];
-                NSNumber *tempMoodChosen = [parseDate valueForKey:kChosen1 ];
+                NSArray *dayRepresenatationColors = [mddm representationOfMoodAtYear:(NSInteger)parseYear Month:(NSInteger)parseMonth andDay:parseDay];
+                NSNumber *tempMoodChosen = dayRepresenatationColors[0];
+
                 if(tempMoodChosen.intValue > 0)
                     //                    [mfv.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
                     [mcv.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
-                tempMoodChosen = [parseDate valueForKey:kChosen2 ];
+                tempMoodChosen = dayRepresenatationColors[1];
                 if(tempMoodChosen.intValue > 0)
                     //                    [mfv.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
                     [mcv.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
-                tempMoodChosen = [parseDate  valueForKey:kChosen3 ];
+                tempMoodChosen = dayRepresenatationColors[2];
                 if(tempMoodChosen.intValue > 0)
                     //                    [mfv.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
                     [mcv.chosenMoods insertObject: tempMoodChosen atIndex:3 ];

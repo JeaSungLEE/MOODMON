@@ -95,7 +95,7 @@ UIFont *boldQuicksand;
     [swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
     
-    [self moreDateInfo];
+    //[self moreDateInfo];
     
     indexPathsToDelete = [[NSMutableArray alloc] init];
 }
@@ -369,7 +369,7 @@ UIFont *boldQuicksand;
     numDays=[self getCurrDateInfo:newDate];
     
     NSInteger newWeekDay=weekday-1;
-    //    NSLog(@"Day week %d",newWeekDay);
+    // NSLog(@"Day week %d",newWeekDay);
     
     NSInteger yCount=1;
     NSInteger xCoord=0;
@@ -458,19 +458,19 @@ UIFont *boldQuicksand;
                 [mcv awakeFromNib];
                 
                 //                mcv.backgroundColor = [UIColor clearColor];
-//                NSArray *dayRepresenatationColors = [_mddm representationOfMoodAtYear:(NSInteger)parseYear Month:(NSInteger)parseMonth andDay:parseDay];
+                NSArray *dayRepresenatationColors = [_mddm representationOfMoodAtYear:(NSInteger)parseYear Month:(NSInteger)parseMonth andDay:parseDay];
                 
-                NSNumber *tempMoodChosen = [parseDate valueForKey:kChosen1 ];
+                NSNumber *tempMoodChosen = dayRepresenatationColors[0];
                 if(tempMoodChosen.intValue > 0){
                     [mfv.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
                     [mcv.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
                 }
-                tempMoodChosen = [parseDate valueForKey:kChosen2 ];
+                tempMoodChosen = dayRepresenatationColors[1];
                 if(tempMoodChosen.intValue > 0){
                     [mfv.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
                     [mcv.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
                 }
-                tempMoodChosen =[parseDate valueForKey:kChosen3 ];
+                tempMoodChosen = dayRepresenatationColors[2];
                 if(tempMoodChosen.intValue > 0){
                     [mfv.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
                     [mcv.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
@@ -576,6 +576,7 @@ UIFont *boldQuicksand;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MDMonthTimeLineCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDMonthTimeLineCellTableViewCell" forIndexPath:indexPath];
+    cell.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
     cell.commentLabel.text = [NSString stringWithFormat:@"%@",[moodmonConf[indexPath.row]valueForKey:@"_moodComment" ]];
     NSString *timeText = [NSString stringWithFormat:@"%@", [moodmonConf[indexPath.row] valueForKey:kTime]];
     cell.timeLabel.text = timeText;

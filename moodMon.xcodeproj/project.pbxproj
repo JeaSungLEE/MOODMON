@@ -262,7 +262,6 @@
 		CE7FFD591CE023D300B7139C /* MDCustomStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCustomStoryboardSegue.m; sourceTree = "<group>"; };
 		CE87EC501CCE118500329E16 /* MDSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchTableViewController.h; sourceTree = "<group>"; };
 		CE87EC511CCE118500329E16 /* MDSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSearchTableViewController.m; sourceTree = "<group>"; };
-		CEABEFEB1CFAD1F800AA4E60 /* moodMon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = moodMon.entitlements; sourceTree = "<group>"; };
 		CEABEFEC1CFAD7AC00AA4E60 /* MDDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDocument.h; sourceTree = "<group>"; };
 		CEABEFED1CFAD7AC00AA4E60 /* MDDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDocument.m; sourceTree = "<group>"; };
 		CEABEFEF1CFAF2DC00AA4E60 /* angry_filter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "angry_filter@2x.png"; sourceTree = "<group>"; };
@@ -509,7 +508,6 @@
 		CE4A8A351CABCCB1006B73B7 /* moodMon */ = {
 			isa = PBXGroup;
 			children = (
-				CEABEFEB1CFAD1F800AA4E60 /* moodMon.entitlements */,
 				CEDACCB81CEC362E00FBD201 /* MDNavController.h */,
 				CEDACCBC1CEC36ED00FBD201 /* MDNavController.m */,
 				CE7FFD581CE023D300B7139C /* MDCustomStoryboardSegue.h */,
@@ -994,7 +992,7 @@
 								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

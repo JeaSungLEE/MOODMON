@@ -62,6 +62,7 @@
 ///////////////////////////// 이하 감정 계산 메소드
 
 -(NSUInteger)recentMood;
+
 /*
  * representationOfMoodAtDate - 
  * 해당 날짜의 대표 감정을 숫자배열로 알려준다
