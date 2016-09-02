@@ -15,6 +15,9 @@
 #import "MDMonthViewController.h"
 @interface MDYearViewController (){
     MDDataManager *mddm;
+    
+    NSDate *now;
+    NSDateComponents *nowComponents;
 }
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -36,6 +39,7 @@ int thisMonth=0;
     
     mddm = [MDDataManager sharedDataManager];
     createdAt=[mddm moodCollection];
+    now = [NSDate date];
     
     thisYear =[[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
         UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
@@ -177,14 +181,14 @@ int thisMonth=0;
     NSDate * newDate = [calendar dateFromComponents:components];
     NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:newDate];
     weekday=[comps weekday];
-    
     numDays=[self getCurrDateInfo:newDate];
-    
     NSInteger newWeekDay=weekday-1;
     //    NSLog(@"Day week %d",newWeekDay);
     
-    int yCount=1;
+    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    nowComponents = [calendar components:units fromDate:now];
     
+    int yCount=1;
     yearly.text=[NSString stringWithFormat:@"%lu",thisYear];
     UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(xVal+CGRectGetWidth(self.view.bounds)/6, yVal-10, 20, 20)];
     monthLabel.tag=tag++;
@@ -204,10 +208,23 @@ int thisMonth=0;
         }
         
         dayButton.frame = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, CGRectGetWidth(self.view.bounds)/2.8/8, CGRectGetWidth(self.view.bounds)/2.8/8);
+        float dayBtnBoundsSize = CGRectGetWidth(self.view.bounds)/2.8/8;
         [dayButton setText:[NSString stringWithFormat:@"%d",startDay]];
         [dayButton setFont:[UIFont fontWithName:@"Quicksand-Regular" size:CGRectGetWidth(self.view.bounds)/2.8/13]];
         [dayButton setTextColor:[UIColor blackColor]];
         dayButton.tag=tag++;
+        
+        
+        
+        if( ([nowComponents year] == thisYear) && ([nowComponents month] == showMonth) && ([nowComponents day] == startDay)){
+            NSLog(@"yes");
+            dayButton.layer.bounds = CGRectMake(dayButton.bounds.origin.x, dayButton.bounds.origin.y , dayBtnBoundsSize + 3.8, dayBtnBoundsSize + 3.8 );
+            dayButton.layer.borderColor =[UIColor redColor].CGColor;
+            dayButton.layer.borderWidth = 2;
+            dayButton.layer.cornerRadius = dayButton.frame.size.width / 6;
+            dayButton.layer.masksToBounds = YES;
+        }
+        
         [self.view addSubview:dayButton];
         int checkFalg =0;
         for(int parseNum=0; parseNum<createdAt.count; parseNum++){
@@ -215,6 +232,7 @@ int thisMonth=0;
             int parseMonth=[[parseDate valueForKey:@"_moodMonth"] intValue];
             int parseYear=[[parseDate valueForKey:@"_moodYear"] intValue];
             int parseDay=[[parseDate valueForKey:@"_moodDay"] intValue];
+            
             
             if((parseYear==thisYear)&&(parseMonth==showMonth)&&(parseDay==startDay)&&(checkFalg==0)){
                 [dayButton setTextColor:[UIColor clearColor]];
@@ -255,6 +273,7 @@ int thisMonth=0;
                 mcv.tag=tag++;
 //                mfv.tag=tag++;
                 mcv.layer.cornerRadius = mcv.frame.size.width/6;
+                mcv.center = dayButton.center;
 //                mcv.layer.cornerRadius = mcv.frame.size.width/2;
                 [mcv setNeedsDisplay];
 //                [mfv setNeedsDisplay];
