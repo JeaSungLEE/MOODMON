@@ -190,15 +190,17 @@ int thisMonth=0;
     
     int yCount=1;
     yearly.text=[NSString stringWithFormat:@"%lu",thisYear];
-    UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(xVal+CGRectGetWidth(self.view.bounds)/6, yVal-10, 20, 20)];
+    UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(xVal+CGRectGetWidth(self.view.bounds)/6 - 10, yVal-10, 20, 20)];
+    monthLabel.textAlignment = NSTextAlignmentCenter;
     monthLabel.tag=tag++;
     [monthLabel setText:[NSString stringWithFormat:@"%d",showMonth]];
     [monthLabel setFont:[UIFont fontWithName:@"Quicksand" size:CGRectGetWidth(self.view.bounds)/2.8/12]];
     [self.view addSubview:monthLabel];
     for(int startDay=1; startDay<=numDays;startDay++){
         UILabel *dayButton = [[UILabel alloc]init];
+        dayButton.textAlignment = NSTextAlignmentCenter;
         
-        int xCoord=(newWeekDay*CGRectGetWidth(self.view.bounds)/2.8/8)+xVal+5;
+        int xCoord=(newWeekDay*CGRectGetWidth(self.view.bounds)/2.8/8)+xVal;
         int yCoord=(yCount*CGRectGetWidth(self.view.bounds)/2.8/8)+yVal;
         
         newWeekDay++;
@@ -218,7 +220,8 @@ int thisMonth=0;
         
         if( ([nowComponents year] == thisYear) && ([nowComponents month] == showMonth) && ([nowComponents day] == startDay)){
             NSLog(@"yes");
-            dayButton.layer.bounds = CGRectMake(dayButton.bounds.origin.x, dayButton.bounds.origin.y , dayBtnBoundsSize + 3.8, dayBtnBoundsSize + 3.8 );
+            dayButton.layer.frame = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, CGRectGetWidth(self.view.bounds)/2.8/8, CGRectGetWidth(self.view.bounds)/2.8/8);
+            dayButton.layer.bounds = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, dayBtnBoundsSize + 3.8, dayBtnBoundsSize + 3.8 );
             dayButton.layer.borderColor =[UIColor redColor].CGColor;
             dayButton.layer.borderWidth = 2;
             dayButton.layer.cornerRadius = dayButton.frame.size.width / 6;
