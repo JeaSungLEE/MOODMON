@@ -681,7 +681,7 @@ UIFont *boldQuicksand;
     lastClickedDay = btn.tag;
 }
 -(void)removeLastClickedBtnBorder{
-    if(lastClickedDay == 0){ //today
+    if((lastClickedDay == 0) && ([nowComponents month] == thisMonth) && ([nowComponents year] == thisYear)){ //today
         UIButton *todayBtn = [self.view viewWithTag:[nowComponents day]];
         todayBtn.layer.borderWidth = 1.3;
         [todayBtn layoutIfNeeded];
