@@ -22,7 +22,7 @@
 @property (strong, nonatomic)MDDataManager *mddm;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableViews;
-
+@property (strong,nonatomic) IBOutlet NSLayoutConstraint *tableviewHeight;
 /*for filter tool bar animation*/
 @property (nonatomic, weak) IBOutlet UIView *toolbarContainer;
 @property (nonatomic, weak) IBOutlet UIView *buttonContainer;

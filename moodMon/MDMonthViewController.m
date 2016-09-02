@@ -36,9 +36,7 @@ UIFont *quicksand;
 UIFont *boldQuicksand;
 
 
-@implementation MDMonthViewController{
-
-}
+@implementation MDMonthViewController
 @synthesize thisYear;
 @synthesize thisMonth;
 
@@ -518,6 +516,16 @@ UIFont *boldQuicksand;
         }
         [self.view addSubview:dayButton];
     }
+    
+    
+    if((yCoord + yVal > 370) && ([UIScreen mainScreen].bounds.size.height <= 568)){
+        _tableviewHeight.constant = 132 + 28; //(tableCellHeight) * 2 + (tableHeaderHeight)
+        [self.view layoutIfNeeded];
+    } else {
+        _tableviewHeight.constant = 176 + 28; //(tableCellHeight) * 2 + (tableHeaderHeight)
+        [self.view layoutIfNeeded];
+    }
+    
 }
 
 
