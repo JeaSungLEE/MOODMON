@@ -36,9 +36,7 @@ UIFont *quicksand;
 UIFont *boldQuicksand;
 
 
-@implementation MDMonthViewController{
-
-}
+@implementation MDMonthViewController
 @synthesize thisYear;
 @synthesize thisMonth;
 
@@ -518,6 +516,16 @@ UIFont *boldQuicksand;
         }
         [self.view addSubview:dayButton];
     }
+    
+    
+    if((yCoord + yVal > 370) && ([UIScreen mainScreen].bounds.size.height <= 568)){
+        _tableviewHeight.constant = 132 + 28; //(tableCellHeight) * 2 + (tableHeaderHeight)
+        [self.view layoutIfNeeded];
+    } else {
+        _tableviewHeight.constant = 176 + 28; //(tableCellHeight) * 2 + (tableHeaderHeight)
+        [self.view layoutIfNeeded];
+    }
+    
 }
 
 
@@ -673,7 +681,7 @@ UIFont *boldQuicksand;
     lastClickedDay = btn.tag;
 }
 -(void)removeLastClickedBtnBorder{
-    if(lastClickedDay == 0){ //today
+    if((lastClickedDay == 0) && ([nowComponents month] == thisMonth) && ([nowComponents year] == thisYear)){ //today
         UIButton *todayBtn = [self.view viewWithTag:[nowComponents day]];
         todayBtn.layer.borderWidth = 1.3;
         [todayBtn layoutIfNeeded];
