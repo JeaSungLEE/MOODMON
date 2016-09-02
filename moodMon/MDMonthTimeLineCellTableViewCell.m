@@ -29,6 +29,8 @@ static CGFloat const kBounceValue = 40.0f;
     [super setSelected:selected animated:animated];
 }
 
+- (void)viewWillAppear{
+}
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)endEditing
 {
     if (self.startingRightLayoutConstraintConstant == 0 &&
