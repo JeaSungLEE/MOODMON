@@ -100,7 +100,6 @@ UIFont *boldQuicksand;
     [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
     
     //[self moreDateInfo];
-    
     indexPathsToDelete = [[NSMutableArray alloc] init];
 }
 

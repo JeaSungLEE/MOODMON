@@ -15,24 +15,27 @@
 #import "MDMonthViewController.h"
 @interface MDYearViewController (){
     MDDataManager *mddm;
-    
     NSDate *now;
     NSDateComponents *nowComponents;
+    
 }
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
 
 @end
 
 
 NSInteger numDays;
-NSInteger thisYear;
 NSArray *createdAt;
 NSInteger weekday;
 int tag;
 int thisMonth=0;
+UIFont *quicksand;
+UIFont *boldQuicksand;
 
 @implementation MDYearViewController
 @synthesize yearly;
+//@synthesize thisYear;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,18 +44,25 @@ int thisMonth=0;
     createdAt=[mddm moodCollection];
     now = [NSDate date];
     
-    thisYear =[[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
-        UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    //_thisYear = [[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
 //    UITapGestureRecognizer *tab = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(monthTouch:)];
     
+    quicksand = [UIFont fontWithName:@"Quicksand" size:16];
+    boldQuicksand = [UIFont fontWithDescriptor:[[quicksand fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold] size:quicksand.pointSize];
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
+
     [self myCalView];
     
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+   
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
