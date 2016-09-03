@@ -15,24 +15,27 @@
 #import "MDMonthViewController.h"
 @interface MDYearViewController (){
     MDDataManager *mddm;
-    
     NSDate *now;
     NSDateComponents *nowComponents;
+    
 }
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
 
 @end
 
 
 NSInteger numDays;
-NSInteger thisYear;
 NSArray *createdAt;
 NSInteger weekday;
 int tag;
 int thisMonth=0;
+UIFont *quicksand;
+UIFont *boldQuicksand;
 
 @implementation MDYearViewController
 @synthesize yearly;
+//@synthesize thisYear;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,18 +44,25 @@ int thisMonth=0;
     createdAt=[mddm moodCollection];
     now = [NSDate date];
     
-    thisYear =[[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
-        UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    //_thisYear = [[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
 //    UITapGestureRecognizer *tab = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(monthTouch:)];
     
+    quicksand = [UIFont fontWithName:@"Quicksand" size:16];
+    boldQuicksand = [UIFont fontWithDescriptor:[[quicksand fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold] size:quicksand.pointSize];
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
+
     [self myCalView];
     
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+   
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -60,13 +70,13 @@ int thisMonth=0;
 
 - (IBAction)handleSwipe:(UISwipeGestureRecognizer *)swipe {
     if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
-        thisYear++;
+        _thisYear++;
         [self removeTags];
         [self myCalView];
         NSLog(@"down Swipe");
     }
     if (swipe.direction == UISwipeGestureRecognizerDirectionDown) {
-        thisYear--;
+        _thisYear--;
         [self removeTags];
         [self myCalView];
         NSLog(@"up Swipe");
@@ -95,6 +105,7 @@ int thisMonth=0;
     if ([segue.destinationViewController isKindOfClass:[MDMonthViewController class]]) {
         MDMonthViewController *mainViewConroller = segue.destinationViewController;
         if (thisMonth) {
+            mainViewConroller.thisYear =  _thisYear;
             mainViewConroller.thisMonth = thisMonth;
         }
     }
@@ -102,9 +113,10 @@ int thisMonth=0;
 - (IBAction)monthTouch:(id)sender {
     CGPoint point = [sender locationInView:[self.view superview]];
     double xVal=CGRectGetWidth(self.view.bounds)/3,yVal=CGRectGetHeight(self.view.bounds)/5;
-    if(point.x <= xVal*1&&point.y<=yVal*1+84){
+    if(point.y <= 64) {
+        return;
+    }else if(point.x <= xVal*1&&point.y<=yVal*1+84){
         thisMonth=1;
-//        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
     }else if(point.x <= xVal*2 && point.y<=yVal*1+84){
         thisMonth=2;
         
@@ -144,9 +156,8 @@ int thisMonth=0;
 }
 -(void)myCalView{
     tag=1;
-    _titleLabel.text= [NSString stringWithFormat:@"%lu년", thisYear];
-    [_titleLabel setFont:[UIFont fontWithName:@"Quicksand-Regular" size:19]];
-
+     _titleLabel.text = [NSString stringWithFormat:@"%lu년", (long)_thisYear];
+    
     double xVal=CGRectGetWidth(self.view.bounds)/3,yVal=CGRectGetHeight(self.view.bounds)/5;
     
     [self moreDateInfo:1 xVal:0 yVal:yVal*0+84];
@@ -177,7 +188,7 @@ int thisMonth=0;
     NSDateComponents *components = [[NSDateComponents alloc]init];
     [components setDay:1];
     [components setMonth:showMonth];
-    [components setYear:thisYear];
+    [components setYear:_thisYear];
     NSDate * newDate = [calendar dateFromComponents:components];
     NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:newDate];
     weekday=[comps weekday];
@@ -189,7 +200,7 @@ int thisMonth=0;
     nowComponents = [calendar components:units fromDate:now];
     
     int yCount=1;
-    yearly.text=[NSString stringWithFormat:@"%lu",thisYear];
+    yearly.text=[NSString stringWithFormat:@"%lu",_thisYear];
     UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(xVal+CGRectGetWidth(self.view.bounds)/6 - 10, yVal-10, 20, 20)];
     monthLabel.textAlignment = NSTextAlignmentCenter;
     monthLabel.tag=tag++;
@@ -218,7 +229,7 @@ int thisMonth=0;
         
         
         
-        if( ([nowComponents year] == thisYear) && ([nowComponents month] == showMonth) && ([nowComponents day] == startDay)){
+        if( ([nowComponents year] == _thisYear) && ([nowComponents month] == showMonth) && ([nowComponents day] == startDay)){
             NSLog(@"yes");
             dayButton.layer.frame = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, CGRectGetWidth(self.view.bounds)/2.8/8, CGRectGetWidth(self.view.bounds)/2.8/8);
             dayButton.layer.bounds = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, dayBtnBoundsSize + 3.8, dayBtnBoundsSize + 3.8 );
@@ -237,7 +248,7 @@ int thisMonth=0;
             int parseDay=[[parseDate valueForKey:@"_moodDay"] intValue];
             
             
-            if((parseYear==thisYear)&&(parseMonth==showMonth)&&(parseDay==startDay)&&(checkFalg==0)){
+            if((parseYear==_thisYear)&&(parseMonth==showMonth)&&(parseDay==startDay)&&(checkFalg==0)){
                 [dayButton setTextColor:[UIColor clearColor]];
                 checkFalg=1;
                 //                    [self.moodColor.chosenMoods addObject:[createdAt[parseNum] valueForKey:@"_moodChosen1"]];

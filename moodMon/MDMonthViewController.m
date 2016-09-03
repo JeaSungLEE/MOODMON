@@ -100,7 +100,6 @@ UIFont *boldQuicksand;
     [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
     
     //[self moreDateInfo];
-    
     indexPathsToDelete = [[NSMutableArray alloc] init];
 }
 
@@ -276,9 +275,16 @@ UIFont *boldQuicksand;
 
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqual: @"goToYearView"]){
+        MDYearViewController *yvc = [segue destinationViewController];
+        yvc.thisYear = thisYear;
+    }
+}
 
 -(void)goToYearView{
     MDYearViewController *yvc = [[MDYearViewController alloc]initWithNibName:@"yearVC" bundle:nil];
+    yvc.thisYear = thisYear;
     [yvc setModalTransitionStyle:UIModalTransitionStylePartialCurl];
     [self presentViewController:yvc animated:YES completion:nil];
 }
@@ -360,6 +366,9 @@ UIFont *boldQuicksand;
         thisYear--;
     }
     int xVal=CGRectGetWidth(self.view.bounds)/7,yVal=CGRectGetHeight(self.view.bounds)/12;
+    if([UIScreen mainScreen].bounds.size.height <= 568 ){
+        yVal -= 0.8;
+    }
     NSCalendar *gregorian = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc]init];
@@ -378,7 +387,7 @@ UIFont *boldQuicksand;
     
     NSInteger yCount=1;
     NSInteger xCoord=0;
-    NSInteger yCoord=self.navigationController.navigationBar.frame.size.height+20;
+    NSInteger yCoord=self.navigationController.navigationBar.frame.size.height+ 20;
     UILabel *backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(xCoord, yCoord, CGRectGetWidth(self.view.bounds),yVal*2/3)];
     [backgroundLabel setBackgroundColor:[UIColor colorWithRed:222.0f/255.0f green:212.0f/255.0f blue:198.0f/255.0f alpha:1.0f]];
     [self.view addSubview:backgroundLabel];
@@ -421,7 +430,7 @@ UIFont *boldQuicksand;
     for(int startDay=1; startDay<=numDays;startDay++){
         UIButton *dayButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
         xCoord=(newWeekDay*xVal);
-        yCoord=(yCount*yVal);
+        yCoord=(yCount*yVal) ;
         
         newWeekDay++;
         if(newWeekDay>6){
@@ -517,9 +526,12 @@ UIFont *boldQuicksand;
         [self.view addSubview:dayButton];
     }
     
-    
-    if((yCoord + yVal > 370) && ([UIScreen mainScreen].bounds.size.height <= 568)){
-        _tableviewHeight.constant = 132 + 28; //(tableCellHeight) * 2 + (tableHeaderHeight)
+    NSLog(@"%d", yCoord+ yVal);
+    if((yCoord + yVal > 350) && ([UIScreen mainScreen].bounds.size.height <= 568)){ //under 5
+        _tableviewHeight.constant = 132 + 28; //(tableCellHeight) * 2  + (tableHeaderHeight)
+        [self.view layoutIfNeeded];
+    } else if((yCoord + yVal > 400) && ([UIScreen mainScreen].bounds.size.height <= 667)){ //under 6
+        _tableviewHeight.constant = 132 + 28; //(tableCellHeight) * 2  + (tableHeaderHeight)
         [self.view layoutIfNeeded];
     } else {
         _tableviewHeight.constant = 176 + 28; //(tableCellHeight) * 2 + (tableHeaderHeight)

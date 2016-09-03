@@ -15,6 +15,10 @@
             <string>NanumGothicOTFLight</string>
             <string>NanumGothicOTFLight</string>
         </mutableArray>
+        <mutableArray key="Quicksand-Bold.otf">
+            <string>Quicksand-Bold</string>
+            <string>Quicksand-Bold</string>
+        </mutableArray>
         <mutableArray key="Quicksand-Regular.otf">
             <string>Quicksand-Regular</string>
             <string>Quicksand-Regular</string>
@@ -1968,7 +1972,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p07-Mr-Fwp">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p07-Mr-Fwp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="7ab-Rl-Puz"/>
@@ -1976,31 +1980,40 @@
                                 <color key="tintColor" red="0.5607843137254902" green="0.49411764705882355" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="16"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem id="m57-wD-aX7">
-                                        <barButtonItem key="leftBarButtonItem" title="Month" id="Skj-HZ-7Nk">
-                                            <connections>
-                                                <segue destination="WBc-a8-YuF" kind="unwind" identifier="JSUnwindView" unwindAction="exitFromSecondViewController:" id="GKy-1e-5T5"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem id="m57-wD-aX7"/>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoW-co-fOf">
-                                <rect key="frame" x="158" y="11" width="98" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXg-44-4QG">
+                                <rect key="frame" x="185" y="34" width="44" height="19"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPE-Mb-4KT">
+                                <rect key="frame" x="5" y="28" width="50" height="31"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="16"/>
+                                <state key="normal" title="Month">
+                                    <color key="titleColor" red="0.56078431370000004" green="0.4941176471" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="WBc-a8-YuF" kind="unwind" identifier="JSUnwindView" unwindAction="exitFromSecondViewController:" id="oyL-8S-fQ0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="p07-Mr-Fwp" secondAttribute="trailing" constant="-20" id="4E4-vg-Sy4"/>
-                            <constraint firstItem="uoW-co-fOf" firstAttribute="centerX" secondItem="p07-Mr-Fwp" secondAttribute="centerX" id="9FW-xc-ULa"/>
+                            <constraint firstItem="UPE-Mb-4KT" firstAttribute="centerY" secondItem="hXg-44-4QG" secondAttribute="centerY" id="8Uf-2e-Sqc"/>
+                            <constraint firstItem="UPE-Mb-4KT" firstAttribute="leading" secondItem="P6o-Am-0hL" secondAttribute="leading" constant="5" id="8sR-Lk-wMF"/>
+                            <constraint firstItem="p07-Mr-Fwp" firstAttribute="leading" secondItem="P6o-Am-0hL" secondAttribute="leading" id="ZhR-LR-EpC"/>
+                            <constraint firstItem="hXg-44-4QG" firstAttribute="top" secondItem="8t1-wd-Ki5" secondAttribute="bottom" constant="14" id="eP3-m0-o7R"/>
+                            <constraint firstItem="hXg-44-4QG" firstAttribute="centerX" secondItem="p07-Mr-Fwp" secondAttribute="centerX" id="p8d-ch-Cmm"/>
                             <constraint firstItem="p07-Mr-Fwp" firstAttribute="top" secondItem="P6o-Am-0hL" secondAttribute="topMargin" id="uMV-Yf-v9X"/>
-                            <constraint firstItem="uoW-co-fOf" firstAttribute="top" secondItem="P6o-Am-0hL" secondAttribute="topMargin" constant="25" id="woO-WO-dmV"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QP7-7f-6Mr" appends="YES" id="GYL-xs-v67"/>
@@ -2010,7 +2023,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="titleLabel" destination="uoW-co-fOf" id="FvC-Ie-ZKg"/>
+                        <outlet property="titleLabel" destination="hXg-44-4QG" id="vaV-n5-tWo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1V-a2-Sxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2465,7 +2478,7 @@
                     <navigationItem key="navigationItem" title="Title" id="QaD-tG-DvE">
                         <barButtonItem key="leftBarButtonItem" title="year" id="800-KQ-yHj">
                             <connections>
-                                <segue destination="COX-hV-sA8" kind="custom" customClass="MDCustomStoryboardSegue" id="JFJ-bt-anK"/>
+                                <segue destination="COX-hV-sA8" kind="custom" identifier="goToYearView" customClass="MDCustomStoryboardSegue" id="JFJ-bt-anK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="search" id="i23-IY-4yr">
