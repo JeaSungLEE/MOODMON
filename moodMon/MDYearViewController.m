@@ -70,13 +70,13 @@ UIFont *boldQuicksand;
 
 - (IBAction)handleSwipe:(UISwipeGestureRecognizer *)swipe {
     if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
-        thisYear++;
+        _thisYear++;
         [self removeTags];
         [self myCalView];
         NSLog(@"down Swipe");
     }
     if (swipe.direction == UISwipeGestureRecognizerDirectionDown) {
-        thisYear--;
+        _thisYear--;
         [self removeTags];
         [self myCalView];
         NSLog(@"up Swipe");
@@ -105,6 +105,7 @@ UIFont *boldQuicksand;
     if ([segue.destinationViewController isKindOfClass:[MDMonthViewController class]]) {
         MDMonthViewController *mainViewConroller = segue.destinationViewController;
         if (thisMonth) {
+            mainViewConroller.thisYear =  _thisYear;
             mainViewConroller.thisMonth = thisMonth;
         }
     }
@@ -154,9 +155,8 @@ UIFont *boldQuicksand;
 }
 -(void)myCalView{
     tag=1;
-    _titleLabel.text= [NSString stringWithFormat:@"%lu년", thisYear];
-    [_titleLabel setFont:[UIFont fontWithName:@"Quicksand-Regular" size:19]];
-
+     _titleLabel.text = [NSString stringWithFormat:@"%lu년", (long)_thisYear];
+    
     double xVal=CGRectGetWidth(self.view.bounds)/3,yVal=CGRectGetHeight(self.view.bounds)/5;
     
     [self moreDateInfo:1 xVal:0 yVal:yVal*0+84];
@@ -187,7 +187,7 @@ UIFont *boldQuicksand;
     NSDateComponents *components = [[NSDateComponents alloc]init];
     [components setDay:1];
     [components setMonth:showMonth];
-    [components setYear:thisYear];
+    [components setYear:_thisYear];
     NSDate * newDate = [calendar dateFromComponents:components];
     NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:newDate];
     weekday=[comps weekday];
@@ -199,7 +199,7 @@ UIFont *boldQuicksand;
     nowComponents = [calendar components:units fromDate:now];
     
     int yCount=1;
-    yearly.text=[NSString stringWithFormat:@"%lu",thisYear];
+    yearly.text=[NSString stringWithFormat:@"%lu",_thisYear];
     UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(xVal+CGRectGetWidth(self.view.bounds)/6 - 10, yVal-10, 20, 20)];
     monthLabel.textAlignment = NSTextAlignmentCenter;
     monthLabel.tag=tag++;
@@ -228,7 +228,7 @@ UIFont *boldQuicksand;
         
         
         
-        if( ([nowComponents year] == thisYear) && ([nowComponents month] == showMonth) && ([nowComponents day] == startDay)){
+        if( ([nowComponents year] == _thisYear) && ([nowComponents month] == showMonth) && ([nowComponents day] == startDay)){
             NSLog(@"yes");
             dayButton.layer.frame = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, CGRectGetWidth(self.view.bounds)/2.8/8, CGRectGetWidth(self.view.bounds)/2.8/8);
             dayButton.layer.bounds = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, dayBtnBoundsSize + 3.8, dayBtnBoundsSize + 3.8 );
@@ -247,7 +247,7 @@ UIFont *boldQuicksand;
             int parseDay=[[parseDate valueForKey:@"_moodDay"] intValue];
             
             
-            if((parseYear==thisYear)&&(parseMonth==showMonth)&&(parseDay==startDay)&&(checkFalg==0)){
+            if((parseYear==_thisYear)&&(parseMonth==showMonth)&&(parseDay==startDay)&&(checkFalg==0)){
                 [dayButton setTextColor:[UIColor clearColor]];
                 checkFalg=1;
                 //                    [self.moodColor.chosenMoods addObject:[createdAt[parseNum] valueForKey:@"_moodChosen1"]];

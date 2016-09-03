@@ -275,9 +275,16 @@ UIFont *boldQuicksand;
 
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqual: @"goToYearView"]){
+        MDYearViewController *yvc = [segue destinationViewController];
+        yvc.thisYear = thisYear;
+    }
+}
 
 -(void)goToYearView{
     MDYearViewController *yvc = [[MDYearViewController alloc]initWithNibName:@"yearVC" bundle:nil];
+    yvc.thisYear = thisYear;
     [yvc setModalTransitionStyle:UIModalTransitionStylePartialCurl];
     [self presentViewController:yvc animated:YES completion:nil];
 }

@@ -11,5 +11,7 @@
 
 @interface MDYearViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UILabel *yearly;
+@property NSInteger thisYear;
+
 @end
 
