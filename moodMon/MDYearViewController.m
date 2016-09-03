@@ -113,9 +113,10 @@ UIFont *boldQuicksand;
 - (IBAction)monthTouch:(id)sender {
     CGPoint point = [sender locationInView:[self.view superview]];
     double xVal=CGRectGetWidth(self.view.bounds)/3,yVal=CGRectGetHeight(self.view.bounds)/5;
-    if(point.x <= xVal*1&&point.y<=yVal*1+84){
+    if(point.y <= 64) {
+        return;
+    }else if(point.x <= xVal*1&&point.y<=yVal*1+84){
         thisMonth=1;
-//        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
     }else if(point.x <= xVal*2 && point.y<=yVal*1+84){
         thisMonth=2;
         
