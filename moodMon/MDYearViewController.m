@@ -230,7 +230,6 @@ UIFont *boldQuicksand;
         
         
         if( ([nowComponents year] == _thisYear) && ([nowComponents month] == showMonth) && ([nowComponents day] == startDay)){
-            NSLog(@"yes");
             dayButton.layer.frame = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, CGRectGetWidth(self.view.bounds)/2.8/8, CGRectGetWidth(self.view.bounds)/2.8/8);
             dayButton.layer.bounds = CGRectMake(xCoord+(CGRectGetWidth(self.view.bounds)/2.8/8/5), yCoord, dayBtnBoundsSize + 3.8, dayBtnBoundsSize + 3.8 );
             dayButton.layer.borderColor =[UIColor redColor].CGColor;

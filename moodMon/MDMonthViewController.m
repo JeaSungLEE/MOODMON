@@ -526,7 +526,6 @@ UIFont *boldQuicksand;
         [self.view addSubview:dayButton];
     }
     
-    NSLog(@"%d", yCoord+ yVal);
     if((yCoord + yVal > 350) && ([UIScreen mainScreen].bounds.size.height <= 568)){ //under 5
         _tableviewHeight.constant = 132 + 28; //(tableCellHeight) * 2  + (tableHeaderHeight)
         [self.view layoutIfNeeded];

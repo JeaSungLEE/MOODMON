@@ -602,7 +602,7 @@
         [result addObject:@0];
         return result;
     }
-    NSLog(@" %d %d %d %d %d", chosenCount[0],chosenCount[1],chosenCount[2],chosenCount[3],chosenCount[4] );
+    //NSLog(@" %d %d %d %d %d", chosenCount[0],chosenCount[1],chosenCount[2],chosenCount[3],chosenCount[4] );
     
     int numOfSamebigCount = 0;
     int bigCountIdx = 0;
