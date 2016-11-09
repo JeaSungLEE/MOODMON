@@ -26,7 +26,7 @@
                                 <rect key="frame" x="137" y="249" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="rqN-zD-0DA" kind="show" id="ywv-tP-Yyg"/>
+                                    <action selector="buttonTouchUp:" destination="ObA-dk-sSI" eventType="touchUpInside" id="eVr-de-5Sq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -38,6 +38,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="nextButtonOutlet" destination="0sY-Qu-pmm" id="b4C-cy-K8i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -45,17 +48,17 @@
         <!--New MoodMon Controller-->
         <scene sceneID="RRc-5j-1H4">
             <objects>
-                <viewController storyboardIdentifier="newMoodmonVC" id="rqN-zD-0DA" userLabel="New MoodMon Controller" customClass="MDNewMoodViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newMoodmonVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rqN-zD-0DA" userLabel="New MoodMon Controller" customClass="MDNewMoodViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Yi-QD-iFt"/>
                         <viewControllerLayoutGuide type="bottom" id="Y4g-Em-eC7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dwp-yc-MOg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8q-n7-AQB" userLabel="container">
-                                <rect key="frame" x="10" y="114" width="300" height="300"/>
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZn-b0-RIV" userLabel="progress wheel" customClass="MDProgressWheelView">
                                         <rect key="frame" x="11" y="11" width="278" height="278"/>
@@ -664,7 +667,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-AH-AcP" customClass="MDRecentMoodView">
-                                <rect key="frame" x="0.0" y="435" width="320" height="93"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="93"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ICz-Pq-RIj">
@@ -683,7 +686,7 @@
                                 </variation>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAG-Cc-L8i" userLabel="save button background" customClass="MDMoodColorView">
-                                <rect key="frame" x="292" y="46" width="30" height="30"/>
+                                <rect key="frame" x="319.5" y="46" width="30" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOs-z7-iXo">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>

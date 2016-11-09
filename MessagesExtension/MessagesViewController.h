@@ -7,7 +7,10 @@
 //
 
 #import <Messages/Messages.h>
+#import "MDNewMoodViewController.h"
 
 @interface MessagesViewController : MSMessagesAppViewController
+@property (weak, nonatomic) IBOutlet UIButton *nextButtonOutlet;
+- (IBAction)buttonTouchUp:(id)sender;
 
 @end

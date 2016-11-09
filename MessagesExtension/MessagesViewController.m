@@ -9,6 +9,7 @@
 #import "MessagesViewController.h"
 
 
+
 @interface MessagesViewController ()
 
 @end
@@ -24,6 +25,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Conversation Handling
 
@@ -62,15 +64,19 @@
 }
 
 -(void)willTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
-    // Called before the extension transitions to a new presentation style.
-    
-    // Use this method to prepare for the change in presentation style.
+    if(presentationStyle == MSMessagesAppPresentationStyleCompact){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else if(presentationStyle == MSMessagesAppPresentationStyleExpanded){
+        MDNewMoodViewController *VC = [self.storyboard instantiateViewControllerWithIdentifier:@"newMoodmonVC"];
+        [self presentViewController:VC animated:YES completion:nil];
+    }
 }
 
 -(void)didTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
-    // Called after the extension transitions to a new presentation style.
     
-    // Use this method to finalize any behaviors associated with the change in presentation style.
 }
 
+- (IBAction)buttonTouchUp:(id)sender {
+    [self requestPresentationStyle:MSMessagesAppPresentationStyleExpanded];
+}
 @end
