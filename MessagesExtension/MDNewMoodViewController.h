@@ -30,10 +30,6 @@
 /* Timer */
 @property CFTimeInterval startTime; // store time when mood button view clicked
 
-/* Date */
-@property (strong, nonatomic) IBOutlet UILabel *day;
-@property (strong, nonatomic) IBOutlet UILabel *date;
-
 /* Tool Tip */
 @property UIMenuController *menuController;
 @property UIDynamicAnimator *animator;
@@ -59,17 +55,11 @@
 
 /* Comment */
 @property NSString *comment;
-@property (strong, nonatomic) IBOutlet UITextField *textField;
 
 /* Skip & Save */
-@property (strong, nonatomic) IBOutlet UIView *skipButtonBackground;
 @property (strong, nonatomic) IBOutlet MDMoodColorView *saveButtonBackground;
 
-- (IBAction)didTextFieldActivate:(id)sender;
-- (IBAction)didComment:(id)sender;
 
-- (IBAction)saveNewMoodMon:(id)sender;
-- (IBAction)skip:(id)sender;
 - (void) showAlert:(NSNotification*)notification;
 
 //-(void) presentCalendar;

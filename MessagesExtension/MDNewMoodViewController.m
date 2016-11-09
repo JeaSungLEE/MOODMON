@@ -29,9 +29,7 @@
     [self moodViewInit];
     [self addTapGestureRecognizer];
     [self addWheelGestureRecognizer];
-    [self drawRecentMoodView];
-    [self textLabelInit];
-    [self menuControllerInit];
+    [self drawRecentMoodView];    [self menuControllerInit];
 }
 
 
@@ -96,34 +94,9 @@
     self.saveButtonBackground.layer.cornerRadius = self.saveButtonBackground.frame.size.width/2;
     self.saveButtonBackground.layer.masksToBounds = YES;
     self.saveButtonBackground.layer.opacity = 0.9;
-    self.skipButtonBackground.layer.cornerRadius = self.skipButtonBackground.frame.size.width/2;
-    self.skipButtonBackground.layer.masksToBounds = YES;
-    self.skipButtonBackground.hidden = NO;
 }
 
 
-- (void)textLabelInit {
-    /* default comment value */
-    _comment = @"";
-    
-    /* UI init */
-    UIColor *color = [[UIColor grayColor] colorWithAlphaComponent:0.7];
-    // self.mood가 nil이 아니라는 것은 edit mode라는 뜻.
-    // edit mode일 때는 self.mood에 들어있는 코멘트를 placeholder와 self.comment에 지정함.
-    if(self.mood) {
-        self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.mood.moodComment
-                                                                               attributes:@{NSForegroundColorAttributeName:color}];
-        self.comment = self.mood.moodComment;
-    } else {
-        self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Comment on your feeling!"
-                                                                               attributes:@{NSForegroundColorAttributeName:color}];
-    }
-    
-    /* gesture recognizer to cancel typing */
-    [self.textField setDelegate:self];
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:recognizer];
-}
 
 
 - (void)menuControllerInit {
@@ -156,10 +129,7 @@
 
 
 - (void)moodButtonTouchedDown:(UIGestureRecognizer *)recognizer {
-    if(self.textField.isFirstResponder) {
-        return;
-    }
-    
+
     MDMoodButtonView *moodButton = (MDMoodButtonView *)recognizer.view;
     if(self.moodCount<3 || moodButton.isSelected) {     // 이미 감정을 세 개 이상 골랐으면 더 선택할 수 없음. 단 기존에 선택한 것을 해제하는건 됨.
         [self changeMoodButtonImage:moodButton];
@@ -183,7 +153,6 @@
         _startTime = CACurrentMediaTime();
         [self showWheelView:moodButton];
         [self addNewChosenMood:moodButton.num];
-        self.textField.hidden = YES;
         return;
     }
     if(moodButton.isSelected==NO && [self isChosen:moodButton]) {      // 감정선택을 해제하기 위해 버튼을 누른 경우, 해당 감정을 chosenMoods 배열에서 제거함.
@@ -269,7 +238,6 @@
                       duration:0.2
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{
-                        self.skipButtonBackground.hidden = NO;
                         self.saveButtonBackground.hidden = (self.moodCount<1) ? YES : NO;
                     }
                     completion:nil];
@@ -403,7 +371,6 @@
     
     //휠 돌리는 동안은 save & skip 버튼 감추기
     self.saveButtonBackground.hidden = YES;
-    self.skipButtonBackground.hidden = YES;
 }
 
 
@@ -467,9 +434,7 @@
                         for(MDMoodButtonView *moodButton in self.moodButtons) {
                             moodButton.hidden = NO;
                         }
-                        self.textField.hidden = NO;
                         self.mixedMoodFace.hidden = NO;
-                        self.skipButtonBackground.hidden = NO;
                         self.saveButtonBackground.hidden = (self.moodCount<1) ? YES : NO;
                     }
                     completion:nil];
@@ -486,31 +451,6 @@
 }
 
 
-- (void)dismissKeyboard {
-    if(self.textField.editing == NO) {
-        return;
-    }
-    [self.textField resignFirstResponder];
-    [self moveEntireViewWithDuration:0.3 distance:+200];
-}
-
-
-- (IBAction)didTextFieldActivate:(id)sender {
-    [self moveEntireViewWithDuration:0.3 distance:-200];
-}
-
-
-- (IBAction)didComment:(id)sender {
-    self.comment = self.textField.text;
-}
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    [self moveEntireViewWithDuration:0.3 distance:+200];
-    return YES;
-}
-
 - (void)moveEntireViewWithDuration:(CGFloat)duration distance:(CGFloat)distance {
     [UIView transitionWithView:self.view
                       duration:duration
@@ -521,11 +461,6 @@
                     completion:nil];
 }
 
-
-
-- (IBAction)skip:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{}];
-}
 
 
 - (void) presentCalendar{
