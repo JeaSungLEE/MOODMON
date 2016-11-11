@@ -7,10 +7,12 @@
 //
 
 #import <Messages/Messages.h>
-#import "MDNewMoodViewController.h"
+#import "MDMakeMoodViewController.h"
 
-@interface MessagesViewController : MSMessagesAppViewController
+@interface MessagesViewController : MSMessagesAppViewController <MDMessageDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *nextButtonOutlet;
 - (IBAction)buttonTouchUp:(id)sender;
+- (void)setLayout:(MSMessageTemplateLayout *)layout;
 
 @end

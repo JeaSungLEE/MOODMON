@@ -56,7 +56,7 @@
 		E4AB186C1DD3310C00A33AC4 /* MDMoodButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB18571DD3310C00A33AC4 /* MDMoodButtonView.m */; };
 		E4AB186D1DD3310C00A33AC4 /* MDMoodColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB18591DD3310C00A33AC4 /* MDMoodColorView.m */; };
 		E4AB186E1DD3310C00A33AC4 /* MDMoodFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB185B1DD3310C00A33AC4 /* MDMoodFaceView.m */; };
-		E4AB186F1DD3310C00A33AC4 /* MDNewMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB185D1DD3310C00A33AC4 /* MDNewMoodViewController.m */; };
+		E4AB186F1DD3310C00A33AC4 /* MDMakeMoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB185D1DD3310C00A33AC4 /* MDMakeMoodViewController.m */; };
 		E4AB18701DD3310C00A33AC4 /* MDProgressWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB185F1DD3310C00A33AC4 /* MDProgressWheelView.m */; };
 		E4AB18711DD3310C00A33AC4 /* MDRecentMoodView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB18611DD3310C00A33AC4 /* MDRecentMoodView.m */; };
 		E4AB18721DD3310C00A33AC4 /* MDTouchDownGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB18631DD3310C00A33AC4 /* MDTouchDownGestureRecognizer.m */; };
@@ -188,6 +188,7 @@
 		E4AB19701DD331E100A33AC4 /* wrinkle_degree3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4AB192D1DD331E100A33AC4 /* wrinkle_degree3@2x.png */; };
 		E4AB19711DD331E100A33AC4 /* wrinkle_degree4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4AB192E1DD331E100A33AC4 /* wrinkle_degree4@2x.png */; };
 		E4AB19721DD331E100A33AC4 /* wrinkle_degree5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4AB192F1DD331E100A33AC4 /* wrinkle_degree5@2x.png */; };
+		E4AB19811DD360CA00A33AC4 /* UIView+Capture.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AB19801DD360CA00A33AC4 /* UIView+Capture.m */; };
 		E90B86B31CBA9B64007AEFF4 /* MDWheelGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B86B21CBA9B64007AEFF4 /* MDWheelGestureRecognizer.m */; };
 		E9514B761CF353B6008B99CA /* MDSmallMoodFaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9514B751CF353B6008B99CA /* MDSmallMoodFaceView.xib */; };
 		E95DE3C01CE999110094EDCF /* MDTouchUpGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E95DE3BF1CE999110094EDCF /* MDTouchUpGestureRecognizer.m */; };
@@ -455,8 +456,8 @@
 		E4AB18591DD3310C00A33AC4 /* MDMoodColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodColorView.m; sourceTree = "<group>"; };
 		E4AB185A1DD3310C00A33AC4 /* MDMoodFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoodFaceView.h; sourceTree = "<group>"; };
 		E4AB185B1DD3310C00A33AC4 /* MDMoodFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodFaceView.m; sourceTree = "<group>"; };
-		E4AB185C1DD3310C00A33AC4 /* MDNewMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodViewController.h; sourceTree = "<group>"; };
-		E4AB185D1DD3310C00A33AC4 /* MDNewMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodViewController.m; sourceTree = "<group>"; };
+		E4AB185C1DD3310C00A33AC4 /* MDMakeMoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMakeMoodViewController.h; sourceTree = "<group>"; };
+		E4AB185D1DD3310C00A33AC4 /* MDMakeMoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMakeMoodViewController.m; sourceTree = "<group>"; };
 		E4AB185E1DD3310C00A33AC4 /* MDProgressWheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDProgressWheelView.h; sourceTree = "<group>"; };
 		E4AB185F1DD3310C00A33AC4 /* MDProgressWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDProgressWheelView.m; sourceTree = "<group>"; };
 		E4AB18601DD3310C00A33AC4 /* MDRecentMoodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecentMoodView.h; sourceTree = "<group>"; };
@@ -595,6 +596,8 @@
 		E4AB192D1DD331E100A33AC4 /* wrinkle_degree3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrinkle_degree3@2x.png"; sourceTree = "<group>"; };
 		E4AB192E1DD331E100A33AC4 /* wrinkle_degree4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrinkle_degree4@2x.png"; sourceTree = "<group>"; };
 		E4AB192F1DD331E100A33AC4 /* wrinkle_degree5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrinkle_degree5@2x.png"; sourceTree = "<group>"; };
+		E4AB197F1DD360CA00A33AC4 /* UIView+Capture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Capture.h"; sourceTree = "<group>"; };
+		E4AB19801DD360CA00A33AC4 /* UIView+Capture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Capture.m"; sourceTree = "<group>"; };
 		E90B86B11CBA9B64007AEFF4 /* MDWheelGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWheelGestureRecognizer.h; sourceTree = "<group>"; };
 		E90B86B21CBA9B64007AEFF4 /* MDWheelGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDWheelGestureRecognizer.m; sourceTree = "<group>"; };
 		E92D2EF61D3BBFB100E44264 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -935,6 +938,8 @@
 				E4AB18771DD3311100A33AC4 /* V */,
 				E4AB18791DD3312900A33AC4 /* VC */,
 				E4AB18781DD3311E00A33AC4 /* GR */,
+				E4AB197F1DD360CA00A33AC4 /* UIView+Capture.h */,
+				E4AB19801DD360CA00A33AC4 /* UIView+Capture.m */,
 				E4AB18491DD3309600A33AC4 /* MainInterface.storyboard */,
 				E4AB184C1DD3309600A33AC4 /* Assets.xcassets */,
 				E4AB184E1DD3309600A33AC4 /* Info.plist */,
@@ -977,8 +982,8 @@
 		E4AB18791DD3312900A33AC4 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				E4AB185C1DD3310C00A33AC4 /* MDNewMoodViewController.h */,
-				E4AB185D1DD3310C00A33AC4 /* MDNewMoodViewController.m */,
+				E4AB185C1DD3310C00A33AC4 /* MDMakeMoodViewController.h */,
+				E4AB185D1DD3310C00A33AC4 /* MDMakeMoodViewController.m */,
 				E4AB186A1DD3310C00A33AC4 /* MessagesViewController.h */,
 				E4AB186B1DD3310C00A33AC4 /* MessagesViewController.m */,
 			);
@@ -1963,8 +1968,9 @@
 				E4AB18741DD3310C00A33AC4 /* MDWheelGestureRecognizer.m in Sources */,
 				E4AB186E1DD3310C00A33AC4 /* MDMoodFaceView.m in Sources */,
 				E4AB18701DD3310C00A33AC4 /* MDProgressWheelView.m in Sources */,
+				E4AB19811DD360CA00A33AC4 /* UIView+Capture.m in Sources */,
 				E4AB18751DD3310C00A33AC4 /* MDWheelView.m in Sources */,
-				E4AB186F1DD3310C00A33AC4 /* MDNewMoodViewController.m in Sources */,
+				E4AB186F1DD3310C00A33AC4 /* MDMakeMoodViewController.m in Sources */,
 				E4AB186D1DD3310C00A33AC4 /* MDMoodColorView.m in Sources */,
 				E4AB18761DD3310C00A33AC4 /* MessagesViewController.m in Sources */,
 				E4AB186C1DD3310C00A33AC4 /* MDMoodButtonView.m in Sources */,
@@ -2293,6 +2299,7 @@
 				E4AB18521DD3309600A33AC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4AB18551DD3309600A33AC4 /* Build configuration list for PBXNativeTarget "IMessageMM" */ = {
 			isa = XCConfigurationList;
@@ -2301,6 +2308,7 @@
 				E4AB18501DD3309600A33AC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

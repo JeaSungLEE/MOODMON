@@ -6,6 +6,8 @@
 //  Copyright © 2016년 Kibeom Kim. All rights reserved.
 //
 
+#import "UIView+Capture.h"
+#import <Messages/Messages.h>
 #import <UIKit/UIKit.h>
 #import "MDDataManager.h"
 #import "MDWheelView.h"
@@ -19,7 +21,14 @@
 #import "MDTouchUpGestureRecognizer.h"
 #import "MDSmallMoodFaceView.h"
 
-@interface MDNewMoodViewController : UIViewController <MDWheelGestureRecognizerDelegate, UITextFieldDelegate>
+@protocol MDMessageDelegate <NSObject>
+
+@required
+-(void)setLayout:(MSMessageTemplateLayout *)layout;
+
+@end
+
+@interface MDMakeMoodViewController : UIViewController <MDMessageDelegate,MDWheelGestureRecognizerDelegate, UITextFieldDelegate>
 
 /* Model */
 @property MDMoodmon *mood;
@@ -60,8 +69,12 @@
 @property (strong, nonatomic) IBOutlet MDMoodColorView *saveButtonBackground;
 
 
-- (void) showAlert:(NSNotification*)notification;
+@property (weak, nonatomic) id<MDMessageDelegate> delegate;
+//@property (weak, nonatomic) MSConversation *Conversation;
 
+
+- (void) showAlert:(NSNotification*)notification;
++ (UIImage *) imageWithView:(UIView *)view;
 //-(void) presentCalendar;
 
 @end

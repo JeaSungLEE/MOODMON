@@ -6,9 +6,11 @@
 //  Copyright © 2016년 Kibeom Kim. All rights reserved.
 //
 
-#import "MDNewMoodViewController.h"
+#define CURRENT_WINDOW_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define CURRENT_WINDOW_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#import "MDMakeMoodViewController.h"
 
-@interface MDNewMoodViewController ()
+@interface MDMakeMoodViewController ()
 @property CGFloat wheelDegree;
 @property NSInteger moodCount;
 @property NSArray *moodButtons;
@@ -19,8 +21,8 @@
 
 
 
-@implementation MDNewMoodViewController
-
+@implementation MDMakeMoodViewController
+@synthesize delegate;
 @synthesize wheelDegree;
 
 - (void)viewDidLoad {
@@ -29,7 +31,8 @@
     [self moodViewInit];
     [self addTapGestureRecognizer];
     [self addWheelGestureRecognizer];
-    [self drawRecentMoodView];    [self menuControllerInit];
+    [self drawRecentMoodView];
+    [self menuControllerInit];
 }
 
 
@@ -461,10 +464,40 @@
                     completion:nil];
 }
 
-
-
 - (void) presentCalendar{
     
+}
+
+
+//위는 기범's 그대로 가져왔어
+-(UIView*)mixedView{
+    UIView *mixedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 300)];
+    mixedView.backgroundColor = [UIColor whiteColor];
+    mixedView.contentMode = UIViewContentModeCenter;
+    mixedView.contentMode = UIViewContentModeScaleAspectFit;
+    [mixedView addSubview:self.moodIntensityView];
+    [mixedView addSubview:self.moodColor];
+    [mixedView addSubview:self.mixedMoodFace];
+    mixedView.clipsToBounds = YES;
+    return mixedView;
+}
+
+//확인버튼 눌렀을때
+- (IBAction)confirmMoodMon:(id)sender {
+    MSMessageTemplateLayout *layout = [[MSMessageTemplateLayout alloc] init];
+    UIImage *largeImage = [UIView imageWithView:[self mixedView]];
+    layout.image = [self cropImage:largeImage];
+    [delegate setLayout:layout];
+}
+
+//이미지 테두리 자르기
+-(UIImage*)cropImage:(UIImage*)largeImage{
+    CGRect cropRect = CGRectMake(CURRENT_WINDOW_WIDTH/2,CURRENT_WINDOW_WIDTH/2, CURRENT_WINDOW_HEIGHT/2+140, CURRENT_WINDOW_HEIGHT/2+120);
+    //자르는 기준을 모르겠어 그냥 계속 빌드한면서 맞춘 값인데 왜 이런 값이 나올지
+    CGImageRef imageRef = CGImageCreateWithImageInRect([largeImage CGImage], cropRect);
+    UIImage *image = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return image;
 }
 
 
