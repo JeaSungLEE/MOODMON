@@ -42,9 +42,6 @@
 }
 
 -(void)willTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
-}
-
--(void)didTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
     //imessage뷰가 크기가 바뀔때 불러지는 메서드에서
     //compact는 imessage가 작아질때 expanded는 커질때 VC전환시키기
     if(presentationStyle == MSMessagesAppPresentationStyleCompact){
@@ -55,6 +52,10 @@
         //델리게이트로 메세지 값 받아옴.
         [self presentViewController:VC animated:YES completion:nil];
     }
+}
+
+-(void)didTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
+
 }
 
 - (IBAction)buttonTouchUp:(id)sender {
