@@ -193,7 +193,7 @@
         mood.userInteractionEnabled = YES;
         MDTouchDownGestureRecognizer *touchDownRecognizer = [[MDTouchDownGestureRecognizer alloc] initWithTarget:self action:@selector(moodButtonTouchedDown:)];
         MDTouchUpGestureRecognizer *touchUpRecognizer = [[MDTouchUpGestureRecognizer alloc] initWithTarget:self
-                                                                                     action:@selector(moodButtonTouchedUp:)];
+                                                                                                    action:@selector(moodButtonTouchedUp:)];
         [mood addGestureRecognizer:touchDownRecognizer];
         [mood addGestureRecognizer:touchUpRecognizer];
     }
@@ -230,10 +230,16 @@
         [self showWheelView:moodButton];
         [self addNewChosenMood:moodButton.num];
         self.textField.hidden = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                            object:nil
+                                                          userInfo:@{@"missionName" : @"PressMoodMon"}];
         return;
     }
     if(moodButton.isSelected==NO && [self isChosen:moodButton]) {      // 감정선택을 해제하기 위해 버튼을 누른 경우, 해당 감정을 chosenMoods 배열에서 제거함.
         [self deleteFromChosenMoods:moodButton.num];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                            object:nil
+                                                          userInfo:@{@"missionName" : @"TapSameMoodMon"}];
     }
 }
 
@@ -244,22 +250,22 @@
 
 
 - (void)menuControllerAppear:(MDMoodButtonView *)moodButton {
-//    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:moodButton.superview];
-//    UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[moodButton]];
-//    gravityBehavior.magnitude = 0.2;
-//    [self.animator addBehavior:gravityBehavior];
-//    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[moodButton]];
-//    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-//    [self.animator addBehavior:collisionBehavior];
-//    UIDynamicItemBehavior *elasticityBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[moodButton]];
-//    elasticityBehavior.elasticity = 0.7f;
-//    [self.animator addBehavior:elasticityBehavior];
-//
-//    
-//    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Press and wheel to choose your mood" action:@selector(menuControllerDisappear)];
-//    _menuController.menuItems = [NSArray arrayWithObjects:menuItem, nil];
-//    [_menuController setTargetRect:moodButton.frame inView:moodButton.superview];
-//    [_menuController setMenuVisible:YES animated:YES];
+    //    _animator = [[UIDynamicAnimator alloc] initWithReferenceView:moodButton.superview];
+    //    UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[moodButton]];
+    //    gravityBehavior.magnitude = 0.2;
+    //    [self.animator addBehavior:gravityBehavior];
+    //    UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[moodButton]];
+    //    collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+    //    [self.animator addBehavior:collisionBehavior];
+    //    UIDynamicItemBehavior *elasticityBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[moodButton]];
+    //    elasticityBehavior.elasticity = 0.7f;
+    //    [self.animator addBehavior:elasticityBehavior];
+    //
+    //
+    //    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Press and wheel to choose your mood" action:@selector(menuControllerDisappear)];
+    //    _menuController.menuItems = [NSArray arrayWithObjects:menuItem, nil];
+    //    [_menuController setTargetRect:moodButton.frame inView:moodButton.superview];
+    //    [_menuController setMenuVisible:YES animated:YES];
     
     
     __block CGRect movingFrame = moodButton.frame;
@@ -269,11 +275,11 @@
                           delay:0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                            movingFrame.origin.y -= movingDistance;
-                            movingFrame.size.height += growingSize;
-                            movingFrame.size.width += growingSize;
-                            moodButton.frame = movingFrame;
-                        }
+                         movingFrame.origin.y -= movingDistance;
+                         movingFrame.size.height += growingSize;
+                         movingFrame.size.width += growingSize;
+                         moodButton.frame = movingFrame;
+                     }
                      completion:^(BOOL finished) {
                          [UIView animateWithDuration:1
                                                delay:0
@@ -281,11 +287,11 @@
                                initialSpringVelocity:0.2
                                              options:0
                                           animations:^{
-                                                movingFrame.origin.y += movingDistance;
-                                                movingFrame.size.height -= growingSize;
-                                                movingFrame.size.width -= growingSize;
-                                                moodButton.frame = movingFrame;
-                                             }
+                                              movingFrame.origin.y += movingDistance;
+                                              movingFrame.size.height -= growingSize;
+                                              movingFrame.size.width -= growingSize;
+                                              moodButton.frame = movingFrame;
+                                          }
                                           completion:nil];
                          
                          UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Press and wheel to choose your mood" action:@selector(menuControllerDisappear)];
@@ -303,7 +309,6 @@
 
 - (void)moodButtonTouchedUp:(UIGestureRecognizer *)recognizer {
     CFTimeInterval elapsedTime = CACurrentMediaTime() - _startTime;
-    NSLog(@"%f", elapsedTime);
     MDMoodButtonView *moodButton = (MDMoodButtonView *)recognizer.view;
     
     // 0.35초보다 빨리 TouchUp하면 menuController가 나옴.
@@ -319,8 +324,17 @@
                         self.saveButtonBackground.hidden = (self.moodCount<1) ? YES : NO;
                     }
                     completion:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"TapMoodMon"}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"TapOtherMoodMon"}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"TakeFingerOffFromWheel"}];
 }
-
 
 
 - (void)setChoosingMoodImageByNum:(NSNumber *)num {
@@ -328,7 +342,6 @@
     int moodIntensity = num.intValue%10;
     self.moodIntensityView.image = self.choosingMoodImages[moodClass][moodIntensity];
 }
-
 
 
 - (void)changeMoodButtonImage:(MDMoodButtonView *)moodButton {
@@ -342,12 +355,12 @@
 
 // 선택한 moodButton에 해당하는 wheel 색깔로 바꿔서 보여줌
 - (void)showWheelView:(MDMoodButtonView *)moodButton {
-//    [UIView transitionWithView:self.wheel
-//                      duration:0.2
-//                       options:UIViewAnimationOptionTransitionCrossDissolve
-//                    animations:^{
-//                    }
-//                    completion:nil];
+    //    [UIView transitionWithView:self.wheel
+    //                      duration:0.2
+    //                       options:UIViewAnimationOptionTransitionCrossDissolve
+    //                    animations:^{
+    //                    }
+    //                    completion:nil];
     self.wheel.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"%@_wheel", moodButton.name]];
     self.wheel.transform = CGAffineTransformMakeRotation(moodButton.startAngle);
     self.progressWheel.currentMoodNum = moodButton.num.intValue/10;
@@ -362,7 +375,6 @@
 }
 
 
-
 - (void)addNewChosenMood:(NSNumber *)moodNum {
     // 새로 선택한 감정을 chosenMoods에 추가.
     // chosenMoods의 역할 : 선택한 mood들의 정보와 순서를 임시로 저장해둠. 나중에 chosenMoods를 바탕으로 디비에 입력할 거임.
@@ -375,7 +387,7 @@
     [self.saveButtonBackground setNeedsDisplay];
     
     [self.chosenMoods addObject:chosenMood];
-//    NSLog(@"%@", self.chosenMoods);
+    //    NSLog(@"%@", self.chosenMoods);
 }
 
 
@@ -389,7 +401,6 @@
     }
     return NO;
 }
-
 
 
 - (void)deleteFromChosenMoods:(NSNumber *)moodClass {
@@ -416,7 +427,6 @@
 }
 
 
-
 - (void)addWheelGestureRecognizer {
     MDWheelGestureRecognizer *recognizer = [[MDWheelGestureRecognizer alloc] initWithTarget:self
                                                                                 wheelAction:@selector(rotateWheel:)
@@ -424,7 +434,6 @@
     [recognizer setDelegate:self];
     [self.container addGestureRecognizer:recognizer];
 }
-
 
 
 - (void)rotateWheel:(id)sender {
@@ -464,7 +473,6 @@
 }
 
 
-
 - (void)transformWheelWithAngle:(CGFloat)angle {
     CGAffineTransform wheelTransform = self.wheel.transform;
     CGAffineTransform newWheelTransform = CGAffineTransformRotate(wheelTransform, angle);
@@ -486,7 +494,12 @@
                         animations:^{
                             self.moodIntensityView.image = self.choosingMoodImages[moodClass][moodIntensity.intValue];
                         }
-                        completion:nil];
+                        completion:^(BOOL finished) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                                                object:nil
+                                                                              userInfo:@{@"missionName" : @"WheelMoodMon"}];
+                            
+                        }];
     }
 }
 
@@ -537,6 +550,9 @@
         return;
     }
     [self.textField resignFirstResponder];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"Comment"}];
     [self moveEntireViewWithDuration:0.3 distance:+200];
 }
 
@@ -554,8 +570,12 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     [self moveEntireViewWithDuration:0.3 distance:+200];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"Comment"}];
     return YES;
 }
+
 
 - (void)moveEntireViewWithDuration:(CGFloat)duration distance:(CGFloat)distance {
     [UIView transitionWithView:self.view
@@ -569,7 +589,7 @@
 
 
 - (IBAction)saveNewMoodMon:(id)sender {
-//    NSString *comment = @"text Field's text";  //차후 로컬변수가 아닌 인스턴스 변수로 만들어야 함.
+    //    NSString *comment = @"text Field's text";  //차후 로컬변수가 아닌 인스턴스 변수로 만들어야 함.
     int firstChosen=0, secondChosen=0, thirdChosen=0;
     
     if([self.chosenMoods count] > 0){

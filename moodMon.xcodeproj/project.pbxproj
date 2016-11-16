@@ -135,6 +135,10 @@
 		E986EDB61CDFBE2F00792C55 /* wrinkle_degree3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E986ED471CDFBE2F00792C55 /* wrinkle_degree3@2x.png */; };
 		E986EDB71CDFBE2F00792C55 /* wrinkle_degree4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E986ED481CDFBE2F00792C55 /* wrinkle_degree4@2x.png */; };
 		E986EDB81CDFBE2F00792C55 /* wrinkle_degree5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E986ED491CDFBE2F00792C55 /* wrinkle_degree5@2x.png */; };
+		E98C99581DD08ECB001BDC38 /* tutorial_box.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C99571DD08ECB001BDC38 /* tutorial_box.png */; };
+		E98C995A1DD08FB5001BDC38 /* tutorial_next.png in Resources */ = {isa = PBXBuildFile; fileRef = E98C99591DD08FB5001BDC38 /* tutorial_next.png */; };
+		E98C995D1DD09118001BDC38 /* MDNewMoodTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98C995C1DD09118001BDC38 /* MDNewMoodTutorialViewController.m */; };
+		E98C99601DD09A77001BDC38 /* MDNewMoodTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98C995F1DD09A77001BDC38 /* MDNewMoodTutorialView.m */; };
 		E9A93B811CFAD37800421076 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A93B781CFAD37800421076 /* Icon-60.png */; };
 		E9A93B821CFAD37800421076 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A93B791CFAD37800421076 /* Icon-72.png */; };
 		E9A93B831CFAD37800421076 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A93B7A1CFAD37800421076 /* Icon-72@2x.png */; };
@@ -376,6 +380,12 @@
 		E986ED471CDFBE2F00792C55 /* wrinkle_degree3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrinkle_degree3@2x.png"; sourceTree = "<group>"; };
 		E986ED481CDFBE2F00792C55 /* wrinkle_degree4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrinkle_degree4@2x.png"; sourceTree = "<group>"; };
 		E986ED491CDFBE2F00792C55 /* wrinkle_degree5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wrinkle_degree5@2x.png"; sourceTree = "<group>"; };
+		E98C99571DD08ECB001BDC38 /* tutorial_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_box.png; sourceTree = "<group>"; };
+		E98C99591DD08FB5001BDC38 /* tutorial_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_next.png; sourceTree = "<group>"; };
+		E98C995B1DD09118001BDC38 /* MDNewMoodTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialViewController.h; sourceTree = "<group>"; };
+		E98C995C1DD09118001BDC38 /* MDNewMoodTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialViewController.m; sourceTree = "<group>"; };
+		E98C995E1DD09A77001BDC38 /* MDNewMoodTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialView.h; sourceTree = "<group>"; };
+		E98C995F1DD09A77001BDC38 /* MDNewMoodTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialView.m; sourceTree = "<group>"; };
 		E9A93B781CFAD37800421076 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		E9A93B791CFAD37800421076 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		E9A93B7A1CFAD37800421076 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -615,6 +625,8 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E98C99571DD08ECB001BDC38 /* tutorial_box.png */,
+				E98C99591DD08FB5001BDC38 /* tutorial_next.png */,
 				E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */,
 				E986ECD61CDFBE2F00792C55 /* circle@2x.png */,
 				E9A93B8A1CFAEE4800421076 /* comment box@2x.png */,
@@ -836,6 +848,8 @@
 			children = (
 				658BE7171CB4CE98006EB718 /* MDNewMoodViewController.h */,
 				658BE7181CB4CE98006EB718 /* MDNewMoodViewController.m */,
+				E98C995B1DD09118001BDC38 /* MDNewMoodTutorialViewController.h */,
+				E98C995C1DD09118001BDC38 /* MDNewMoodTutorialViewController.m */,
 				E9CD99661CE883B000C9DBB7 /* gesture recognizer */,
 				E9CD99671CE883C200C9DBB7 /* view */,
 			);
@@ -913,6 +927,8 @@
 				E9A97AB01CFBA29700346DBF /* MDSaveMoodFaceView.h */,
 				E9A97AB11CFBA29700346DBF /* MDSaveMoodFaceView.m */,
 				E9A97AB31CFBA2BE00346DBF /* MDSaveMoodFaceView.xib */,
+				E98C995E1DD09A77001BDC38 /* MDNewMoodTutorialView.h */,
+				E98C995F1DD09A77001BDC38 /* MDNewMoodTutorialView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1089,6 +1105,7 @@
 				E9CD997F1CE8E2AB00C9DBB7 /* sad_wheel@2x.png in Resources */,
 				CEABEFFB1CFAF2DC00AA4E60 /* excited_filter@2x.png in Resources */,
 				E986ED8E1CDFBE2F00792C55 /* excited_mouth_degree5@2x.png in Resources */,
+				E98C995A1DD08FB5001BDC38 /* tutorial_next.png in Resources */,
 				E9B03E221CF1FD700069741F /* excited_degree3@2x.png in Resources */,
 				E9B03E2A1CF1FD700069741F /* sad_degree1@2x.png in Resources */,
 				E986ED9C1CDFBE2F00792C55 /* tired_mouth_degree4@2x.png in Resources */,
@@ -1110,6 +1127,7 @@
 				CEABF0021CFAF2DC00AA4E60 /* tired_unfilter@2x.png in Resources */,
 				E986ED951CDFBE2F00792C55 /* sad_mouth_degree2@2x.png in Resources */,
 				E986EDA51CDFBE2F00792C55 /* tear_degree1@2x.png in Resources */,
+				E98C99581DD08ECB001BDC38 /* tutorial_box.png in Resources */,
 				E986ED4A1CDFBE2F00792C55 /* basic shadow@2x.png in Resources */,
 				E9A93B8E1CFB182B00421076 /* launch icon@2x.png in Resources */,
 				E986EDA81CDFBE2F00792C55 /* tear_degree4@2x.png in Resources */,
@@ -1206,8 +1224,10 @@
 				CEABEFEE1CFAD7AC00AA4E60 /* MDDocument.m in Sources */,
 				E9A97AB21CFBA29700346DBF /* MDSaveMoodFaceView.m in Sources */,
 				65980E2E1CC0D1DF0092EA18 /* MDMonthViewController.m in Sources */,
+				E98C995D1DD09118001BDC38 /* MDNewMoodTutorialViewController.m in Sources */,
 				CE87EC521CCE118500329E16 /* MDSearchTableViewController.m in Sources */,
 				CE4A8A3B1CABCCB1006B73B7 /* AppDelegate.m in Sources */,
+				E98C99601DD09A77001BDC38 /* MDNewMoodTutorialView.m in Sources */,
 				E95EB77F1CC4BCAB00141FBF /* MDRecentMoodView.m in Sources */,
 				658BE7301CB4CE98006EB718 /* MDMoodButtonView.m in Sources */,
 				E90B86B31CBA9B64007AEFF4 /* MDWheelGestureRecognizer.m in Sources */,
