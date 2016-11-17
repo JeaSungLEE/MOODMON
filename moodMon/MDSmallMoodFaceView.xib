@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MDSmallMoodFaceView">
@@ -25,55 +24,63 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="eyebrow_small" image="angry_eyebrow_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ITt-M7-1HG" userLabel="eyebrow">
+                    <rect key="frame" x="3" y="11" width="37" height="9"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="9" id="IZp-Ex-BjZ"/>
                         <constraint firstAttribute="width" constant="37" id="JIA-Bd-TAv"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="wrinkle_small" image="wrinkle_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="joH-PG-K7S" userLabel="wrinkle">
+                    <rect key="frame" x="7" y="6" width="30" height="11"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="11" id="53l-Mp-cnT"/>
                         <constraint firstAttribute="width" constant="30" id="b4L-aR-DCO"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="cheek_small" image="cheek_degree5.png" translatesAutoresizingMaskIntoConstraints="NO" id="sWK-YP-GY4" userLabel="cheek">
+                    <rect key="frame" x="7" y="23" width="30" height="2"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="Yhh-xY-uxG"/>
                         <constraint firstAttribute="width" constant="30" id="i6V-w9-S9c"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="small_eye" image="default_eye.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSQ-D9-Cyl" userLabel="eye">
+                    <rect key="frame" x="9" y="13" width="25" height="13"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="13" id="WCa-oT-0Dl"/>
                         <constraint firstAttribute="width" constant="25" id="rD2-MH-umb"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="darkcircle_small" image="darkcircle_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="iKK-dB-FAs" userLabel="dark circle">
+                    <rect key="frame" x="7" y="21" width="30" height="4"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="chN-Wj-GcG"/>
                         <constraint firstAttribute="height" constant="4" id="u9Q-gj-nTN"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="tear_small" image="tear_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="c5A-CF-cOq" userLabel="tear">
+                    <rect key="frame" x="7" y="23" width="31" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="31" id="Ber-Cp-Moy"/>
                         <constraint firstAttribute="height" constant="18" id="SMd-BZ-If1"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="mouth_small" image="angry_mouth_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="eem-Df-1R1" userLabel="mouth">
+                    <rect key="frame" x="9" y="20" width="26" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="0KM-eS-ANg"/>
                         <constraint firstAttribute="width" constant="26" id="FsQ-cZ-BAt"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="background_small" image="basic shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="lvR-NP-pH7" userLabel="background">
+                    <rect key="frame" x="-2" y="-2" width="47" height="47"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="47" id="Xmm-La-UF1"/>
                         <constraint firstAttribute="height" constant="47" id="gfn-X8-THM"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="eem-Df-1R1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="9.5" id="Hms-4J-wXB"/>
                 <constraint firstItem="joH-PG-K7S" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10.5" id="Om9-fz-awh"/>
@@ -95,6 +102,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="647" y="416"/>
         </view>
