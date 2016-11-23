@@ -492,7 +492,7 @@
 
 //이미지 테두리 자르기
 -(UIImage*)cropImage:(UIImage*)largeImage{
-    CGRect cropRect = CGRectMake(CURRENT_WINDOW_WIDTH/2,CURRENT_WINDOW_WIDTH/2, CURRENT_WINDOW_HEIGHT/2+140, CURRENT_WINDOW_HEIGHT/2+120);
+    CGRect cropRect = CGRectMake(CURRENT_WINDOW_WIDTH/2,CURRENT_WINDOW_WIDTH/2, (CURRENT_WINDOW_HEIGHT/2+15)*(CURRENT_WINDOW_WIDTH/320), (CURRENT_WINDOW_HEIGHT/2)*(CURRENT_WINDOW_WIDTH/320));
     //자르는 기준을 모르겠어 그냥 계속 빌드한면서 맞춘 값인데 왜 이런 값이 나올지
     CGImageRef imageRef = CGImageCreateWithImageInRect([largeImage CGImage], cropRect);
     UIImage *image = [UIImage imageWithCGImage:imageRef];
