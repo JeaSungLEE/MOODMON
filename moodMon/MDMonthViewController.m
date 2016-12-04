@@ -585,7 +585,7 @@ UIFont *boldQuicksand;
         headerView.transform = CGAffineTransformMakeTranslation(0, MAX(offsetY, 0));
     }
 }
-
+//이건 왜 있는건가여???
 
 #pragma tableviewDelegate
 
@@ -623,7 +623,6 @@ UIFont *boldQuicksand;
     cell.timeLabel.text = timeText;
     cell.itemText = [moodmonConf[indexPath.row] valueForKey:@"_moodComment"];
     cell.delegate = self;
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
     cell.moodColorView.layer.masksToBounds = YES;
@@ -751,6 +750,16 @@ UIFont *boldQuicksand;
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MDEndPageViewController *VC = [self.storyboard instantiateViewControllerWithIdentifier:@"MDEndPageViewController"];
+    
+    MDMonthTimeLineCellTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    VC.moodColorView = cell.moodColorView;
+    VC.timest = cell.timeLabel.text;
+    VC.comment = cell.commentLabel.text;
+    
+    VC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:VC animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

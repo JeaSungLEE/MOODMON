@@ -48,6 +48,7 @@
 		CEDACCBE1CEC380700FBD201 /* MDCustomStoryboardUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDACCBD1CEC373900FBD201 /* MDCustomStoryboardUnwindSegue.m */; };
 		CEDD938E1CC3BA4300028F80 /* MDMoodFilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD938D1CC3BA4300028F80 /* MDMoodFilterTableViewController.m */; };
 		CEDD93911CC3C07F00028F80 /* MDMoodFilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD93901CC3C07F00028F80 /* MDMoodFilterTableViewCell.m */; };
+		E484D52D1DF3E28000CB6232 /* MDEndPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E484D52C1DF3E28000CB6232 /* MDEndPageViewController.m */; };
 		E4AB18391DD3309600A33AC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4AB18381DD3309600A33AC4 /* Assets.xcassets */; };
 		E4AB18401DD3309600A33AC4 /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E4AB183F1DD3309600A33AC4 /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E4AB18441DD3309600A33AC4 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AB18431DD3309600A33AC4 /* Messages.framework */; };
@@ -442,6 +443,8 @@
 		CEDD938D1CC3BA4300028F80 /* MDMoodFilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodFilterTableViewController.m; sourceTree = "<group>"; };
 		CEDD938F1CC3C07F00028F80 /* MDMoodFilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoodFilterTableViewCell.h; sourceTree = "<group>"; };
 		CEDD93901CC3C07F00028F80 /* MDMoodFilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodFilterTableViewCell.m; sourceTree = "<group>"; };
+		E484D52B1DF3E28000CB6232 /* MDEndPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEndPageViewController.h; sourceTree = "<group>"; };
+		E484D52C1DF3E28000CB6232 /* MDEndPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEndPageViewController.m; sourceTree = "<group>"; };
 		E4AB18361DD3309600A33AC4 /* IMessageMM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMessageMM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AB18381DD3309600A33AC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4AB183A1DD3309600A33AC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -842,6 +845,7 @@
 				6575CAE61CE20AA7005E390F /* MDCustomStoryboardUnwindSegue.h */,
 				CEDACCBD1CEC373900FBD201 /* MDCustomStoryboardUnwindSegue.m */,
 				CE4A8A3A1CABCCB1006B73B7 /* AppDelegate.m */,
+				E484D52A1DF3E25B00CB6232 /* endpage scene */,
 				E986EDB91CDFBE9400792C55 /* new mood scene */,
 				E927D31A1D27F69F00CFB924 /* year scene */,
 				6575788C1CB4BE7600D75D5E /* month scene */,
@@ -920,6 +924,15 @@
 				CE3AC3BA1CF183420037BC71 /* MDDataSettingTableViewController.m */,
 			);
 			name = "other function";
+			sourceTree = "<group>";
+		};
+		E484D52A1DF3E25B00CB6232 /* endpage scene */ = {
+			isa = PBXGroup;
+			children = (
+				E484D52B1DF3E28000CB6232 /* MDEndPageViewController.h */,
+				E484D52C1DF3E28000CB6232 /* MDEndPageViewController.m */,
+			);
+			name = "endpage scene";
 			sourceTree = "<group>";
 		};
 		E4AB18371DD3309600A33AC4 /* IMessageMM */ = {
@@ -1935,6 +1948,7 @@
 				CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */,
 				65B0367A1CDFA95400D095F0 /* MDMakeMoodMonView.m in Sources */,
 				CEBA98721CDF1C79006D2FFD /* MDSearchTableViewCell.m in Sources */,
+				E484D52D1DF3E28000CB6232 /* MDEndPageViewController.m in Sources */,
 				CE4A8A381CABCCB1006B73B7 /* main.m in Sources */,
 				E97B30AA1CCD949100FB8502 /* MDMoodColorView.m in Sources */,
 				CE3AC3BB1CF183420037BC71 /* MDDataSettingTableViewController.m in Sources */,
