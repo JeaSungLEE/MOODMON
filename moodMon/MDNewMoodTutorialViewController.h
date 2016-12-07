@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MDNewMoodTutorialView;
 
 @interface MDNewMoodTutorialViewController : UIViewController
+
+@property CGRect textFieldFrame;
 
 @end

@@ -19,6 +19,7 @@
     NSDate *now;
     NSDateComponents *nowComponents;
 }
+@property (strong, nonatomic) IBOutlet UIButton *tutorialView;
 
 @end
 
@@ -59,7 +60,6 @@ UIFont *boldQuicksand;
 
 
 - (void)viewDidLoad {
-    
     count=0;
     [super viewDidLoad];
     _mddm = [MDDataManager sharedDataManager];
@@ -101,6 +101,8 @@ UIFont *boldQuicksand;
     
     //[self moreDateInfo];
     indexPathsToDelete = [[NSMutableArray alloc] init];
+    
+    self.navigationController.navigationBar.layer.opacity = 0;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -816,6 +818,12 @@ UIFont *boldQuicksand;
 }
 
 
+- (IBAction)closeTutorial:(UIButton *)sender {
+    [UIView animateWithDuration:0.3 animations:^{
+        _tutorialView.layer.opacity = 0;
+        self.navigationController.navigationBar.layer.opacity = 1;
+    }];
+}
 
 
 @end

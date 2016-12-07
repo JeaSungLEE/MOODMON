@@ -1777,7 +1777,7 @@
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-M3-Tt8" customClass="MDNewMoodTutorialView">
                                 <connections>
-                                    <segue destination="pxa-vQ-ptT" kind="embed" id="FJH-sS-Feu"/>
+                                    <segue destination="pxa-vQ-ptT" kind="embed" identifier="newMoodTutorial" id="FJH-sS-Feu"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -2366,30 +2366,37 @@
                                     <outlet property="delegate" destination="XeT-CV-5As" id="1Wr-4a-9um"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LL-oU-c8v">
+                                <state key="normal" image="Calendar Tutorial.png"/>
+                                <connections>
+                                    <action selector="closeTutorial:" destination="XeT-CV-5As" eventType="touchUpInside" id="YRt-3b-09M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="K4a-au-hDp" secondAttribute="bottom" id="9hw-Sh-9rb"/>
+                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="44" id="1wY-EA-Dsh"/>
+                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="-49" id="5LP-Aw-Qus"/>
+                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="132" id="7Xp-uI-MPb"/>
+                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="K4a-au-hDp" secondAttribute="bottom" id="8EI-UV-R4X"/>
+                            <constraint firstItem="8LL-oU-c8v" firstAttribute="height" secondItem="8Tw-nI-bq1" secondAttribute="height" id="Apj-T0-qtB"/>
                             <constraint firstItem="K4a-au-hDp" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" id="CvR-SH-uvC"/>
-                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="44" id="Iv6-yx-Laj"/>
-                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="-49" id="Q0w-N4-8Fa"/>
+                            <constraint firstItem="8LL-oU-c8v" firstAttribute="width" secondItem="8Tw-nI-bq1" secondAttribute="width" id="LHw-2Z-3J4"/>
+                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="44" id="Lpe-lm-P1i"/>
                             <constraint firstAttribute="bottom" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="44" id="R43-de-cL3"/>
-                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="132" id="SI6-CD-yOb"/>
                             <constraint firstItem="kCc-hW-Vsq" firstAttribute="centerX" secondItem="8Tw-nI-bq1" secondAttribute="centerX" id="XGQ-Uz-sES"/>
                             <constraint firstItem="K4a-au-hDp" firstAttribute="centerY" secondItem="8Tw-nI-bq1" secondAttribute="centerY" id="fsa-7Z-Bwu"/>
+                            <constraint firstItem="8LL-oU-c8v" firstAttribute="centerX" secondItem="8Tw-nI-bq1" secondAttribute="centerX" id="mMh-mo-RrN"/>
+                            <constraint firstItem="8LL-oU-c8v" firstAttribute="centerY" secondItem="8Tw-nI-bq1" secondAttribute="centerY" id="ofe-gm-Im2"/>
                             <constraint firstItem="K4a-au-hDp" firstAttribute="centerX" secondItem="8Tw-nI-bq1" secondAttribute="centerX" id="rB7-sC-7WU"/>
                             <constraint firstItem="kCc-hW-Vsq" firstAttribute="width" secondItem="8Tw-nI-bq1" secondAttribute="width" multiplier="1:1" id="rOV-3s-5Hg">
                                 <variation key="widthClass=compact" constant="2"/>
                             </constraint>
-                            <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="44" id="vKQ-Q7-wIM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="R43-de-cL3"/>
-                                <exclude reference="Iv6-yx-Laj"/>
-                                <exclude reference="Q0w-N4-8Fa"/>
-                                <exclude reference="SI6-CD-yOb"/>
                                 <exclude reference="CvR-SH-uvC"/>
                                 <exclude reference="fsa-7Z-Bwu"/>
                             </mask>
@@ -2424,6 +2431,7 @@
                         <outlet property="tableViews" destination="kCc-hW-Vsq" id="Ped-2u-kEC"/>
                         <outlet property="tableviewHeight" destination="kkf-Vn-Y9q" id="lwA-Hx-ZJE"/>
                         <outlet property="toolbarContainer" destination="6Wu-vp-s1m" id="8CU-dw-1ss"/>
+                        <outlet property="tutorialView" destination="8LL-oU-c8v" id="yNC-UE-WFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phI-SD-SCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2445,7 +2453,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bpv-3I-NYe" customClass="MDNavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ru9-9D-h38">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ru9-9D-h38">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2463,7 +2471,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GN2-Fj-BDm" customClass="MDNavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="klu-ey-2vs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="klu-ey-2vs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -2514,7 +2522,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7ho-Ul-E35" customClass="MDNavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lzg-A2-epU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lzg-A2-epU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2578,6 +2586,8 @@
                     <connections>
                         <outlet property="nextButton" destination="jW9-uX-R1g" id="4vT-VU-Dhe"/>
                         <outlet property="textLabel" destination="jZJ-Yc-eWv" id="ikU-kV-0Yo"/>
+                        <outlet property="tutorialBox" destination="bfx-uE-8AC" id="OK1-v7-o3N"/>
+                        <outlet property="tutorialBoxTopConstraint" destination="QjA-uz-73z" id="7EQ-i3-8mh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYi-5e-rBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2586,6 +2596,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Calendar Tutorial.png" width="1125" height="1994"/>
         <image name="angry_unfilter.png" width="29" height="29"/>
         <image name="angry_unselect.png" width="261" height="265"/>
         <image name="basic shadow.png" width="280" height="280"/>

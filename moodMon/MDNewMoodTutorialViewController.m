@@ -7,10 +7,13 @@
 //
 
 #import "MDNewMoodTutorialViewController.h"
+#import "MDNewMoodTutorialView.h"
 
 @interface MDNewMoodTutorialViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *textLabel;
 @property (strong, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) IBOutlet UIImageView *tutorialBox;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tutorialBoxTopConstraint;
 @property NSArray *contents;
 @property NSInteger currentIndex;
 @end
@@ -70,8 +73,8 @@
                       @{@"text" : @"Now comment on your feelings\nbeneath the MoodMons!",
                         @"missionName" : @"Comment",
                         @"hasNextButton" : @NO},
-                      @{@"text" : @"Great job!\n Now press button\nto save your feelings!\nOr button to exit.",
-                        @"missionName" : @"none",
+                      @{@"text" : @"Great job!\n Now press top left button\nto save your feelings!\nOr top right button to exit.",
+                        @"missionName" : @"Exit",
                         @"hasNextButton" : @NO}];
 }
 
@@ -87,12 +90,70 @@
     [self showNextContents];
 }
 
+
 - (void)showNextContents {
     _currentIndex++;
-    [UIView animateWithDuration:0.2 animations:^{
-        _textLabel.text = _contents[_currentIndex][@"text"];
-        _nextButton.layer.opacity = ([_contents[_currentIndex][@"hasNextButton"] isEqual:@YES]) ? 1 : 0;
+    
+    if([_contents[_currentIndex][@"missionName"] isEqual:@"Exit"]) {
+        _tutorialBoxTopConstraint.constant = self.view.frame.size.height/2 - 150;
+        
+        [self.view setNeedsUpdateConstraints];
+        [UIView animateWithDuration:0.4 delay:0.3 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeTouchArea"
+                                                                object:nil
+                                                              userInfo:@{@"touchAreaBottom":[NSNumber numberWithFloat:_tutorialBox.frame.origin.y]}];
+        }];
+    }
+    
+    [UIView transitionWithView:_textLabel
+                      duration:0.2
+                       options:UIViewAnimationOptionTransitionFlipFromTop
+                    animations:^{
+                        _textLabel.text = _contents[_currentIndex][@"text"];
+                    } completion:^(BOOL finished) {
+                        [UIView animateWithDuration:0.2 animations:^{
+                            _nextButton.layer.opacity = ([_contents[_currentIndex][@"hasNextButton"] isEqual:@YES]) ? 1 : 0;
+                        }];
+                        if([_contents[_currentIndex][@"missionName"] isEqual:@"Comment"]) {
+                            [self drawCircleAroundCommentField];
+                        }
+                    }];
+}
+
+
+- (void)drawCircleAroundCommentField {
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:_textFieldFrame];
+    CAShapeLayer *pathLayer = [CAShapeLayer layer];
+    pathLayer.frame = self.view.bounds;
+    pathLayer.path = path.CGPath;
+    pathLayer.fillColor = [UIColor clearColor].CGColor;
+    pathLayer.strokeColor = [UIColor colorWithRed:1.00 green:0.42 blue:0.42 alpha:1.00].CGColor;
+    pathLayer.lineWidth = 9;
+    pathLayer.lineCap = kCALineCapRound;
+    [self.view.layer addSublayer:pathLayer];
+    
+    
+    [CATransaction begin];
+    // draw circle
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = 1;
+    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    [CATransaction setCompletionBlock:^{
+        // fade out circle
+        CABasicAnimation *fadeAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        fadeAnimation.duration = 0.3;
+        fadeAnimation.beginTime = CACurrentMediaTime() + 0.5;
+        fadeAnimation.fromValue = [NSNumber numberWithFloat:1.0f];
+        fadeAnimation.toValue = [NSNumber numberWithFloat:0.0f];
+        fadeAnimation.removedOnCompletion = NO;
+        fadeAnimation.fillMode = kCAFillModeBoth;
+        [pathLayer addAnimation:fadeAnimation forKey:@"opacity"];
     }];
+    [pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+    [CATransaction commit];
 }
 
 @end

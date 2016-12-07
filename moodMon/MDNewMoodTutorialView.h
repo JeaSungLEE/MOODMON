@@ -10,4 +10,7 @@
 
 @interface MDNewMoodTutorialView : UIView
 
+@property CGFloat touchAreaTop;
+@property CGFloat touchAreaBottom;
+
 @end

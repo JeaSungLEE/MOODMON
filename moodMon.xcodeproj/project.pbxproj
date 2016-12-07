@@ -52,7 +52,9 @@
 		E9514B761CF353B6008B99CA /* MDSmallMoodFaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9514B751CF353B6008B99CA /* MDSmallMoodFaceView.xib */; };
 		E95DE3C01CE999110094EDCF /* MDTouchUpGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E95DE3BF1CE999110094EDCF /* MDTouchUpGestureRecognizer.m */; };
 		E95EB77F1CC4BCAB00141FBF /* MDRecentMoodView.m in Sources */ = {isa = PBXBuildFile; fileRef = E95EB77E1CC4BCAB00141FBF /* MDRecentMoodView.m */; };
+		E967FCD31DEEE11900041717 /* Calendar Tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = E967FCD21DEEE11900041717 /* Calendar Tutorial.png */; };
 		E97B30AA1CCD949100FB8502 /* MDMoodColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E97B30A91CCD949100FB8502 /* MDMoodColorView.m */; };
+		E98503DC1DF7F0EF005B38F8 /* chalk_line.png in Resources */ = {isa = PBXBuildFile; fileRef = E98503DB1DF7F0EF005B38F8 /* chalk_line.png */; };
 		E986ECCD1CDFBC4F00792C55 /* MDMoodFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E986ECCC1CDFBC4F00792C55 /* MDMoodFaceView.m */; };
 		E986ED4A1CDFBE2F00792C55 /* basic shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */; };
 		E986ED4B1CDFBE2F00792C55 /* cheek_degree1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E986ECD11CDFBE2F00792C55 /* cheek_degree1@2x.png */; };
@@ -295,8 +297,10 @@
 		E95DE3BF1CE999110094EDCF /* MDTouchUpGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTouchUpGestureRecognizer.m; sourceTree = "<group>"; };
 		E95EB77D1CC4BCAB00141FBF /* MDRecentMoodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRecentMoodView.h; sourceTree = "<group>"; };
 		E95EB77E1CC4BCAB00141FBF /* MDRecentMoodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecentMoodView.m; sourceTree = "<group>"; };
+		E967FCD21DEEE11900041717 /* Calendar Tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar Tutorial.png"; sourceTree = "<group>"; };
 		E97B30A81CCD949100FB8502 /* MDMoodColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoodColorView.h; sourceTree = "<group>"; };
 		E97B30A91CCD949100FB8502 /* MDMoodColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodColorView.m; sourceTree = "<group>"; };
+		E98503DB1DF7F0EF005B38F8 /* chalk_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chalk_line.png; sourceTree = "<group>"; };
 		E986ECCB1CDFBC4F00792C55 /* MDMoodFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoodFaceView.h; sourceTree = "<group>"; };
 		E986ECCC1CDFBC4F00792C55 /* MDMoodFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodFaceView.m; sourceTree = "<group>"; };
 		E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basic shadow@2x.png"; sourceTree = "<group>"; };
@@ -625,8 +629,10 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E98503DB1DF7F0EF005B38F8 /* chalk_line.png */,
 				E98C99571DD08ECB001BDC38 /* tutorial_box.png */,
 				E98C99591DD08FB5001BDC38 /* tutorial_next.png */,
+				E967FCD21DEEE11900041717 /* Calendar Tutorial.png */,
 				E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */,
 				E986ECD61CDFBE2F00792C55 /* circle@2x.png */,
 				E9A93B8A1CFAEE4800421076 /* comment box@2x.png */,
@@ -1079,6 +1085,7 @@
 				E986EDA11CDFBE2F00792C55 /* excited_selected@2x.png in Resources */,
 				E986ED881CDFBE2F00792C55 /* angry_mouth_degree4@2x.png in Resources */,
 				E986ED501CDFBE2F00792C55 /* circle@2x.png in Resources */,
+				E967FCD31DEEE11900041717 /* Calendar Tutorial.png in Resources */,
 				E9CD997A1CE8E25900C9DBB7 /* excited_wheel@2x.png in Resources */,
 				E9B03E1F1CF1FD700069741F /* angry_degree5@2x.png in Resources */,
 				E986EDB51CDFBE2F00792C55 /* wrinkle_degree2@2x.png in Resources */,
@@ -1097,6 +1104,7 @@
 				E9A93B831CFAD37800421076 /* Icon-72@2x.png in Resources */,
 				E986ED911CDFBE2F00792C55 /* joy_mouth_degree3@2x.png in Resources */,
 				E986ED541CDFBE2F00792C55 /* darkcircle_degree4@2x.png in Resources */,
+				E98503DC1DF7F0EF005B38F8 /* chalk_line.png in Resources */,
 				E986ED931CDFBE2F00792C55 /* joy_mouth_degree5@2x.png in Resources */,
 				E986ED9F1CDFBE2F00792C55 /* cross@2x.png in Resources */,
 				E986ED5E1CDFBE2F00792C55 /* angry_eyebrow_degree2@2x.png in Resources */,

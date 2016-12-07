@@ -7,8 +7,10 @@
 //
 
 #import "MDNewMoodViewController.h"
+#import "MDNewMoodTutorialViewController.h"
 
 @interface MDNewMoodViewController ()
+@property MDNewMoodTutorialViewController *tutorialViewController;
 @property CGFloat wheelDegree;
 @property NSInteger moodCount;
 @property NSArray *moodButtons;
@@ -40,6 +42,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self roundedViewsInit];
+    CGFloat textFieldOffset = 80;
+    _tutorialViewController.textFieldFrame = CGRectMake(_textField.frame.origin.x-textFieldOffset/2,
+                                                        _textField.frame.origin.y-textFieldOffset/2,
+                                                        _textField.frame.size.width+textFieldOffset,
+                                                        _textField.frame.size.height+textFieldOffset);
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"newMoodTutorial"]) {
+        _tutorialViewController = (MDNewMoodTutorialViewController *) [segue destinationViewController];
+    }
 }
 
 
