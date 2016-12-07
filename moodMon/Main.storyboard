@@ -2124,24 +2124,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-57-lvs">
-                                <rect key="frame" x="16" y="40" width="343" height="607"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-57-lvs" customClass="MDRoundRectView">
+                                <rect key="frame" x="36" y="80" width="303" height="527"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8Q-XN-dm1">
-                                        <rect key="frame" x="305" y="8" width="30" height="30"/>
+                                        <rect key="frame" x="265" y="8" width="30" height="30"/>
                                         <state key="normal" title="X"/>
                                         <connections>
                                             <action selector="closeButton:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="Zs8-b2-UyS"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGg-Wy-RTl">
-                                        <rect key="frame" x="150" y="15" width="42" height="21"/>
+                                        <rect key="frame" x="130" y="15" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-Yc-SKF">
-                                        <rect key="frame" x="71" y="136" width="200" height="200"/>
+                                        <rect key="frame" x="51" y="96" width="200" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="KX1-c3-JYJ"/>
@@ -2149,15 +2149,25 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-1V-cGW">
-                                        <rect key="frame" x="106" y="522" width="30" height="30"/>
+                                        <rect key="frame" x="86" y="442" width="30" height="30"/>
                                         <state key="normal" title="삭제"/>
+                                        <connections>
+                                            <action selector="deleteMood:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="KfQ-3Q-fDl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWk-Ma-iCg">
-                                        <rect key="frame" x="207" y="522" width="30" height="30"/>
+                                        <rect key="frame" x="187" y="442" width="30" height="30"/>
                                         <state key="normal" title="저장"/>
+                                        <connections>
+                                            <action selector="saveMoodButton:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="dnF-bw-DP4"/>
+                                        </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="border1.png" translatesAutoresizingMaskIntoConstraints="NO" id="8KS-AX-sOw">
+                                        <rect key="frame" x="31" y="399" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hO2-GX-UO3">
-                                        <rect key="frame" x="71" y="356" width="200" height="60"/>
+                                        <rect key="frame" x="51" y="276" width="200" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ur-p9-xhx"/>
@@ -2168,8 +2178,11 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqg-52-El2">
-                                        <rect key="frame" x="241" y="386" width="30" height="30"/>
+                                        <rect key="frame" x="221" y="306" width="30" height="30"/>
                                         <state key="normal" title="v"/>
+                                        <connections>
+                                            <action selector="commitModify:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="naF-Vw-rM3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2185,20 +2198,21 @@
                                     <constraint firstItem="SGg-Wy-RTl" firstAttribute="top" secondItem="zr9-57-lvs" secondAttribute="top" constant="15" id="eBX-zt-CuX"/>
                                     <constraint firstItem="u8Q-XN-dm1" firstAttribute="top" secondItem="zr9-57-lvs" secondAttribute="top" constant="8" id="lJD-fG-5fR"/>
                                     <constraint firstItem="Zrt-Yc-SKF" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" id="sSI-eX-Bx5"/>
-                                    <constraint firstItem="Zrt-Yc-SKF" firstAttribute="top" secondItem="SGg-Wy-RTl" secondAttribute="bottom" constant="100" id="vLc-Z4-D1M"/>
+                                    <constraint firstItem="Zrt-Yc-SKF" firstAttribute="top" secondItem="SGg-Wy-RTl" secondAttribute="bottom" constant="60" id="vLc-Z4-D1M"/>
                                     <constraint firstItem="SGg-Wy-RTl" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" id="wzf-3T-eYZ"/>
                                     <constraint firstItem="yqg-52-El2" firstAttribute="trailing" secondItem="hO2-GX-UO3" secondAttribute="trailing" id="y7S-LI-Gve"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="zr9-57-lvs" secondAttribute="trailing" id="Jrt-cs-cVR"/>
-                            <constraint firstItem="zr9-57-lvs" firstAttribute="top" secondItem="EbI-rx-t6J" secondAttribute="bottom" constant="20" id="Uon-W4-lMQ"/>
-                            <constraint firstItem="JRw-gS-9t5" firstAttribute="top" secondItem="zr9-57-lvs" secondAttribute="bottom" constant="20" id="l2r-Yf-T2Y"/>
-                            <constraint firstItem="zr9-57-lvs" firstAttribute="leading" secondItem="Mo8-1v-9HT" secondAttribute="leadingMargin" id="uEm-Je-uVS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zr9-57-lvs" secondAttribute="trailing" constant="20" id="Jrt-cs-cVR"/>
+                            <constraint firstItem="zr9-57-lvs" firstAttribute="top" secondItem="EbI-rx-t6J" secondAttribute="bottom" constant="60" id="Uon-W4-lMQ"/>
+                            <constraint firstItem="JRw-gS-9t5" firstAttribute="top" secondItem="zr9-57-lvs" secondAttribute="bottom" constant="60" id="l2r-Yf-T2Y"/>
+                            <constraint firstItem="zr9-57-lvs" firstAttribute="leading" secondItem="Mo8-1v-9HT" secondAttribute="leadingMargin" constant="20" id="uEm-Je-uVS"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backImage" destination="8KS-AX-sOw" id="Dga-TO-Jk2"/>
                         <outlet property="commentTextView" destination="hO2-GX-UO3" id="lXS-eU-iVQ"/>
                         <outlet property="dateLabel" destination="SGg-Wy-RTl" id="53f-Lf-iEh"/>
                         <outlet property="moodView" destination="Zrt-Yc-SKF" id="FD0-1v-w5z"/>
@@ -2539,11 +2553,11 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="R43-de-cL3"/>
-                                <exclude reference="CvR-SH-uvC"/>
-                                <exclude reference="fsa-7Z-Bwu"/>
                                 <exclude reference="Iv6-yx-Laj"/>
                                 <exclude reference="Q0w-N4-8Fa"/>
                                 <exclude reference="SI6-CD-yOb"/>
+                                <exclude reference="CvR-SH-uvC"/>
+                                <exclude reference="fsa-7Z-Bwu"/>
                             </mask>
                         </variation>
                         <connections>
@@ -2684,6 +2698,7 @@
         <image name="angry_unfilter.png" width="29" height="29"/>
         <image name="angry_unselect.png" width="261" height="265"/>
         <image name="basic shadow.png" width="280" height="280"/>
+        <image name="border1.png" width="466" height="296"/>
         <image name="check.png" width="42" height="42"/>
         <image name="circle.png" width="734" height="735"/>
         <image name="comment box.png" width="92" height="15"/>

@@ -34,6 +34,7 @@ UITableViewHeaderFooterView *headerView;
 NSMutableArray <NSIndexPath *> *indexPathsToDelete;
 UIFont *quicksand;
 UIFont *boldQuicksand;
+UIVisualEffectView *blurEffectView;
 
 
 @implementation MDMonthViewController
@@ -62,30 +63,19 @@ UIFont *boldQuicksand;
     
     count=0;
     [super viewDidLoad];
+    
+    [self setBlurEffect];
+    [self setFilterUI];
+    [self addGesture];
+    
     _mddm = [MDDataManager sharedDataManager];
-   
     now = [NSDate date];
     toolbarIsOpen = YES;
     toolbarIsAnimating = NO;
     self.toolbarContainer.translatesAutoresizingMaskIntoConstraints = YES;
     [self.toolbarContainer setFrame:CGRectMake(0, (self.view.frame.size.height - 49), self.view.frame.size.width, 49.0)];
     [self collapseToolbarWithoutBounce];
-    [self.angryFilterBtn setImage: _angryUnchecked forState:UIControlStateNormal];
-    [self.happyFilterBtn setImage: _happyUnchecked forState:UIControlStateNormal];
-    [self.sadFilterBtn setImage: _sadUnchecked forState:UIControlStateNormal];
-    [self.exciteFilterBtn setImage: _exciteUnchecked forState:UIControlStateNormal];
-    [self.exhaustFilterBtn setImage: _exhaustUnchecked forState:UIControlStateNormal];
-    [_angryFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFill];
-    [_happyFilterBtn.imageView setContentMode:UIViewContentModeScaleToFill];
-    [_sadFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [_exciteFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [_exhaustFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"failTosaveIntoSql" object:_mddm ];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"moodNotChosen" object:_mddm ];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timeTableReload) name:@"newDatxaAdded" object:_mddm];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"iCloudSyncFinished" object:_mddm];
+    [self setNotificationAddObserver];
     
     quicksand = [UIFont fontWithName:@"Quicksand" size:16];
     boldQuicksand = [UIFont fontWithDescriptor:[[quicksand fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold] size:quicksand.pointSize];
@@ -93,11 +83,6 @@ UIFont *boldQuicksand;
     createdAt=[_mddm moodCollection];
     thisYear =[[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
     thisMonth =[[[NSCalendar currentCalendar]components:NSCalendarUnitMonth fromDate:[NSDate date]]month];
-    
-    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-    [swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
-    [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
     
     //[self moreDateInfo];
     indexPathsToDelete = [[NSMutableArray alloc] init];
@@ -757,8 +742,8 @@ UIFont *boldQuicksand;
     VC.moodColorView = cell.moodColorView;
     VC.timest = cell.timeLabel.text;
     VC.comment = cell.commentLabel.text;
-    
-    VC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self.view addSubview:blurEffectView];
+    VC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:VC animated:YES completion:nil];
 }
 
@@ -785,14 +770,6 @@ UIFont *boldQuicksand;
 }
 
 - (void)buttonTwoActionForItemText:(MDMoodColorView *)itemText {
-    MDSaveMoodMon *smm = [[MDSaveMoodMon alloc] init];
-    [smm saveMoodMon:itemText];
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"SAVE" message:@"저장되었습니다." preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alertController addAction:defaultAction];
-    [self presentViewController:alertController animated:YES completion:nil];
-    
     //뷰를 넘겨주면 그대로 저장
 }
 - (IBAction) exitFromSecondViewController:(UIStoryboardSegue *)segue
@@ -824,7 +801,43 @@ UIFont *boldQuicksand;
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+-(void)setFilterUI{
+    [self.angryFilterBtn setImage: _angryUnchecked forState:UIControlStateNormal];
+    [self.happyFilterBtn setImage: _happyUnchecked forState:UIControlStateNormal];
+    [self.sadFilterBtn setImage: _sadUnchecked forState:UIControlStateNormal];
+    [self.exciteFilterBtn setImage: _exciteUnchecked forState:UIControlStateNormal];
+    [self.exhaustFilterBtn setImage: _exhaustUnchecked forState:UIControlStateNormal];
+    [_angryFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFill];
+    [_happyFilterBtn.imageView setContentMode:UIViewContentModeScaleToFill];
+    [_sadFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [_exciteFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    [_exhaustFilterBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+}
 
+-(void)deleteBlur:(NSNotification*)notification{
+     [[self.view viewWithTag:799]removeFromSuperview];
+}
 
+-(void)setBlurEffect{
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    [blurEffectView setFrame:self.view.frame];
+    blurEffectView.tag = 799;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
+}
+
+-(void)addGesture{
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
+    [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
+}
+
+-(void)setNotificationAddObserver{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"failTosaveIntoSql" object:_mddm ];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"moodNotChosen" object:_mddm ];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(timeTableReload) name:@"newDatxaAdded" object:_mddm];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"iCloudSyncFinished" object:_mddm];
+}
 
 @end
