@@ -2162,7 +2162,7 @@
                                             <action selector="saveMoodButton:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="dnF-bw-DP4"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="border1.png" translatesAutoresizingMaskIntoConstraints="NO" id="8KS-AX-sOw">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8KS-AX-sOw">
                                         <rect key="frame" x="31" y="399" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -2698,7 +2698,6 @@
         <image name="angry_unfilter.png" width="29" height="29"/>
         <image name="angry_unselect.png" width="261" height="265"/>
         <image name="basic shadow.png" width="280" height="280"/>
-        <image name="border1.png" width="466" height="296"/>
         <image name="check.png" width="42" height="42"/>
         <image name="circle.png" width="734" height="735"/>
         <image name="comment box.png" width="92" height="15"/>

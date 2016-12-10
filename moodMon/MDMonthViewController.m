@@ -821,7 +821,7 @@ UIVisualEffectView *blurEffectView;
 -(void)setBlurEffect{
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    [blurEffectView setFrame:self.view.frame];
+    [blurEffectView setFrame:[UIScreen mainScreen].bounds];
     blurEffectView.tag = 799;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
 }
