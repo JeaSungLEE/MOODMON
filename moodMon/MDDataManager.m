@@ -184,7 +184,7 @@
     int intenseSum[5] = {0,0,0,0,0};
     
     if(count < 6){
-        for(int i = count -1 ; i >= 1 ; i--){
+        for(int i = count -1 ; i >= 0 ; i--){
             int moodKind = 0;
             int moodIntense = 0;
             // NSLog(@"count : %d",count);
