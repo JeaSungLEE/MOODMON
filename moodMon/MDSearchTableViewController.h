@@ -15,7 +15,7 @@
 
 @property MDDataManager *dataManager;
 @property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, copy) NSArray *filteredProducts;
+@property (nonatomic, copy) NSArray<Moodmon*> *filteredProducts;
 
 
 //for state restoration

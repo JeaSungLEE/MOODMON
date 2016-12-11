@@ -22,7 +22,7 @@
 @interface MDNewMoodViewController : UIViewController <MDWheelGestureRecognizerDelegate, UITextFieldDelegate>
 
 /* Model */
-@property MDMoodmon *mood;
+@property Moodmon *mood;
 
 /* DataManager */
 @property MDDataManager *dataManager;

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MDMoodmon.h"
+#import "Moodmon.h"
 
 @interface MDDocument : UIDocument
 
-@property (strong, nonatomic) NSMutableArray<MDMoodmon*>* moodmonCollection;
+@property (strong, nonatomic) NSMutableArray<Moodmon*>* moodmonCollection;
 
 @end

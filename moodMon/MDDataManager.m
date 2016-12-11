@@ -7,13 +7,11 @@
 //
 
 #import "MDDataManager.h"
-#import "MDMoodmon.h"
-
+#import "Moodmon.h"
 
 @implementation MDDataManager{
     unsigned units;
 }
-
 
 +(MDDataManager*)sharedDataManager{
     static MDDataManager *_sharedInstance = nil;
@@ -24,12 +22,9 @@
     return _sharedInstance;
 }
 
-
 - (instancetype)init{
     self = [super init];
     if(self){
-        self.moodCollection = [[NSMutableArray alloc] init];
-        [self.moodCollection insertObject:[[MDMoodmon alloc] init] atIndex:0];
         
         self.isChecked = [@[ @NO, @NO,@NO,@NO,@NO ] mutableCopy];
         self.chosenMoodCount = 0;
@@ -38,7 +33,6 @@
         
         dirPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         docsDir = dirPath[0];
-        self.dataBasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent:@"moodmon.sqlite"]];
         
         hasICloud = NO;
         NSString *documentFile = [docsDir stringByAppendingPathComponent:@"moodmonDoc.doc"];
@@ -49,126 +43,11 @@
     return self;
 }
 
-- (void)createDB{
-    NSFileManager *filemgr = [NSFileManager defaultManager];
-    if( [filemgr fileExistsAtPath:_dataBasePath] == NO){ //A.앱 처음 켰을 때
-        NSLog(@"no db");
-        const char *dbpath = [_dataBasePath UTF8String];
-        if(sqlite3_open(dbpath, &_moodmonDB) == SQLITE_OK){
-            char *errMsg;
-            NSLog(@"no.1 : open DB" );
-            const char *sql_stmt = "CREATE TABLE IF NOT EXISTS moodmon(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, moodComment VARCHAR(150) NULL, moodDate Datetime NOT NULL, moodChosen1 INTEGER NOT NULL DEFAULT 0, moodChosen2 INTEGER NOT NULL DEFAULT 0, moodChosen3 INTEGER NOT NULL DEFAULT 0, isDeleted BOOL DEFAULT false);";
-            
-            if( sqlite3_exec(_moodmonDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
-                NSLog(@"ERRor : failed to create table" );
-            }
-            
-            sqlite3_close(_moodmonDB);
-            
-        } else {
-            NSLog(@"Failed to open datebase");
-        }
-        
-    } else { //B.앱 방문이 처음이 아닐 때
-        [self readAllFromDBAndSetCollection];
-        NSLog(@"not first visit, read data");
-    }
+- (void)setCollectionFromRealm{
+    self.moodArray = (RLMArray*)[Moodmon allObjects];
 }
 
-- (void)readAllFromDBAndSetCollection{
-    
-    sqlite3_stmt *statement;
-    const char *dbpath = [_dataBasePath UTF8String];
-    
-    if(sqlite3_open( dbpath, &_moodmonDB) == SQLITE_OK ){
-        NSLog(@"yes2 : start reading from SQL");
-        NSString *querySQL = @"SELECT * FROM moodmon";
-        
-        const char *query_stmt = [querySQL UTF8String];
-        
-        if(sqlite3_prepare_v2(_moodmonDB, query_stmt, -1, &statement, NULL) == SQLITE_OK){
-            
-            /* COLUME_NUM & property
-                0 - id / int
-                1 - moodComment / varchar(150)
-                2 - moodDate / dateTime
-                3 - moodChosen1 / int
-                4 - moodChosen2 / int
-                5 - moodChosen3 / int
-                6 - isDeleted / bool
-             */
-            while(sqlite3_step(statement) <= SQLITE_ROW){
-                
-                int idint = sqlite3_column_int(statement, 0);
-                if(idint == 0) continue;
-                
-                NSString *comment = [[NSString alloc]initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
-                NSUInteger moodChosen1 = sqlite3_column_int(statement, 3);
-                NSUInteger moodChosen2 = sqlite3_column_int(statement, 4);
-                NSUInteger moodChosen3 = sqlite3_column_int(statement, 5);
-                BOOL isDeleted = (BOOL)sqlite3_column_value(statement, 6);
-                
-                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-                [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                NSDate *myDate =[dateFormat dateFromString:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)]];
-                
-                
-                NSCalendar *myCal = [[NSCalendar alloc]
-                                     initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-                NSDateComponents *comp = [myCal components:units fromDate:myDate];
-                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], (long)[comp minute], (long)[comp second]];
-                
-                MDMoodmon *moodmon = [MDMoodmon alloc];
-                if(comment){
-                    [moodmon setValue:comment forKey:kComment];
-                }
-                [moodmon setValue:[NSNumber numberWithInteger:[comp year]] forKey:kYear];
-                [moodmon setValue:[NSNumber numberWithInteger:[comp month]] forKey:kMonth];
-                [moodmon setValue:[NSNumber numberWithInteger:[comp day]] forKey:kDay];
-                [moodmon setValue: timeString forKey:kTime];
-                [moodmon setValue: [NSNumber numberWithInteger:moodChosen1] forKey:kChosen1];
-                [moodmon setValue: [NSNumber numberWithInteger:moodChosen2] forKey:kChosen2];
-                [moodmon setValue: [NSNumber numberWithInteger:moodChosen3] forKey:kChosen3];
-            
-                if(isDeleted){
-                    [moodmon setValue: @YES forKey:kIsDeleted];
-                } else{
-                    [moodmon setValue: @NO forKey:kIsDeleted];
-                }
-                
-                [self.moodCollection insertObject:moodmon atIndex:idint];
-            }
-            sqlite3_finalize(statement);
-        } else {
-            NSLog(@"SQL doesn't work");
-        }
-        sqlite3_close(_moodmonDB);
-    } else {
-         NSLog(@"Failed to open datebase");
-    }
-
-}
-
-
-- (void)saveNewMoodMonOfComment:(NSString*)comment asFirstChosen:(int)first SecondChosen:(int)second andThirdChosen:(int)third{
-    
-    //NSLog(@"yes4 : Start to save new !!!");
-    
-    if(!first){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"moodNotChosen" object:self userInfo:@{@"message" : @"please choose a moodmon"}];
-    }
-    if(first < 0 || second < 0 || third < 0){
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"moodNotChosen" object:self userInfo:@{@"message" : @"wrong input"}];
-    }
-    /*
-     mood int 확인,
-     MDDateManager saveNewMoodMonOfComment~ 메소드에서 하고 있습니다.
-     여기서 하는 게 제일 좋은 건지는 아직 모르겠네요. 방어차 남겨 놓는 것도 좋은 것 같아요.
-     
-     그 전에, 위 메소드 부르기 전에도 체크 하는 게 좋을 것 같아요~
-     newMoodmon view에서 mood int가 어떻게 정해지는 지, 어디에 그 데이터가 남는지 아직 모르겠지만, 해당 코드 완성되면, 이 부분 한번 정하면 좋을 것 같아요.
-    */
-    
+- (void)saveNewMoodmonAtRealmOfComment:(NSString*)comment asFirstChosen:(int)first SecondChosen:(int)second andThirdChosen:(int)third{
     NSDate *now = [NSDate date];
     NSCalendar *myCal = [[NSCalendar alloc]
                          initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -181,168 +60,32 @@
     NSInteger secondTime = [comp second];
     
     NSString *timeString = [NSString stringWithFormat:@"%ld:%ld:%ld", (long)hour, (long)minute, (long)secondTime];
-   
-   //NSLog(@"month : %ld, day : %ld, year : %ld , %ld: %ld: %ld", (long)month,  day, (long)year, hour, minute, (long)secondTime);
-    MDMoodmon *newMD = [[MDMoodmon alloc] init];
     
-    [newMD setValue:[NSNumber numberWithInteger:year] forKey:kYear];
-    [newMD setValue:[NSNumber numberWithInteger:month] forKey:kMonth];
-    [newMD setValue:[NSNumber numberWithInteger:day] forKey:kDay];
-    [newMD setValue:timeString forKey:kTime];
-    [newMD setValue:@NO forKey:kIsDeleted];
+    Moodmon *newM = [[Moodmon alloc]init];
+    newM.moodComment = comment;
+    newM.moodChosen1 = first;
+    newM.moodChosen2 = second;
+    newM.moodChosen3 = third;
+    newM.moodYear = year;
+    newM.moodMonth = month;
+    newM.moodDay = day;
+    newM.moodTime = timeString;
     
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    RLMResults *all = [[Moodmon allObjects] sortedResultsUsingProperty:@"idx" ascending:YES];
+    Moodmon *last = [all lastObject];
+    newM.idx = last.idx + 1;
+    [realm beginWriteTransaction];
+    [realm addObject:newM];
+    [realm commitWriteTransaction];
     
-    [newMD setValue: comment forKey:kComment];
-    [newMD setValue: [NSNumber numberWithInt: first] forKey:kChosen1];
-    [newMD setValue: [NSNumber numberWithInt: second] forKey:kChosen2];
-    [newMD setValue: [NSNumber numberWithInt: third] forKey:kChosen3];
+    //for iCloud
+    [self saveDocument: newM];
     
-    //[newMD setValue:[[NSString alloc] initWithFormat:@"hello"] forKey:kComment]; - test
-    // [self.moodCollection insertObject:newMD atIndex:[self.moodCollection count]];
-    [self saveIntoDBNewMoodmon: newMD]; 
-    [self saveDocument: newMD];
 }
-
--(void)saveDocument:(MDMoodmon*)moodmon{
+-(void)saveDocument:(Moodmon*)moodmon{
     [_document.moodmonCollection addObject:moodmon];
 }
-- (void)saveIntoDBNewMoodmon:(MDMoodmon*)moodmon{
-    
-    sqlite3_stmt *statement;
-    const char *dbpath = [_dataBasePath UTF8String];
-    
-    if(sqlite3_open( dbpath, &_moodmonDB) == SQLITE_OK ){
-        //        NSLog(@"yes5 : Start to save new into SQL");
-        
-        /* COLUME_NUM & property
-         0 - id / int
-         1 - moodComment / varchar(150)
-         2 - moodDate / dateTime
-         3 - moodChosen1 / int
-         4 - moodChosen2 / int
-         5 - moodChosen3 / int
-         6 - isDeleted / bool
-         */
-        
-        NSString *dateString = [NSString stringWithFormat:@"%ld-%ld-%ld %@", (long)moodmon.moodYear, (long)moodmon.moodMonth, (long)moodmon.moodDay, moodmon.moodTime] ;
-        
-        NSLog(@"now : %@",dateString);
-        NSString *insertSQL =  [NSString stringWithFormat:@"INSERT INTO moodmon(moodComment, moodDate, moodChosen1, moodChosen2, moodChosen3) VALUES(\"%@\",\"%@\", %d,%d,%d);", moodmon.moodComment,  dateString ,(int)moodmon.moodChosen1,(int)moodmon.moodChosen2,(int)moodmon.moodChosen3];
-        
-        const char* insert_stmt = [insertSQL UTF8String];
-        sqlite3_prepare_v2(_moodmonDB, insert_stmt, -1, &statement, NULL);
-        
-        
-        if(sqlite3_step(statement) == SQLITE_DONE){
-            // insert 성공
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"failTosaveIntoSql" object:self userInfo:@{@"message" : @"Fail to save into Sqlite"}];
-            printf("ErrorCode :  %d   \n", sqlite3_step(statement) );
-            NSLog(@"ERRor : %s", sqlite3_errmsg(_moodmonDB));
-        }
-    
-        
-        sqlite3_finalize(statement);
-        sqlite3_close(_moodmonDB);
-    } else {
-        NSLog(@"Failed to open datebase");
-    }
-    [self readJustSavedMoodMon];
-}
-
--(void)readJustSavedMoodMon{
-    
-    sqlite3_stmt *statement;
-    const char *dbpath = [_dataBasePath UTF8String];
-    
-    if(sqlite3_open( dbpath, &_moodmonDB) == SQLITE_OK ){
-        //        NSLog(@"yes2 : start reading from SQL");
-        NSString *querySQL = @"SELECT * FROM moodmon ORDER BY id DESC LIMIT 1";
-        
-        const char *query_stmt = [querySQL UTF8String];
-        
-        if(sqlite3_prepare_v2(_moodmonDB, query_stmt, -1, &statement, NULL) == SQLITE_OK){
-            
-            //            NSLog(@"yes3 : sql function in progress");
-            /* COLUME_NUM & property
-             0 - id / int
-             1 - moodComment / varchar(150)
-             2 - moodDate / dateTime
-             3 - moodChosen1 / int
-             4 - moodChosen2 / int
-             5 - moodChosen3 / int
-             6 - isDeleted / bool
-             */
-            
-            while(sqlite3_step(statement) <= SQLITE_ROW){
-                
-                int idint = sqlite3_column_int(statement, 0);
-                if(idint == 0) continue;
-                
-                //                NSLog(@"INDEX %d is saving", idint);
-                NSString *comment = [[NSString alloc]initWithUTF8String:(const char*) sqlite3_column_text(statement, 1)];
-                NSUInteger moodChosen1 = sqlite3_column_int(statement, 3);
-                NSUInteger moodChosen2 = sqlite3_column_int(statement, 4);
-                NSUInteger moodChosen3 = sqlite3_column_int(statement, 5);
-                BOOL isDeleted = (BOOL)sqlite3_column_value(statement, 6);
-                
-                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-                [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                NSDate *myDate =[dateFormat dateFromString:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)]];
-                
-                
-                NSCalendar *myCal = [[NSCalendar alloc]
-                                     initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-                NSDateComponents *comp = [myCal components:units fromDate:myDate];
-                //                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                //                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];
-                NSString *timeString = [NSString stringWithFormat:@"%ld시 %ld분 %ld초",(long)[comp hour], (long)[comp minute], (long)[comp second]];
-                // NSLog(@"timestring %@ , %ld , %ld, %ld", timeString, (long)[comp hour], [comp minute], [comp second]);
-                
-                
-                MDMoodmon *moodmon = [MDMoodmon alloc];
-                
-                if(comment){
-                    [moodmon setValue:comment forKey:kComment];
-                }
-                
-                [moodmon setValue:[NSNumber numberWithInteger:[comp year]] forKey:kYear];
-                [moodmon setValue:[NSNumber numberWithInteger:[comp month]] forKey:kMonth];
-                [moodmon setValue:[NSNumber numberWithInteger:[comp day]] forKey:kDay];
-                [moodmon setValue: timeString forKey:kTime];
-                
-                
-                NSLog(@"read year %@ / month %@ / day %@ / time %@", [moodmon valueForKey:kYear], [moodmon valueForKey: kMonth], [moodmon valueForKey: kDay], [moodmon valueForKey:kTime]);
-                
-                [moodmon setValue: [NSNumber numberWithInteger:moodChosen1] forKey:kChosen1];
-                [moodmon setValue: [NSNumber numberWithInteger:moodChosen2] forKey:kChosen2];
-                [moodmon setValue: [NSNumber numberWithInteger:moodChosen3] forKey:kChosen3];
-                
-                
-                if(isDeleted){
-                    [moodmon setValue: @YES forKey:kIsDeleted];
-                } else{
-                    [moodmon setValue: @NO forKey:kIsDeleted];
-                }
-                
-                [self.moodCollection insertObject:moodmon atIndex:idint];
-                //@"SUCCESS";
-            }
-            
-            
-            
-            sqlite3_finalize(statement);
-        }
-        
-        //_status.text = @"SQL doesn't work";
-        
-        sqlite3_close(_moodmonDB);
-    }
-    
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"newDataAdded" object:self];
-    
-}
-
 - (void)startICloudSync{
     if(hasICloud == NO){
         [self makeICloud];
@@ -359,7 +102,7 @@
 }
 
 -(void)makeICloud{
-     NSFileManager *filemgr = [NSFileManager defaultManager];
+    NSFileManager *filemgr = [NSFileManager defaultManager];
     [filemgr removeItemAtPath:(NSString*)_documentURL error:NULL];
     
     _ubiquityURL = [[filemgr URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"Documents"];
@@ -397,7 +140,7 @@
         [_document openWithCompletionHandler:^(BOOL success) {
             if(success){
                 NSLog(@"Opened iCloud doc");
-                _moodCollection = _document.moodmonCollection;
+                _moodArray = (RLMArray*)_document.moodmonCollection;
             } else {
                 NSLog(@"Failed to open iCloud doc");
             }
@@ -409,7 +152,7 @@
             if(success){
                 NSLog(@"Saved to iCloud");
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"iCloudSyncFinished" object:self userInfo: @{@"message" : @"Finish saving into iCloud "}];
-
+                
             } else {
                 NSLog(@"Failed to save cloud");
             }
@@ -418,71 +161,25 @@
 }
 
 -(void)deleteAllData{
-//    sqlite3_stmt *statement;
-//    const char *dbpath = [_dataBasePath UTF8String];
-//    
-//    if(sqlite3_open( dbpath, &_moodmonDB) == SQLITE_OK ){
-//        //        NSLog(@"yes5 : Start to save new into SQL");
-//        
-//        /* COLUME_NUM & property
-//         0 - id / int
-//         1 - moodComment / varchar(150)
-//         2 - moodDate / dateTime
-//         3 - moodChosen1 / int
-//         4 - moodChosen2 / int
-//         5 - moodChosen3 / int
-//         6 - isDeleted / bool
-//         */
-//        
-//      
-//        NSString *deleteSQL = @"DROP TABLE moodmon;";
-//        
-//        const char* delete_stmt = [deleteSQL UTF8String];
-//        sqlite3_prepare_v2(_moodmonDB, delete_stmt, -1, &statement, NULL);
-//        
-//        
-//        if(sqlite3_step(statement) == SQLITE_DONE){
-//                        NSLog(@"DELETE");
-//            
-//            
-//        } else {
-////            
-////            [[NSNotificationCenter defaultCenter] postNotificationName:@"failTosaveIntoSql" object:self userInfo:@{@"message" : @"Fail to save into Sqlite"}];
-//            printf("??? %d   zzz\n", sqlite3_step(statement) );
-//            NSLog(@"ERRor : %s", sqlite3_errmsg(_moodmonDB));
-//        }
-//        
-//        
-//        //_status.text = @"SQL doesn't work";
-//        sqlite3_finalize(statement);
-//        sqlite3_close(_moodmonDB);
-//    }
-//
-//    
-//    
-//    self.moodCollection = [[NSMutableArray alloc] init];
-//    [self.moodCollection insertObject:[[MDMoodmon alloc] init] atIndex:0];
-//    [self createDB];
-
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm deleteAllObjects];
+    [realm commitWriteTransaction];
 }
 
 
 
-
-////////////////아래부터 감정계산 메소드///////////////////////////
--(NSUInteger)recentMood{
-    
+-(NSUInteger)recentRealmMood{
     /* 감정별 숫자 매칭
      angry - 11~15
      happy - 21~25
      sad - 31~35
      excited - 41~45
      exhausted - 51~55
-    */
-    
-    int count = (int)[self.moodCollection count];
+     */
+    int count = (int)[self.moodArray count];
     NSLog(@"count : %d",count);
-    if(count == 1) return 0;
+    if(count <= 0) return 0;
     int chosenCount = 0;
     int intenseSum[5] = {0,0,0,0,0};
     
@@ -490,8 +187,8 @@
         for(int i = count -1 ; i >= 1 ; i--){
             int moodKind = 0;
             int moodIntense = 0;
-           // NSLog(@"count : %d",count);
-            MDMoodmon *temp = [self.moodCollection objectAtIndex:i];
+            // NSLog(@"count : %d",count);
+            Moodmon *temp = [self.moodArray objectAtIndex:i];
             if((int)temp.moodChosen1 ) {
                 chosenCount++;
                 moodKind = ((int)temp.moodChosen1/10);
@@ -511,12 +208,10 @@
                 moodIntense = (int)temp.moodChosen3 % 10;
                 intenseSum[moodKind-1] += moodIntense;
             }
-          
-            
         }
     } else {
         for(int i = count-1 ; i >= (count-1)-5 ; i--){
-            MDMoodmon *temp = [self.moodCollection objectAtIndex:i];
+            Moodmon *temp = [self.moodArray objectAtIndex:i];
             if((int)temp.moodChosen1 ) {
                 
                 chosenCount++;
@@ -539,70 +234,54 @@
     for(int i = 0 ; i < 5 ; i++){
         if(intenseSum[i] >= intenseSum[bigIndex]) bigIndex = i;
     }
-   // NSLog(@"count : %d",bigIndex);
+    // NSLog(@"count : %d",bigIndex);
     //NSLog(@"%d %d %d %d %d ", intenseSum[0], intenseSum[2])
-
     
     return 10 *(bigIndex + 1) + ((int)intenseSum[bigIndex]/(int)chosenCount);
 }
 
-
--(NSMutableArray<NSNumber*>*)representationOfMoodAtYear:(NSInteger)year Month:(NSInteger)month andDay:(NSInteger)day{
+-(NSMutableArray<NSNumber*>*)representationOfRealmMoodMonAtYear:(NSInteger)year Month:(NSInteger)month andDay:(NSInteger)day{
+    NSMutableArray *resultRepresentationArray = [[NSMutableArray alloc]initWithCapacity:3];
+    RLMResults<Moodmon*> *result = [Moodmon objectsWhere: [NSString stringWithFormat:@"moodYear = %ld AND moodMonth = %ld AND moodDay = %ld", (long)year, (long)month, (long)day]];
     
-    NSMutableArray *result = [[NSMutableArray alloc]initWithCapacity:3];
-    
-    NSEnumerator *enumerator = [_moodCollection objectEnumerator];
-    MDMoodmon *object;
-    NSInteger thisYear;
-    NSInteger thisMonth;
-    NSInteger thisDay;
-    bool hasMoodMon = NO;
+    bool hasMoodMon;
     int chosenCount[5] = {0,0,0,0,0};
     int intenseSum[5] = {0,0,0,0,0};
-    
-    while ((object = [enumerator nextObject])) {
-//        NSLog(@" ! %@", object);
-        thisYear = object.moodYear;
-        thisMonth = object.moodMonth;
-        thisDay = object.moodDay;
-       
+    if(result.count > 0){
+        hasMoodMon = YES;
+    } else {
+        hasMoodMon = NO;
+    }
+    for(int i = 0 ; i < result.count ; i++){
+        int moodKind = 0;
+        int moodIntense = 0;
+        if((int)result[i].moodChosen1 ) {
+            moodKind = (int)result[i].moodChosen1 / 10;
+            moodIntense = (int)result[i].moodChosen1 % 10;
+            chosenCount[moodKind-1]++;
+            intenseSum[moodKind-1] += moodIntense;
+        }
         
-        if((thisYear == year) && (thisMonth == month) && (thisDay == day)){
-            int moodKind = 0;
-            int moodIntense = 0;
-            if((int)object.moodChosen1 ) {
-                moodKind = (int)object.moodChosen1 / 10;
-                moodIntense = (int)object.moodChosen1 % 10;
-                chosenCount[moodKind-1]++;
-                intenseSum[moodKind-1] += moodIntense;
-            }
-            
-            if((int)object.moodChosen2 ){
-                moodKind = (int)object.moodChosen2 / 10;
-                moodIntense = (int)object.moodChosen2 % 10;
-                chosenCount[moodKind-1]++;
-                intenseSum[moodKind-1] += moodIntense;
-            }
-            if((int)object.moodChosen3 ) {
-                moodKind = (int)object.moodChosen3 / 10;
-                moodIntense = (int)object.moodChosen3 % 10;
-                chosenCount[moodKind-1]++;
-                intenseSum[moodKind-1] += moodIntense;
-            }
-            hasMoodMon = YES;
-            
-        } else{
-            continue;
+        if((int)result[i].moodChosen2 ){
+            moodKind = (int)result[i].moodChosen2 / 10;
+            moodIntense = (int)result[i].moodChosen2 % 10;
+            chosenCount[moodKind-1]++;
+            intenseSum[moodKind-1] += moodIntense;
+        }
+        if((int)result[i].moodChosen3 ) {
+            moodKind = (int)result[i].moodChosen3 / 10;
+            moodIntense = (int)result[i].moodChosen3 % 10;
+            chosenCount[moodKind-1]++;
+            intenseSum[moodKind-1] += moodIntense;
         }
     }
     
     if(hasMoodMon == NO){
-        [result addObject:@0];
-        [result addObject:@0];
-        [result addObject:@0];
-        return result;
+        [resultRepresentationArray addObject:@0];
+        [resultRepresentationArray addObject:@0];
+        [resultRepresentationArray addObject:@0];
+        return resultRepresentationArray;
     }
-    NSLog(@" %d %d %d %d %d", chosenCount[0],chosenCount[1],chosenCount[2],chosenCount[3],chosenCount[4] );
     
     int numOfSamebigCount = 0;
     int bigCountIdx = 0;
@@ -612,58 +291,52 @@
         if(chosenCount[i] > chosenCount[bigCountIdx]){
             bigCountIdx = i;
             numOfSamebigCount = 1;
-            [result removeAllObjects];
+            [resultRepresentationArray removeAllObjects];
         } else if ( chosenCount[i] == chosenCount[bigCountIdx]){
             numOfSamebigCount ++;
         }
         
         if(chosenCount[i] > 0){
-        [result addObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))]];
+            [resultRepresentationArray addObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))]];
         }
     }
     
     if(numOfSamebigCount <=3){
-       
-        int resultCount = (int)[result count];
+        
+        int resultCount = (int)[resultRepresentationArray count];
         for(int i = resultCount; i < 3; i++){
-            [result insertObject:@0 atIndex:i];
+            [resultRepresentationArray insertObject:@0 atIndex:i];
         }
-       
-        return result;
+        
+        return resultRepresentationArray;
     }
     
-    
-    
-    [result removeAllObjects];
+    [resultRepresentationArray removeAllObjects];
     int topIntenseIndex1 = 0;
     int topIntenseIndex2 = 0;
     int topIntenseIndex3 = 0;
-
+    
     for(int i = 0 ; i< 5 ; i++){
         
         if(intenseSum[i] >= intenseSum[topIntenseIndex1]){
             topIntenseIndex1 = i;
-            [result insertObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))] atIndex:0];
+            [resultRepresentationArray insertObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))] atIndex:0];
         }else if(intenseSum[i] >= intenseSum[topIntenseIndex2]){
             topIntenseIndex2 = i;
-            [result insertObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))] atIndex:1];
+            [resultRepresentationArray insertObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))] atIndex:1];
         }else if(intenseSum[i] >= intenseSum[topIntenseIndex3]){
             topIntenseIndex3 = i;
-            [result insertObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))] atIndex:2];
+            [resultRepresentationArray insertObject: [NSNumber numberWithInteger:( 10 *(i + 1) + ((int)intenseSum[i]/(int)chosenCount[i]))] atIndex:2];
         }
     }
     
-    int resultCount = (int)[result count];
+    int resultCount = (int)[resultRepresentationArray count];
     for(int i = resultCount; i < 3; i++){
-        [result insertObject:@0 atIndex:i];
+        [resultRepresentationArray insertObject:@0 atIndex:i];
     }
-
-
-    return result;
     
+    return resultRepresentationArray;
 }
-
-
 
 
 /*
@@ -673,7 +346,7 @@
  3 - excited - 41~45
  4 - exhausted - 51~55
  */
--(NSArray<MDMoodmon*>*)getFilteredMoodmons{
+-(NSArray<Moodmon*>*)getFilteredMoodmons{
     
     NSMutableArray *result = [[NSMutableArray alloc]init];
     NSMutableSet *chosenMoodInteger = [[NSMutableSet alloc]initWithCapacity:_chosenMoodCount];
@@ -683,28 +356,27 @@
             [chosenMoodInteger addObject: [NSNumber numberWithInteger:(i+1)]];
         }
     }
-
     
-    NSEnumerator *enumerator = [_moodCollection objectEnumerator];
-    MDMoodmon *object;
+    RLMResults *allObject = [Moodmon allObjects];
+    Moodmon *object;
     NSMutableSet *objectInteger =[[NSMutableSet alloc]init];
-    while ((object = [enumerator nextObject])) {
-        NSNumber *first = [NSNumber numberWithInteger:[[object valueForKey:kChosen1] integerValue]/ 10];
+    for(int i = 0 ; i < allObject.count; i++ ){
+        object = [allObject objectAtIndex:i];
+        NSNumber *first = [NSNumber numberWithInteger:object.moodChosen1 / 10];
         [objectInteger addObject:  first];
-        NSNumber *second = [NSNumber numberWithInteger:[[object valueForKey:kChosen2] integerValue]/ 10];
+        NSNumber *second =  [NSNumber numberWithInteger:object.moodChosen2 / 10];
         [objectInteger addObject:  second];
-        NSNumber *third = [NSNumber numberWithInteger:[[object valueForKey:kChosen3] integerValue]/ 10];
+        NSNumber *third =  [NSNumber numberWithInteger:object.moodChosen3 / 10];
         [objectInteger addObject:  third];
         [objectInteger intersectSet:chosenMoodInteger];
         
         if([objectInteger count]>= _chosenMoodCount){
             [result addObject:object];
-         }
+        }
         [objectInteger removeAllObjects];
     }
     
     NSLog(@"filtered: %@", result);
-    
     
     return NULL;
 }

@@ -26,7 +26,7 @@
     UIStoryboard *storyboard = self.window.rootViewController.storyboard;
     
     MDDataManager *dm = [MDDataManager sharedDataManager];
-    [dm createDB];
+    [dm setCollectionFromRealm];
     
     int height = [UIScreen mainScreen].bounds.size.height;
     NSString *identifier = (height<=568)?@"newMoodmonVC_4inch":@"newMoodmonVC";
