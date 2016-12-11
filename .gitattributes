@@ -1,0 +1,2 @@
+Realm/* filter=lfs diff=lfs merge=lfs -text
+RLM* filter=lfs diff=lfs merge=lfs -text

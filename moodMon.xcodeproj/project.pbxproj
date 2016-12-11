@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3E460A5D7137AD29CC7EDF /* Pods_moodMon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */; };
 		655DA55E1CF2A6820048BF13 /* MDNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDACCBC1CEC36ED00FBD201 /* MDNavController.m */; };
 		6575788B1CB4BE7100D75D5E /* MDYearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6575788A1CB4BE7100D75D5E /* MDYearViewController.m */; };
 		658BE72E1CB4CE98006EB718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658BE7121CB4CE98006EB718 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 		65980E2E1CC0D1DF0092EA18 /* MDMonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65980E2C1CC0D1DF0092EA18 /* MDMonthViewController.m */; };
 		65B036761CDFA1FD00D095F0 /* MDSaveMoodMon.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B036751CDFA1FD00D095F0 /* MDSaveMoodMon.m */; };
 		65B0367A1CDFA95400D095F0 /* MDMakeMoodMonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B036791CDFA95400D095F0 /* MDMakeMoodMonView.m */; };
+		CE35C4211DFD51D600C8F16E /* Moodmon.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35C4201DFD51D600C8F16E /* Moodmon.m */; };
 		CE3AC3BB1CF183420037BC71 /* MDDataSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3AC3BA1CF183420037BC71 /* MDDataSettingTableViewController.m */; };
 		CE4A8A381CABCCB1006B73B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A371CABCCB1006B73B7 /* main.m */; };
 		CE4A8A3B1CABCCB1006B73B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A3A1CABCCB1006B73B7 /* AppDelegate.m */; };
@@ -28,9 +30,6 @@
 		CE4A8A511CABCCB1006B73B7 /* moodMonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A501CABCCB1006B73B7 /* moodMonTests.m */; };
 		CE4A8A5C1CABCCB1006B73B7 /* moodMonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A5B1CABCCB1006B73B7 /* moodMonUITests.m */; };
 		CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */; };
-		CE4A8A6E1CABCE05006B73B7 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4A8A6C1CABCE05006B73B7 /* libsqlite3.0.tbd */; };
-		CE4A8A6F1CABCE05006B73B7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4A8A6D1CABCE05006B73B7 /* libsqlite3.tbd */; };
-		CE4B234F1CB201B1007D0B3B /* MDMoodmon.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4B234E1CB201B1007D0B3B /* MDMoodmon.m */; };
 		CE7FFD5A1CE023D300B7139C /* MDCustomStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FFD591CE023D300B7139C /* MDCustomStoryboardSegue.m */; };
 		CE87EC521CCE118500329E16 /* MDSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87EC511CCE118500329E16 /* MDSearchTableViewController.m */; };
 		CEABEFEE1CFAD7AC00AA4E60 /* MDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CEABEFED1CFAD7AC00AA4E60 /* MDDocument.m */; };
@@ -376,6 +375,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		126E72A90D05B29461B8D6B2 /* Pods-moodMon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodMon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodMon/Pods-moodMon.debug.xcconfig"; sourceTree = "<group>"; };
+		4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodMon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		657578891CB4BE7100D75D5E /* MDYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDYearViewController.h; sourceTree = "<group>"; };
 		6575788A1CB4BE7100D75D5E /* MDYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDYearViewController.m; sourceTree = "<group>"; };
 		6575CAE61CE20AA7005E390F /* MDCustomStoryboardUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCustomStoryboardUnwindSegue.h; sourceTree = "<group>"; };
@@ -397,6 +398,9 @@
 		65B036751CDFA1FD00D095F0 /* MDSaveMoodMon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSaveMoodMon.m; sourceTree = "<group>"; };
 		65B036781CDFA95400D095F0 /* MDMakeMoodMonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMakeMoodMonView.h; sourceTree = "<group>"; };
 		65B036791CDFA95400D095F0 /* MDMakeMoodMonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMakeMoodMonView.m; sourceTree = "<group>"; };
+		6FDE4174452E7C2230617BA3 /* Pods-moodMon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodMon.release.xcconfig"; path = "Pods/Target Support Files/Pods-moodMon/Pods-moodMon.release.xcconfig"; sourceTree = "<group>"; };
+		CE35C41F1DFD51D600C8F16E /* Moodmon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Moodmon.h; sourceTree = "<group>"; };
+		CE35C4201DFD51D600C8F16E /* Moodmon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moodmon.m; sourceTree = "<group>"; };
 		CE3AC3B91CF183420037BC71 /* MDDataSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDataSettingTableViewController.h; sourceTree = "<group>"; };
 		CE3AC3BA1CF183420037BC71 /* MDDataSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDataSettingTableViewController.m; sourceTree = "<group>"; };
 		CE4A8A331CABCCB1006B73B7 /* moodMon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodMon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,10 +417,6 @@
 		CE4A8A5D1CABCCB1006B73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE4A8A691CABCDC6006B73B7 /* MDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDataManager.h; sourceTree = "<group>"; };
 		CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDataManager.m; sourceTree = "<group>"; };
-		CE4A8A6C1CABCE05006B73B7 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		CE4A8A6D1CABCE05006B73B7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		CE4B234D1CB201B1007D0B3B /* MDMoodmon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoodmon.h; sourceTree = "<group>"; };
-		CE4B234E1CB201B1007D0B3B /* MDMoodmon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodmon.m; sourceTree = "<group>"; };
 		CE7FFD581CE023D300B7139C /* MDCustomStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCustomStoryboardSegue.h; sourceTree = "<group>"; };
 		CE7FFD591CE023D300B7139C /* MDCustomStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCustomStoryboardSegue.m; sourceTree = "<group>"; };
 		CE87EC501CCE118500329E16 /* MDSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchTableViewController.h; sourceTree = "<group>"; };
@@ -747,12 +747,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6C8B91457CD67645509E007C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE4A8A301CABCCB1006B73B7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE4A8A6E1CABCE05006B73B7 /* libsqlite3.0.tbd in Frameworks */,
-				CE4A8A6F1CABCE05006B73B7 /* libsqlite3.tbd in Frameworks */,
+				0E3E460A5D7137AD29CC7EDF /* Pods_moodMon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +787,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64D9545DCBE38B2CB077DC7F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				126E72A90D05B29461B8D6B2 /* Pods-moodMon.debug.xcconfig */,
+				6FDE4174452E7C2230617BA3 /* Pods-moodMon.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6575788C1CB4BE7600D75D5E /* month scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -799,8 +814,8 @@
 				CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */,
 				CEABEFEC1CFAD7AC00AA4E60 /* MDDocument.h */,
 				CEABEFED1CFAD7AC00AA4E60 /* MDDocument.m */,
-				CE4B234D1CB201B1007D0B3B /* MDMoodmon.h */,
-				CE4B234E1CB201B1007D0B3B /* MDMoodmon.m */,
+				CE35C41F1DFD51D600C8F16E /* Moodmon.h */,
+				CE35C4201DFD51D600C8F16E /* Moodmon.m */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -808,8 +823,6 @@
 		CE4A8A2A1CABCCB1006B73B7 = {
 			isa = PBXGroup;
 			children = (
-				CE4A8A6C1CABCE05006B73B7 /* libsqlite3.0.tbd */,
-				CE4A8A6D1CABCE05006B73B7 /* libsqlite3.tbd */,
 				CE4A8A351CABCCB1006B73B7 /* moodMon */,
 				CE4A8A4F1CABCCB1006B73B7 /* moodMonTests */,
 				CE4A8A5A1CABCCB1006B73B7 /* moodMonUITests */,
@@ -817,6 +830,7 @@
 				E4AB18451DD3309600A33AC4 /* MessagesExtension */,
 				E92D2EF51D3BBFB100E44264 /* Frameworks */,
 				CE4A8A341CABCCB1006B73B7 /* Products */,
+				64D9545DCBE38B2CB077DC7F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1135,6 +1149,7 @@
 			children = (
 				E92D2EF61D3BBFB100E44264 /* NotificationCenter.framework */,
 				E4AB18431DD3309600A33AC4 /* Messages.framework */,
+				4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1451,10 +1466,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE4A8A601CABCCB1006B73B7 /* Build configuration list for PBXNativeTarget "moodMon" */;
 			buildPhases = (
+				3B374879B63AE2C1EB63BFC5 /* [CP] Check Pods Manifest.lock */,
 				CE4A8A2F1CABCCB1006B73B7 /* Sources */,
 				CE4A8A301CABCCB1006B73B7 /* Frameworks */,
 				CE4A8A311CABCCB1006B73B7 /* Resources */,
 				E92D2F061D3BBFB100E44264 /* Embed App Extensions */,
+				FCD497B0253CDB53342E0EB3 /* [CP] Embed Pods Frameworks */,
+				9AD4AA802D8063CE917977AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1507,6 +1525,7 @@
 			buildPhases = (
 				E4AB18341DD3309600A33AC4 /* Resources */,
 				E4AB18541DD3309600A33AC4 /* Embed App Extensions */,
+				6C8B91457CD67645509E007C /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1907,12 +1926,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3B374879B63AE2C1EB63BFC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9AD4AA802D8063CE917977AA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-moodMon/Pods-moodMon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCD497B0253CDB53342E0EB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-moodMon/Pods-moodMon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE4A8A2F1CABCCB1006B73B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				655DA55E1CF2A6820048BF13 /* MDNavController.m in Sources */,
+				CE35C4211DFD51D600C8F16E /* Moodmon.m in Sources */,
 				CEDACCBE1CEC380700FBD201 /* MDCustomStoryboardUnwindSegue.m in Sources */,
 				CE7FFD5A1CE023D300B7139C /* MDCustomStoryboardSegue.m in Sources */,
 				658BE7321CB4CE98006EB718 /* MDWheelView.m in Sources */,
@@ -1929,7 +1997,6 @@
 				E9B03E361CF229140069741F /* MDSmallMoodFaceView.m in Sources */,
 				E95DE3C01CE999110094EDCF /* MDTouchUpGestureRecognizer.m in Sources */,
 				65980E2D1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m in Sources */,
-				CE4B234F1CB201B1007D0B3B /* MDMoodmon.m in Sources */,
 				E9CD99751CE8C9E500C9DBB7 /* MDProgressWheelView.m in Sources */,
 				65B036761CDFA1FD00D095F0 /* MDSaveMoodMon.m in Sources */,
 				CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */,
@@ -2106,6 +2173,7 @@
 		};
 		CE4A8A611CABCCB1006B73B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 126E72A90D05B29461B8D6B2 /* Pods-moodMon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = moodMon/moodMon.entitlements;
@@ -2123,6 +2191,7 @@
 		};
 		CE4A8A621CABCCB1006B73B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FDE4174452E7C2230617BA3 /* Pods-moodMon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = moodMon/moodMon.entitlements;

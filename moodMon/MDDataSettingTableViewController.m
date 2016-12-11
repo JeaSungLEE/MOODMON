@@ -77,7 +77,28 @@
 
 -(void)deleteAllData{
     NSLog(@"delete all");
-    [_dataManager deleteAllData];
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"정말로 무드몬을\r\n모두 지우시겠습니까?"
+                                 message:nil
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"네"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    [_dataManager deleteAllData];
+                                }];
+    
+    UIAlertAction* noButton = [UIAlertAction
+                               actionWithTitle:@"아니요"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                               }];
+    
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
