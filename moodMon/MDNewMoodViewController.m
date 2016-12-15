@@ -36,6 +36,10 @@
     [self drawRecentMoodView];
     [self textLabelInit];
     [self menuControllerInit];
+    
+    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
+    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
 }
 
 
@@ -43,10 +47,11 @@
     [super viewDidAppear:animated];
     [self roundedViewsInit];
     CGFloat textFieldOffset = 80;
-    _tutorialViewController.textFieldFrame = CGRectMake(_textField.frame.origin.x-textFieldOffset/2,
-                                                        _textField.frame.origin.y-textFieldOffset/2,
-                                                        _textField.frame.size.width+textFieldOffset,
-                                                        _textField.frame.size.height+textFieldOffset);
+    CGRect textFieldFrame = _textField.frame;
+    _tutorialViewController.textFieldFrame = CGRectMake(textFieldFrame.origin.x-textFieldOffset/2,
+                                                        textFieldFrame.origin.y-textFieldOffset/2,
+                                                        textFieldFrame.size.width+textFieldOffset,
+                                                        textFieldFrame.size.height+textFieldOffset);
 }
 
 

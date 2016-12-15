@@ -846,11 +846,18 @@
                                     <action selector="didTextFieldActivate:" destination="DEj-XY-Yfy" eventType="editingDidBegin" id="HEQ-EK-blO"/>
                                 </connections>
                             </textField>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fqx-Eu-6Cy" customClass="MDNewMoodTutorialView">
+                                <connections>
+                                    <segue destination="pxa-vQ-ptT" kind="embed" identifier="newMoodTutorial" id="oZJ-ha-Ujx"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Fqx-Eu-6Cy" firstAttribute="height" secondItem="ati-L3-kaM" secondAttribute="height" id="3PP-U1-5pw"/>
                             <constraint firstItem="A1Q-op-boq" firstAttribute="top" secondItem="tGU-vm-7co" secondAttribute="bottom" constant="14" id="7CJ-gq-LK9"/>
                             <constraint firstItem="6iM-UI-yZ0" firstAttribute="centerX" secondItem="ati-L3-kaM" secondAttribute="centerX" id="AaQ-V6-Ean"/>
+                            <constraint firstItem="Fqx-Eu-6Cy" firstAttribute="width" secondItem="ati-L3-kaM" secondAttribute="width" id="Bk8-lb-XJd"/>
                             <constraint firstItem="jsq-UW-sGh" firstAttribute="centerY" secondItem="QSZ-GO-o3D" secondAttribute="centerY" id="Ccm-bK-wjB">
                                 <variation key="widthClass=compact" constant="-40"/>
                             </constraint>
@@ -861,6 +868,7 @@
                             <constraint firstItem="tGU-vm-7co" firstAttribute="centerY" secondItem="ati-L3-kaM" secondAttribute="centerY" id="Eop-YE-rz0">
                                 <variation key="widthClass=compact" constant="33"/>
                             </constraint>
+                            <constraint firstItem="Fqx-Eu-6Cy" firstAttribute="centerY" secondItem="ati-L3-kaM" secondAttribute="centerY" id="IRT-Xx-c5V"/>
                             <constraint firstItem="6iM-UI-yZ0" firstAttribute="width" secondItem="ati-L3-kaM" secondAttribute="width" id="Oh9-l5-iqV"/>
                             <constraint firstItem="jsq-UW-sGh" firstAttribute="centerX" secondItem="QSZ-GO-o3D" secondAttribute="centerX" id="SBi-Ni-RA7">
                                 <variation key="widthClass=compact" constant="116"/>
@@ -878,6 +886,7 @@
                             <constraint firstItem="F92-gM-ZdI" firstAttribute="centerX" secondItem="QSZ-GO-o3D" secondAttribute="centerX" id="lwa-cF-XpX">
                                 <variation key="widthClass=compact" constant="-116.5"/>
                             </constraint>
+                            <constraint firstItem="Fqx-Eu-6Cy" firstAttribute="centerX" secondItem="ati-L3-kaM" secondAttribute="centerX" id="nR9-d3-hoU"/>
                             <constraint firstItem="6iM-UI-yZ0" firstAttribute="bottom" secondItem="8o3-BP-aWL" secondAttribute="top" id="qZN-5A-j0i"/>
                             <constraint firstItem="QSZ-GO-o3D" firstAttribute="centerX" secondItem="ati-L3-kaM" secondAttribute="centerX" id="qvm-An-6ZH"/>
                         </constraints>
@@ -892,21 +901,21 @@
                                 <exclude reference="A1Q-op-boq"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DxO-CP-ziM"/>
-                                <exclude reference="ESQ-P0-qTm"/>
-                                <exclude reference="AaQ-V6-Ean"/>
-                                <exclude reference="Oh9-l5-iqV"/>
-                                <exclude reference="qZN-5A-j0i"/>
-                                <exclude reference="7CJ-gq-LK9"/>
-                                <exclude reference="fbw-pg-XNn"/>
                                 <exclude reference="k0l-Mv-DFy"/>
                                 <exclude reference="lwa-cF-XpX"/>
                                 <exclude reference="qvm-An-6ZH"/>
-                                <exclude reference="Ccm-bK-wjB"/>
-                                <exclude reference="SBi-Ni-RA7"/>
+                                <exclude reference="DxO-CP-ziM"/>
+                                <exclude reference="ESQ-P0-qTm"/>
                                 <exclude reference="Eop-YE-rz0"/>
                                 <exclude reference="SWe-im-2vG"/>
                                 <exclude reference="fVc-34-5fV"/>
+                                <exclude reference="Ccm-bK-wjB"/>
+                                <exclude reference="SBi-Ni-RA7"/>
+                                <exclude reference="7CJ-gq-LK9"/>
+                                <exclude reference="fbw-pg-XNn"/>
+                                <exclude reference="AaQ-V6-Ean"/>
+                                <exclude reference="Oh9-l5-iqV"/>
+                                <exclude reference="qZN-5A-j0i"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -920,21 +929,21 @@
                                 <include reference="A1Q-op-boq"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DxO-CP-ziM"/>
-                                <include reference="ESQ-P0-qTm"/>
-                                <include reference="AaQ-V6-Ean"/>
-                                <include reference="Oh9-l5-iqV"/>
-                                <include reference="qZN-5A-j0i"/>
-                                <include reference="7CJ-gq-LK9"/>
-                                <include reference="fbw-pg-XNn"/>
                                 <include reference="k0l-Mv-DFy"/>
                                 <include reference="lwa-cF-XpX"/>
                                 <include reference="qvm-An-6ZH"/>
-                                <include reference="Ccm-bK-wjB"/>
-                                <include reference="SBi-Ni-RA7"/>
+                                <include reference="DxO-CP-ziM"/>
+                                <include reference="ESQ-P0-qTm"/>
                                 <include reference="Eop-YE-rz0"/>
                                 <include reference="SWe-im-2vG"/>
                                 <include reference="fVc-34-5fV"/>
+                                <include reference="Ccm-bK-wjB"/>
+                                <include reference="SBi-Ni-RA7"/>
+                                <include reference="7CJ-gq-LK9"/>
+                                <include reference="fbw-pg-XNn"/>
+                                <include reference="AaQ-V6-Ean"/>
+                                <include reference="Oh9-l5-iqV"/>
+                                <include reference="qZN-5A-j0i"/>
                             </mask>
                         </variation>
                     </view>
@@ -953,8 +962,9 @@
                         <outlet property="sad" destination="ZY3-E2-Hfe" id="TeI-oD-ccm"/>
                         <outlet property="saveButtonBackground" destination="jsq-UW-sGh" id="Pms-2t-wHP"/>
                         <outlet property="skipButtonBackground" destination="F92-gM-ZdI" id="pcy-Jb-CUZ"/>
-                        <outlet property="textField" destination="A1Q-op-boq" id="2VP-Xy-toR"/>
+                        <outlet property="textField" destination="A1Q-op-boq" id="0bd-AR-7cc"/>
                         <outlet property="tired" destination="LSf-RJ-J1b" id="n7N-f4-Cda"/>
+                        <outlet property="tutorialContainerView" destination="Fqx-Eu-6Cy" id="Ygw-qL-FSI"/>
                         <outlet property="wheel" destination="5Y8-nm-bGU" id="876-BT-SYx"/>
                     </connections>
                 </viewController>
@@ -1895,6 +1905,7 @@
                         <outlet property="skipButtonBackground" destination="A0I-t8-oas" id="H9J-9o-5ty"/>
                         <outlet property="textField" destination="zuU-2m-ArN" id="bEU-IY-a2j"/>
                         <outlet property="tired" destination="uUR-Qm-e63" id="Mwg-0Z-CKg"/>
+                        <outlet property="tutorialContainerView" destination="cv6-M3-Tt8" id="u0l-71-Nci"/>
                         <outlet property="wheel" destination="Ar2-m9-yL3" id="QN8-Ib-HXV"/>
                     </connections>
                 </viewController>
@@ -1986,6 +1997,41 @@
             </objects>
             <point key="canvasLocation" x="1977" y="692"/>
         </scene>
+        <!--Month View Tutorial Controller-->
+        <scene sceneID="vjd-NP-PSx">
+            <objects>
+                <viewController storyboardIdentifier="MonthTutorial" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pQv-3W-T9v" customClass="MDMonthViewTutorialController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SBB-QP-emc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ye6-uG-lhH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nAf-ka-U9g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ym-aJ-70Y">
+                                <state key="normal" image="Calendar Tutorial.png"/>
+                                <state key="disabled" image="Calendar Tutorial.png"/>
+                                <state key="selected" image="Calendar Tutorial.png"/>
+                                <state key="highlighted" image="Calendar Tutorial.png"/>
+                                <connections>
+                                    <action selector="exitTutorial:" destination="pQv-3W-T9v" eventType="touchUpInside" id="f55-oJ-QoE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0ym-aJ-70Y" firstAttribute="centerY" secondItem="nAf-ka-U9g" secondAttribute="centerY" id="1HQ-N6-fX0"/>
+                            <constraint firstItem="0ym-aJ-70Y" firstAttribute="width" secondItem="nAf-ka-U9g" secondAttribute="width" id="4Te-j0-7zL"/>
+                            <constraint firstItem="0ym-aJ-70Y" firstAttribute="height" secondItem="nAf-ka-U9g" secondAttribute="height" id="j6f-bH-UX4"/>
+                            <constraint firstItem="0ym-aJ-70Y" firstAttribute="centerX" secondItem="nAf-ka-U9g" secondAttribute="centerX" id="vEH-os-34I"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0xC-R4-lUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3260" y="-306"/>
+        </scene>
         <!--Search Table View Controller-->
         <scene sceneID="VSh-RE-7sg">
             <objects>
@@ -2057,7 +2103,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8g-hz-0vR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896.5" y="-238"/>
+            <point key="canvasLocation" x="2538" y="-306"/>
         </scene>
         <!--Mood Filter Table View Controller-->
         <scene sceneID="9Dh-Nr-3zA">
@@ -2092,7 +2138,7 @@
         <!--Title-->
         <scene sceneID="fHh-ad-Qp7">
             <objects>
-                <viewController storyboardIdentifier="monthVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XeT-CV-5As" customClass="MDMonthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="monthVC" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XeT-CV-5As" customClass="MDMonthViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eXz-kO-qpe"/>
                         <viewControllerLayoutGuide type="bottom" id="hmy-DR-MdY"/>
@@ -2101,45 +2147,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K4a-au-hDp">
-                                <frame key="frameInset" minY="643" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="5HY-er-SvH"/>
-                                    <constraint firstAttribute="width" constant="414" id="b19-jZ-YgS"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem width="40" style="plain" systemItem="fixedSpace" id="bqc-5j-WwO"/>
-                                    <barButtonItem title="data" id="aoa-DX-TC2">
-                                        <color key="tintColor" red="0.35686274509803922" green="0.34509803921568627" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="7ho-Ul-E35" kind="presentation" id="kgV-Ig-UHw"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Lhh-rH-OSx"/>
-                                    <barButtonItem style="plain" id="PAD-VC-BOf">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bmg-yH-qOD">
-                                            <rect key="frame" x="186" y="7" width="42" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="filter">
-                                                <color key="titleColor" red="0.35686274509999999" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="expandButtonTouched" destination="XeT-CV-5As" eventType="touchUpInside" id="PZ9-6a-Oop"/>
-                                            </connections>
-                                        </button>
-                                        <color key="tintColor" red="0.35686274509803922" green="0.34509803921568627" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="STB-9o-1bZ"/>
-                                    <barButtonItem style="plain" systemItem="add" id="d5j-x9-gTB">
-                                        <color key="tintColor" red="0.35686274509999999" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="goToNewMoodViewController:" destination="XeT-CV-5As" id="Q8g-XI-mBG"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="40" style="plain" systemItem="fixedSpace" id="MUU-wA-cCN"/>
-                                </items>
-                                <color key="barTintColor" red="0.91764705882352937" green="0.8901960784313725" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Wu-vp-s1m" userLabel="toolBarContainer">
                                 <frame key="frameInset" minX="40" minY="216" width="330" height="112"/>
                                 <subviews>
@@ -2233,18 +2240,17 @@
                                     <constraint firstItem="4yz-hJ-4MX" firstAttribute="width" secondItem="6Wu-vp-s1m" secondAttribute="width" id="zRM-Or-Pfh"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kCc-hW-Vsq">
-                                <frame key="frameInset" minY="511" width="414" height="204"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kCc-hW-Vsq">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="204" id="kkf-Vn-Y9q"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MDMonthTimeLineCellTableViewCell" id="v2g-lF-DOc" customClass="MDMonthTimeLineCellTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="377" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2g-lF-DOc" id="UjD-II-JKf">
-                                            <frame key="frameInset" width="414" height="43"/>
+                                            <frame key="frameInset" width="377" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBN-2p-oc1">
@@ -2366,12 +2372,44 @@
                                     <outlet property="delegate" destination="XeT-CV-5As" id="1Wr-4a-9um"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LL-oU-c8v">
-                                <state key="normal" image="Calendar Tutorial.png"/>
-                                <connections>
-                                    <action selector="closeTutorial:" destination="XeT-CV-5As" eventType="touchUpInside" id="YRt-3b-09M"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4a-au-hDp">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5HY-er-SvH"/>
+                                    <constraint firstAttribute="width" constant="414" id="b19-jZ-YgS"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem width="40" style="plain" systemItem="fixedSpace" id="bqc-5j-WwO"/>
+                                    <barButtonItem title="data" id="aoa-DX-TC2">
+                                        <color key="tintColor" red="0.35686274509803922" green="0.34509803921568627" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="7ho-Ul-E35" kind="presentation" id="kgV-Ig-UHw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Lhh-rH-OSx"/>
+                                    <barButtonItem style="plain" id="PAD-VC-BOf">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bmg-yH-qOD">
+                                            <rect key="frame" x="186" y="7" width="42" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="filter">
+                                                <color key="titleColor" red="0.35686274509999999" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="expandButtonTouched" destination="XeT-CV-5As" eventType="touchUpInside" id="PZ9-6a-Oop"/>
+                                            </connections>
+                                        </button>
+                                        <color key="tintColor" red="0.35686274509803922" green="0.34509803921568627" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="STB-9o-1bZ"/>
+                                    <barButtonItem style="plain" systemItem="add" id="d5j-x9-gTB">
+                                        <color key="tintColor" red="0.35686274509999999" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="goToNewMoodViewController:" destination="XeT-CV-5As" id="Q8g-XI-mBG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="40" style="plain" systemItem="fixedSpace" id="MUU-wA-cCN"/>
+                                </items>
+                                <color key="barTintColor" red="0.91764705882352937" green="0.8901960784313725" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -2380,15 +2418,11 @@
                             <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="-49" id="5LP-Aw-Qus"/>
                             <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="132" id="7Xp-uI-MPb"/>
                             <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="K4a-au-hDp" secondAttribute="bottom" id="8EI-UV-R4X"/>
-                            <constraint firstItem="8LL-oU-c8v" firstAttribute="height" secondItem="8Tw-nI-bq1" secondAttribute="height" id="Apj-T0-qtB"/>
                             <constraint firstItem="K4a-au-hDp" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" id="CvR-SH-uvC"/>
-                            <constraint firstItem="8LL-oU-c8v" firstAttribute="width" secondItem="8Tw-nI-bq1" secondAttribute="width" id="LHw-2Z-3J4"/>
                             <constraint firstItem="hmy-DR-MdY" firstAttribute="top" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="44" id="Lpe-lm-P1i"/>
                             <constraint firstAttribute="bottom" secondItem="kCc-hW-Vsq" secondAttribute="bottom" constant="44" id="R43-de-cL3"/>
                             <constraint firstItem="kCc-hW-Vsq" firstAttribute="centerX" secondItem="8Tw-nI-bq1" secondAttribute="centerX" id="XGQ-Uz-sES"/>
                             <constraint firstItem="K4a-au-hDp" firstAttribute="centerY" secondItem="8Tw-nI-bq1" secondAttribute="centerY" id="fsa-7Z-Bwu"/>
-                            <constraint firstItem="8LL-oU-c8v" firstAttribute="centerX" secondItem="8Tw-nI-bq1" secondAttribute="centerX" id="mMh-mo-RrN"/>
-                            <constraint firstItem="8LL-oU-c8v" firstAttribute="centerY" secondItem="8Tw-nI-bq1" secondAttribute="centerY" id="ofe-gm-Im2"/>
                             <constraint firstItem="K4a-au-hDp" firstAttribute="centerX" secondItem="8Tw-nI-bq1" secondAttribute="centerX" id="rB7-sC-7WU"/>
                             <constraint firstItem="kCc-hW-Vsq" firstAttribute="width" secondItem="8Tw-nI-bq1" secondAttribute="width" multiplier="1:1" id="rOV-3s-5Hg">
                                 <variation key="widthClass=compact" constant="2"/>
@@ -2431,7 +2465,6 @@
                         <outlet property="tableViews" destination="kCc-hW-Vsq" id="Ped-2u-kEC"/>
                         <outlet property="tableviewHeight" destination="kkf-Vn-Y9q" id="lwA-Hx-ZJE"/>
                         <outlet property="toolbarContainer" destination="6Wu-vp-s1m" id="8CU-dw-1ss"/>
-                        <outlet property="tutorialView" destination="8LL-oU-c8v" id="yNC-UE-WFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phI-SD-SCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2453,7 +2486,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bpv-3I-NYe" customClass="MDNavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ru9-9D-h38">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ru9-9D-h38">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2471,7 +2504,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GN2-Fj-BDm" customClass="MDNavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="klu-ey-2vs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="klu-ey-2vs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -2522,7 +2555,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7ho-Ul-E35" customClass="MDNavController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lzg-A2-epU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lzg-A2-epU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2543,7 +2576,7 @@
                         <viewControllerLayoutGuide type="top" id="VMq-Pv-qSs"/>
                         <viewControllerLayoutGuide type="bottom" id="DAn-gL-G3w"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VJt-Q6-qpg" customClass="MDNewMoodTutorialView">
+                    <view key="view" contentMode="scaleToFill" id="VJt-Q6-qpg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2573,7 +2606,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bfx-uE-8AC" firstAttribute="centerX" secondItem="VJt-Q6-qpg" secondAttribute="centerX" id="NWJ-P0-5fx"/>
-                            <constraint firstItem="bfx-uE-8AC" firstAttribute="top" secondItem="jW9-uX-R1g" secondAttribute="bottom" constant="-35" id="Q3p-yU-PfW"/>
+                            <constraint firstItem="bfx-uE-8AC" firstAttribute="bottom" secondItem="jW9-uX-R1g" secondAttribute="bottom" constant="15" id="Q3p-yU-PfW"/>
                             <constraint firstItem="bfx-uE-8AC" firstAttribute="top" secondItem="VJt-Q6-qpg" secondAttribute="topMargin" constant="30" id="QjA-uz-73z"/>
                             <constraint firstItem="jZJ-Yc-eWv" firstAttribute="centerX" secondItem="bfx-uE-8AC" secondAttribute="centerX" id="dhL-bC-lSf"/>
                             <constraint firstItem="jW9-uX-R1g" firstAttribute="trailing" secondItem="bfx-uE-8AC" secondAttribute="trailing" constant="-15" id="e1K-F3-cbn"/>
@@ -2592,7 +2625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYi-5e-rBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3664.8000000000002" y="-1059.2203898050975"/>
+            <point key="canvasLocation" x="3706" y="-1059"/>
         </scene>
     </scenes>
     <resources>
@@ -2616,5 +2649,8 @@
         <image name="tutorial_box.png" width="1028" height="463"/>
         <image name="tutorial_next.png" width="64" height="63"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oZJ-ha-Ujx"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

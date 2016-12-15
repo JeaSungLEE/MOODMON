@@ -42,7 +42,6 @@ UIFont *boldQuicksand;
 @synthesize thisMonth;
 
 -(void)awakeFromNib{
-    
     //image loading
     _angryChecked = [UIImage imageNamed:@"angry_filter@2x"];
     _angryUnchecked = [UIImage imageNamed:@"angry_unfilter@2x"];
@@ -54,16 +53,14 @@ UIFont *boldQuicksand;
     _exciteUnchecked = [UIImage imageNamed:@"excited_unfilter@2x"];
     _exhaustChecked = [UIImage imageNamed:@"tired_filter@2x"];
     _exhaustUnchecked = [UIImage imageNamed:@"tired_unfilter@2x"];
-    
 }
-
 
 
 - (void)viewDidLoad {
     count=0;
     [super viewDidLoad];
     _mddm = [MDDataManager sharedDataManager];
-   
+    
     now = [NSDate date];
     toolbarIsOpen = YES;
     toolbarIsAnimating = NO;
@@ -107,11 +104,15 @@ UIFont *boldQuicksand;
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    BOOL didShowMonthTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowMonthTutorial"] boolValue];
+    if(didShowMonthTutorial == NO) {
+        [self showTutorial];
+    }
     [self removeTags];
     myDay = 0;
     
     [_filterButton setFont:quicksand];
-//    [_dataButton setTitleTextAttributes:@{NSFontAttributeName:quicksand} forState:UIControlStateNormal];
+    //    [_dataButton setTitleTextAttributes:@{NSFontAttributeName:quicksand} forState:UIControlStateNormal];
     [[UIBarButtonItem appearance]setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                          [UIColor colorWithRed:91/255.0 green:88/255.0 blue:85/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                                          quicksand, NSFontAttributeName, nil]
@@ -139,6 +140,15 @@ UIFont *boldQuicksand;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)showTutorial {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"MonthTutorial"];
+    [tutorialViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:tutorialViewController animated:YES completion:nil];
+}
+
 
 /***************** filter tool bar animation **************/
 
@@ -214,7 +224,7 @@ UIFont *boldQuicksand;
             _mddm.isChecked[2] = @YES;
             _mddm.chosenMoodCount++;
             [self.sadFilterBtn setImage:_sadChecked forState:UIControlStateNormal];
-//            [self.sadFilterBtn setBackgroundImage: _sadChecked forState:UIControlStateNormal];
+            //            [self.sadFilterBtn setBackgroundImage: _sadChecked forState:UIControlStateNormal];
         } else {
             _mddm.isChecked[2] = @NO;
             _mddm.chosenMoodCount--;
@@ -517,7 +527,7 @@ UIFont *boldQuicksand;
                     mcv.layer.cornerRadius = mcv.frame.size.width/2;
                     [mcv setNeedsDisplay];
                     [mfv setNeedsDisplay];
-                   
+                    
                     [mcv addSubview:mfv];
                     mcv.layer.masksToBounds=YES;
                     mcv.center = dayButton.center;
@@ -629,7 +639,7 @@ UIFont *boldQuicksand;
     
     cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
     cell.moodColorView.layer.masksToBounds = YES;
-
+    
     for(int i = 1 ; i < cell.moodColorView.chosenMoods.count ; i++){
         [cell.moodColorView.chosenMoods replaceObjectAtIndex:i withObject:@0];
         [cell.moodFaceView.chosenMoods replaceObjectAtIndex:i withObject:@0];
@@ -639,20 +649,20 @@ UIFont *boldQuicksand;
     NSNumber *moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen1];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:1];
-//        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:1 ];
-//        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:1 ];
+        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:1 ];
+        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:1 ];
     }
     moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen2];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:2];
-//        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:2 ];
-//        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:2 ];
+        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:2 ];
+        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:2 ];
     }
     moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen3];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:3];
-//        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:3 ];
-//        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:3 ];
+        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:3 ];
+        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:3 ];
     }
     cell.moodColorView.chosenMoods = chosenMoods;
     cell.moodFaceView.chosenMoods = chosenMoods;
@@ -663,7 +673,7 @@ UIFont *boldQuicksand;
         cell.isFiltered = YES;
         [indexPathsToDelete addObject:indexPath];
     }
-
+    
     [cell.moodFaceView setNeedsDisplay];
     [cell.moodColorView setNeedsDisplay];
     
@@ -817,13 +827,6 @@ UIFont *boldQuicksand;
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-
-- (IBAction)closeTutorial:(UIButton *)sender {
-    [UIView animateWithDuration:0.3 animations:^{
-        _tutorialView.layer.opacity = 0;
-        self.navigationController.navigationBar.layer.opacity = 1;
-    }];
-}
 
 
 @end

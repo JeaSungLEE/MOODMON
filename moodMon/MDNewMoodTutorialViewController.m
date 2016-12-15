@@ -126,7 +126,7 @@
 - (void)drawCircleAroundCommentField {
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:_textFieldFrame];
     CAShapeLayer *pathLayer = [CAShapeLayer layer];
-    pathLayer.frame = self.view.bounds;
+    pathLayer.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     pathLayer.path = path.CGPath;
     pathLayer.fillColor = [UIColor clearColor].CGColor;
     pathLayer.strokeColor = [UIColor colorWithRed:1.00 green:0.42 blue:0.42 alpha:1.00].CGColor;
