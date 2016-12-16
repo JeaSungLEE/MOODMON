@@ -34,7 +34,9 @@ UITableViewHeaderFooterView *headerView;
 NSMutableArray <NSIndexPath *> *indexPathsToDelete;
 UIFont *quicksand;
 UIFont *boldQuicksand;
+NSString *currentDate;
 UIVisualEffectView *blurEffectView;
+UIVisualEffectView *visualEffectView;
 
 
 @implementation MDMonthViewController
@@ -586,7 +588,8 @@ UIVisualEffectView *blurEffectView;
     if(myDay == 0) {
         return nil;
     }
-    NSString *date =[NSString stringWithFormat:@"%d년 %d월 %d일", thisYear, thisMonth, myDay];
+    NSString *date =[NSString stringWithFormat:@"%ld년 %d월 %d일", (long)thisYear, thisMonth, myDay];
+    currentDate = date;
     return date;
 }
 
@@ -741,7 +744,11 @@ UIVisualEffectView *blurEffectView;
     MDMonthTimeLineCellTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     VC.moodColorView = cell.moodColorView;
     VC.timest = cell.timeLabel.text;
+    VC.dateString = currentDate;
     VC.comment = cell.commentLabel.text;
+    
+    
+    [self.navigationController.navigationBar addSubview:visualEffectView];
     [self.view addSubview:blurEffectView];
     VC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:VC animated:YES completion:nil];
@@ -815,7 +822,8 @@ UIVisualEffectView *blurEffectView;
 }
 
 -(void)deleteBlur:(NSNotification*)notification{
-     [[self.view viewWithTag:799]removeFromSuperview];
+    [[self.view viewWithTag:799]removeFromSuperview];
+    [[self.navigationController.navigationBar viewWithTag:798]removeFromSuperview];
 }
 
 -(void)setBlurEffect{
@@ -823,6 +831,12 @@ UIVisualEffectView *blurEffectView;
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     [blurEffectView setFrame:[UIScreen mainScreen].bounds];
     blurEffectView.tag = 799;
+    
+    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    visualEffectView.frame = self.navigationController.navigationBar.bounds;
+    visualEffectView.tag = 798;
+    visualEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
 }
 
