@@ -94,6 +94,7 @@
 }
 
 -(void)setDate{
+    _dateLabelDetail.text = _dateString;
     _dateLabel.text =  _timest;
 }
 
@@ -125,7 +126,6 @@
 }
 
 - (IBAction)deleteMood:(id)sender {
-    
     [self showAlertView:@"DELETE" Message:@"삭제되었습니다."];
     [self dissmissView];
 }

@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *moodView;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabelDetail;
 @property (strong, nonatomic) IBOutlet MDMoodColorView *moodColorView;
 @property (strong, nonatomic) IBOutlet UITextView *commentTextView;
 @property (strong, nonatomic) IBOutlet UIImageView *backImage;
@@ -21,6 +22,8 @@
 @property CGRect textRectFrame;
 @property NSString* timest;
 @property NSString* comment;
+@property NSString* dateString;
+
 - (IBAction)closeButton:(id)sender;
 - (IBAction)saveMoodButton:(id)sender;
 - (IBAction)commitModify:(id)sender;

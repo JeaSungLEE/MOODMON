@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GN2-Fj-BDm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GN2-Fj-BDm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,8 +36,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Saturday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSZ-GO-o3D">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSZ-GO-o3D">
+                                <rect key="frame" x="65" y="121.5" width="245" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="deP-r5-iS8">
                                         <variation key="widthClass=compact" constant="245"/>
@@ -60,8 +60,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wJ-1Q-qR5">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wJ-1Q-qR5">
+                                <rect key="frame" x="94" y="160.5" width="187" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="MrI-RO-57h">
                                         <variation key="widthClass=compact" constant="26"/>
@@ -86,15 +86,15 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGU-vm-7co" userLabel="container">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tGU-vm-7co" userLabel="container">
+                                <rect key="frame" x="38.5" y="216.5" width="300" height="300"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-S1-iOy" userLabel="progress wheel" customClass="MDProgressWheelView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-S1-iOy" userLabel="progress wheel" customClass="MDProgressWheelView">
+                                        <rect key="frame" x="11" y="11" width="278" height="278"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Y8-nm-bGU" userLabel="wheel" customClass="MDWheelView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Y8-nm-bGU" userLabel="wheel" customClass="MDWheelView">
+                                        <rect key="frame" x="11" y="11" width="278" height="278"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="192" id="Ups-wa-Ui6">
                                                 <variation key="widthClass=compact" constant="278"/>
@@ -116,8 +116,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="angry_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="SBA-J3-dPB" userLabel="angry" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="angry_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="SBA-J3-dPB" userLabel="angry" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="118.5" y="3" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="KU4-7d-8kb"/>
                                             <constraint firstAttribute="width" constant="65" id="t33-JM-Cuc"/>
@@ -135,8 +135,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="joy_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="ark-y7-Nrw" userLabel="joy" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="joy_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="ark-y7-Nrw" userLabel="joy" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="226" y="72" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="65" id="A7o-Sj-g5x"/>
                                             <constraint firstAttribute="height" constant="65" id="ZX7-By-yg4"/>
@@ -154,8 +154,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tired_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="LSf-RJ-J1b" userLabel="tired" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tired_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="LSf-RJ-J1b" userLabel="tired" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="9" y="72" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="Peb-kz-hec"/>
                                             <constraint firstAttribute="width" constant="65" id="iqB-pa-H0V"/>
@@ -173,8 +173,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="excited_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="NkQ-F6-91I" userLabel="excited" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="excited_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="NkQ-F6-91I" userLabel="excited" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="43" y="209" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="65" id="EcI-ax-4Fl"/>
                                             <constraint firstAttribute="height" constant="65" id="OOb-Ym-gzr"/>
@@ -192,8 +192,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sad_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZY3-E2-Hfe" userLabel="sad" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZY3-E2-Hfe" userLabel="sad" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="192" y="209" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="65" id="9vK-ga-3ks"/>
                                             <constraint firstAttribute="height" constant="65" id="e2R-Ur-ggE"/>
@@ -211,8 +211,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mV-Vq-pIO" userLabel="mood color" customClass="MDMoodColorView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mV-Vq-pIO" userLabel="mood color" customClass="MDMoodColorView">
+                                        <rect key="frame" x="80" y="80" width="140" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="A9H-v8-U59">
                                                 <variation key="widthClass=compact" constant="140"/>
@@ -234,10 +234,11 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXj-QQ-l9P" userLabel="mood face" customClass="MDMoodFaceView">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXj-QQ-l9P" userLabel="mood face" customClass="MDMoodFaceView">
+                                        <rect key="frame" x="80" y="80" width="140" height="140"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="basic shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="bAz-e8-Web" userLabel="background">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basic shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="bAz-e8-Web" userLabel="background">
+                                                <rect key="frame" x="-5" y="-5" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="146" id="Fpr-lY-JOh">
                                                         <variation key="widthClass=compact" constant="150"/>
@@ -259,8 +260,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GK0-bR-5Nz" userLabel="eyebrow">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GK0-bR-5Nz" userLabel="eyebrow">
+                                                <rect key="frame" x="9" y="31" width="118" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="108" id="FHv-4d-J12">
                                                         <variation key="widthClass=compact" constant="118"/>
@@ -280,8 +281,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhT-8E-w36" userLabel="wrinkle">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nhT-8E-w36" userLabel="wrinkle">
+                                                <rect key="frame" x="22.5" y="8" width="95" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="6Ky-O6-jgM"/>
                                                     <constraint firstAttribute="width" constant="95" id="a32-k9-2wu"/>
@@ -299,8 +300,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-MS-axL" userLabel="cheek">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WX2-MS-axL" userLabel="cheek">
+                                                <rect key="frame" x="19.5" y="68" width="100" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="115" id="Vig-VL-heq">
                                                         <variation key="widthClass=compact" constant="100"/>
@@ -322,8 +323,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28h-NR-zS2" userLabel="eye">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="28h-NR-zS2" userLabel="eye">
+                                                <rect key="frame" x="30" y="38" width="79" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="9Qr-Yg-bYC">
                                                         <variation key="widthClass=compact" constant="41"/>
@@ -345,8 +346,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MvI-oU-1kF" userLabel="dark circle">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MvI-oU-1kF" userLabel="dark circle">
+                                                <rect key="frame" x="22" y="66" width="91" height="7"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="96" id="8tI-ST-QnX">
                                                         <variation key="widthClass=compact" constant="91"/>
@@ -368,8 +369,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qh1-GW-C7n" userLabel="tear">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qh1-GW-C7n" userLabel="tear">
+                                                <rect key="frame" x="21.5" y="68" width="97" height="58"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="58" id="ByX-mQ-2m3"/>
                                                     <constraint firstAttribute="width" constant="97" id="Kug-NU-gcd"/>
@@ -387,8 +388,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7x-Ht-6vy" userLabel="mouth">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l7x-Ht-6vy" userLabel="mouth">
+                                                <rect key="frame" x="29.5" y="65" width="81" height="75"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="8FF-1e-fOV"/>
                                                     <constraint firstAttribute="width" constant="81" id="PgA-yI-xvb"/>
@@ -523,8 +524,8 @@
                                             <outlet property="wrinkle" destination="nhT-8E-w36" id="CFZ-Uh-VKj"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="joy_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="nyS-lc-7OQ" userLabel="mood intensity">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="joy_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="nyS-lc-7OQ" userLabel="mood intensity">
+                                        <rect key="frame" x="75" y="75" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="bpA-Vu-YSM">
                                                 <variation key="widthClass=compact" constant="150"/>
@@ -692,17 +693,17 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F92-gM-ZdI" userLabel="skip button background">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F92-gM-ZdI" userLabel="skip button background">
+                                <rect key="frame" x="57" y="90.5" width="28" height="28"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qN7-J4-3fn">
-                                        <rect key="frame" x="234" y="214" width="73" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qN7-J4-3fn">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
                                         <connections>
                                             <action selector="skip:" destination="DEj-XY-Yfy" eventType="touchUpInside" id="mMd-f4-2Gs"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cross.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-vS-ozC" userLabel="cross">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-vS-ozC" userLabel="cross">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.87441907050000001" green="0.87441907050000001" blue="0.87441907050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -759,17 +760,17 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jsq-UW-sGh" userLabel="save button background" customClass="MDMoodColorView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsq-UW-sGh" userLabel="save button background" customClass="MDMoodColorView">
+                                <rect key="frame" x="289.5" y="90.5" width="28" height="28"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xS-R7-AJ1">
-                                        <rect key="frame" x="234" y="214" width="73" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xS-R7-AJ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
                                         <connections>
                                             <action selector="saveNewMoodMon:" destination="DEj-XY-Yfy" eventType="touchUpInside" id="gFy-ez-bqR"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="yXd-tN-xbF" userLabel="check">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="yXd-tN-xbF" userLabel="check">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -826,8 +827,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6iM-UI-yZ0" customClass="MDRecentMoodView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6iM-UI-yZ0" customClass="MDRecentMoodView">
+                                <rect key="frame" x="0.0" y="574" width="375" height="93"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0OM-wC-Bj6">
@@ -848,8 +849,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What do you feel today?" textAlignment="center" minimumFontSize="17" background="comment box.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A1Q-op-boq">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What do you feel today?" textAlignment="center" minimumFontSize="17" background="comment box.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A1Q-op-boq">
+                                <rect key="frame" x="95" y="530.5" width="185" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7R1-Dw-JZf"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="pfj-aj-GZa"/>
@@ -1006,8 +1007,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sunday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-3E-Jpj">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-3E-Jpj">
+                                <rect key="frame" x="65" y="87.5" width="245" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Q4V-3I-xnU"/>
                                     <constraint firstAttribute="width" constant="150" id="Soh-SX-Vkx">
@@ -1030,8 +1031,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96Q-cZ-hzE">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96Q-cZ-hzE">
+                                <rect key="frame" x="107.5" y="118.5" width="160" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="A0O-ns-i7w">
                                         <variation key="widthClass=compact" constant="160"/>
@@ -1058,15 +1059,15 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8WY-Ar-NXR" userLabel="container">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WY-Ar-NXR" userLabel="container">
+                                <rect key="frame" x="37.5" y="203.5" width="300" height="300"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-d6-An2" userLabel="progress wheel" customClass="MDProgressWheelView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1q-d6-An2" userLabel="progress wheel" customClass="MDProgressWheelView">
+                                        <rect key="frame" x="11" y="11" width="278" height="278"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ar2-m9-yL3" userLabel="wheel" customClass="MDWheelView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ar2-m9-yL3" userLabel="wheel" customClass="MDWheelView">
+                                        <rect key="frame" x="11" y="11" width="278" height="278"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="278" id="g4W-O0-qnl"/>
                                             <constraint firstAttribute="width" constant="192" id="giF-D9-caD">
@@ -1094,8 +1095,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="angry_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-2L-RgS" userLabel="angry" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="20" y="20" width="65" height="65"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="angry_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-2L-RgS" userLabel="angry" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="117.5" y="2" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="DL2-aq-R99"/>
                                             <constraint firstAttribute="width" constant="65" id="E4r-BR-HBl"/>
@@ -1119,8 +1120,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="joy_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y6E-gj-7fr" userLabel="joy" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="joy_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y6E-gj-7fr" userLabel="joy" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="226" y="72" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="gV6-2d-vDa"/>
                                             <constraint firstAttribute="width" constant="65" id="pDE-BP-xmM"/>
@@ -1138,8 +1139,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tired_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-Qm-e63" userLabel="tired" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tired_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="uUR-Qm-e63" userLabel="tired" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="9" y="72" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="ggc-gr-2um"/>
                                             <constraint firstAttribute="width" constant="65" id="vjm-Rj-A9a"/>
@@ -1157,8 +1158,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="excited_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="zNn-AG-cqa" userLabel="excited" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="excited_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="zNn-AG-cqa" userLabel="excited" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="43" y="209" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="65" id="QNJ-PK-lc0"/>
                                             <constraint firstAttribute="height" constant="65" id="tkz-Di-zNg"/>
@@ -1176,8 +1177,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sad_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="aL2-3u-dsJ" userLabel="sad" customClass="MDMoodButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad_unselect.png" translatesAutoresizingMaskIntoConstraints="NO" id="aL2-3u-dsJ" userLabel="sad" customClass="MDMoodButtonView">
+                                        <rect key="frame" x="192" y="209" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="6A4-ZY-KNF"/>
                                             <constraint firstAttribute="width" constant="65" id="8Ix-Rd-fPK"/>
@@ -1195,8 +1196,8 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-Sq-t3y" userLabel="mood color" customClass="MDMoodColorView">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-Sq-t3y" userLabel="mood color" customClass="MDMoodColorView">
+                                        <rect key="frame" x="80" y="80" width="140" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="128" id="JR9-IH-wqR">
                                                 <variation key="widthClass=compact" constant="140"/>
@@ -1218,10 +1219,11 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sjz-9L-XP9" userLabel="mood face" customClass="MDMoodFaceView">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjz-9L-XP9" userLabel="mood face" customClass="MDMoodFaceView">
+                                        <rect key="frame" x="80" y="80" width="140" height="140"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="basic shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="QxP-ZN-0NW" userLabel="background">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basic shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="QxP-ZN-0NW" userLabel="background">
+                                                <rect key="frame" x="-5" y="-5" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="146" id="qHG-kv-59c">
                                                         <variation key="widthClass=compact" constant="150"/>
@@ -1243,8 +1245,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9v-Rr-SaN" userLabel="eyebrow">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s9v-Rr-SaN" userLabel="eyebrow">
+                                                <rect key="frame" x="9" y="31" width="118" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="naE-N0-bPl"/>
                                                     <constraint firstAttribute="width" constant="108" id="uIZ-iD-bJW">
@@ -1264,8 +1266,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O15-ol-oOi" userLabel="wrinkle">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O15-ol-oOi" userLabel="wrinkle">
+                                                <rect key="frame" x="22.5" y="8" width="95" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="1RJ-N1-uio"/>
                                                     <constraint firstAttribute="width" constant="95" id="8YE-31-epn"/>
@@ -1283,8 +1285,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-nD-xby" userLabel="cheek">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-nD-xby" userLabel="cheek">
+                                                <rect key="frame" x="19.5" y="68" width="100" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="13" id="FRs-QN-cVl">
                                                         <variation key="widthClass=compact" constant="10"/>
@@ -1306,8 +1308,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Mt-mp-ncK" userLabel="eye">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Mt-mp-ncK" userLabel="eye">
+                                                <rect key="frame" x="30" y="38" width="79" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="6HF-mI-BrZ">
                                                         <variation key="widthClass=compact" constant="41"/>
@@ -1329,8 +1331,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-W6-T0W" userLabel="dark circle">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Sr-W6-T0W" userLabel="dark circle">
+                                                <rect key="frame" x="22" y="66" width="91" height="7"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="Vk8-D7-rIi">
                                                         <variation key="widthClass=compact" constant="7"/>
@@ -1352,8 +1354,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RhU-8i-JIJ" userLabel="tear">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RhU-8i-JIJ" userLabel="tear">
+                                                <rect key="frame" x="21.5" y="68" width="97" height="58"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="58" id="XuH-O9-Lg0"/>
                                                     <constraint firstAttribute="width" constant="97" id="qXe-uC-rs4"/>
@@ -1371,8 +1373,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bdr-sV-X2L" userLabel="mouth">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bdr-sV-X2L" userLabel="mouth">
+                                                <rect key="frame" x="29.5" y="65" width="81" height="75"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="81" id="L6e-xS-OtV"/>
                                                     <constraint firstAttribute="height" constant="75" id="pTd-OI-5EL"/>
@@ -1507,8 +1509,8 @@
                                             <outlet property="wrinkle" destination="O15-ol-oOi" id="EUg-r9-KnZ"/>
                                         </connections>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="joy_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="SdP-bN-ebp" userLabel="mood intensity">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="joy_degree1.png" translatesAutoresizingMaskIntoConstraints="NO" id="SdP-bN-ebp" userLabel="mood intensity">
+                                        <rect key="frame" x="75" y="75" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="FTC-I6-G3L">
                                                 <variation key="widthClass=compact" constant="150"/>
@@ -1666,8 +1668,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-wz-XeA" customClass="MDRecentMoodView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-wz-XeA" customClass="MDRecentMoodView">
+                                <rect key="frame" x="0.0" y="574" width="375" height="93"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3B1-KO-Yzf">
@@ -1685,17 +1687,17 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lrv-gQ-GRi" userLabel="save button background" customClass="MDMoodColorView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrv-gQ-GRi" userLabel="save button background" customClass="MDMoodColorView">
+                                <rect key="frame" x="319.5" y="45.5" width="30" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVh-HZ-nST">
-                                        <rect key="frame" x="234" y="214" width="73" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVh-HZ-nST">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <connections>
                                             <action selector="saveNewMoodMon:" destination="TL5-nJ-UfS" eventType="touchUpInside" id="dBO-d4-kgP"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="jyt-9I-VIu" userLabel="check">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="jyt-9I-VIu" userLabel="check">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1752,11 +1754,11 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A0I-t8-oas" userLabel="skip button background">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0I-t8-oas" userLabel="skip button background">
+                                <rect key="frame" x="25.5" y="45.5" width="30" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igW-9R-MBI">
-                                        <rect key="frame" x="234" y="214" width="73" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igW-9R-MBI">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <connections>
                                             <action selector="skip:" destination="TL5-nJ-UfS" eventType="touchUpInside" id="hcV-Wh-B5U"/>
                                         </connections>
@@ -1808,8 +1810,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What do you feel today?" textAlignment="center" minimumFontSize="17" background="comment box.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zuU-2m-ArN">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What do you feel today?" textAlignment="center" minimumFontSize="17" background="comment box.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zuU-2m-ArN">
+                                <rect key="frame" x="95" y="535" width="185" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="194" id="6Nk-so-xbk">
                                         <variation key="widthClass=compact" constant="185"/>
@@ -2135,13 +2137,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGg-Wy-RTl">
-                                        <rect key="frame" x="130" y="15" width="42" height="21"/>
+                                        <rect key="frame" x="131" y="40" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Zrt-Yc-SKF">
-                                        <rect key="frame" x="51" y="96" width="200" height="200"/>
+                                        <rect key="frame" x="52" y="92" width="200" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="KX1-c3-JYJ"/>
@@ -2149,7 +2151,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-1V-cGW">
-                                        <rect key="frame" x="86" y="442" width="30" height="30"/>
+                                        <rect key="frame" x="87" y="442" width="30" height="30"/>
                                         <state key="normal" title="삭제"/>
                                         <connections>
                                             <action selector="deleteMood:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="KfQ-3Q-fDl"/>
@@ -2167,7 +2169,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hO2-GX-UO3">
-                                        <rect key="frame" x="51" y="276" width="200" height="60"/>
+                                        <rect key="frame" x="52" y="276" width="200" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="2ur-p9-xhx"/>
@@ -2178,27 +2180,35 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqg-52-El2">
-                                        <rect key="frame" x="221" y="306" width="30" height="30"/>
+                                        <rect key="frame" x="222" y="306" width="30" height="30"/>
                                         <state key="normal" title="v"/>
                                         <connections>
                                             <action selector="commitModify:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="naF-Vw-rM3"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o15-mS-zGh">
+                                        <rect key="frame" x="131" y="15" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="hO2-GX-UO3" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" id="3mu-54-wM7"/>
                                     <constraint firstItem="YUN-1V-cGW" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" constant="-50" id="4Ww-QU-4aq"/>
+                                    <constraint firstItem="o15-mS-zGh" firstAttribute="top" secondItem="zr9-57-lvs" secondAttribute="top" constant="15" id="CSY-gz-c7c"/>
                                     <constraint firstAttribute="bottom" secondItem="YUN-1V-cGW" secondAttribute="bottom" constant="55" id="CYd-os-9Oz"/>
                                     <constraint firstAttribute="trailing" secondItem="u8Q-XN-dm1" secondAttribute="trailing" constant="8" id="I8B-O5-EP4"/>
                                     <constraint firstAttribute="bottom" secondItem="hO2-GX-UO3" secondAttribute="bottom" constant="191" id="NqU-Ps-cfq"/>
+                                    <constraint firstItem="SGg-Wy-RTl" firstAttribute="top" secondItem="o15-mS-zGh" secondAttribute="bottom" constant="4" id="Pxw-LB-x2k"/>
                                     <constraint firstItem="yqg-52-El2" firstAttribute="bottom" secondItem="hO2-GX-UO3" secondAttribute="bottom" id="PyC-c8-UQS"/>
                                     <constraint firstAttribute="bottom" secondItem="RWk-Ma-iCg" secondAttribute="bottom" constant="55" id="WaC-bm-A1v"/>
                                     <constraint firstItem="RWk-Ma-iCg" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" constant="50" id="XpF-dh-xBz"/>
-                                    <constraint firstItem="SGg-Wy-RTl" firstAttribute="top" secondItem="zr9-57-lvs" secondAttribute="top" constant="15" id="eBX-zt-CuX"/>
                                     <constraint firstItem="u8Q-XN-dm1" firstAttribute="top" secondItem="zr9-57-lvs" secondAttribute="top" constant="8" id="lJD-fG-5fR"/>
                                     <constraint firstItem="Zrt-Yc-SKF" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" id="sSI-eX-Bx5"/>
-                                    <constraint firstItem="Zrt-Yc-SKF" firstAttribute="top" secondItem="SGg-Wy-RTl" secondAttribute="bottom" constant="60" id="vLc-Z4-D1M"/>
+                                    <constraint firstItem="Zrt-Yc-SKF" firstAttribute="top" secondItem="SGg-Wy-RTl" secondAttribute="bottom" constant="31" id="vLc-Z4-D1M"/>
+                                    <constraint firstItem="o15-mS-zGh" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" id="vyz-pY-eS0"/>
                                     <constraint firstItem="SGg-Wy-RTl" firstAttribute="centerX" secondItem="zr9-57-lvs" secondAttribute="centerX" id="wzf-3T-eYZ"/>
                                     <constraint firstItem="yqg-52-El2" firstAttribute="trailing" secondItem="hO2-GX-UO3" secondAttribute="trailing" id="y7S-LI-Gve"/>
                                 </constraints>
@@ -2215,6 +2225,7 @@
                         <outlet property="backImage" destination="8KS-AX-sOw" id="Dga-TO-Jk2"/>
                         <outlet property="commentTextView" destination="hO2-GX-UO3" id="lXS-eU-iVQ"/>
                         <outlet property="dateLabel" destination="SGg-Wy-RTl" id="53f-Lf-iEh"/>
+                        <outlet property="dateLabelDetail" destination="o15-mS-zGh" id="Ruc-Qf-4U8"/>
                         <outlet property="moodView" destination="Zrt-Yc-SKF" id="FD0-1v-w5z"/>
                     </connections>
                 </viewController>
@@ -2428,7 +2439,7 @@
                                                     <rect key="frame" x="8" y="0.0" width="415" height="43"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHk-0F-gNl">
-                                                            <rect key="frame" x="376" y="16" width="21" height="11"/>
+                                                            <rect key="frame" x="376" y="16.5" width="21" height="11"/>
                                                             <fontDescription key="fontDescription" name="NanumGothicOTFLight" family="NanumGothicOTF" pointSize="10"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>

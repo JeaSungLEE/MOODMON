@@ -2125,6 +2125,7 @@
 				CODE_SIGN_ENTITLEMENTS = moodMon/moodMon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 39WT95YDMW;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = moodMon/Info.plist;
 				"LD_MAP_FILE_PATH[arch=*]" = "-lsqlite3";
@@ -2142,6 +2143,7 @@
 				CODE_SIGN_ENTITLEMENTS = moodMon/moodMon.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 39WT95YDMW;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = moodMon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

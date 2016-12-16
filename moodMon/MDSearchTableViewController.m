@@ -14,31 +14,17 @@
 @implementation MDSearchTableViewController{
     BOOL isFirstVisit;
 }
+UIVisualEffectView *blurEffectView;
+UIVisualEffectView *visualEffectView;
 
 
 -(void)viewDidLoad{
     
     self.dataManager = [MDDataManager sharedDataManager];
     isFirstVisit = YES;
-    
+    [self setBlurEffect];
     //[self.tableView registerClass:[MDSearchTableViewCell class] forCellReuseIdentifier:@"searchTableCell"];
-
-    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    self.searchController.searchResultsUpdater = self;
-    [self.searchController.searchBar sizeToFit];
-    self.tableView.tableHeaderView = self.searchController.searchBar;
-    self.searchController.searchBar.delegate = self;
-    self.searchController.searchBar.tintColor = [UIColor blackColor];
-    
-    self.searchController.delegate = self;
-    self.searchController.dimsBackgroundDuringPresentation = NO;
-    self.searchController.searchBar.delegate = self;
-    self.definesPresentationContext = YES;
-    [self.navigationController setNavigationBarHidden:YES];
-   
-    self.searchController.searchBar.placeholder = @"Search a word or text!";
-    self.filteredProducts = nil;
-    
+    [self setNavigationSearch];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -179,7 +165,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    MDEndPageViewController *VC = [self.storyboard instantiateViewControllerWithIdentifier:@"MDEndPageViewController"];
     
+    MDSearchTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    VC.moodColorView = cell.moodColorView;
+    VC.timest = cell.timest;
+    VC.dateString = cell.date;
+    VC.comment = cell.commentLabel.text;
+    
+    [self.navigationController.navigationBar addSubview:visualEffectView];
+    [self.view addSubview:blurEffectView];
+    VC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    [self presentViewController:VC animated:YES completion:nil];
 }
 
 
@@ -193,13 +190,12 @@
         return cell;
     }
     
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
     cell.commentLabel.text = [self.filteredProducts[indexPath.row] valueForKey:kComment];
     //NSLog(@"time is : %@", [moodmonConf[indexPath.row] valueForKey:kTime]);
     NSString *result = [NSString stringWithFormat:@"%@년 %@월 %@일\n%@",[self.filteredProducts[indexPath.row] valueForKey:kYear],[self.filteredProducts[indexPath.row] valueForKey:kMonth],[self.filteredProducts[indexPath.row] valueForKey:kDay],[self.filteredProducts[indexPath.row] valueForKey:kTime]];
     cell.timeLabel.text = result;
-    
+    cell.date = [NSString stringWithFormat:@"%@년 %@월 %@일",[self.filteredProducts[indexPath.row] valueForKey:kYear],[self.filteredProducts[indexPath.row] valueForKey:kMonth],[self.filteredProducts[indexPath.row] valueForKey:kDay]];
+    cell.timest = [NSString stringWithFormat:@"%@",[self.filteredProducts[indexPath.row] valueForKey:kTime]];
     UIView *viewForFrame =  [cell viewWithTag:100];
     viewForFrame.layer.cornerRadius = viewForFrame.frame.size.width/2;
     viewForFrame.layer.masksToBounds = YES;
@@ -242,7 +238,7 @@
 
     [faceView setNeedsDisplay];
     [colorView setNeedsDisplay];
-
+    cell.moodColorView = colorView;
     return cell;
 }
 
@@ -306,6 +302,41 @@ NSString *const SearchBarIsFirstResponderKey = @"SearchBarIsFirstResponderKey";
     self.searchController.searchBar.text = [coder decodeObjectForKey:SearchBarTextKey];
 }
 
+-(void)setBlurEffect{
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    [blurEffectView setFrame:[UIScreen mainScreen].bounds];
+    blurEffectView.tag = 799;
+    
+    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    visualEffectView.frame = self.navigationController.navigationBar.bounds;
+    visualEffectView.tag = 798;
+    visualEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
+}
 
+-(void)deleteBlur:(NSNotification*)notification{
+    [[self.view viewWithTag:799]removeFromSuperview];
+    [[self.navigationController.navigationBar viewWithTag:798]removeFromSuperview];
+}
+
+-(void)setNavigationSearch{
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.searchBar.tintColor = [UIColor blackColor];
+    
+    self.searchController.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    self.searchController.searchBar.placeholder = @"Search a word or text!";
+    self.filteredProducts = nil;
+}
 
 @end
