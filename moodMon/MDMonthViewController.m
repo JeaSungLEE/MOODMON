@@ -20,6 +20,7 @@
     NSDateComponents *nowComponents;
 }
 @property (strong, nonatomic) IBOutlet UIButton *tutorialView;
+@property (strong, nonatomic)RLMArray *createdAt;
 
 @end
 
@@ -28,9 +29,9 @@ extern NSInteger thisYear;
 NSUInteger thisMonth;
 extern NSInteger weekday;
 extern int tag;
-NSArray *createdAt;
+
 int count;
-NSMutableArray *moodmonConf;
+NSMutableArray<Moodmon*> *moodmonConf;
 UITableViewHeaderFooterView *headerView;
 NSMutableArray <NSIndexPath *> *indexPathsToDelete;
 UIFont *quicksand;
@@ -72,6 +73,8 @@ UIVisualEffectView *visualEffectView;
     now = [NSDate date];
     toolbarIsOpen = YES;
     toolbarIsAnimating = NO;
+    self.tableViews.bounces = NO;
+    self.tableViews.alwaysBounceVertical = NO;
     self.toolbarContainer.translatesAutoresizingMaskIntoConstraints = YES;
     [self.toolbarContainer setFrame:CGRectMake(0, (self.view.frame.size.height - 49), self.view.frame.size.width, 49.0)];
     [self collapseToolbarWithoutBounce];
@@ -80,7 +83,7 @@ UIVisualEffectView *visualEffectView;
     quicksand = [UIFont fontWithName:@"Quicksand" size:16];
     boldQuicksand = [UIFont fontWithDescriptor:[[quicksand fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold] size:quicksand.pointSize];
     
-    createdAt=[_mddm moodCollection];
+    _createdAt=[_mddm moodArray];
     thisYear =[[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
     thisMonth =[[[NSCalendar currentCalendar]components:NSCalendarUnitMonth fromDate:[NSDate date]]month];
     
@@ -382,7 +385,7 @@ UIVisualEffectView *visualEffectView;
     NSInteger newWeekDay=weekday-1;
     // NSLog(@"Day week %d",newWeekDay);
     
-    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSCalendarUnit units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     nowComponents = [calendar components:units fromDate:now];
     
     NSInteger yCount=1;
@@ -456,12 +459,11 @@ UIVisualEffectView *visualEffectView;
         
         
         int checkFalg =0;
-        for(int parseNum=0; parseNum<createdAt.count; parseNum++){
-            NSDictionary *parseDate = createdAt[parseNum];
-            int parseMonth=[[parseDate valueForKey:@"_moodMonth"] intValue];
-            int parseYear=[[parseDate valueForKey:@"_moodYear"] intValue];
-            int parseDay=[[parseDate valueForKey:@"_moodDay"] intValue];
-            
+        for(int parseNum=0; parseNum<_createdAt.count; parseNum++){
+            Moodmon *parseDate = [_createdAt  objectAtIndex:parseNum];
+            int parseMonth = (int)parseDate.moodMonth;
+            int parseYear = (int)parseDate.moodYear;
+            int parseDay = (int)parseDate.moodDay;
             if((parseYear==thisYear)&&(parseMonth==thisMonth)&&(parseDay==startDay)&&(checkFalg==0)){
                 
                 //                    [self.moodColor.chosenMoods addObject:[createdAt[parseNum] valueForKey:@"_moodChosen1"]];
@@ -484,8 +486,8 @@ UIVisualEffectView *visualEffectView;
                 [mcv awakeFromNib];
                 
                 //                mcv.backgroundColor = [UIColor clearColor];
-                NSArray *dayRepresenatationColors = [_mddm representationOfMoodAtYear:(NSInteger)parseYear Month:(NSInteger)parseMonth andDay:parseDay];
-                
+                NSArray *dayRepresenatationColors = [_mddm representationOfRealmMoodMonAtYear:(NSInteger)parseYear Month:(NSInteger)parseMonth andDay:parseDay];
+                // NSLog(@"DAY : %@ %@ %@", dayRepresenatationColors[0],dayRepresenatationColors[1],dayRepresenatationColors[2]);
                 NSNumber *tempMoodChosen = dayRepresenatationColors[0];
                 if(tempMoodChosen.intValue > 0){
                     [mfv.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
@@ -619,8 +621,9 @@ UIVisualEffectView *visualEffectView;
     
     MDMonthTimeLineCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDMonthTimeLineCellTableViewCell" forIndexPath:indexPath];
     cell.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
-    cell.commentLabel.text = [NSString stringWithFormat:@"%@",[moodmonConf[indexPath.row]valueForKey:@"_moodComment" ]];
-    NSString *timeText = [NSString stringWithFormat:@"%@", [moodmonConf[indexPath.row] valueForKey:kTime]];
+    Moodmon *selected = moodmonConf[indexPath.row];
+    cell.commentLabel.text = selected.moodComment;
+    NSString *timeText = [NSString stringWithFormat:@"%@", selected.moodTime];
     cell.timeLabel.text = timeText;
     cell.itemText = [moodmonConf[indexPath.row] valueForKey:@"_moodComment"];
     cell.delegate = self;
@@ -634,19 +637,19 @@ UIVisualEffectView *visualEffectView;
     }
     
     NSMutableArray *chosenMoods = [[NSMutableArray alloc] initWithObjects:@0, nil];
-    NSNumber *moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen1];
+    NSNumber *moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:1];
         //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:1 ];
         //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:1 ];
     }
-    moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen2];
+    moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:2];
         //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:2 ];
         //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:2 ];
     }
-    moodChosen = [moodmonConf[indexPath.row] valueForKey:kChosen3];
+    moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:3];
         //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:3 ];
@@ -710,18 +713,17 @@ UIVisualEffectView *visualEffectView;
 -(void)showClickedDateMoodmonAtDay:(int)day{
     NSMutableArray* moodmonConfig = [[NSMutableArray alloc]init];
     count=0;
-    NSString *clickedDateString =[NSString stringWithFormat:@"%d년 %d월 %d일", thisYear, thisMonth, day];
+    //NSString *clickedDateString =[NSString stringWithFormat:@"%d년 %ld월 %d일", thisYear, (long)thisMonth, day];
     myDay = day;
     
-    for(int parseNum=0; parseNum<createdAt.count; parseNum++){
-        NSDictionary *parseDate = createdAt[parseNum];
-        int parseMonth=[[parseDate valueForKey:@"_moodMonth"] intValue];
-        int parseYear=[[parseDate valueForKey:@"_moodYear"] intValue];
-        int parseDay=[[parseDate valueForKey:@"_moodDay"] intValue];
+    for(int parseNum=0; parseNum<_createdAt.count; parseNum++){
+        Moodmon *parseDate = [_createdAt objectAtIndex:parseNum];
+        int parseMonth = (int)parseDate.moodMonth;
+        int parseYear = (int)parseDate.moodYear;
+        int parseDay = (int)parseDate.moodDay;
         
         if((parseYear==thisYear)&&(parseMonth==thisMonth)&&(parseDay==day)){
-            
-            moodmonConfig[count]=createdAt[parseNum];
+            moodmonConfig[count] = parseDate;
             count++;
         }
     }
@@ -732,7 +734,7 @@ UIVisualEffectView *visualEffectView;
 }
 
 -(void)resetTableCellConstants{
-    int cellCount = [_tableViews numberOfRowsInSection:0];
+    int cellCount = (int)[_tableViews numberOfRowsInSection:0];
     for(int i = 0; i < cellCount; i++){
         MDMonthTimeLineCellTableViewCell *tempCell = [_tableViews cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         tempCell.startingRightLayoutConstraintConstant = 0;

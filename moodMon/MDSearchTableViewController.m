@@ -28,7 +28,7 @@ UIVisualEffectView *visualEffectView;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-   
+    
     [super viewDidAppear:animated];
     [self.searchController setActive:YES];
     [self.searchController.searchBar becomeFirstResponder];
@@ -41,10 +41,10 @@ UIVisualEffectView *visualEffectView;
         if (self.searchControllerSearchFieldWasFirstResponder) {
             [self.searchController.searchBar becomeFirstResponder];
             //[self.searchController.searchBar.window makeKeyAndVisible];
-           _searchControllerSearchFieldWasFirstResponder = NO;
+            _searchControllerSearchFieldWasFirstResponder = NO;
         }
     }
-
+    
 }
 
 #pragma mark - UISearchBarDelegate
@@ -66,63 +66,64 @@ UIVisualEffectView *visualEffectView;
     // update the filtered array based on the search text
     NSString *searchText = searchController.searchBar.text;
     if(searchText.length == 0) return;
-   
+    
     NSArray *result = [searchText componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *searchString =  [result componentsJoinedByString:@""];
     //NSLog(@"!!!%@!!!! %d",searchString, searchString.length);
     if(searchString.length == 0) return;
     
     
-    NSMutableArray *searchResults = [_dataManager.moodCollection mutableCopy];
-    
-    // strip out all the leading and trailing spaces
-    NSString *strippedString = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet ]];
-    
-    // break up the search terms (separated by spaces)
-    NSArray *searchItems = nil;
-    if (strippedString.length > 0) {
-        searchItems = [strippedString componentsSeparatedByString:@" "];
-    }
-    
-    NSMutableArray *andMatchPredicates = [NSMutableArray array];
-    
-    for (NSString *searchString in searchItems) {
-        // each searchString creates an OR predicate for: name, yearIntroduced, introPrice
-        //
-        // example if searchItems contains "iphone 599 2007":
-        //      name CONTAINS[c] "iphone"
-        //      name CONTAINS[c] "599", yearIntroduced ==[c] 599, introPrice ==[c] 599
-        //      name CONTAINS[c] "2007", yearIntroduced ==[c] 2007, introPrice ==[c] 2007
-        //
-        NSMutableArray *searchItemsPredicate = [NSMutableArray array];
-        
-        // name field matching
-        NSExpression *lhs = [NSExpression expressionForKeyPath:kComment];
-        NSExpression *rhs = [NSExpression expressionForConstantValue:searchString];
-        NSPredicate *finalPredicate = [NSComparisonPredicate
-                                       predicateWithLeftExpression:lhs
-                                       rightExpression:rhs
-                                       modifier:NSDirectPredicateModifier
-                                       type:NSContainsPredicateOperatorType
-                                       options:NSCaseInsensitivePredicateOption];
-        [searchItemsPredicate addObject:finalPredicate];
-        
-    
-        
-        // at this OR predicate to our master AND predicate
-        NSCompoundPredicate *orMatchPredicates = [NSCompoundPredicate orPredicateWithSubpredicates:searchItemsPredicate];
-        [andMatchPredicates addObject:orMatchPredicates];
-    }
-
-    // match up the fields of the Product object
-    NSCompoundPredicate *finalCompoundPredicate =
-    [NSCompoundPredicate andPredicateWithSubpredicates:andMatchPredicates];
-    searchResults = [[searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
-    
-    
-    _filteredProducts = searchResults;
+    //    NSMutableArray *searchResults = (NSMutableArray*)_dataManager.moodArray ;
+    //
+    //    // strip out all the leading and trailing spaces
+    //    NSString *strippedString = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet ]];
+    //
+    //    // break up the search terms (separated by spaces)
+    //    NSArray *searchItems = nil;
+    //    if (strippedString.length > 0) {
+    //        searchItems = [strippedString componentsSeparatedByString:@" "];
+    //    }
+    //
+    //    NSMutableArray *andMatchPredicates = [NSMutableArray array];
+    //
+    //    for (NSString *searchString in searchItems) {
+    //        // each searchString creates an OR predicate for: name, yearIntroduced, introPrice
+    //        //
+    //        // example if searchItems contains "iphone 599 2007":
+    //        //      name CONTAINS[c] "iphone"
+    //        //      name CONTAINS[c] "599", yearIntroduced ==[c] 599, introPrice ==[c] 599
+    //        //      name CONTAINS[c] "2007", yearIntroduced ==[c] 2007, introPrice ==[c] 2007
+    //        //
+    //        NSMutableArray *searchItemsPredicate = [NSMutableArray array];
+    //
+    //        // name field matching
+    //        NSExpression *lhs = [NSExpression expressionForKeyPath:@"moodComment"];
+    //        NSExpression *rhs = [NSExpression expressionForConstantValue:searchString];
+    //        NSPredicate *finalPredicate = [NSComparisonPredicate
+    //                                       predicateWithLeftExpression:lhs
+    //                                       rightExpression:rhs
+    //                                       modifier:NSDirectPredicateModifier
+    //                                       type:NSContainsPredicateOperatorType
+    //                                       options:NSCaseInsensitivePredicateOption];
+    //        [searchItemsPredicate addObject:finalPredicate];
+    //
+    //
+    //
+    //        // at this OR predicate to our master AND predicate
+    //        NSCompoundPredicate *orMatchPredicates = [NSCompoundPredicate orPredicateWithSubpredicates:searchItemsPredicate];
+    //        [andMatchPredicates addObject:orMatchPredicates];
+    //    }
+    //
+    //    // match up the fields of the Product object
+    //    NSCompoundPredicate *finalCompoundPredicate =
+    //    [NSCompoundPredicate andPredicateWithSubpredicates:andMatchPredicates];
+    //    searchResults = [[searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
+    //
+    //
+    NSString *query = [NSString stringWithFormat:@"moodComment CONTAINS '%@'",searchString] ;
+    _filteredProducts = (NSArray*)[Moodmon objectsWhere: query];
     [self.tableView reloadData];
-
+    
 }
 
 
@@ -185,17 +186,18 @@ UIVisualEffectView *visualEffectView;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MDSearchTableViewCell *cell = (MDSearchTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"searchTableCell" forIndexPath:indexPath];
-
+    
     if([self.filteredProducts count] <= 0){
         return cell;
     }
     
-    cell.commentLabel.text = [self.filteredProducts[indexPath.row] valueForKey:kComment];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    Moodmon *resultMoodmon = self.filteredProducts[indexPath.row];
+    cell.commentLabel.text = resultMoodmon.moodComment;
     //NSLog(@"time is : %@", [moodmonConf[indexPath.row] valueForKey:kTime]);
-    NSString *result = [NSString stringWithFormat:@"%@년 %@월 %@일\n%@",[self.filteredProducts[indexPath.row] valueForKey:kYear],[self.filteredProducts[indexPath.row] valueForKey:kMonth],[self.filteredProducts[indexPath.row] valueForKey:kDay],[self.filteredProducts[indexPath.row] valueForKey:kTime]];
+    NSString *result = [NSString stringWithFormat:@"%ld년 %ld월 %ld일\n%@", (long)resultMoodmon.moodYear, (long)resultMoodmon.moodMonth, (long)resultMoodmon.moodDay, resultMoodmon.moodTime];
     cell.timeLabel.text = result;
-    cell.date = [NSString stringWithFormat:@"%@년 %@월 %@일",[self.filteredProducts[indexPath.row] valueForKey:kYear],[self.filteredProducts[indexPath.row] valueForKey:kMonth],[self.filteredProducts[indexPath.row] valueForKey:kDay]];
-    cell.timest = [NSString stringWithFormat:@"%@",[self.filteredProducts[indexPath.row] valueForKey:kTime]];
+    
     UIView *viewForFrame =  [cell viewWithTag:100];
     viewForFrame.layer.cornerRadius = viewForFrame.frame.size.width/2;
     viewForFrame.layer.masksToBounds = YES;
@@ -216,17 +218,17 @@ UIVisualEffectView *visualEffectView;
     
     [faceView awakeFromNib];
     
-    NSNumber *tempMoodChosen = [self.filteredProducts[indexPath.row]valueForKey:kChosen1];
+    NSNumber *tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen1];
     if(tempMoodChosen.intValue != 0){
         [colorView.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
         [faceView.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
     }
-    tempMoodChosen = [self.filteredProducts[indexPath.row]valueForKey:kChosen2];
+    tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen2];
     if(tempMoodChosen.intValue != 0){
         [colorView.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
         [faceView.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
     }
-    tempMoodChosen = [self.filteredProducts[indexPath.row]valueForKey:kChosen3];
+    tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen3];
     if(tempMoodChosen.intValue != 0){
         [colorView.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
         [faceView.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
@@ -235,7 +237,7 @@ UIVisualEffectView *visualEffectView;
     colorView.layer.cornerRadius = colorView.frame.size.width/2;
     colorView.layer.masksToBounds = YES;
     
-
+    
     [faceView setNeedsDisplay];
     [colorView setNeedsDisplay];
     cell.moodColorView = colorView;

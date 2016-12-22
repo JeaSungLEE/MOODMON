@@ -26,7 +26,7 @@
 
 
 NSInteger numDays;
-NSArray *createdAt;
+RLMArray *createdAt;
 NSInteger weekday;
 int tag;
 int thisMonth=0;
@@ -41,7 +41,7 @@ UIFont *boldQuicksand;
     [super viewDidLoad];
     
     mddm = [MDDataManager sharedDataManager];
-    createdAt=[mddm moodCollection];
+    createdAt=[mddm moodArray];
     now = [NSDate date];
     
     //_thisYear = [[[NSCalendar currentCalendar]components:NSCalendarUnitYear fromDate:[NSDate date]]year];
@@ -49,19 +49,19 @@ UIFont *boldQuicksand;
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     [swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
     [swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
-//    UITapGestureRecognizer *tab = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(monthTouch:)];
+    //    UITapGestureRecognizer *tab = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(monthTouch:)];
     
     quicksand = [UIFont fontWithName:@"Quicksand" size:16];
     boldQuicksand = [UIFont fontWithDescriptor:[[quicksand fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold] size:quicksand.pointSize];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-
+    
     [self myCalView];
     
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-   
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -122,7 +122,7 @@ UIFont *boldQuicksand;
         
     }else if(point.x <= xVal*3 && point.y<=yVal*1+84){
         thisMonth=3;
-    
+        
     }else if(point.x <= xVal*1 && point.y<=yVal*2+84){
         
         thisMonth=4;
@@ -156,7 +156,7 @@ UIFont *boldQuicksand;
 }
 -(void)myCalView{
     tag=1;
-     _titleLabel.text = [NSString stringWithFormat:@"%lu년", (long)_thisYear];
+    _titleLabel.text = [NSString stringWithFormat:@"%lu년", (long)_thisYear];
     
     double xVal=CGRectGetWidth(self.view.bounds)/3,yVal=CGRectGetHeight(self.view.bounds)/5;
     
@@ -196,7 +196,7 @@ UIFont *boldQuicksand;
     NSInteger newWeekDay=weekday-1;
     //    NSLog(@"Day week %d",newWeekDay);
     
-    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSCalendarUnit units = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     nowComponents = [calendar components:units fromDate:now];
     
     int yCount=1;
@@ -242,10 +242,10 @@ UIFont *boldQuicksand;
         [self.view addSubview:dayButton];
         int checkFalg =0;
         for(int parseNum=0; parseNum<createdAt.count; parseNum++){
-            NSDictionary *parseDate = createdAt[parseNum];
-            int parseMonth=[[parseDate valueForKey:@"_moodMonth"] intValue];
-            int parseYear=[[parseDate valueForKey:@"_moodYear"] intValue];
-            int parseDay=[[parseDate valueForKey:@"_moodDay"] intValue];
+            Moodmon *parseDate = [createdAt  objectAtIndex:parseNum];
+            int parseMonth = (int)parseDate.moodMonth;
+            int parseYear = (int)parseDate.moodYear;
+            int parseDay = (int)parseDate.moodDay;
             
             
             if((parseYear==_thisYear)&&(parseMonth==showMonth)&&(parseDay==startDay)&&(checkFalg==0)){
@@ -265,9 +265,9 @@ UIFont *boldQuicksand;
                 
                 [mfv awakeFromNib];
                 //                mcv.backgroundColor = [UIColor clearColor];
-                NSArray *dayRepresenatationColors = [mddm representationOfMoodAtYear:(NSInteger)parseYear Month:(NSInteger)parseMonth andDay:parseDay];
+                NSArray *dayRepresenatationColors = [mddm representationOfRealmMoodMonAtYear:(NSInteger)parseYear Month:(NSInteger)parseMonth andDay:parseDay];
                 NSNumber *tempMoodChosen = dayRepresenatationColors[0];
-
+                
                 if(tempMoodChosen.intValue > 0)
                     //                    [mfv.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
                     [mcv.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
@@ -285,18 +285,18 @@ UIFont *boldQuicksand;
                 //                    mcv = [self.view viewWithTag:7];
                 //                    [dayButton setImage:[mmm makeMoodMon:createdAt[parseNum] view:mcv] forState:UIControlStateNormal];
                 mcv.tag=tag++;
-//                mfv.tag=tag++;
+                //                mfv.tag=tag++;
                 mcv.layer.cornerRadius = mcv.frame.size.width/6;
                 mcv.center = dayButton.center;
-//                mcv.layer.cornerRadius = mcv.frame.size.width/2;
+                //                mcv.layer.cornerRadius = mcv.frame.size.width/2;
                 [mcv setNeedsDisplay];
-//                [mfv setNeedsDisplay];
+                //                [mfv setNeedsDisplay];
                 [self.view addSubview:mcv];
                 
                 //                [self.view addSubview:mfv];
             }
         }
-
+        
         
         
     }

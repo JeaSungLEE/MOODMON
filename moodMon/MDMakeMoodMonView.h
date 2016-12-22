@@ -11,5 +11,5 @@
 #import "MDMoodColorView.h"
 @interface MDMakeMoodMonView : UIView
 
--(UIImage*)makeMoodMon:(NSDictionary*)moodmonConf view:(MDMoodColorView*)view;
+//-(UIImage*)makeMoodMon:(NSDictionary*)moodmonConf view:(MDMoodColorView*)view;
 @end
