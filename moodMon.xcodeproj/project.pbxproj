@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FC1A86D1E0B877F003C1248 /* MDNewMoodTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1A86A1E0B877F003C1248 /* MDNewMoodTutorialView.m */; };
+		3FC1A86E1E0B877F003C1248 /* MDNewMoodTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */; };
+		3FC1A8711E0B8892003C1248 /* tutorial_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A86F1E0B8892003C1248 /* tutorial_box.png */; };
+		3FC1A8721E0B8892003C1248 /* tutorial_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A8701E0B8892003C1248 /* tutorial_next.png */; };
 		655DA55E1CF2A6820048BF13 /* MDNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDACCBC1CEC36ED00FBD201 /* MDNavController.m */; };
 		6575788B1CB4BE7100D75D5E /* MDYearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6575788A1CB4BE7100D75D5E /* MDYearViewController.m */; };
 		658BE72E1CB4CE98006EB718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658BE7121CB4CE98006EB718 /* Main.storyboard */; };
@@ -380,6 +384,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3FC1A8691E0B877F003C1248 /* MDNewMoodTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialView.h; sourceTree = "<group>"; };
+		3FC1A86A1E0B877F003C1248 /* MDNewMoodTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialView.m; sourceTree = "<group>"; };
+		3FC1A86B1E0B877F003C1248 /* MDNewMoodTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialViewController.h; sourceTree = "<group>"; };
+		3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialViewController.m; sourceTree = "<group>"; };
+		3FC1A86F1E0B8892003C1248 /* tutorial_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_box.png; sourceTree = "<group>"; };
+		3FC1A8701E0B8892003C1248 /* tutorial_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_next.png; sourceTree = "<group>"; };
 		657578891CB4BE7100D75D5E /* MDYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDYearViewController.h; sourceTree = "<group>"; };
 		6575788A1CB4BE7100D75D5E /* MDYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDYearViewController.m; sourceTree = "<group>"; };
 		6575CAE61CE20AA7005E390F /* MDCustomStoryboardUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCustomStoryboardUnwindSegue.h; sourceTree = "<group>"; };
@@ -794,6 +804,8 @@
 		6575788C1CB4BE7600D75D5E /* month scene */ = {
 			isa = PBXGroup;
 			children = (
+				65980E291CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.h */,
+				65980E2A1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m */,
 				65980E2B1CC0D1DF0092EA18 /* MDMonthViewController.h */,
 				65980E2C1CC0D1DF0092EA18 /* MDMonthViewController.m */,
 				E9B715861E0263A4003A8D4E /* MDMonthViewTutorialController.h */,
@@ -1162,9 +1174,9 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3FC1A86F1E0B8892003C1248 /* tutorial_box.png */,
+				3FC1A8701E0B8892003C1248 /* tutorial_next.png */,
 				E98503DB1DF7F0EF005B38F8 /* chalk_line.png */,
-				E98C99571DD08ECB001BDC38 /* tutorial_box.png */,
-				E98C99591DD08FB5001BDC38 /* tutorial_next.png */,
 				E9B715891E0299E3003A8D4E /* Calendar Tutorial.png */,
 				E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */,
 				E986ECD61CDFBE2F00792C55 /* circle@2x.png */,
@@ -1385,6 +1397,10 @@
 		E986EDB91CDFBE9400792C55 /* new mood scene */ = {
 			isa = PBXGroup;
 			children = (
+				3FC1A8691E0B877F003C1248 /* MDNewMoodTutorialView.h */,
+				3FC1A86A1E0B877F003C1248 /* MDNewMoodTutorialView.m */,
+				3FC1A86B1E0B877F003C1248 /* MDNewMoodTutorialViewController.h */,
+				3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */,
 				658BE7171CB4CE98006EB718 /* MDNewMoodViewController.h */,
 				658BE7181CB4CE98006EB718 /* MDNewMoodViewController.m */,
 				E9CD99661CE883B000C9DBB7 /* gesture recognizer */,
@@ -1464,10 +1480,6 @@
 				E9A97AB01CFBA29700346DBF /* MDSaveMoodFaceView.h */,
 				E9A97AB11CFBA29700346DBF /* MDSaveMoodFaceView.m */,
 				E9A97AB31CFBA2BE00346DBF /* MDSaveMoodFaceView.xib */,
-				E98C995E1DD09A77001BDC38 /* MDNewMoodTutorialView.h */,
-				E98C995F1DD09A77001BDC38 /* MDNewMoodTutorialView.m */,
-				65980E291CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.h */,
-				65980E2A1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1643,6 +1655,7 @@
 				E9B03E291CF1FD700069741F /* joy_degree5@2x.png in Resources */,
 				E9B03E1B1CF1FD700069741F /* angry_degree1@2x.png in Resources */,
 				E9B03E1C1CF1FD700069741F /* angry_degree2@2x.png in Resources */,
+				3FC1A8711E0B8892003C1248 /* tutorial_box.png in Resources */,
 				E986EDA41CDFBE2F00792C55 /* tired_selected@2x.png in Resources */,
 				E986ED521CDFBE2F00792C55 /* darkcircle_degree2@2x.png in Resources */,
 				E986ED631CDFBE2F00792C55 /* sad_eyebrow_degree2@2x.png in Resources */,
@@ -1689,6 +1702,7 @@
 				E9B03E2B1CF1FD700069741F /* sad_degree2@2x.png in Resources */,
 				E986ED591CDFBE2F00792C55 /* excited_eye_degree2@2x.png in Resources */,
 				E9CD997F1CE8E2AB00C9DBB7 /* sad_wheel@2x.png in Resources */,
+				3FC1A8721E0B8892003C1248 /* tutorial_next.png in Resources */,
 				CEABEFFB1CFAF2DC00AA4E60 /* excited_filter@2x.png in Resources */,
 				E986ED8E1CDFBE2F00792C55 /* excited_mouth_degree5@2x.png in Resources */,
 				E9B03E221CF1FD700069741F /* excited_degree3@2x.png in Resources */,
@@ -1945,6 +1959,7 @@
 				655DA55E1CF2A6820048BF13 /* MDNavController.m in Sources */,
 				CEDACCBE1CEC380700FBD201 /* MDCustomStoryboardUnwindSegue.m in Sources */,
 				E4F1A6191DF7FE1F00B16DD2 /* MDRoundRectView.m in Sources */,
+				3FC1A86E1E0B877F003C1248 /* MDNewMoodTutorialViewController.m in Sources */,
 				CE7FFD5A1CE023D300B7139C /* MDCustomStoryboardSegue.m in Sources */,
 				658BE7321CB4CE98006EB718 /* MDWheelView.m in Sources */,
 				658BE7311CB4CE98006EB718 /* MDNewMoodViewController.m in Sources */,
@@ -1962,7 +1977,6 @@
 				65980E2D1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m in Sources */,
 				CE4B234F1CB201B1007D0B3B /* MDMoodmon.m in Sources */,
 				E9CD99751CE8C9E500C9DBB7 /* MDProgressWheelView.m in Sources */,
-				65B036761CDFA1FD00D095F0 /* MDSaveMoodMon.m in Sources */,
 				E9B715881E0263A4003A8D4E /* MDMonthViewTutorialController.m in Sources */,
 				CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */,
 				65B0367A1CDFA95400D095F0 /* MDMakeMoodMonView.m in Sources */,
@@ -1975,6 +1989,7 @@
 				E9CD996A1CE883F000C9DBB7 /* MDTouchDownGestureRecognizer.m in Sources */,
 				6575788B1CB4BE7100D75D5E /* MDYearViewController.m in Sources */,
 				CEDD938E1CC3BA4300028F80 /* MDMoodFilterTableViewController.m in Sources */,
+				3FC1A86D1E0B877F003C1248 /* MDNewMoodTutorialView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
