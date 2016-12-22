@@ -1162,10 +1162,13 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
 				E98503DB1DF7F0EF005B38F8 /* chalk_line.png */,
 				E98C99571DD08ECB001BDC38 /* tutorial_box.png */,
 				E98C99591DD08FB5001BDC38 /* tutorial_next.png */,
 				E9B715891E0299E3003A8D4E /* Calendar Tutorial.png */,
+>>>>>>> origin/Kiboom_Tutorial
 				E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */,
 				E986ECD61CDFBE2F00792C55 /* circle@2x.png */,
 				E9A93B8A1CFAEE4800421076 /* comment box@2x.png */,
@@ -1464,10 +1467,13 @@
 				E9A97AB01CFBA29700346DBF /* MDSaveMoodFaceView.h */,
 				E9A97AB11CFBA29700346DBF /* MDSaveMoodFaceView.m */,
 				E9A97AB31CFBA2BE00346DBF /* MDSaveMoodFaceView.xib */,
+<<<<<<< HEAD
+=======
 				E98C995E1DD09A77001BDC38 /* MDNewMoodTutorialView.h */,
 				E98C995F1DD09A77001BDC38 /* MDNewMoodTutorialView.m */,
 				65980E291CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.h */,
 				65980E2A1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m */,
+>>>>>>> origin/Kiboom_Tutorial
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1962,8 +1968,11 @@
 				65980E2D1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m in Sources */,
 				CE4B234F1CB201B1007D0B3B /* MDMoodmon.m in Sources */,
 				E9CD99751CE8C9E500C9DBB7 /* MDProgressWheelView.m in Sources */,
+<<<<<<< HEAD
+=======
 				65B036761CDFA1FD00D095F0 /* MDSaveMoodMon.m in Sources */,
 				E9B715881E0263A4003A8D4E /* MDMonthViewTutorialController.m in Sources */,
+>>>>>>> origin/Kiboom_Tutorial
 				CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */,
 				65B0367A1CDFA95400D095F0 /* MDMakeMoodMonView.m in Sources */,
 				CEBA98721CDF1C79006D2FFD /* MDSearchTableViewCell.m in Sources */,

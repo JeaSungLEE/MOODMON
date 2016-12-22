@@ -934,6 +934,7 @@
                                 <exclude reference="A1Q-op-boq"/>
                             </mask>
                             <mask key="constraints">
+<<<<<<< HEAD
                                 <exclude reference="7CJ-gq-LK9"/>
                                 <exclude reference="fbw-pg-XNn"/>
                                 <exclude reference="DxO-CP-ziM"/>
@@ -946,9 +947,13 @@
                                 <exclude reference="lwa-cF-XpX"/>
                                 <exclude reference="Ccm-bK-wjB"/>
                                 <exclude reference="SBi-Ni-RA7"/>
+=======
+                                <exclude reference="k0l-Mv-DFy"/>
+                                <exclude reference="lwa-cF-XpX"/>
                                 <exclude reference="qvm-An-6ZH"/>
                                 <exclude reference="DxO-CP-ziM"/>
                                 <exclude reference="ESQ-P0-qTm"/>
+>>>>>>> origin/Kiboom_Tutorial
                                 <exclude reference="Eop-YE-rz0"/>
                                 <exclude reference="SWe-im-2vG"/>
                                 <exclude reference="fVc-34-5fV"/>
@@ -972,6 +977,7 @@
                                 <include reference="A1Q-op-boq"/>
                             </mask>
                             <mask key="constraints">
+<<<<<<< HEAD
                                 <include reference="7CJ-gq-LK9"/>
                                 <include reference="fbw-pg-XNn"/>
                                 <include reference="DxO-CP-ziM"/>
@@ -984,9 +990,13 @@
                                 <include reference="lwa-cF-XpX"/>
                                 <include reference="Ccm-bK-wjB"/>
                                 <include reference="SBi-Ni-RA7"/>
+=======
+                                <include reference="k0l-Mv-DFy"/>
+                                <include reference="lwa-cF-XpX"/>
                                 <include reference="qvm-An-6ZH"/>
                                 <include reference="DxO-CP-ziM"/>
                                 <include reference="ESQ-P0-qTm"/>
+>>>>>>> origin/Kiboom_Tutorial
                                 <include reference="Eop-YE-rz0"/>
                                 <include reference="SWe-im-2vG"/>
                                 <include reference="fVc-34-5fV"/>
@@ -1867,11 +1877,14 @@
                                     <action selector="didTextFieldActivate:" destination="TL5-nJ-UfS" eventType="editingDidBegin" id="vbR-Yj-3Tn"/>
                                 </connections>
                             </textField>
+<<<<<<< HEAD
+=======
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-M3-Tt8" customClass="MDNewMoodTutorialView">
                                 <connections>
                                     <segue destination="pxa-vQ-ptT" kind="embed" identifier="newMoodTutorial" id="FJH-sS-Feu"/>
                                 </connections>
                             </containerView>
+>>>>>>> origin/Kiboom_Tutorial
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2346,6 +2359,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K4a-au-hDp">
                                 <rect key="frame" x="0.0" y="643" width="414" height="44"/>
                                 <constraints>
@@ -2385,6 +2399,8 @@
                                 </items>
                                 <color key="barTintColor" red="0.91764705882352937" green="0.8901960784313725" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
+=======
+>>>>>>> origin/Kiboom_Tutorial
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Wu-vp-s1m" userLabel="toolBarContainer">
                                 <rect key="frame" x="40" y="216" width="330" height="112"/>
                                 <subviews>
@@ -2478,18 +2494,30 @@
                                     <constraint firstItem="4yz-hJ-4MX" firstAttribute="width" secondItem="6Wu-vp-s1m" secondAttribute="width" id="zRM-Or-Pfh"/>
                                 </constraints>
                             </view>
+<<<<<<< HEAD
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kCc-hW-Vsq">
                                 <rect key="frame" x="0.0" y="511" width="414" height="204"/>
+=======
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kCc-hW-Vsq">
+>>>>>>> origin/Kiboom_Tutorial
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="204" id="kkf-Vn-Y9q"/>
                                 </constraints>
                                 <prototypes>
+<<<<<<< HEAD
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MDMonthTimeLineCellTableViewCell" id="v2g-lF-DOc" customClass="MDMonthTimeLineCellTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2g-lF-DOc" id="UjD-II-JKf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+=======
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MDMonthTimeLineCellTableViewCell" id="v2g-lF-DOc" customClass="MDMonthTimeLineCellTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="377" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2g-lF-DOc" id="UjD-II-JKf">
+                                            <frame key="frameInset" width="377" height="43"/>
+>>>>>>> origin/Kiboom_Tutorial
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBN-2p-oc1">
@@ -2810,6 +2838,8 @@
             </objects>
             <point key="canvasLocation" x="1057" y="692"/>
         </scene>
+<<<<<<< HEAD
+=======
         <!--New Mood Tutorial View Controller-->
         <scene sceneID="iNq-0O-oo0">
             <objects>
@@ -2869,6 +2899,7 @@
             </objects>
             <point key="canvasLocation" x="3706" y="-1059"/>
         </scene>
+>>>>>>> origin/Kiboom_Tutorial
     </scenes>
     <resources>
         <image name="Calendar Tutorial.png" width="1125" height="1994"/>

@@ -68,7 +68,10 @@ UIVisualEffectView *visualEffectView;
     [self addGesture];
     
     _mddm = [MDDataManager sharedDataManager];
+<<<<<<< HEAD
+=======
     
+>>>>>>> origin/Kiboom_Tutorial
     now = [NSDate date];
     toolbarIsOpen = YES;
     toolbarIsAnimating = NO;
@@ -839,6 +842,7 @@ UIVisualEffectView *visualEffectView;
     [[self.navigationController.navigationBar viewWithTag:798]removeFromSuperview];
 }
 
+<<<<<<< HEAD
 -(void)setBlurEffect{
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -867,4 +871,6 @@ UIVisualEffectView *visualEffectView;
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"iCloudSyncFinished" object:_mddm];
 }
 
+=======
+>>>>>>> origin/Kiboom_Tutorial
 @end

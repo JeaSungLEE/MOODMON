@@ -195,7 +195,6 @@
 		E95DE3C01CE999110094EDCF /* MDTouchUpGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E95DE3BF1CE999110094EDCF /* MDTouchUpGestureRecognizer.m */; };
 		E95EB77F1CC4BCAB00141FBF /* MDRecentMoodView.m in Sources */ = {isa = PBXBuildFile; fileRef = E95EB77E1CC4BCAB00141FBF /* MDRecentMoodView.m */; };
 		E97B30AA1CCD949100FB8502 /* MDMoodColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E97B30A91CCD949100FB8502 /* MDMoodColorView.m */; };
-		E98503DC1DF7F0EF005B38F8 /* chalk_line.png in Resources */ = {isa = PBXBuildFile; fileRef = E98503DB1DF7F0EF005B38F8 /* chalk_line.png */; };
 		E986ECCD1CDFBC4F00792C55 /* MDMoodFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E986ECCC1CDFBC4F00792C55 /* MDMoodFaceView.m */; };
 		E986ED4A1CDFBE2F00792C55 /* basic shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */; };
 		E986ED4B1CDFBE2F00792C55 /* cheek_degree1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E986ECD11CDFBE2F00792C55 /* cheek_degree1@2x.png */; };
@@ -320,8 +319,6 @@
 		E9B03E321CF1FD700069741F /* tired_degree4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B03E191CF1FD700069741F /* tired_degree4@2x.png */; };
 		E9B03E331CF1FD700069741F /* tired_degree5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B03E1A1CF1FD700069741F /* tired_degree5@2x.png */; };
 		E9B03E361CF229140069741F /* MDSmallMoodFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B03E351CF229140069741F /* MDSmallMoodFaceView.m */; };
-		E9B715881E0263A4003A8D4E /* MDMonthViewTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B715871E0263A4003A8D4E /* MDMonthViewTutorialController.m */; };
-		E9B7158A1E0299E3003A8D4E /* Calendar Tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B715891E0299E3003A8D4E /* Calendar Tutorial.png */; };
 		E9CD996A1CE883F000C9DBB7 /* MDTouchDownGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CD99691CE883F000C9DBB7 /* MDTouchDownGestureRecognizer.m */; };
 		E9CD99721CE8A4CA00C9DBB7 /* angry_wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9CD99711CE8A4CA00C9DBB7 /* angry_wheel@2x.png */; };
 		E9CD99751CE8C9E500C9DBB7 /* MDProgressWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CD99741CE8C9E500C9DBB7 /* MDProgressWheelView.m */; };
@@ -614,7 +611,6 @@
 		E95EB77E1CC4BCAB00141FBF /* MDRecentMoodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRecentMoodView.m; sourceTree = "<group>"; };
 		E97B30A81CCD949100FB8502 /* MDMoodColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoodColorView.h; sourceTree = "<group>"; };
 		E97B30A91CCD949100FB8502 /* MDMoodColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodColorView.m; sourceTree = "<group>"; };
-		E98503DB1DF7F0EF005B38F8 /* chalk_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chalk_line.png; sourceTree = "<group>"; };
 		E986ECCB1CDFBC4F00792C55 /* MDMoodFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMoodFaceView.h; sourceTree = "<group>"; };
 		E986ECCC1CDFBC4F00792C55 /* MDMoodFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMoodFaceView.m; sourceTree = "<group>"; };
 		E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basic shadow@2x.png"; sourceTree = "<group>"; };
@@ -742,9 +738,6 @@
 		E9B03E1A1CF1FD700069741F /* tired_degree5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tired_degree5@2x.png"; sourceTree = "<group>"; };
 		E9B03E341CF229140069741F /* MDSmallMoodFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSmallMoodFaceView.h; sourceTree = "<group>"; };
 		E9B03E351CF229140069741F /* MDSmallMoodFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSmallMoodFaceView.m; sourceTree = "<group>"; };
-		E9B715861E0263A4003A8D4E /* MDMonthViewTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMonthViewTutorialController.h; sourceTree = "<group>"; };
-		E9B715871E0263A4003A8D4E /* MDMonthViewTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMonthViewTutorialController.m; sourceTree = "<group>"; };
-		E9B715891E0299E3003A8D4E /* Calendar Tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar Tutorial.png"; sourceTree = "<group>"; };
 		E9CD99681CE883F000C9DBB7 /* MDTouchDownGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTouchDownGestureRecognizer.h; sourceTree = "<group>"; };
 		E9CD99691CE883F000C9DBB7 /* MDTouchDownGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTouchDownGestureRecognizer.m; sourceTree = "<group>"; };
 		E9CD99711CE8A4CA00C9DBB7 /* angry_wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "angry_wheel@2x.png"; sourceTree = "<group>"; };
@@ -794,10 +787,10 @@
 		6575788C1CB4BE7600D75D5E /* month scene */ = {
 			isa = PBXGroup;
 			children = (
+				65980E291CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.h */,
+				65980E2A1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m */,
 				65980E2B1CC0D1DF0092EA18 /* MDMonthViewController.h */,
 				65980E2C1CC0D1DF0092EA18 /* MDMonthViewController.m */,
-				E9B715861E0263A4003A8D4E /* MDMonthViewTutorialController.h */,
-				E9B715871E0263A4003A8D4E /* MDMonthViewTutorialController.m */,
 			);
 			name = "month scene";
 			sourceTree = "<group>";
@@ -1162,10 +1155,6 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				E98503DB1DF7F0EF005B38F8 /* chalk_line.png */,
-				E98C99571DD08ECB001BDC38 /* tutorial_box.png */,
-				E98C99591DD08FB5001BDC38 /* tutorial_next.png */,
-				E9B715891E0299E3003A8D4E /* Calendar Tutorial.png */,
 				E986ECCF1CDFBE2F00792C55 /* basic shadow@2x.png */,
 				E986ECD61CDFBE2F00792C55 /* circle@2x.png */,
 				E9A93B8A1CFAEE4800421076 /* comment box@2x.png */,
@@ -1464,10 +1453,6 @@
 				E9A97AB01CFBA29700346DBF /* MDSaveMoodFaceView.h */,
 				E9A97AB11CFBA29700346DBF /* MDSaveMoodFaceView.m */,
 				E9A97AB31CFBA2BE00346DBF /* MDSaveMoodFaceView.xib */,
-				E98C995E1DD09A77001BDC38 /* MDNewMoodTutorialView.h */,
-				E98C995F1DD09A77001BDC38 /* MDNewMoodTutorialView.m */,
-				65980E291CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.h */,
-				65980E2A1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1682,7 +1667,6 @@
 				E9A93B831CFAD37800421076 /* Icon-72@2x.png in Resources */,
 				E986ED911CDFBE2F00792C55 /* joy_mouth_degree3@2x.png in Resources */,
 				E986ED541CDFBE2F00792C55 /* darkcircle_degree4@2x.png in Resources */,
-				E98503DC1DF7F0EF005B38F8 /* chalk_line.png in Resources */,
 				E986ED931CDFBE2F00792C55 /* joy_mouth_degree5@2x.png in Resources */,
 				E986ED9F1CDFBE2F00792C55 /* cross@2x.png in Resources */,
 				E986ED5E1CDFBE2F00792C55 /* angry_eyebrow_degree2@2x.png in Resources */,
@@ -1707,7 +1691,6 @@
 				CEABF0011CFAF2DC00AA4E60 /* tired_filter@2x.png in Resources */,
 				E9B03E241CF1FD700069741F /* excited_degree5@2x.png in Resources */,
 				E9A93B851CFAD37800421076 /* Icon-Small-50@2x.png in Resources */,
-				E9B7158A1E0299E3003A8D4E /* Calendar Tutorial.png in Resources */,
 				E986EDA01CDFBE2F00792C55 /* angry_selected@2x.png in Resources */,
 				E986ED621CDFBE2F00792C55 /* sad_eyebrow_degree1@2x.png in Resources */,
 				CEABF0021CFAF2DC00AA4E60 /* tired_unfilter@2x.png in Resources */,
@@ -1962,8 +1945,6 @@
 				65980E2D1CC0D1DF0092EA18 /* MDMonthTimeLineCellTableViewCell.m in Sources */,
 				CE4B234F1CB201B1007D0B3B /* MDMoodmon.m in Sources */,
 				E9CD99751CE8C9E500C9DBB7 /* MDProgressWheelView.m in Sources */,
-				65B036761CDFA1FD00D095F0 /* MDSaveMoodMon.m in Sources */,
-				E9B715881E0263A4003A8D4E /* MDMonthViewTutorialController.m in Sources */,
 				CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */,
 				65B0367A1CDFA95400D095F0 /* MDMakeMoodMonView.m in Sources */,
 				CEBA98721CDF1C79006D2FFD /* MDSearchTableViewCell.m in Sources */,

@@ -7,8 +7,10 @@
 //
 
 #import "MDNewMoodViewController.h"
+#import "MDNewMoodTutorialViewController.h"
 
 @interface MDNewMoodViewController ()
+@property MDNewMoodTutorialViewController *tutorialViewController;
 @property CGFloat wheelDegree;
 @property NSInteger moodCount;
 @property NSArray *moodButtons;
@@ -34,12 +36,29 @@
     [self drawRecentMoodView];
     [self textLabelInit];
     [self menuControllerInit];
+    
+    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
+    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self roundedViewsInit];
+    CGFloat textFieldOffset = 80;
+    CGRect textFieldFrame = _textField.frame;
+    _tutorialViewController.textFieldFrame = CGRectMake(textFieldFrame.origin.x-textFieldOffset/2,
+                                                        textFieldFrame.origin.y-textFieldOffset/2,
+                                                        textFieldFrame.size.width+textFieldOffset,
+                                                        textFieldFrame.size.height+textFieldOffset);
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"newMoodTutorial"]) {
+        _tutorialViewController = (MDNewMoodTutorialViewController *) [segue destinationViewController];
+    }
 }
 
 
