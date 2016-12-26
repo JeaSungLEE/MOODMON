@@ -197,7 +197,8 @@ UIVisualEffectView *visualEffectView;
     //NSLog(@"time is : %@", [moodmonConf[indexPath.row] valueForKey:kTime]);
     NSString *result = [NSString stringWithFormat:@"%ld년 %ld월 %ld일\n%@", (long)resultMoodmon.moodYear, (long)resultMoodmon.moodMonth, (long)resultMoodmon.moodDay, resultMoodmon.moodTime];
     cell.timeLabel.text = result;
-    
+    cell.date = [NSString stringWithFormat:@"%@년 %@월 %@일",[self.filteredProducts[indexPath.row] valueForKey:kYear],[self.filteredProducts[indexPath.row] valueForKey:kMonth],[self.filteredProducts[indexPath.row] valueForKey:kDay]];
+    cell.timest = [NSString stringWithFormat:@"%@",[self.filteredProducts[indexPath.row] valueForKey:kTime]];
     UIView *viewForFrame =  [cell viewWithTag:100];
     viewForFrame.layer.cornerRadius = viewForFrame.frame.size.width/2;
     viewForFrame.layer.masksToBounds = YES;

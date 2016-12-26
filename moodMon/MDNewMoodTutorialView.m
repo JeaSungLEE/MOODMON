@@ -18,9 +18,26 @@
 }
 */
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    _touchAreaTop = 30 + [UIScreen mainScreen].bounds.size.height * 160/667;
+    _touchAreaBottom = [UIScreen mainScreen].bounds.size.height;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeTouchArea:)
+                                                 name:@"changeTouchArea"
+                                               object:nil];
+}
+
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     // UIView will be "transparent" for touch events if we return NO
-    return (point.y > self.frame.size.height || point.y < 30+(self.frame.size.height*160/667));
+    NSLog(@"tutorial touched %@", (point.y > _touchAreaBottom || point.y < _touchAreaTop) ? @"inside" : @"outside");
+    return (point.y > _touchAreaBottom || point.y < _touchAreaTop);
+}
+
+- (void)changeTouchArea:(NSNotification *)noti {
+    _touchAreaTop = 0;
+    _touchAreaBottom = [noti.userInfo[@"touchAreaBottom"] floatValue];
 }
 
 @end

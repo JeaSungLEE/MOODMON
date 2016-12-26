@@ -19,8 +19,11 @@
     NSDate *now;
     NSDateComponents *nowComponents;
 }
+<<<<<<< HEAD
 @property (strong, nonatomic) IBOutlet UIButton *tutorialView;
+=======
 @property (strong, nonatomic)RLMArray *createdAt;
+>>>>>>> origin/master
 
 @end
 
@@ -589,7 +592,7 @@ UIVisualEffectView *visualEffectView;
 }
 //이건 왜 있는건가여???
 
-#pragma tableviewDelegate
+#pragma mark - tableviewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

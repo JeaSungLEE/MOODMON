@@ -17,9 +17,11 @@ static CGFloat const kBounceValue = 40.0f;
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.isFiltered = NO;
-    self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
-    self.panRecognizer.delegate = self;
-    [self.myContentView addGestureRecognizer:self.panRecognizer];
+//    self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
+//    self.panRecognizer.delegate = self;
+//    [self.myContentView addGestureRecognizer:self.panRecognizer];
+// 엔드 페이지로 옮겨서 주석처리 함.
+    
 //    self.commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
 //    self.commentLabel.numberOfLines = 0; - 텍스트가 길면 break
 
@@ -31,6 +33,7 @@ static CGFloat const kBounceValue = 40.0f;
 
 - (void)viewWillAppear{
 }
+
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)endEditing
 {
     if (self.startingRightLayoutConstraintConstant == 0 &&

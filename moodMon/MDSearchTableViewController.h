@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MDDataManager.h"
+#import "MDEndPageViewController.h"
 
 
 @interface MDSearchTableViewController : UITableViewController  <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>

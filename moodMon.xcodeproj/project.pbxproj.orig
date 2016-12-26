@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		3FC1A86D1E0B877F003C1248 /* MDNewMoodTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1A86A1E0B877F003C1248 /* MDNewMoodTutorialView.m */; };
 		3FC1A86E1E0B877F003C1248 /* MDNewMoodTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */; };
 		3FC1A8711E0B8892003C1248 /* tutorial_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A86F1E0B8892003C1248 /* tutorial_box.png */; };
 		3FC1A8721E0B8892003C1248 /* tutorial_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A8701E0B8892003C1248 /* tutorial_next.png */; };
+=======
 		0E3E460A5D7137AD29CC7EDF /* Pods_moodMon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */; };
+>>>>>>> origin/master
 		655DA55E1CF2A6820048BF13 /* MDNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDACCBC1CEC36ED00FBD201 /* MDNavController.m */; };
 		6575788B1CB4BE7100D75D5E /* MDYearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6575788A1CB4BE7100D75D5E /* MDYearViewController.m */; };
 		658BE72E1CB4CE98006EB718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658BE7121CB4CE98006EB718 /* Main.storyboard */; };
@@ -383,14 +386,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		3FC1A8691E0B877F003C1248 /* MDNewMoodTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialView.h; sourceTree = "<group>"; };
 		3FC1A86A1E0B877F003C1248 /* MDNewMoodTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialView.m; sourceTree = "<group>"; };
 		3FC1A86B1E0B877F003C1248 /* MDNewMoodTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialViewController.h; sourceTree = "<group>"; };
 		3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialViewController.m; sourceTree = "<group>"; };
 		3FC1A86F1E0B8892003C1248 /* tutorial_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_box.png; sourceTree = "<group>"; };
 		3FC1A8701E0B8892003C1248 /* tutorial_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_next.png; sourceTree = "<group>"; };
+=======
 		126E72A90D05B29461B8D6B2 /* Pods-moodMon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodMon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodMon/Pods-moodMon.debug.xcconfig"; sourceTree = "<group>"; };
 		4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodMon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> origin/master
 		657578891CB4BE7100D75D5E /* MDYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDYearViewController.h; sourceTree = "<group>"; };
 		6575788A1CB4BE7100D75D5E /* MDYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDYearViewController.m; sourceTree = "<group>"; };
 		6575CAE61CE20AA7005E390F /* MDCustomStoryboardUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCustomStoryboardUnwindSegue.h; sourceTree = "<group>"; };

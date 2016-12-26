@@ -7,17 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MDDataManager.h"
 #import "MDWheelView.h"
+#import "MDDataManager.h"
 #import "MDMoodFaceView.h"
 #import "MDMoodColorView.h"
 #import "MDMoodButtonView.h"
 #import "MDRecentMoodView.h"
-#import "MDProgressWheelView.h"
-#import "MDWheelGestureRecognizer.h"
-#import "MDTouchDownGestureRecognizer.h"
-#import "MDTouchUpGestureRecognizer.h"
 #import "MDSmallMoodFaceView.h"
+#import "MDProgressWheelView.h"
+#import "MDNewMoodTutorialView.h"
+#import "MDWheelGestureRecognizer.h"
+#import "MDTouchUpGestureRecognizer.h"
+#import "MDTouchDownGestureRecognizer.h"
 
 @interface MDNewMoodViewController : UIViewController <MDWheelGestureRecognizerDelegate, UITextFieldDelegate>
 
@@ -64,6 +65,9 @@
 /* Skip & Save */
 @property (strong, nonatomic) IBOutlet UIView *skipButtonBackground;
 @property (strong, nonatomic) IBOutlet MDMoodColorView *saveButtonBackground;
+
+/* Tutorial */
+@property (strong, nonatomic) IBOutlet MDNewMoodTutorialView *tutorialContainerView;
 
 - (IBAction)didTextFieldActivate:(id)sender;
 - (IBAction)didComment:(id)sender;
