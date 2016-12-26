@@ -21,6 +21,7 @@
 }
 @property (strong, nonatomic) IBOutlet UIButton *tutorialView;
 @property (strong, nonatomic)RLMArray *createdAt;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *visualEffectView;
 
 @end
 
@@ -37,15 +38,13 @@ NSMutableArray <NSIndexPath *> *indexPathsToDelete;
 UIFont *quicksand;
 UIFont *boldQuicksand;
 NSString *currentDate;
-UIVisualEffectView *blurEffectView;
-UIVisualEffectView *visualEffectView;
-
 
 @implementation MDMonthViewController
 @synthesize thisYear;
 @synthesize thisMonth;
 
 -(void)awakeFromNib{
+    [super awakeFromNib];
     //image loading
     _angryChecked = [UIImage imageNamed:@"angry_filter@2x"];
     _angryUnchecked = [UIImage imageNamed:@"angry_unfilter@2x"];
@@ -64,7 +63,6 @@ UIVisualEffectView *visualEffectView;
     count=0;
     [super viewDidLoad];
     
-    [self setBlurEffect];
     [self setFilterUI];
     [self addGesture];
     
@@ -90,7 +88,14 @@ UIVisualEffectView *visualEffectView;
     //[self moreDateInfo];
     indexPathsToDelete = [[NSMutableArray alloc] init];
     
-    self.navigationController.navigationBar.layer.opacity = 0;
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    [_visualEffectView setEffect:blurEffect];
+    _visualEffectView.layer.opacity = 0;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"deleteBlur" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -112,7 +117,7 @@ UIVisualEffectView *visualEffectView;
     topItem.backgroundColor = [UIColor clearColor];
     topItem.font = boldQuicksand;
     topItem.textAlignment = NSTextAlignmentCenter;
-    topItem.text = [NSString stringWithFormat:@"     %d년 %d월", thisYear, thisMonth];
+    topItem.text = [NSString stringWithFormat:@"     %ld년 %ld월", (long)thisYear, (long)thisMonth];
     self.navigationItem.titleView = topItem;
     
     [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:boldQuicksand} forState:UIControlStateNormal];
@@ -618,7 +623,6 @@ UIVisualEffectView *visualEffectView;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     MDMonthTimeLineCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDMonthTimeLineCellTableViewCell" forIndexPath:indexPath];
     cell.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
     Moodmon *selected = moodmonConf[indexPath.row];
@@ -640,20 +644,14 @@ UIVisualEffectView *visualEffectView;
     NSNumber *moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:1];
-        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:1 ];
-        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:1 ];
     }
-    moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
+    moodChosen = [NSNumber numberWithInteger: selected.moodChosen2];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:2];
-        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:2 ];
-        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:2 ];
     }
-    moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
+    moodChosen = [NSNumber numberWithInteger: selected.moodChosen3];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:3];
-        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:3 ];
-        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:3 ];
     }
     cell.moodColorView.chosenMoods = chosenMoods;
     cell.moodFaceView.chosenMoods = chosenMoods;
@@ -762,14 +760,14 @@ UIVisualEffectView *visualEffectView;
     VC.dateString = currentDate;
     VC.comment = cell.commentLabel.text;
     
+    [self.view bringSubviewToFront:_visualEffectView];
+    self.navigationController.navigationBar.hidden = YES;
+    [UIView animateWithDuration:0.3 animations:^{
+        _visualEffectView.layer.opacity = 1;
+    }];
     
-    [self.navigationController.navigationBar addSubview:visualEffectView];
-    [self.view addSubview:blurEffectView];
     VC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:VC animated:YES completion:nil];
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
@@ -777,12 +775,13 @@ UIVisualEffectView *visualEffectView;
     return NO;
 }
 
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // [_objects removeObjectAtIndex:indexPath.row];
         [self.tableViews deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else {
-        NSLog(@"Unhandled editing style! %d",editingStyle);
+        NSLog(@"Unhandled editing style! %ld",(long)editingStyle);
     }
 }
 
@@ -837,22 +836,13 @@ UIVisualEffectView *visualEffectView;
 }
 
 -(void)deleteBlur:(NSNotification*)notification{
-    [[self.view viewWithTag:799]removeFromSuperview];
-    [[self.navigationController.navigationBar viewWithTag:798]removeFromSuperview];
-}
-
--(void)setBlurEffect{
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    [blurEffectView setFrame:[UIScreen mainScreen].bounds];
-    blurEffectView.tag = 799;
-    
-    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    visualEffectView.frame = self.navigationController.navigationBar.bounds;
-    visualEffectView.tag = 798;
-    visualEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         _visualEffectView.layer.opacity = 0;
+                         self.navigationController.navigationBar.hidden = NO;
+                     } completion:^(BOOL finished) {
+                         [self.view sendSubviewToBack:_visualEffectView];
+                     }];
 }
 
 -(void)addGesture{

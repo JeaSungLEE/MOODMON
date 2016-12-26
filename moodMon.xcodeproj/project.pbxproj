@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3E460A5D7137AD29CC7EDF /* Pods_moodMon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */; };
 		3FC1A86D1E0B877F003C1248 /* MDNewMoodTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1A86A1E0B877F003C1248 /* MDNewMoodTutorialView.m */; };
 		3FC1A86E1E0B877F003C1248 /* MDNewMoodTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */; };
 		3FC1A8711E0B8892003C1248 /* tutorial_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A86F1E0B8892003C1248 /* tutorial_box.png */; };
 		3FC1A8721E0B8892003C1248 /* tutorial_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A8701E0B8892003C1248 /* tutorial_next.png */; };
-		0E3E460A5D7137AD29CC7EDF /* Pods_moodMon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */; };
 		655DA55E1CF2A6820048BF13 /* MDNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDACCBC1CEC36ED00FBD201 /* MDNavController.m */; };
 		6575788B1CB4BE7100D75D5E /* MDYearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6575788A1CB4BE7100D75D5E /* MDYearViewController.m */; };
 		658BE72E1CB4CE98006EB718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658BE7121CB4CE98006EB718 /* Main.storyboard */; };
@@ -383,13 +383,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		126E72A90D05B29461B8D6B2 /* Pods-moodMon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodMon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodMon/Pods-moodMon.debug.xcconfig"; sourceTree = "<group>"; };
 		3FC1A8691E0B877F003C1248 /* MDNewMoodTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialView.h; sourceTree = "<group>"; };
 		3FC1A86A1E0B877F003C1248 /* MDNewMoodTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialView.m; sourceTree = "<group>"; };
 		3FC1A86B1E0B877F003C1248 /* MDNewMoodTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDNewMoodTutorialViewController.h; sourceTree = "<group>"; };
 		3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialViewController.m; sourceTree = "<group>"; };
 		3FC1A86F1E0B8892003C1248 /* tutorial_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_box.png; sourceTree = "<group>"; };
 		3FC1A8701E0B8892003C1248 /* tutorial_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_next.png; sourceTree = "<group>"; };
-		126E72A90D05B29461B8D6B2 /* Pods-moodMon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodMon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodMon/Pods-moodMon.debug.xcconfig"; sourceTree = "<group>"; };
 		4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodMon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		657578891CB4BE7100D75D5E /* MDYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDYearViewController.h; sourceTree = "<group>"; };
 		6575788A1CB4BE7100D75D5E /* MDYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDYearViewController.m; sourceTree = "<group>"; };
@@ -825,6 +825,7 @@
 				65980E2C1CC0D1DF0092EA18 /* MDMonthViewController.m */,
 				E9B715861E0263A4003A8D4E /* MDMonthViewTutorialController.h */,
 				E9B715871E0263A4003A8D4E /* MDMonthViewTutorialController.m */,
+				E484D52A1DF3E25B00CB6232 /* endpage scene */,
 			);
 			name = "month scene";
 			sourceTree = "<group>";
@@ -878,7 +879,6 @@
 				6575CAE61CE20AA7005E390F /* MDCustomStoryboardUnwindSegue.h */,
 				CEDACCBD1CEC373900FBD201 /* MDCustomStoryboardUnwindSegue.m */,
 				CE4A8A3A1CABCCB1006B73B7 /* AppDelegate.m */,
-				E484D52A1DF3E25B00CB6232 /* endpage scene */,
 				E986EDB91CDFBE9400792C55 /* new mood scene */,
 				E927D31A1D27F69F00CFB924 /* year scene */,
 				6575788C1CB4BE7600D75D5E /* month scene */,
@@ -1479,10 +1479,10 @@
 			children = (
 				658BE7191CB4CE98006EB718 /* MDWheelView.h */,
 				658BE71A1CB4CE98006EB718 /* MDWheelView.m */,
-				E986ECCB1CDFBC4F00792C55 /* MDMoodFaceView.h */,
 				E986ECCC1CDFBC4F00792C55 /* MDMoodFaceView.m */,
 				E97B30A81CCD949100FB8502 /* MDMoodColorView.h */,
 				E97B30A91CCD949100FB8502 /* MDMoodColorView.m */,
+				E986ECCB1CDFBC4F00792C55 /* MDMoodFaceView.h */,
 				658BE7151CB4CE98006EB718 /* MDMoodButtonView.h */,
 				658BE7161CB4CE98006EB718 /* MDMoodButtonView.m */,
 				E95EB77D1CC4BCAB00141FBF /* MDRecentMoodView.h */,

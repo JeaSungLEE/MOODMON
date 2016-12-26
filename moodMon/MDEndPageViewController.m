@@ -109,7 +109,11 @@
 
 -(void)showAlertView:(NSString*)title Message:(NSString*)Message{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:Message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([title isEqualToString:@"DELETE"]) {
+            [self dissmissView];
+        }
+    }];
     [alertController addAction:defaultAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
@@ -121,13 +125,11 @@
 
 //***************
 - (IBAction)commitModify:(id)sender {
-    
     [self showAlertView:@"EDIT" Message:@"수정되었습니다."];
 }
 
 - (IBAction)deleteMood:(id)sender {
     [self showAlertView:@"DELETE" Message:@"삭제되었습니다."];
-    [self dissmissView];
 }
 //*****************
 //위두개는 렒으로 변경이후 추가.

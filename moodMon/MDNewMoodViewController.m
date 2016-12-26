@@ -39,9 +39,9 @@
     [self textLabelInit];
     [self menuControllerInit];
     
-    //    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
-    //    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
-    //    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
+    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
+    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
 }
 
 
