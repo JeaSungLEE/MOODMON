@@ -39,9 +39,9 @@
     [self textLabelInit];
     [self menuControllerInit];
     
-    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
-    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
+    //    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
+    //    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
+    //    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
 }
 
 
@@ -250,11 +250,17 @@
         _startTime = CACurrentMediaTime();
         [self showWheelView:moodButton];
         [self addNewChosenMood:moodButton.num];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                            object:nil
+                                                          userInfo:@{@"missionName" : @"PressMoodMon"}];
         self.textField.hidden = YES;
         return;
     }
     if(moodButton.isSelected==NO && [self isChosen:moodButton]) {      // 감정선택을 해제하기 위해 버튼을 누른 경우, 해당 감정을 chosenMoods 배열에서 제거함.
         [self deleteFromChosenMoods:moodButton.num];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                            object:nil
+                                                          userInfo:@{@"missionName" : @"TapSameMoodMon"}];
     }
 }
 
@@ -340,6 +346,16 @@
                         self.saveButtonBackground.hidden = (self.moodCount<1) ? YES : NO;
                     }
                     completion:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"TapMoodMon"}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"TapOtherMoodMon"}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"TakeFingerOffFromWheel"}];
 }
 
 
@@ -507,7 +523,11 @@
                         animations:^{
                             self.moodIntensityView.image = self.choosingMoodImages[moodClass][moodIntensity.intValue];
                         }
-                        completion:nil];
+                        completion:^(BOOL finished) {
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                                                object:nil
+                                                                              userInfo:@{@"missionName" : @"WheelMoodMon"}];
+                        }];
     }
 }
 
@@ -558,6 +578,9 @@
         return;
     }
     [self.textField resignFirstResponder];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"Comment"}];
     [self moveEntireViewWithDuration:0.3 distance:+200];
 }
 
@@ -575,6 +598,9 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     [self moveEntireViewWithDuration:0.3 distance:+200];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
+                                                        object:nil
+                                                      userInfo:@{@"missionName" : @"Comment"}];
     return YES;
 }
 
