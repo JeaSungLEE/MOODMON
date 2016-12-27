@@ -33,8 +33,10 @@
 		CE4A8A511CABCCB1006B73B7 /* moodMonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A501CABCCB1006B73B7 /* moodMonTests.m */; };
 		CE4A8A5C1CABCCB1006B73B7 /* moodMonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A5B1CABCCB1006B73B7 /* moodMonUITests.m */; };
 		CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */; };
+		CE5EFC421E12CF9F0076478C /* tutorial_month_ko.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5EFC411E12CF9F0076478C /* tutorial_month_ko.png */; };
 		CE7FFD5A1CE023D300B7139C /* MDCustomStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FFD591CE023D300B7139C /* MDCustomStoryboardSegue.m */; };
 		CE87EC521CCE118500329E16 /* MDSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87EC511CCE118500329E16 /* MDSearchTableViewController.m */; };
+		CE8DAFD91E128E0E005E0362 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE8DAFD81E128E0E005E0362 /* Localizable.strings */; };
 		CEABEFEE1CFAD7AC00AA4E60 /* MDDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CEABEFED1CFAD7AC00AA4E60 /* MDDocument.m */; };
 		CEABEFF91CFAF2DC00AA4E60 /* angry_filter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABEFEF1CFAF2DC00AA4E60 /* angry_filter@2x.png */; };
 		CEABEFFA1CFAF2DC00AA4E60 /* angry_unfilter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEABEFF01CFAF2DC00AA4E60 /* angry_unfilter@2x.png */; };
@@ -429,10 +431,14 @@
 		CE4A8A5D1CABCCB1006B73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE4A8A691CABCDC6006B73B7 /* MDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDataManager.h; sourceTree = "<group>"; };
 		CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDataManager.m; sourceTree = "<group>"; };
+		CE5EFC411E12CF9F0076478C /* tutorial_month_ko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_month_ko.png; sourceTree = "<group>"; };
 		CE7FFD581CE023D300B7139C /* MDCustomStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCustomStoryboardSegue.h; sourceTree = "<group>"; };
 		CE7FFD591CE023D300B7139C /* MDCustomStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCustomStoryboardSegue.m; sourceTree = "<group>"; };
 		CE87EC501CCE118500329E16 /* MDSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchTableViewController.h; sourceTree = "<group>"; };
 		CE87EC511CCE118500329E16 /* MDSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSearchTableViewController.m; sourceTree = "<group>"; };
+		CE8DAFD61E128DF8005E0362 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CE8DAFD71E128DF8005E0362 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		CE8DAFD81E128E0E005E0362 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CEABEFEC1CFAD7AC00AA4E60 /* MDDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDocument.h; sourceTree = "<group>"; };
 		CEABEFED1CFAD7AC00AA4E60 /* MDDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDocument.m; sourceTree = "<group>"; };
 		CEABEFEF1CFAF2DC00AA4E60 /* angry_filter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "angry_filter@2x.png"; sourceTree = "<group>"; };
@@ -833,6 +839,8 @@
 		CE0C92CD1CAE56A60037E749 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				CE3AC3B91CF183420037BC71 /* MDDataSettingTableViewController.h */,
+				CE3AC3BA1CF183420037BC71 /* MDDataSettingTableViewController.m */,
 				CE4A8A691CABCDC6006B73B7 /* MDDataManager.h */,
 				CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */,
 				CEABEFEC1CFAD7AC00AA4E60 /* MDDocument.h */,
@@ -899,6 +907,7 @@
 				E9CC1F521CB4D347003099D8 /* fonts */,
 				E986ECCE1CDFBE2F00792C55 /* images */,
 				CE4A8A371CABCCB1006B73B7 /* main.m */,
+				CE8DAFD81E128E0E005E0362 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -951,8 +960,6 @@
 				65B036791CDFA95400D095F0 /* MDMakeMoodMonView.m */,
 				CEBA98701CDF1C79006D2FFD /* MDSearchTableViewCell.h */,
 				CEBA98711CDF1C79006D2FFD /* MDSearchTableViewCell.m */,
-				CE3AC3B91CF183420037BC71 /* MDDataSettingTableViewController.h */,
-				CE3AC3BA1CF183420037BC71 /* MDDataSettingTableViewController.m */,
 				E4F1A6171DF7FE1F00B16DD2 /* MDRoundRectView.h */,
 				E4F1A6181DF7FE1F00B16DD2 /* MDRoundRectView.m */,
 			);
@@ -1189,6 +1196,7 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CE5EFC411E12CF9F0076478C /* tutorial_month_ko.png */,
 				3FC1A86F1E0B8892003C1248 /* tutorial_box.png */,
 				3FC1A8701E0B8892003C1248 /* tutorial_next.png */,
 				E98503DB1DF7F0EF005B38F8 /* chalk_line.png */,
@@ -1714,6 +1722,7 @@
 				E9A93B831CFAD37800421076 /* Icon-72@2x.png in Resources */,
 				E986ED911CDFBE2F00792C55 /* joy_mouth_degree3@2x.png in Resources */,
 				E986ED541CDFBE2F00792C55 /* darkcircle_degree4@2x.png in Resources */,
+				CE5EFC421E12CF9F0076478C /* tutorial_month_ko.png in Resources */,
 				E98503DC1DF7F0EF005B38F8 /* chalk_line.png in Resources */,
 				E986ED931CDFBE2F00792C55 /* joy_mouth_degree5@2x.png in Resources */,
 				E986ED9F1CDFBE2F00792C55 /* cross@2x.png in Resources */,
@@ -1724,6 +1733,7 @@
 				3FC1A8721E0B8892003C1248 /* tutorial_next.png in Resources */,
 				CEABEFFB1CFAF2DC00AA4E60 /* excited_filter@2x.png in Resources */,
 				E986ED8E1CDFBE2F00792C55 /* excited_mouth_degree5@2x.png in Resources */,
+				CE8DAFD91E128E0E005E0362 /* Localizable.strings in Resources */,
 				E9B03E221CF1FD700069741F /* excited_degree3@2x.png in Resources */,
 				E9B03E2A1CF1FD700069741F /* sad_degree1@2x.png in Resources */,
 				E986ED9C1CDFBE2F00792C55 /* tired_mouth_degree4@2x.png in Resources */,
@@ -2120,6 +2130,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				CE4A8A451CABCCB1006B73B7 /* Base */,
+				CE8DAFD61E128DF8005E0362 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2128,6 +2139,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E4AB184A1DD3309600A33AC4 /* Base */,
+				CE8DAFD71E128DF8005E0362 /* ko */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -2139,6 +2151,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2184,6 +2197,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

@@ -283,7 +283,7 @@
     //    [self.animator addBehavior:elasticityBehavior];
     //
     //
-    //    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Press and wheel to choose your mood" action:@selector(menuControllerDisappear)];
+    //    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Press and wheel to choose your mood",nil) action:@selector(menuControllerDisappear)];
     //    _menuController.menuItems = [NSArray arrayWithObjects:menuItem, nil];
     //    [_menuController setTargetRect:moodButton.frame inView:moodButton.superview];
     //    [_menuController setMenuVisible:YES animated:YES];
@@ -315,7 +315,7 @@
                                           }
                                           completion:nil];
                          
-                         UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Press and wheel to choose your mood" action:@selector(menuControllerDisappear)];
+                         UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Press and wheel to choose your mood",nil) action:@selector(menuControllerDisappear)];
                          _menuController.menuItems = [NSArray arrayWithObjects:menuItem, nil];
                          [_menuController setTargetRect:moodButton.frame inView:moodButton.superview];
                          [_menuController setMenuVisible:YES animated:YES];
