@@ -12,6 +12,7 @@
 
 @interface MDEndPageViewController : UIViewController
 
+@property (assign, nonatomic) int idx; //for writing data
 @property (strong, nonatomic) IBOutlet UIView *moodView;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabelDetail;

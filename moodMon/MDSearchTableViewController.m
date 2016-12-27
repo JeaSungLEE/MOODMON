@@ -173,6 +173,7 @@ UIVisualEffectView *visualEffectView;
     VC.timest = cell.timest;
     VC.dateString = cell.date;
     VC.comment = cell.commentLabel.text;
+    VC.idx = (NSInteger)cell.tag;
     
     [self.navigationController.navigationBar addSubview:visualEffectView];
     [self.view addSubview:blurEffectView];
@@ -193,6 +194,7 @@ UIVisualEffectView *visualEffectView;
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     Moodmon *resultMoodmon = self.filteredProducts[indexPath.row];
+    cell.tag = (NSInteger)resultMoodmon.idx;
     cell.commentLabel.text = resultMoodmon.moodComment;
     //NSLog(@"time is : %@", [moodmonConf[indexPath.row] valueForKey:kTime]);
     NSString *selectedTime = resultMoodmon.moodTime;

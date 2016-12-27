@@ -41,8 +41,8 @@
 
 +(MDDataManager*)sharedDataManager; //DataManager is a singleton.
 
--(void)deleteAllData;
-
+- (void)deleteAllData;
+- (void)deleteAtRealmMoodmonIdx:(NSInteger)idx;
 
 - (void)saveNewMoodmonAtRealmOfComment:(NSString*)comment asFirstChosen:(int)first SecondChosen:(int)second andThirdChosen:(int)third; //for Realm
 - (void)setCollectionFromRealm;

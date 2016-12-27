@@ -139,6 +139,7 @@ NSString *currentDate;
     
     [self resetTimeTable];
     [self moreDateInfo];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -640,6 +641,7 @@ NSString *currentDate;
     MDMonthTimeLineCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDMonthTimeLineCellTableViewCell" forIndexPath:indexPath];
     cell.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
     Moodmon *selected = moodmonConf[indexPath.row];
+    cell.tag = selected.idx;
     cell.commentLabel.text = selected.moodComment;
   
     NSString *selectedTime = selected.moodTime;
@@ -789,6 +791,7 @@ NSString *currentDate;
     VC.timest = cell.timeLabel.text;
     VC.dateString = currentDate;
     VC.comment = cell.commentLabel.text;
+    VC.idx = (NSInteger)cell.tag;
     
     [self.view bringSubviewToFront:_visualEffectView];
     self.navigationController.navigationBar.hidden = YES;

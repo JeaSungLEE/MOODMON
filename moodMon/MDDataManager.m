@@ -167,7 +167,17 @@
     [realm commitWriteTransaction];
 }
 
-
+- (void)deleteAtRealmMoodmonIdx:(NSInteger)idx{
+    NSString *query = [NSString stringWithFormat:@"idx = %ld",(long)idx];
+    NSArray<Moodmon *> *result = (NSArray*)[Moodmon objectsWhere:query];
+    Moodmon *willBeDeleted = [result firstObject];
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    if(willBeDeleted){
+        [realm deleteObject:willBeDeleted];
+    }
+    [realm commitWriteTransaction];
+}
 
 -(NSUInteger)recentRealmMood{
     /* 감정별 숫자 매칭

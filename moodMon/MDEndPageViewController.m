@@ -7,6 +7,7 @@
 //
 
 #import "MDEndPageViewController.h"
+#import "MDDataManager.h"
 #define CURRENT_WINDOW_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface MDEndPageViewController ()
@@ -125,10 +126,12 @@
 
 //***************
 - (IBAction)commitModify:(id)sender {
+   
     [self showAlertView:@"EDIT" Message:@"수정되었습니다."];
 }
 
 - (IBAction)deleteMood:(id)sender {
+    [[MDDataManager sharedDataManager] deleteAtRealmMoodmonIdx: self.idx];
     [self showAlertView:@"DELETE" Message:@"삭제되었습니다."];
 }
 //*****************
