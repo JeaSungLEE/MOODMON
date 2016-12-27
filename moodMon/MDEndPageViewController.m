@@ -39,7 +39,7 @@
     _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, rect.size.height+10);
     [_commentTextView setFrame:_textRectFrame];
     _commentTextView.text = _comment;
-    [_commentTextView setBackgroundColor:[UIColor clearColor]];
+    //[_commentTextView setBackgroundColor:[UIColor clearColor]];
 }
 
 -(void)setLabelImage{
@@ -120,7 +120,7 @@
 
 - (IBAction)saveMoodButton:(id)sender {
     [self saveMoodMon];
-    [self showAlertView:@"SAVE" Message:@"저장되었습니다."];
+    [self showAlertView:@"MoodMon" Message:NSLocalizedString(@"Saved to Camera Roll",nil)];
 }
 
 //***************

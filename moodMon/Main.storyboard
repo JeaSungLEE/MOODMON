@@ -2046,7 +2046,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PRc-2Y-STh" id="aIw-TD-xuP">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdJ-j2-V7A" customClass="MDMoodColorView">
@@ -2138,14 +2138,22 @@
                                             <constraint firstAttribute="width" constant="200" id="dzY-I9-KHQ"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-1V-cGW">
-                                        <state key="normal" title="삭제"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUN-1V-cGW">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="JK3-2Y-sVn"/>
+                                            <constraint firstAttribute="height" constant="30" id="YdL-2j-xR0"/>
+                                        </constraints>
+                                        <state key="normal" title="삭제" image="delete-button.png"/>
                                         <connections>
                                             <action selector="deleteMood:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="KfQ-3Q-fDl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWk-Ma-iCg">
-                                        <state key="normal" title="저장"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWk-Ma-iCg">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="NSa-do-ZKf"/>
+                                            <constraint firstAttribute="width" constant="30" id="z1d-FC-vS1"/>
+                                        </constraints>
+                                        <state key="normal" title="저장" image="download-button.png"/>
                                         <connections>
                                             <action selector="saveMoodButton:" destination="QhJ-RY-5iF" eventType="touchUpInside" id="dnF-bw-DP4"/>
                                         </connections>
@@ -2226,10 +2234,10 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="moodCell" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="moodCell" editingAccessoryType="detailButton" id="39R-Zo-Qa7" customClass="MDMoodFilterTableViewCell">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="39R-Zo-Qa7" id="1P1-o7-vk0">
-                                    <frame key="frameInset" width="336" height="43.5"/>
+                                    <frame key="frameInset" width="336" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -2397,7 +2405,7 @@
                                         <rect key="frame" x="0.0" y="28" width="377" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2g-lF-DOc" id="UjD-II-JKf">
-                                            <frame key="frameInset" width="377" height="44"/>
+                                            <frame key="frameInset" width="377" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBN-2p-oc1">
@@ -2646,10 +2654,10 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" editingAccessoryType="detailButton" id="haY-qL-xei">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="haY-qL-xei" id="Xj7-cd-orC">
-                                    <frame key="frameInset" width="336" height="43.5"/>
+                                    <frame key="frameInset" width="336" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -2753,6 +2761,8 @@
         <image name="circle.png" width="734" height="735"/>
         <image name="comment box.png" width="92" height="15"/>
         <image name="cross.png" width="42" height="42"/>
+        <image name="delete-button.png" width="128" height="128"/>
+        <image name="download-button.png" width="128" height="128"/>
         <image name="excited_unfilter.png" width="29" height="29"/>
         <image name="excited_unselect.png" width="261" height="261"/>
         <image name="joy_degree1.png" width="225" height="225"/>

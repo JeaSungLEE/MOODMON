@@ -34,6 +34,8 @@
 		CE4A8A5C1CABCCB1006B73B7 /* moodMonUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A5B1CABCCB1006B73B7 /* moodMonUITests.m */; };
 		CE4A8A6B1CABCDC6006B73B7 /* MDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */; };
 		CE5EFC421E12CF9F0076478C /* tutorial_month_ko.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5EFC411E12CF9F0076478C /* tutorial_month_ko.png */; };
+		CE5EFC451E12D4B80076478C /* download-button.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5EFC431E12D4B80076478C /* download-button.png */; };
+		CE5EFC461E12D4B80076478C /* delete-button.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5EFC441E12D4B80076478C /* delete-button.png */; };
 		CE7FFD5A1CE023D300B7139C /* MDCustomStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7FFD591CE023D300B7139C /* MDCustomStoryboardSegue.m */; };
 		CE87EC521CCE118500329E16 /* MDSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87EC511CCE118500329E16 /* MDSearchTableViewController.m */; };
 		CE8DAFD91E128E0E005E0362 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE8DAFD81E128E0E005E0362 /* Localizable.strings */; };
@@ -432,6 +434,8 @@
 		CE4A8A691CABCDC6006B73B7 /* MDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDataManager.h; sourceTree = "<group>"; };
 		CE4A8A6A1CABCDC6006B73B7 /* MDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDataManager.m; sourceTree = "<group>"; };
 		CE5EFC411E12CF9F0076478C /* tutorial_month_ko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_month_ko.png; sourceTree = "<group>"; };
+		CE5EFC431E12D4B80076478C /* download-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download-button.png"; sourceTree = "<group>"; };
+		CE5EFC441E12D4B80076478C /* delete-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-button.png"; sourceTree = "<group>"; };
 		CE7FFD581CE023D300B7139C /* MDCustomStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCustomStoryboardSegue.h; sourceTree = "<group>"; };
 		CE7FFD591CE023D300B7139C /* MDCustomStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCustomStoryboardSegue.m; sourceTree = "<group>"; };
 		CE87EC501CCE118500329E16 /* MDSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSearchTableViewController.h; sourceTree = "<group>"; };
@@ -1196,6 +1200,8 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CE5EFC431E12D4B80076478C /* download-button.png */,
+				CE5EFC441E12D4B80076478C /* delete-button.png */,
 				CE5EFC411E12CF9F0076478C /* tutorial_month_ko.png */,
 				3FC1A86F1E0B8892003C1248 /* tutorial_box.png */,
 				3FC1A8701E0B8892003C1248 /* tutorial_next.png */,
@@ -1700,6 +1706,7 @@
 				E9A93B881CFAD37800421076 /* iTunesArtwork.png in Resources */,
 				658BE7341CB4CE98006EB718 /* Quicksand-Light.otf in Resources */,
 				E986ED971CDFBE2F00792C55 /* sad_mouth_degree4@2x.png in Resources */,
+				CE5EFC461E12D4B80076478C /* delete-button.png in Resources */,
 				E9B03E331CF1FD700069741F /* tired_degree5@2x.png in Resources */,
 				E986EDA11CDFBE2F00792C55 /* excited_selected@2x.png in Resources */,
 				E986ED881CDFBE2F00792C55 /* angry_mouth_degree4@2x.png in Resources */,
@@ -1810,6 +1817,7 @@
 				E986EDA31CDFBE2F00792C55 /* sad_selected@2x.png in Resources */,
 				E986EDB61CDFBE2F00792C55 /* wrinkle_degree3@2x.png in Resources */,
 				CEABEFF91CFAF2DC00AA4E60 /* angry_filter@2x.png in Resources */,
+				CE5EFC451E12D4B80076478C /* download-button.png in Resources */,
 				E986ED921CDFBE2F00792C55 /* joy_mouth_degree4@2x.png in Resources */,
 				E986ED651CDFBE2F00792C55 /* sad_eyebrow_degree4@2x.png in Resources */,
 				E9B03E2F1CF1FD700069741F /* tired_degree1@2x.png in Resources */,
