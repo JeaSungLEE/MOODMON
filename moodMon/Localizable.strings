@@ -77,6 +77,7 @@
 
 //search view
 "Search a Word or Text" = "단어나 문장을 검색하세요";
+"Search Full Time Format+" = "%ld년 %ld월 %ld일\n%@ %@시 %@분 %@초";
 
 //endPage view
 "Saved to Camera Roll" = "사진에 저장되었습니다.\n프로필로 설정해보세요.";

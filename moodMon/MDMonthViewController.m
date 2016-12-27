@@ -650,6 +650,8 @@ NSString *currentDate;
     NSString *tt = @"";
     if([hour compare:@12] != NSOrderedAscending){
         tt = NSLocalizedString(@"After12", nil);
+        int hourSubtracted = [hour intValue] - 12;
+        hour = [NSNumber numberWithInt:hourSubtracted];
     } else {
         tt = NSLocalizedString(@"Before12", nil);
     }
