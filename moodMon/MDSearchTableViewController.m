@@ -337,7 +337,7 @@ NSString *const SearchBarIsFirstResponderKey = @"SearchBarIsFirstResponderKey";
     self.definesPresentationContext = YES;
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.searchController.searchBar.placeholder = @"Search a word or text!";
+    self.searchController.searchBar.placeholder = NSLocalizedString(@"Search a Word or Text", nil);
     self.filteredProducts = nil;
 }
 

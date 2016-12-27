@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  moodMon
+
+  Created by Lee Kyu-Won on 12/27/16.
+  Copyright © 2016 HUB. All rights reserved.
+*/
+
+
+//basic
+"Locale Identifier" = "ko_KR";
+"Half Date Format" = "MM월 dd일";
+"Full Date Format" = "YYYY년 MM월 dd일";
+"Full Time Format" = "tt h시 m분 s초";
+"Full Time Format+" = "%@ %@시 %@분 %@초";
+"After12" = "오후";
+"Before12" = "오전";
+
+"Yes" = "네";
+"No" = "아니오";
+
+"Done" = "확인";
+
+//new moodmon
+"Comment Feeling" = "감정을 글로 남겨주세요~";
+
+
+//month view
+"Table Title Date Format" = "%ld년 %d월 %d일";
+"Title Date Format" =    "%ld년 %ld월";
+"Monday" = "월";
+"Tuesday" = "화";
+"Wednesday" = "수";
+"Thursday" = "목";
+"Friday" = "금";
+"Saturday" = "토";
+"Sunday" = "일";
+
+"Year" = "연도별";
+"Search"="검색";
+"Data"="데이터";
+"Filter"="필터";
+
+
+//year view
+"Year Title Date Format" = "%lu년";
+"Month" = "달별";
+
+//search view
+"Search a Word or Text" = "단어나 문장을 검색하세요";
+
+//Data setting
+"Data Setting" = "데이터 셋팅";
+"Delete All Moodmon" = "모든 무드몬 삭제하기";
+"Assure Deleting All" = "정말로 무드몬을\r\n모두 지우시겠습니까?";
+
+

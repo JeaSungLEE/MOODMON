@@ -8,6 +8,11 @@
 
 #import "MDDataSettingTableViewController.h"
 #import "MDDataManager.h"
+typedef enum MDDataSettingSection {
+  //  MDDataSettingiCloud, //icloud 기능 검수 후 추가할 섹션
+    MDDataSetteingDeleteAll,
+    MDDataSettingCount
+};
 
 @implementation MDDataSettingTableViewController{
     NSArray *tableTitles;
@@ -16,12 +21,12 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    tableTitles = @[@[@"iCloud Sync"], @[@"Erase All Local Data"]];
+    //@[@"iCloud Sync"],
+    tableTitles = @[ @[NSLocalizedString(@"Delete All Moodmon", nil)]];
     self.dataManager = [MDDataManager sharedDataManager];
     
-    UINavigationItem *navItems = [[UINavigationItem alloc] initWithTitle:@"Data Setting"];
-    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(dataDidFinish)];
+    UINavigationItem *navItems = [[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"Data Setting", nil)];
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(dataDidFinish)];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Quicksand" size:18]}];
     navItems.rightBarButtonItem = doneBtn;
     NSArray *items =[[NSArray alloc]initWithObjects:navItems,nil];
@@ -38,18 +43,12 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return MDDataSettingCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if(section == 0) {
-        return 1;
-    }
-    
-    else {
-        return 1;
-    }
+    return 1;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,18 +56,18 @@
     
     cell.textLabel.text = tableTitles[indexPath.section][indexPath.row];
     [cell.textLabel setFont:[UIFont fontWithName:@"Quicksand" size:16.5]];
-    if(indexPath.section == 0){
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        
-//        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectAllMood)];
-//        [cell addGestureRecognizer:gesture];
-        return cell;
-    } else {
+//    if(indexPath.section == MDDataSetteingDeleteAll){
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//        
+////        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectAllMood)];
+////        [cell addGestureRecognizer:gesture];
+//        return cell;
+//    } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
         
         UITapGestureRecognizer *tapDelete = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteAllData)];
         [cell addGestureRecognizer:tapDelete];
-    }
+//    }
     
 
      return cell;
@@ -76,21 +75,20 @@
 
 
 -(void)deleteAllData{
-    NSLog(@"delete all");
     UIAlertController * alert = [UIAlertController
-                                 alertControllerWithTitle:@"정말로 무드몬을\r\n모두 지우시겠습니까?"
+                                 alertControllerWithTitle: NSLocalizedString(@"Assure Deleting All", nil)
                                  message:nil
                                  preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* yesButton = [UIAlertAction
-                                actionWithTitle:@"네"
+                                actionWithTitle: NSLocalizedString(@"Yes", nil)
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     [_dataManager deleteAllData];
                                 }];
     
     UIAlertAction* noButton = [UIAlertAction
-                               actionWithTitle:@"아니요"
+                               actionWithTitle:NSLocalizedString(@"No", nil)
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action) {
                                }];
@@ -105,29 +103,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section != 0) return;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-     if(cell.accessoryType == UITableViewCellAccessoryNone){
-         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"iCloudSyncStart" object:self userInfo:@{@"message" : @"iCloud동기화를 시작합니다"}];
-         [_dataManager startICloudSync];
-     } else {
-         cell.accessoryType = UITableViewCellAccessoryNone;
-     }
+//    if(indexPath.section != 0) return;
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//     if(cell.accessoryType == UITableViewCellAccessoryNone){
+//         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//         [[NSNotificationCenter defaultCenter] postNotificationName:@"iCloudSyncStart" object:self userInfo:@{@"message" : @"iCloud동기화를 시작합니다"}];
+//         [_dataManager startICloudSync];
+//     } else {
+//         cell.accessoryType = UITableViewCellAccessoryNone;
+//     }
     
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section != 0) return;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if(cell.accessoryType == UITableViewCellAccessoryNone){
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"iCloudSyncStart" object:self userInfo:@{@"message" : @"iCloud동기화를 시작합니다"}];
-        [_dataManager startICloudSync];
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+//    if(indexPath.section != 0) return;
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    if(cell.accessoryType == UITableViewCellAccessoryNone){
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"iCloudSyncStart" object:self userInfo:@{@"message" : @"iCloud동기화를 시작합니다"}];
+//        [_dataManager startICloudSync];
+//    } else {
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
     
 }
 

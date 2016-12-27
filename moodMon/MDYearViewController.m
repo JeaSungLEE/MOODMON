@@ -20,6 +20,7 @@
     
 }
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *monthBtn;
 
 
 @end
@@ -56,7 +57,7 @@ UIFont *boldQuicksand;
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     
     [self myCalView];
-    
+    self.monthBtn.titleLabel.text = NSLocalizedString(@"Month", nil);
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -156,7 +157,7 @@ UIFont *boldQuicksand;
 }
 -(void)myCalView{
     tag=1;
-    _titleLabel.text = [NSString stringWithFormat:@"%lu년", (long)_thisYear];
+    _titleLabel.text = [NSString stringWithFormat: NSLocalizedString(@"Year Title Date Format", nil), (long)_thisYear];
     
     double xVal=CGRectGetWidth(self.view.bounds)/3,yVal=CGRectGetHeight(self.view.bounds)/5;
     

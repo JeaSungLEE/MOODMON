@@ -22,6 +22,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *tutorialView;
 @property (strong, nonatomic)RLMArray *createdAt;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *visualEffectView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *yearBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *searchBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *dataBtn;
+@property (weak, nonatomic) IBOutlet UIButton *filterDoneBtn;
+
 
 @end
 
@@ -56,6 +61,7 @@ NSString *currentDate;
     _exciteUnchecked = [UIImage imageNamed:@"excited_unfilter@2x"];
     _exhaustChecked = [UIImage imageNamed:@"tired_filter@2x"];
     _exhaustUnchecked = [UIImage imageNamed:@"tired_unfilter@2x"];
+    
 }
 
 
@@ -92,6 +98,14 @@ NSString *currentDate;
     [_visualEffectView setEffect:blurEffect];
     _visualEffectView.layer.opacity = 0;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
+    
+    self.yearBtn.title = NSLocalizedString(@"Year", nil);
+    self.searchBtn.title = NSLocalizedString(@"Search", nil);
+    self.dataBtn.title = NSLocalizedString(@"Data", nil);
+    self.filterButton.titleLabel.text = NSLocalizedString(@"Filter", nil);
+    self.filterDoneBtn.titleLabel.text  = NSLocalizedString(@"Done", nil);
+    
+   
 }
 
 - (void)dealloc {
@@ -117,7 +131,7 @@ NSString *currentDate;
     topItem.backgroundColor = [UIColor clearColor];
     topItem.font = boldQuicksand;
     topItem.textAlignment = NSTextAlignmentCenter;
-    topItem.text = [NSString stringWithFormat:@"     %ld년 %ld월", (long)thisYear, (long)thisMonth];
+    topItem.text = [NSString stringWithFormat: NSLocalizedString(@"Title Date Format", nil), (long)thisYear, (long)thisMonth];
     self.navigationItem.titleView = topItem;
     
     [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:boldQuicksand} forState:UIControlStateNormal];
@@ -316,7 +330,7 @@ NSString *currentDate;
     topItem.backgroundColor = [UIColor clearColor];
     topItem.font = boldQuicksand;
     topItem.textAlignment = NSTextAlignmentCenter;
-    topItem.text = [NSString stringWithFormat:@"     %d년 %d월", thisYear, thisMonth];
+    topItem.text = [NSString stringWithFormat:NSLocalizedString(@"Title Date Format" , nil), thisYear, thisMonth];
     self.navigationItem.titleView = topItem;
     [self resetTimeTable];
 }
@@ -403,25 +417,25 @@ NSString *currentDate;
         UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(xCoord+(xVal*i)+xVal/3, yCoord-10, xVal, yVal)];
         switch (i) {
             case 1:
-                [monthLabel setText:[NSString stringWithFormat:@"Mon"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Monday", nil)]];
                 break;
             case 2:
-                [monthLabel setText:[NSString stringWithFormat:@"Tue"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Tuesday", nil)]];
                 break;
             case 3:
-                [monthLabel setText:[NSString stringWithFormat:@"Wed"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Wednesday", nil)]];
                 break;
             case 4:
-                [monthLabel setText:[NSString stringWithFormat:@"Thu"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Thursday", nil)]];
                 break;
             case 5:
-                [monthLabel setText:[NSString stringWithFormat:@"Fri"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Friday", nil)]];
                 break;
             case 6:
-                [monthLabel setText:[NSString stringWithFormat:@"Sat"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Saturday", nil)]];
                 break;
             case 0:
-                [monthLabel setText:[NSString stringWithFormat:@"Sun"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Sunday", nil)]];
                 break;
             default:
                 break;
@@ -608,7 +622,7 @@ NSString *currentDate;
     if(myDay == 0) {
         return nil;
     }
-    NSString *date =[NSString stringWithFormat:@"%ld년 %d월 %d일", (long)thisYear, thisMonth, myDay];
+    NSString *date =[NSString stringWithFormat:NSLocalizedString(@"Table Title Date Format", nil), (long)thisYear, thisMonth, myDay];
     currentDate = date;
     return date;
 }
@@ -627,10 +641,24 @@ NSString *currentDate;
     cell.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
     Moodmon *selected = moodmonConf[indexPath.row];
     cell.commentLabel.text = selected.moodComment;
-    NSString *timeText = [NSString stringWithFormat:@"%@", selected.moodTime];
-    cell.timeLabel.text = timeText;
+  
+    NSString *selectedTime = selected.moodTime;
+    NSArray *timeComponents = [selectedTime componentsSeparatedByString:@":"];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *hour = [numberFormatter numberFromString:timeComponents[0]];
+    NSString *tt = @"";
+    if([hour compare:@12] != NSOrderedAscending){
+        tt = NSLocalizedString(@"After12", nil);
+    } else {
+        tt = NSLocalizedString(@"Before12", nil);
+    }
+    
+    cell.timeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Full Time Format+", nil), tt, hour, timeComponents[1], timeComponents[2]];
     cell.itemText = [moodmonConf[indexPath.row] valueForKey:@"_moodComment"];
     cell.delegate = self;
+    [cell.moodFaceView setNeedsDisplay];
+    [cell.moodColorView setNeedsDisplay];
     
     cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
     cell.moodColorView.layer.masksToBounds = YES;
