@@ -81,6 +81,8 @@
 
 //endPage view
 "Saved to Camera Roll" = "사진에 저장되었습니다.\n프로필로 설정해보세요.";
+"Deleted" = "삭제되었습니다.";
+"Edited" = "수정되었습니다.";
 
 //Data setting
 "Data Setting" = "데이터 셋팅";

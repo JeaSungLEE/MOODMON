@@ -93,8 +93,9 @@ typedef enum MDDataSettingSection {
                                handler:^(UIAlertAction * action) {
                                }];
     
-    [alert addAction:yesButton];
     [alert addAction:noButton];
+    [alert addAction:yesButton];
+    
     
     [self presentViewController:alert animated:YES completion:nil];
 }

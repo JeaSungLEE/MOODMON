@@ -126,13 +126,14 @@
 
 //***************
 - (IBAction)commitModify:(id)sender {
-   
-    [self showAlertView:@"EDIT" Message:@"수정되었습니다."];
+    //아래 알림창은 데이터매니져로부터 데이터 수정 확인 응답을 받은 후 띄워야함.
+    [self showAlertView:@"Moodmon" Message:NSLocalizedString(@"Edited", nil)];
 }
 
 - (IBAction)deleteMood:(id)sender {
     [[MDDataManager sharedDataManager] deleteAtRealmMoodmonIdx: self.idx];
-    [self showAlertView:@"DELETE" Message:@"삭제되었습니다."];
+    //아래 알림창은 데이터매니져로부터 데이터 수정 확인 응답을 받은 후 띄워야함.
+    [self showAlertView:@"Moodmon" Message:NSLocalizedString(@"Deleted", nil)];
 }
 //*****************
 //위두개는 렒으로 변경이후 추가.
