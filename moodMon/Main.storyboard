@@ -2056,6 +2056,10 @@
                                                 <constraint firstAttribute="width" constant="44" id="xCR-f0-WdV"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AML-cs-fCb" customClass="MDSmallMoodFaceView">
+                                            <frame key="frameInset" minX="165" minY="-1" width="44" height="44"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mm-kM-bLX">
                                             <frame key="frameInset" minX="72" minY="11" width="73" height="21"/>
                                             <constraints>
@@ -2082,16 +2086,21 @@
                                             <variation key="widthClass=compact" constant="68"/>
                                         </constraint>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="2mm-kM-bLX" secondAttribute="trailing" constant="90" id="IFU-ZD-OW2"/>
+                                        <constraint firstItem="AML-cs-fCb" firstAttribute="centerY" secondItem="qdJ-j2-V7A" secondAttribute="centerY" id="N9o-7i-kLr"/>
                                         <constraint firstItem="qdJ-j2-V7A" firstAttribute="leading" secondItem="aIw-TD-xuP" secondAttribute="leadingMargin" constant="8" id="QSu-F1-Kvh"/>
                                         <constraint firstItem="2mm-kM-bLX" firstAttribute="centerY" secondItem="aIw-TD-xuP" secondAttribute="centerY" id="XWn-lR-XzP"/>
+                                        <constraint firstItem="AML-cs-fCb" firstAttribute="height" secondItem="qdJ-j2-V7A" secondAttribute="height" id="fv5-PH-9v6"/>
                                         <constraint firstItem="qdJ-j2-V7A" firstAttribute="centerY" secondItem="aIw-TD-xuP" secondAttribute="centerY" id="gpK-jk-bx3"/>
                                         <constraint firstItem="25R-mL-I0L" firstAttribute="centerY" secondItem="aIw-TD-xuP" secondAttribute="centerY" id="jT4-Pr-Gmc"/>
+                                        <constraint firstItem="AML-cs-fCb" firstAttribute="centerX" secondItem="qdJ-j2-V7A" secondAttribute="centerX" id="mDo-ys-NRv"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="25R-mL-I0L" secondAttribute="trailing" constant="8" id="mOp-2H-kqK"/>
+                                        <constraint firstItem="AML-cs-fCb" firstAttribute="width" secondItem="qdJ-j2-V7A" secondAttribute="width" id="szn-4b-uH5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="commentLabel" destination="2mm-kM-bLX" id="wB6-5W-S0k"/>
                                     <outlet property="moodColorView" destination="qdJ-j2-V7A" id="1cD-ZX-maK"/>
+                                    <outlet property="moodFaceView" destination="AML-cs-fCb" id="Kbf-uQ-Z5g"/>
                                     <outlet property="timeLabel" destination="25R-mL-I0L" id="HeN-E3-Fxn"/>
                                 </connections>
                             </tableViewCell>

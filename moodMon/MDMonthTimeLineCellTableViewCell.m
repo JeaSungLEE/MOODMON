@@ -24,7 +24,6 @@ static CGFloat const kBounceValue = 40.0f;
     
 //    self.commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
 //    self.commentLabel.numberOfLines = 0; - 텍스트가 길면 break
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,6 +31,33 @@ static CGFloat const kBounceValue = 40.0f;
 }
 
 - (void)viewWillAppear{
+}
+
+- (void)drawWithMoodmon:(Moodmon*)moodmon{
+    self.moodColorView.layer.cornerRadius = self.moodColorView.frame.size.width/2;
+    self.moodColorView.layer.masksToBounds = YES;
+    
+    for(int i = 1 ; i < self.moodColorView.chosenMoods.count ; i++){
+        [self.moodColorView.chosenMoods replaceObjectAtIndex:i withObject:@0];
+        [self.moodFaceView.chosenMoods replaceObjectAtIndex:i withObject:@0];
+    }
+    
+    NSMutableArray *chosenMoods = [[NSMutableArray alloc] initWithObjects:@0, nil];
+    NSNumber *moodChosen = [NSNumber numberWithInteger: moodmon.moodChosen1];
+    if(moodChosen.intValue != 0){
+        [chosenMoods insertObject:moodChosen atIndex:1];
+    }
+    moodChosen = [NSNumber numberWithInteger: moodmon.moodChosen2];
+    if(moodChosen.intValue != 0){
+        [chosenMoods insertObject:moodChosen atIndex:2];
+    }
+    moodChosen = [NSNumber numberWithInteger: moodmon.moodChosen3];
+    if(moodChosen.intValue != 0){
+        [chosenMoods insertObject:moodChosen atIndex:3];
+    }
+    self.moodColorView.chosenMoods = chosenMoods;
+    self.moodFaceView.chosenMoods = chosenMoods;
+
 }
 
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)endEditing

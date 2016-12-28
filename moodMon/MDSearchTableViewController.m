@@ -194,9 +194,18 @@ UIVisualEffectView *visualEffectView;
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     Moodmon *resultMoodmon = self.filteredProducts[indexPath.row];
+    UIView *viewForFrame =  [cell viewWithTag:100];
+    viewForFrame.layer.cornerRadius = viewForFrame.frame.size.width/2;
+    viewForFrame.layer.masksToBounds = YES;
+    
+    CGRect frame = CGRectMake(viewForFrame.frame.origin.x, 8, viewForFrame.frame.size.width, viewForFrame.frame.size.height);
+    [cell.moodColorView setFrame:frame];
+    [cell.moodFaceView setFrame:frame];
+    
+    [cell drawWithMoodmon:resultMoodmon];
+    
     cell.tag = (NSInteger)resultMoodmon.idx;
     cell.commentLabel.text = resultMoodmon.moodComment;
-    //NSLog(@"time is : %@", [moodmonConf[indexPath.row] valueForKey:kTime]);
     NSString *selectedTime = resultMoodmon.moodTime;
     NSArray *timeComponents = [selectedTime componentsSeparatedByString:@":"];
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -214,50 +223,7 @@ UIVisualEffectView *visualEffectView;
     NSString *result = [NSString stringWithFormat:NSLocalizedString(@"Search Full Time Format+", nil), (long)resultMoodmon.moodYear, (long)resultMoodmon.moodMonth, (long)resultMoodmon.moodDay, tt, hour, timeComponents[1], timeComponents[2] ];
     cell.timeLabel.text = result;
     
-    UIView *viewForFrame =  [cell viewWithTag:100];
-    viewForFrame.layer.cornerRadius = viewForFrame.frame.size.width/2;
-    viewForFrame.layer.masksToBounds = YES;
-    
-  //  MDMoodColorView *colorView = [[MDMoodColorView alloc]init];
-    MDSmallMoodFaceView *faceView = [[MDSmallMoodFaceView alloc]init];
-    
-    CGRect frame = CGRectMake(viewForFrame.frame.origin.x, 8, viewForFrame.frame.size.width, viewForFrame.frame.size.height);
-    [cell.moodColorView setFrame:frame];
-    [faceView setFrame:frame];
-    
-    for(int i = 1 ;i <cell.moodColorView.chosenMoods.count ; i++){
-        [cell.moodColorView.chosenMoods removeObjectAtIndex:i];
-        [faceView.chosenMoods removeObjectAtIndex:i];
-        
-    }
-    
-    [faceView awakeFromNib];
-    
-    NSNumber *tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen1];
-    if(tempMoodChosen.intValue != 0){
-        [cell.moodColorView.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
-        [faceView.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
-    }
-    tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen2];
-    if(tempMoodChosen.intValue != 0){
-        [cell.moodColorView.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
-        [faceView.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
-    }
-    tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen3];
-    if(tempMoodChosen.intValue != 0){
-        [cell.moodColorView.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
-        [faceView.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
-    }
-    
-    cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
-    cell.moodColorView.layer.masksToBounds = YES;
-    
-    
-    [faceView setNeedsDisplay];
-    [cell.moodColorView setNeedsDisplay];
-//    [cell addSubview:colorView];
-    [cell addSubview:faceView];
-//    cell.moodColorView = colorView;
+   
     return cell;
 }
 

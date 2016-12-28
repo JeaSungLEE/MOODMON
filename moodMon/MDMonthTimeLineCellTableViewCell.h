@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MDMoodColorView.h"
 #import "MDSmallMoodFaceView.h"
+#import "Moodmon.h"
 //#import "MDMonthViewController.h"
 
 @protocol SwipeableCellDelegate <NSObject>
@@ -22,7 +23,7 @@
 @property (nonatomic, weak) id <SwipeableCellDelegate> delegate;
 @property (nonatomic, weak) NSString *itemText;
 
-@property MDMoodColorView *MCView;
+//@property MDMoodColorView *MCView;
 //@property (nonatomic, weak)IBOutlet UIButton *editBtn;
 @property (nonatomic, weak)IBOutlet UIButton *saveMoodmonBtn;
 @property (nonatomic, weak)IBOutlet UIView *myContentView;
@@ -37,6 +38,8 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
 
+- (void)drawWithMoodmon:(Moodmon*)moodmon;
 - (CGFloat)buttonTotalWidth;
+
 
 @end

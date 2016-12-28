@@ -644,6 +644,7 @@ NSString *currentDate;
     cell.tag = selected.idx;
     cell.commentLabel.text = selected.moodComment;
   
+    [cell drawWithMoodmon:selected];
     NSString *selectedTime = selected.moodTime;
     NSArray *timeComponents = [selectedTime componentsSeparatedByString:@":"];
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -661,32 +662,7 @@ NSString *currentDate;
     cell.timeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Full Time Format+", nil), tt, hour, timeComponents[1], timeComponents[2]];
     cell.itemText = [moodmonConf[indexPath.row] valueForKey:@"_moodComment"];
     cell.delegate = self;
-    [cell.moodFaceView setNeedsDisplay];
-    [cell.moodColorView setNeedsDisplay];
-    
-    cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
-    cell.moodColorView.layer.masksToBounds = YES;
-    
-    for(int i = 1 ; i < cell.moodColorView.chosenMoods.count ; i++){
-        [cell.moodColorView.chosenMoods replaceObjectAtIndex:i withObject:@0];
-        [cell.moodFaceView.chosenMoods replaceObjectAtIndex:i withObject:@0];
-    }
-    
-    NSMutableArray *chosenMoods = [[NSMutableArray alloc] initWithObjects:@0, nil];
-    NSNumber *moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
-    if(moodChosen.intValue != 0){
-        [chosenMoods insertObject:moodChosen atIndex:1];
-    }
-    moodChosen = [NSNumber numberWithInteger: selected.moodChosen2];
-    if(moodChosen.intValue != 0){
-        [chosenMoods insertObject:moodChosen atIndex:2];
-    }
-    moodChosen = [NSNumber numberWithInteger: selected.moodChosen3];
-    if(moodChosen.intValue != 0){
-        [chosenMoods insertObject:moodChosen atIndex:3];
-    }
-    cell.moodColorView.chosenMoods = chosenMoods;
-    cell.moodFaceView.chosenMoods = chosenMoods;
+   
     
     BOOL isVisible = [self checkVisibility:cell.moodColorView.chosenMoods] && [self checkVisibility:cell.moodFaceView.chosenMoods];
     
@@ -694,9 +670,6 @@ NSString *currentDate;
         cell.isFiltered = YES;
         [indexPathsToDelete addObject:indexPath];
     }
-    
-    [cell.moodFaceView setNeedsDisplay];
-    [cell.moodColorView setNeedsDisplay];
     
     return cell;
 }
