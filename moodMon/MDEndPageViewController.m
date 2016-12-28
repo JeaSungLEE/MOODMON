@@ -7,6 +7,7 @@
 //
 
 #import "MDEndPageViewController.h"
+#import "MDDataManager.h"
 #define CURRENT_WINDOW_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface MDEndPageViewController ()
@@ -109,25 +110,30 @@
 
 -(void)showAlertView:(NSString*)title Message:(NSString*)Message{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:Message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([title isEqualToString:@"DELETE"]) {
+            [self dissmissView];
+        }
+    }];
     [alertController addAction:defaultAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (IBAction)saveMoodButton:(id)sender {
     [self saveMoodMon];
-    [self showAlertView:@"SAVE" Message:@"저장되었습니다."];
+    [self showAlertView:@"MoodMon" Message:NSLocalizedString(@"Saved to Camera Roll",nil)];
 }
 
 //***************
 - (IBAction)commitModify:(id)sender {
-    
-    [self showAlertView:@"EDIT" Message:@"수정되었습니다."];
+    //아래 알림창은 데이터매니져로부터 데이터 수정 확인 응답을 받은 후 띄워야함.
+    [self showAlertView:@"Moodmon" Message:NSLocalizedString(@"Edited", nil)];
 }
 
 - (IBAction)deleteMood:(id)sender {
-    [self showAlertView:@"DELETE" Message:@"삭제되었습니다."];
-    [self dissmissView];
+    [[MDDataManager sharedDataManager] deleteAtRealmMoodmonIdx: self.idx];
+    //아래 알림창은 데이터매니져로부터 데이터 수정 확인 응답을 받은 후 띄워야함.
+    [self showAlertView:@"Moodmon" Message:NSLocalizedString(@"Deleted", nil)];
 }
 //*****************
 //위두개는 렒으로 변경이후 추가.

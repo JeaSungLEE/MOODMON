@@ -21,6 +21,12 @@
 }
 @property (strong, nonatomic) IBOutlet UIButton *tutorialView;
 @property (strong, nonatomic)RLMArray *createdAt;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *visualEffectView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *yearBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *searchBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *dataBtn;
+@property (weak, nonatomic) IBOutlet UIButton *filterDoneBtn;
+
 
 @end
 
@@ -37,15 +43,13 @@ NSMutableArray <NSIndexPath *> *indexPathsToDelete;
 UIFont *quicksand;
 UIFont *boldQuicksand;
 NSString *currentDate;
-UIVisualEffectView *blurEffectView;
-UIVisualEffectView *visualEffectView;
-
 
 @implementation MDMonthViewController
 @synthesize thisYear;
 @synthesize thisMonth;
 
 -(void)awakeFromNib{
+    [super awakeFromNib];
     //image loading
     _angryChecked = [UIImage imageNamed:@"angry_filter@2x"];
     _angryUnchecked = [UIImage imageNamed:@"angry_unfilter@2x"];
@@ -57,6 +61,7 @@ UIVisualEffectView *visualEffectView;
     _exciteUnchecked = [UIImage imageNamed:@"excited_unfilter@2x"];
     _exhaustChecked = [UIImage imageNamed:@"tired_filter@2x"];
     _exhaustUnchecked = [UIImage imageNamed:@"tired_unfilter@2x"];
+    
 }
 
 
@@ -64,7 +69,6 @@ UIVisualEffectView *visualEffectView;
     count=0;
     [super viewDidLoad];
     
-    [self setBlurEffect];
     [self setFilterUI];
     [self addGesture];
     
@@ -90,7 +94,22 @@ UIVisualEffectView *visualEffectView;
     //[self moreDateInfo];
     indexPathsToDelete = [[NSMutableArray alloc] init];
     
-    self.navigationController.navigationBar.layer.opacity = 0;
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    [_visualEffectView setEffect:blurEffect];
+    _visualEffectView.layer.opacity = 0;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
+    
+    self.yearBtn.title = NSLocalizedString(@"Year", nil);
+    self.searchBtn.title = NSLocalizedString(@"Search", nil);
+    self.dataBtn.title = NSLocalizedString(@"Data", nil);
+    self.filterButton.titleLabel.text = NSLocalizedString(@"Filter", nil);
+    self.filterDoneBtn.titleLabel.text  = NSLocalizedString(@"Done", nil);
+    
+   
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"deleteBlur" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -112,7 +131,7 @@ UIVisualEffectView *visualEffectView;
     topItem.backgroundColor = [UIColor clearColor];
     topItem.font = boldQuicksand;
     topItem.textAlignment = NSTextAlignmentCenter;
-    topItem.text = [NSString stringWithFormat:@"     %d년 %d월", thisYear, thisMonth];
+    topItem.text = [NSString stringWithFormat: NSLocalizedString(@"Title Date Format", nil), (long)thisYear, (long)thisMonth];
     self.navigationItem.titleView = topItem;
     
     [self.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:boldQuicksand} forState:UIControlStateNormal];
@@ -120,6 +139,7 @@ UIVisualEffectView *visualEffectView;
     
     [self resetTimeTable];
     [self moreDateInfo];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -311,7 +331,7 @@ UIVisualEffectView *visualEffectView;
     topItem.backgroundColor = [UIColor clearColor];
     topItem.font = boldQuicksand;
     topItem.textAlignment = NSTextAlignmentCenter;
-    topItem.text = [NSString stringWithFormat:@"     %d년 %d월", thisYear, thisMonth];
+    topItem.text = [NSString stringWithFormat:NSLocalizedString(@"Title Date Format" , nil), thisYear, thisMonth];
     self.navigationItem.titleView = topItem;
     [self resetTimeTable];
 }
@@ -398,25 +418,25 @@ UIVisualEffectView *visualEffectView;
         UILabel *monthLabel = [[UILabel alloc] initWithFrame:CGRectMake(xCoord+(xVal*i)+xVal/3, yCoord-10, xVal, yVal)];
         switch (i) {
             case 1:
-                [monthLabel setText:[NSString stringWithFormat:@"Mon"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Monday", nil)]];
                 break;
             case 2:
-                [monthLabel setText:[NSString stringWithFormat:@"Tue"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Tuesday", nil)]];
                 break;
             case 3:
-                [monthLabel setText:[NSString stringWithFormat:@"Wed"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Wednesday", nil)]];
                 break;
             case 4:
-                [monthLabel setText:[NSString stringWithFormat:@"Thu"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Thursday", nil)]];
                 break;
             case 5:
-                [monthLabel setText:[NSString stringWithFormat:@"Fri"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Friday", nil)]];
                 break;
             case 6:
-                [monthLabel setText:[NSString stringWithFormat:@"Sat"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Saturday", nil)]];
                 break;
             case 0:
-                [monthLabel setText:[NSString stringWithFormat:@"Sun"]];
+                [monthLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Sunday", nil)]];
                 break;
             default:
                 break;
@@ -603,7 +623,7 @@ UIVisualEffectView *visualEffectView;
     if(myDay == 0) {
         return nil;
     }
-    NSString *date =[NSString stringWithFormat:@"%ld년 %d월 %d일", (long)thisYear, thisMonth, myDay];
+    NSString *date =[NSString stringWithFormat:NSLocalizedString(@"Table Title Date Format", nil), (long)thisYear, thisMonth, myDay];
     currentDate = date;
     return date;
 }
@@ -618,15 +638,31 @@ UIVisualEffectView *visualEffectView;
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     MDMonthTimeLineCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MDMonthTimeLineCellTableViewCell" forIndexPath:indexPath];
     cell.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor clearColor]);
     Moodmon *selected = moodmonConf[indexPath.row];
+    cell.tag = selected.idx;
     cell.commentLabel.text = selected.moodComment;
-    NSString *timeText = [NSString stringWithFormat:@"%@", selected.moodTime];
-    cell.timeLabel.text = timeText;
+  
+    NSString *selectedTime = selected.moodTime;
+    NSArray *timeComponents = [selectedTime componentsSeparatedByString:@":"];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *hour = [numberFormatter numberFromString:timeComponents[0]];
+    NSString *tt = @"";
+    if([hour compare:@12] != NSOrderedAscending){
+        tt = NSLocalizedString(@"After12", nil);
+        int hourSubtracted = [hour intValue] - 12;
+        hour = [NSNumber numberWithInt:hourSubtracted];
+    } else {
+        tt = NSLocalizedString(@"Before12", nil);
+    }
+    
+    cell.timeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Full Time Format+", nil), tt, hour, timeComponents[1], timeComponents[2]];
     cell.itemText = [moodmonConf[indexPath.row] valueForKey:@"_moodComment"];
     cell.delegate = self;
+    [cell.moodFaceView setNeedsDisplay];
+    [cell.moodColorView setNeedsDisplay];
     
     cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
     cell.moodColorView.layer.masksToBounds = YES;
@@ -640,20 +676,14 @@ UIVisualEffectView *visualEffectView;
     NSNumber *moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:1];
-        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:1 ];
-        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:1 ];
     }
-    moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
+    moodChosen = [NSNumber numberWithInteger: selected.moodChosen2];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:2];
-        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:2 ];
-        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:2 ];
     }
-    moodChosen = [NSNumber numberWithInteger: selected.moodChosen1];
+    moodChosen = [NSNumber numberWithInteger: selected.moodChosen3];
     if(moodChosen.intValue != 0){
         [chosenMoods insertObject:moodChosen atIndex:3];
-        //        [cell.moodColorView.chosenMoods insertObject: moodChosen atIndex:3 ];
-        //        [cell.moodFaceView.chosenMoods insertObject: moodChosen atIndex:3 ];
     }
     cell.moodColorView.chosenMoods = chosenMoods;
     cell.moodFaceView.chosenMoods = chosenMoods;
@@ -761,15 +791,16 @@ UIVisualEffectView *visualEffectView;
     VC.timest = cell.timeLabel.text;
     VC.dateString = currentDate;
     VC.comment = cell.commentLabel.text;
+    VC.idx = (NSInteger)cell.tag;
     
+    [self.view bringSubviewToFront:_visualEffectView];
+    self.navigationController.navigationBar.hidden = YES;
+    [UIView animateWithDuration:0.3 animations:^{
+        _visualEffectView.layer.opacity = 1;
+    }];
     
-    [self.navigationController.navigationBar addSubview:visualEffectView];
-    [self.view addSubview:blurEffectView];
     VC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:VC animated:YES completion:nil];
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 
@@ -777,12 +808,13 @@ UIVisualEffectView *visualEffectView;
     return NO;
 }
 
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // [_objects removeObjectAtIndex:indexPath.row];
         [self.tableViews deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else {
-        NSLog(@"Unhandled editing style! %d",editingStyle);
+        NSLog(@"Unhandled editing style! %ld",(long)editingStyle);
     }
 }
 
@@ -837,22 +869,13 @@ UIVisualEffectView *visualEffectView;
 }
 
 -(void)deleteBlur:(NSNotification*)notification{
-    [[self.view viewWithTag:799]removeFromSuperview];
-    [[self.navigationController.navigationBar viewWithTag:798]removeFromSuperview];
-}
-
--(void)setBlurEffect{
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    [blurEffectView setFrame:[UIScreen mainScreen].bounds];
-    blurEffectView.tag = 799;
-    
-    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    visualEffectView.frame = self.navigationController.navigationBar.bounds;
-    visualEffectView.tag = 798;
-    visualEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deleteBlur:) name:@"deleteBlur" object:nil];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         _visualEffectView.layer.opacity = 0;
+                         self.navigationController.navigationBar.hidden = NO;
+                     } completion:^(BOOL finished) {
+                         [self.view sendSubviewToBack:_visualEffectView];
+                     }];
 }
 
 -(void)addGesture{

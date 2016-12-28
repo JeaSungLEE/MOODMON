@@ -39,9 +39,9 @@
     [self textLabelInit];
     [self menuControllerInit];
     
-    //    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
-    //    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
-    //    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
+    BOOL didShowNewMoodMonTutorial = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DidShowNewMoodMonTutorial"] boolValue];
+    self.tutorialContainerView.hidden = didShowNewMoodMonTutorial;
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"DidShowNewMoodMonTutorial"];
 }
 
 
@@ -66,7 +66,7 @@
 
 - (void)notificationInit {
     self.dataManager = [MDDataManager sharedDataManager];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"failTosaveIntoSql" object:self.dataManager ];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"moodNotChosen" object:self.dataManager ];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlert:) name:@"newMoodNotChosen" object:self.dataManager ];
 }
@@ -82,9 +82,9 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [dateFormatter setDateFormat:@"EEEE"];
-    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:NSLocalizedString(@"Locale Identifier", nil)]];
     _day.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:today]];
-    [dateFormatter setDateFormat:@"d MMMM"];
+    [dateFormatter setDateFormat:NSLocalizedString(@"Half Date Format", nil)];
     _date.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:today]];
 }
 
@@ -99,10 +99,10 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     [dateFormatter setDateFormat:@"EEEE"];
-    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:NSLocalizedString(@"Locale Identifier", nil)]];
     
     _day.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
-    [dateFormatter setDateFormat:@"d MMMM yyyy"];
+    [dateFormatter setDateFormat:NSLocalizedString(@"Full Date Format", nil)];
     _date.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:date]];
 }
 
@@ -182,7 +182,7 @@
                                                                                attributes:@{NSForegroundColorAttributeName:color}];
         self.comment = self.mood.moodComment;
     } else {
-        self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Comment on your feeling!"
+        self.textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"Comment Feeling", nil)
                                                                                attributes:@{NSForegroundColorAttributeName:color}];
     }
     
@@ -283,7 +283,7 @@
     //    [self.animator addBehavior:elasticityBehavior];
     //
     //
-    //    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Press and wheel to choose your mood" action:@selector(menuControllerDisappear)];
+    //    UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Press and wheel to choose your mood",nil) action:@selector(menuControllerDisappear)];
     //    _menuController.menuItems = [NSArray arrayWithObjects:menuItem, nil];
     //    [_menuController setTargetRect:moodButton.frame inView:moodButton.superview];
     //    [_menuController setMenuVisible:YES animated:YES];
@@ -315,7 +315,7 @@
                                           }
                                           completion:nil];
                          
-                         UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:@"Press and wheel to choose your mood" action:@selector(menuControllerDisappear)];
+                         UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"Press and wheel to choose your mood",nil) action:@selector(menuControllerDisappear)];
                          _menuController.menuItems = [NSArray arrayWithObjects:menuItem, nil];
                          [_menuController setTargetRect:moodButton.frame inView:moodButton.superview];
                          [_menuController setMenuVisible:YES animated:YES];

@@ -120,7 +120,7 @@ UIVisualEffectView *visualEffectView;
     //    searchResults = [[searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
     //
     //
-    NSString *query = [NSString stringWithFormat:@"moodComment CONTAINS '%@'",searchString] ;
+    NSString *query = [NSString stringWithFormat:@"moodComment CONTAINS[c] '%@'",searchString] ;
     _filteredProducts = (NSArray*)[Moodmon objectsWhere: query];
     [self.tableView reloadData];
     
@@ -173,6 +173,7 @@ UIVisualEffectView *visualEffectView;
     VC.timest = cell.timeLabel.text;
     VC.dateString = cell.date;
     VC.comment = cell.commentLabel.text;
+    VC.idx = (NSInteger)cell.tag;
     
     [self.navigationController.navigationBar addSubview:visualEffectView];
     [self.view addSubview:blurEffectView];
@@ -193,9 +194,24 @@ UIVisualEffectView *visualEffectView;
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     Moodmon *resultMoodmon = self.filteredProducts[indexPath.row];
+    cell.tag = (NSInteger)resultMoodmon.idx;
     cell.commentLabel.text = resultMoodmon.moodComment;
     //NSLog(@"time is : %@", [moodmonConf[indexPath.row] valueForKey:kTime]);
-    NSString *result = [NSString stringWithFormat:@"%ld년 %ld월 %ld일\n%@", (long)resultMoodmon.moodYear, (long)resultMoodmon.moodMonth, (long)resultMoodmon.moodDay, resultMoodmon.moodTime];
+    NSString *selectedTime = resultMoodmon.moodTime;
+    NSArray *timeComponents = [selectedTime componentsSeparatedByString:@":"];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *hour = [numberFormatter numberFromString:timeComponents[0]];
+    NSString *tt = @"";
+    if([hour compare:@12] != NSOrderedAscending){
+        tt = NSLocalizedString(@"After12", nil);
+        int hourSubtracted = [hour intValue] - 12;
+        hour = [NSNumber numberWithInt:hourSubtracted];
+    } else {
+        tt = NSLocalizedString(@"Before12", nil);
+    }
+
+    NSString *result = [NSString stringWithFormat:NSLocalizedString(@"Search Full Time Format+", nil), (long)resultMoodmon.moodYear, (long)resultMoodmon.moodMonth, (long)resultMoodmon.moodDay, tt, hour, timeComponents[1], timeComponents[2] ];
     cell.timeLabel.text = result;
     
     UIView *viewForFrame =  [cell viewWithTag:100];
@@ -337,7 +353,7 @@ NSString *const SearchBarIsFirstResponderKey = @"SearchBarIsFirstResponderKey";
     self.definesPresentationContext = YES;
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.searchController.searchBar.placeholder = @"Search a word or text!";
+    self.searchController.searchBar.placeholder = NSLocalizedString(@"Search a Word or Text", nil);
     self.filteredProducts = nil;
 }
 
