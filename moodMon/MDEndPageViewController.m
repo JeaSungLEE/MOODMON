@@ -30,18 +30,20 @@
 }
 
 -(void)setTextToLabel{
-    CGSize maximumSize = CGSizeMake(200, 60);
+    CGSize maximumSize = CGSizeMake(193, 60);
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14]};
-    CGRect rect = [_comment boundingRectWithSize:maximumSize
+    _rect = [_comment boundingRectWithSize:maximumSize
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                       attributes:attributes
                                          context:nil];
     _commentTextView.translatesAutoresizingMaskIntoConstraints = YES;
     CGFloat startYPoint = _moodView.frame.origin.y + _moodView.frame.size.height + 20;
-    _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, rect.size.height+10);
+    _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, _rect.size.height+18);
     [_commentTextView setFrame:_textRectFrame];
     _commentTextView.text = _comment;
-    //[_commentTextView setBackgroundColor:[UIColor clearColor]];
+    _commentTextView.delegate = self;
+    [_commentTextView setBackgroundColor:[UIColor clearColor]];
+
 }
 
 -(void)setLabelImage{
@@ -139,5 +141,29 @@
 }
 //*****************
 //위두개는 렒으로 변경이후 추가.
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+
+}
+- (void)textViewDidChange:(UITextView *)textView{
+    CGSize maximumSize = CGSizeMake(193, 60);
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14]};
+    CGRect currentRect = [textView.text boundingRectWithSize:maximumSize
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:attributes
+                                              context:nil];
+    if (currentRect.size.height != _rect.size.height){
+        _rect = currentRect;
+        _commentTextView.translatesAutoresizingMaskIntoConstraints = YES;
+        CGFloat startYPoint = _moodView.frame.origin.y + _moodView.frame.size.height + 20;
+        _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, _rect.size.height+18);
+        [_commentTextView setFrame:_textRectFrame];
+        [_backImage setFrame:_textRectFrame];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    //handle text editing finished
+}
 
 @end
