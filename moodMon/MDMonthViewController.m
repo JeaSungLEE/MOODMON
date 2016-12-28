@@ -104,8 +104,6 @@ NSString *currentDate;
     self.dataBtn.title = NSLocalizedString(@"Data", nil);
     self.filterButton.titleLabel.text = NSLocalizedString(@"Filter", nil);
     self.filterDoneBtn.titleLabel.text  = NSLocalizedString(@"Done", nil);
-    
-   
 }
 
 - (void)dealloc {
