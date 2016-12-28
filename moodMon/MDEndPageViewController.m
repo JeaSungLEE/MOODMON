@@ -15,6 +15,7 @@
 
 @end
 @implementation MDEndPageViewController
+CGFloat startYPoint;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,7 +38,9 @@
                                       attributes:attributes
                                          context:nil];
     _commentTextView.translatesAutoresizingMaskIntoConstraints = YES;
-    CGFloat startYPoint = _moodView.frame.origin.y + _moodView.frame.size.height + 20;
+    startYPoint = _moodView.frame.origin.y + 145 + 20;
+    if(CURRENT_WINDOW_WIDTH>320)
+        startYPoint += 55;
     _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, _rect.size.height+18);
     [_commentTextView setFrame:_textRectFrame];
     _commentTextView.text = _comment;
@@ -57,9 +60,18 @@
 //}
 
 -(void)setMoodFace{
-    CGAffineTransform transform = CGAffineTransformMakeScale(0.66, 0.66);
-    _bigView.transform = transform;
-    _bigView.frame = CGRectMake(0, 0, 200, 200);
+    if(CURRENT_WINDOW_WIDTH==320){
+        CGAffineTransform transform = CGAffineTransformMakeScale(0.46, 0.46);
+        _bigView.transform = transform;
+        _bigView.frame = CGRectMake(0, 0, 144, 144);
+        [_dateLabelDetail setFont:[UIFont systemFontOfSize:12]];
+        [_dateLabel setFont:[UIFont systemFontOfSize:12]];
+    }
+    else{
+        CGAffineTransform transform = CGAffineTransformMakeScale(0.66, 0.66);
+        _bigView.transform = transform;
+        _bigView.frame = CGRectMake(0, 0, 200, 200);
+    }
     [_moodView addSubview:_bigView];
 }
 
@@ -159,7 +171,6 @@
     if (currentRect.size.height != _rect.size.height){
         _rect = currentRect;
         _commentTextView.translatesAutoresizingMaskIntoConstraints = YES;
-        CGFloat startYPoint = _moodView.frame.origin.y + _moodView.frame.size.height + 20;
         _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, _rect.size.height+18);
         [_commentTextView setFrame:_textRectFrame];
 //        [_backImage setFrame:_textRectFrame];
