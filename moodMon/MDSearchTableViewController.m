@@ -170,7 +170,7 @@ UIVisualEffectView *visualEffectView;
     
     MDSearchTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     VC.moodColorView = cell.moodColorView;
-    VC.timest = cell.timest;
+    VC.timest = cell.timeLabel.text;
     VC.dateString = cell.date;
     VC.comment = cell.commentLabel.text;
     
