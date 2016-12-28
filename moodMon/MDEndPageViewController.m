@@ -7,6 +7,7 @@
 //
 
 #import "MDEndPageViewController.h"
+#import "MDMonthViewController.h"
 #import "MDDataManager.h"
 #define CURRENT_WINDOW_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -133,6 +134,7 @@
 - (IBAction)deleteMood:(id)sender {
     [[MDDataManager sharedDataManager] deleteAtRealmMoodmonIdx: self.idx];
     //아래 알림창은 데이터매니져로부터 데이터 수정 확인 응답을 받은 후 띄워야함.
+    [self dissmissView];
     [self showAlertView:@"Moodmon" Message:NSLocalizedString(@"Deleted", nil)];
 }
 //*****************
