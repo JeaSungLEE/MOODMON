@@ -24,6 +24,7 @@
 @property NSString* timest;
 @property NSString* comment;
 @property NSString* dateString;
+@property CGRect rect;
 
 - (IBAction)closeButton:(id)sender;
 - (IBAction)saveMoodButton:(id)sender;
