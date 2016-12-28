@@ -12,6 +12,7 @@
 		3FC1A86E1E0B877F003C1248 /* MDNewMoodTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */; };
 		3FC1A8711E0B8892003C1248 /* tutorial_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A86F1E0B8892003C1248 /* tutorial_box.png */; };
 		3FC1A8721E0B8892003C1248 /* tutorial_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC1A8701E0B8892003C1248 /* tutorial_next.png */; };
+		3FF570811E140E8100A87E9D /* messageBalloon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF570801E140E8100A87E9D /* messageBalloon.png */; };
 		655DA55E1CF2A6820048BF13 /* MDNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDACCBC1CEC36ED00FBD201 /* MDNavController.m */; };
 		6575788B1CB4BE7100D75D5E /* MDYearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6575788A1CB4BE7100D75D5E /* MDYearViewController.m */; };
 		658BE72E1CB4CE98006EB718 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 658BE7121CB4CE98006EB718 /* Main.storyboard */; };
@@ -394,6 +395,7 @@
 		3FC1A86C1E0B877F003C1248 /* MDNewMoodTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDNewMoodTutorialViewController.m; sourceTree = "<group>"; };
 		3FC1A86F1E0B8892003C1248 /* tutorial_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_box.png; sourceTree = "<group>"; };
 		3FC1A8701E0B8892003C1248 /* tutorial_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial_next.png; sourceTree = "<group>"; };
+		3FF570801E140E8100A87E9D /* messageBalloon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageBalloon.png; sourceTree = "<group>"; };
 		4CC43597F3BE0BFF07706F85 /* Pods_moodMon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodMon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		657578891CB4BE7100D75D5E /* MDYearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDYearViewController.h; sourceTree = "<group>"; };
 		6575788A1CB4BE7100D75D5E /* MDYearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDYearViewController.m; sourceTree = "<group>"; };
@@ -1200,6 +1202,7 @@
 		E986ECCE1CDFBE2F00792C55 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3FF570801E140E8100A87E9D /* messageBalloon.png */,
 				CE5EFC431E12D4B80076478C /* download-button.png */,
 				CE5EFC441E12D4B80076478C /* delete-button.png */,
 				CE5EFC411E12CF9F0076478C /* tutorial_month_ko.png */,
@@ -1774,6 +1777,7 @@
 				E9CD997D1CE8E25900C9DBB7 /* tired_wheel@2x.png in Resources */,
 				E9B03E311CF1FD700069741F /* tired_degree3@2x.png in Resources */,
 				658BE72E1CB4CE98006EB718 /* Main.storyboard in Resources */,
+				3FF570811E140E8100A87E9D /* messageBalloon.png in Resources */,
 				E986ED991CDFBE2F00792C55 /* tired_mouth_degree1@2x.png in Resources */,
 				E986ED6A1CDFBE2F00792C55 /* tired_eyebrow_degree4@2x.png in Resources */,
 				E986ED941CDFBE2F00792C55 /* sad_mouth_degree1@2x.png in Resources */,
