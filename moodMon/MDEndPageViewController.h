@@ -25,6 +25,7 @@
 @property NSString* comment;
 @property NSString* dateString;
 @property CGRect rect;
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
 
 - (IBAction)closeButton:(id)sender;
 - (IBAction)saveMoodButton:(id)sender;

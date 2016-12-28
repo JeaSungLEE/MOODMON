@@ -22,7 +22,7 @@
     [self makeMoodFace];
     [self setMoodFace];
     [self setTextToLabel];
-    [self setLabelImage];
+//    [self setLabelImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,13 +43,18 @@
     _commentTextView.text = _comment;
     _commentTextView.delegate = self;
     [_commentTextView setBackgroundColor:[UIColor clearColor]];
+    _commentTextView.layer.cornerRadius = 4;
+    _commentTextView.layer.borderWidth = 1;
+    _commentTextView.layer.borderColor = [UIColor colorWithRed:0xf0/255.0 green:0xf0/255.0 blue:0xf0/255.0 alpha:1].CGColor;
+    
+    _saveButton.layer.cornerRadius = 10;
 }
 
--(void)setLabelImage{
-    [_backImage setFrame:_textRectFrame];
-    UIImage *Image = [UIImage imageNamed:@"icon.png"];
-    [_backImage setImage:[Image resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)]];
-}
+//-(void)setLabelImage{
+//    [_backImage setFrame:_textRectFrame];
+//    UIImage *Image = [UIImage imageNamed:@"messageBalloon.png"];
+//    [_backImage setImage:[Image resizableImageWithCapInsets:UIEdgeInsetsMake(15, 100, 15, 100)]];
+//}
 
 -(void)setMoodFace{
     CGAffineTransform transform = CGAffineTransformMakeScale(0.66, 0.66);
@@ -157,7 +162,7 @@
         CGFloat startYPoint = _moodView.frame.origin.y + _moodView.frame.size.height + 20;
         _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, _rect.size.height+18);
         [_commentTextView setFrame:_textRectFrame];
-        [_backImage setFrame:_textRectFrame];
+//        [_backImage setFrame:_textRectFrame];
     }
 }
 
