@@ -2091,6 +2091,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="commentLabel" destination="2mm-kM-bLX" id="wB6-5W-S0k"/>
+                                    <outlet property="moodColorView" destination="qdJ-j2-V7A" id="1cD-ZX-maK"/>
                                     <outlet property="timeLabel" destination="25R-mL-I0L" id="HeN-E3-Fxn"/>
                                 </connections>
                             </tableViewCell>

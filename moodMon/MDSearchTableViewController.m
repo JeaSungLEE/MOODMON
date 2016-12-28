@@ -218,16 +218,15 @@ UIVisualEffectView *visualEffectView;
     viewForFrame.layer.cornerRadius = viewForFrame.frame.size.width/2;
     viewForFrame.layer.masksToBounds = YES;
     
-    MDMoodColorView *colorView = [[MDMoodColorView alloc]init];
+  //  MDMoodColorView *colorView = [[MDMoodColorView alloc]init];
     MDSmallMoodFaceView *faceView = [[MDSmallMoodFaceView alloc]init];
-    [cell addSubview:colorView];
-    [cell addSubview:faceView];
+    
     CGRect frame = CGRectMake(viewForFrame.frame.origin.x, 8, viewForFrame.frame.size.width, viewForFrame.frame.size.height);
-    [colorView setFrame:frame];
+    [cell.moodColorView setFrame:frame];
     [faceView setFrame:frame];
     
-    for(int i = 1 ;i <colorView.chosenMoods.count ; i++){
-        [colorView.chosenMoods removeObjectAtIndex:i];
+    for(int i = 1 ;i <cell.moodColorView.chosenMoods.count ; i++){
+        [cell.moodColorView.chosenMoods removeObjectAtIndex:i];
         [faceView.chosenMoods removeObjectAtIndex:i];
         
     }
@@ -236,27 +235,29 @@ UIVisualEffectView *visualEffectView;
     
     NSNumber *tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen1];
     if(tempMoodChosen.intValue != 0){
-        [colorView.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
+        [cell.moodColorView.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
         [faceView.chosenMoods insertObject: tempMoodChosen atIndex:1 ];
     }
     tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen2];
     if(tempMoodChosen.intValue != 0){
-        [colorView.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
+        [cell.moodColorView.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
         [faceView.chosenMoods insertObject: tempMoodChosen atIndex:2 ];
     }
     tempMoodChosen = [NSNumber numberWithInteger: resultMoodmon.moodChosen3];
     if(tempMoodChosen.intValue != 0){
-        [colorView.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
+        [cell.moodColorView.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
         [faceView.chosenMoods insertObject: tempMoodChosen atIndex:3 ];
     }
     
-    colorView.layer.cornerRadius = colorView.frame.size.width/2;
-    colorView.layer.masksToBounds = YES;
+    cell.moodColorView.layer.cornerRadius = cell.moodColorView.frame.size.width/2;
+    cell.moodColorView.layer.masksToBounds = YES;
     
     
     [faceView setNeedsDisplay];
-    [colorView setNeedsDisplay];
-    cell.moodColorView = colorView;
+    [cell.moodColorView setNeedsDisplay];
+//    [cell addSubview:colorView];
+    [cell addSubview:faceView];
+//    cell.moodColorView = colorView;
     return cell;
 }
 
