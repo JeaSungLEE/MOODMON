@@ -144,9 +144,12 @@ NSString *currentDate;
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
 }
 
+-(void)reloadData{
+    [self removeTags];
+    [self moreDateInfo];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

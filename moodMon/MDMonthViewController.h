@@ -66,7 +66,7 @@
 -(void) showAlert:(NSNotification*)notification;
 -(void)timeTableReload;
 -(void)resetTimeTable;
-
+-(void)reloadData;
 - (IBAction)goToNewMoodViewController:(id)sender;
 
 @end
