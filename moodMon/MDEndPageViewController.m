@@ -39,8 +39,10 @@ CGFloat startYPoint;
                                          context:nil];
     _commentTextView.translatesAutoresizingMaskIntoConstraints = YES;
     startYPoint = _moodView.frame.origin.y + 145 + 20;
-    if(CURRENT_WINDOW_WIDTH>320)
+    if(CURRENT_WINDOW_WIDTH==375)
         startYPoint += 55;
+    else if( CURRENT_WINDOW_WIDTH>375)
+        startYPoint += 85;
     _textRectFrame = CGRectMake((CURRENT_WINDOW_WIDTH-270)/2, startYPoint, 200, _rect.size.height+18);
     [_commentTextView setFrame:_textRectFrame];
     _commentTextView.text = _comment;
@@ -67,10 +69,14 @@ CGFloat startYPoint;
         [_dateLabelDetail setFont:[UIFont systemFontOfSize:12]];
         [_dateLabel setFont:[UIFont systemFontOfSize:12]];
     }
-    else{
+    else if(CURRENT_WINDOW_WIDTH==375){
         CGAffineTransform transform = CGAffineTransformMakeScale(0.66, 0.66);
         _bigView.transform = transform;
         _bigView.frame = CGRectMake(0, 0, 200, 200);
+    }else{
+        CGAffineTransform transform = CGAffineTransformMakeScale(0.76, 0.76);
+        _bigView.transform = transform;
+        _bigView.frame = CGRectMake(0, 0, 230, 230);
     }
     [_moodView addSubview:_bigView];
 }

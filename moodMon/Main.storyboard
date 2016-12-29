@@ -2006,7 +2006,7 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXg-44-4QG">
-                                <rect key="frame" x="140" y="34" width="44" height="19"/>
+                                <rect key="frame" x="140.5" y="34" width="43.5" height="19"/>
                                 <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2117,7 +2117,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdJ-j2-V7A" customClass="MDMoodColorView">
-                                            <rect key="frame" x="16" y="-1" width="44" height="45"/>
+                                            <rect key="frame" x="16" y="-0.5" width="44" height="44"/>
                                             <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="6VK-as-Ud4"/>
@@ -2822,7 +2822,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-Yc-eWv">
-                                <rect key="frame" x="29.5" y="42" width="261.5" height="111.5"/>
+                                <rect key="frame" x="29.5" y="42.5" width="261.5" height="110.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jZJ-Yc-eWv" secondAttribute="height" multiplier="307:130" id="4l8-De-qVH"/>
                                 </constraints>
