@@ -581,7 +581,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DidFinishTutorialMission"
                                                         object:nil
                                                       userInfo:@{@"missionName" : @"Comment"}];
-    [self moveEntireViewWithDuration:0.3 distance:+200];
+    [self moveEntireViewWithDuration:0.15 distance:+200];
 }
 
 
@@ -603,6 +603,7 @@
                                                       userInfo:@{@"missionName" : @"Comment"}];
     return YES;
 }
+
 
 - (void)moveEntireViewWithDuration:(CGFloat)duration distance:(CGFloat)distance {
     [UIView transitionWithView:self.view
