@@ -472,8 +472,8 @@ NSString *currentDate;
         
         if( ([nowComponents year] == thisYear) && ([nowComponents month] == thisMonth) && ([nowComponents day] == startDay)){
             dayButton.layer.bounds = CGRectMake(dayButton.bounds.origin.x, dayButton.bounds.origin.y , dayBtnBoundsSize - 5, dayBtnBoundsSize -5 );
-            dayButton.layer.borderColor =[UIColor redColor].CGColor;
-            dayButton.layer.borderWidth = 1.3;
+            dayButton.layer.borderColor = [UIColor colorWithRed:0.87 green:0.83 blue:0.78 alpha:1.00].CGColor;
+            dayButton.layer.borderWidth = 3.0;
             dayButton.layer.cornerRadius = dayButton.frame.size.width / 2;
             dayButton.layer.masksToBounds = YES;
         }
@@ -692,7 +692,7 @@ NSString *currentDate;
         return;
     }
     btn.layer.bounds = CGRectMake(btn.bounds.origin.x, btn.bounds.origin.y , dayBtnBoundsSize - 10, dayBtnBoundsSize - 10);
-    btn.layer.borderColor =[UIColor blackColor].CGColor;
+    btn.layer.borderColor = [UIColor colorWithRed:0.93 green:0.90 blue:0.87 alpha:1.00].CGColor;
     btn.layer.borderWidth = 3;
     btn.layer.cornerRadius = btn.frame.size.width / 2;
     btn.layer.masksToBounds = YES;
