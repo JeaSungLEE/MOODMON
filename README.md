@@ -1,11 +1,10 @@
 # MoodMon 프로젝트
 
+![moodmon 2](https://user-images.githubusercontent.com/12539719/29012590-ba3561fa-7b77-11e7-8a45-77171cdaa93c.gif)
 * ADS - 간편한 조작으로, 다양하고 깊이있는 감정을 표현하는 다이어리
 * 팀원 - 김기범, 이재성, 이규원
 * 회의 참고 - [wiki](https://github.com/kaskay/MOODMON/wiki)
 
-## 데모 영상
-![moodmon 2](https://user-images.githubusercontent.com/12539719/29012590-ba3561fa-7b77-11e7-8a45-77171cdaa93c.gif)
 
 ## 스크린샷
 #### 귀여운 무드몬을 통해 5개의 감정(기쁨, 슬픔, 흥분, 피곤, 화남)을 표현할 수 있습니다. 
