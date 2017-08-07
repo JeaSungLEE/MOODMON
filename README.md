@@ -1,7 +1,7 @@
 # MoodMon 프로젝트
 
 ![moodmon 2](https://user-images.githubusercontent.com/12539719/29012590-ba3561fa-7b77-11e7-8a45-77171cdaa93c.gif)
-* ADS - 간편한 조작으로, 다양하고 깊이있는 감정을 표현하는 다이어리
+* 간편한 조작으로, 다양하고 깊이있는 감정을 표현하는 다이어리
 * 팀원 - 김기범, 이재성, 이규원
 * 회의 참고 - [wiki](https://github.com/kaskay/MOODMON/wiki)
 
