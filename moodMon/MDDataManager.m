@@ -72,7 +72,7 @@
     newM.moodTime = timeString;
     
     RLMRealm *realm = [RLMRealm defaultRealm];
-    RLMResults *all = [[Moodmon allObjects] sortedResultsUsingProperty:@"idx" ascending:YES];
+    RLMResults *all = [[Moodmon allObjects] sortedResultsUsingKeyPath:@"idx" ascending:YES];
     Moodmon *last = [all lastObject];
     newM.idx = last.idx + 1;
     [realm beginWriteTransaction];
